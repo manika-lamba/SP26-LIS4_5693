@@ -1,0 +1,1690 @@
+---
+title: "Basic Concepts: IR, Text Mining, NLP"
+subtitle: "LIS 4/5693: Information Retrieval and Text Mining"
+author: 
+  - Dr. Manika Lamba
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      theme: whiteboard
+      buttons: true
+    preview-links: false
+    controls: true
+    progress: true
+    show-notes: separate-page
+    logo: images/ou.png
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Introduction {.smaller}
+
+-   Data and information generation in every discipline in the universe
+    of knowledge has seen staggering growth
+
+-   Storing, managing, querying, & retrieval of huge amount of data &
+    information needs sophisticated procedures & advanced technologies
+
+-   Nowadays, information collection is web-based and online which is
+    vast and growing at an exponential rate
+
+::::: columns
+::: {.column width="50%"}
+![](images/data.png){fig-align="center" width="700"}
+:::
+
+::: {.column width="50%"}
+![](images/data.jpg){fig-align="center" width="700"}
+:::
+:::::
+
+::: notes
+Hello everyone! This week's lecture provides you with a brief overview
+of information retrieval (IR) systems, users of IR systems, and the
+topics we will cover in this course.
+
+In this class we will learn about online information retrieval. The
+first part of class will focus on the **HOW** of information retrieval
+systems: how they work, how they are structured, different IR models and
+technologies, and the role that users play when designing an information
+retrieval system.
+
+The second part of class will introduce you to searching strategies that
+will make you a better searcher in many different systems.
+
+Lastly, in the third part of class you will use your new search skills
+in various databases and on the Web.
+
+Knowing how systems work, the decisions made while developing them, and
+how they are structured will make you a better searcher. Understanding
+yourself as a searcher will also help you identify areas you need to
+strengthen as you use online systems for your own work but also to help
+others conduct searches.
+
+So, let's get started!
+
+The idea of doing information retrieval is driven by one fundamental
+fact, and that is the digital revolution.The digital revolution happened
+extremely quickly and profoundly. For example, the figures shown on the
+slide is taken from [Hilbert and Lopez
+(2011)](https://www.science.org/doi/10.1126/science.1200970) paper which
+showed that the in the late '80s, 99% of the information in the world
+was stored in analogue form, for example on papers. Then, the digital
+part of information grew but then after the year 2000, it just exploded.
+They estimated that in the year 2002, for the first time, the world was
+able to store more digital than analog information. We still have papers
+around but by now, digital information counts for more than 99% of all
+the information.
+
+So in the year 2014, when they last updated the data, they found that
+the world was able to store five zettabytes. How far is five zettabytes?
+If you would take all this information that you have on your hard disk
+and your cell phones and microchips on the back of your credit card, and
+you would put this in books, and you would make a pile, how high do you
+think the pile would reach? Would reach to the moon? Or to the sun?
+
+It will reach 4,500 times to the sun!! So there will be 4,500 piles from
+the Earth to the sun with books. So, in 2014, we had 4,500 piles of
+books. That's all we were able to accumulate during human history, and
+now we're doubling it ever since.
+
+So, we restore as much new information as all the information we were
+ever able to, there's a lot of information to dig into and all the time
+you're producing a lot more and it's in digital format. That means then
+we need a system to compute it and use some system in order to retrieve
+it.
+
+We live in a time where we’re constantly generating new information and
+not just a little, but as much as we’ve ever been able to capture. Every
+day, more knowledge is being produced, and now it’s all in digital form.
+That’s powerful, because digital information can be stored and preserved
+almost endlessly.
+
+But here’s the challenge: with so much of it out there, we can’t rely on
+memory or manual systems anymore. We need computational systems to make
+sense of it --- to process, organize, and connect it. And just as
+important, we need retrieval systems so that when we ask a question, we
+can actually pull the right piece of knowledge out of that vast ocean of
+data.
+
+So, it’s not just about storing information, it’s about creating the
+ability to use it --- instantly, effectively, and intelligently.
+:::
+
+## Information Retrieval {.smaller}
+
+`Definition`
+
+> A process in which sets of records or documents are searched to find
+> items which may help to satisfy an information need
+
+![](images/1.png){fig-align="center" width="344"}
+
+::: footer
+[Lamba and Madhusudhan. (2022). Ch-1 The Computational
+Library](https://doi.org/10.1007/978-3-030-85085-2_1)
+:::
+
+::: notes
+Now, let's define Information Retrieval (IR). It is a process of
+matching a particular document with a set of other relevant documents.
+Suppose you have an extensive collection of documents and you want to
+find a relevant document. This text mining task retrieves the relevant
+documents based on the best matches of input document with the
+collection of documents based on a similarity measure.
+
+In other words, IR is about bridging the gap between the user’s question
+and the vast universe of available information.
+:::
+
+## Information Retrieval {.smaller}
+
+Information Retrieval includes:
+
+::::: columns
+::: {.column width="50%"}
+-   [x] Representation
+
+-   [x] Storage
+
+-   [x] Organization
+
+-   [x] Document Clustering
+
+-   [x] Classification of Documents
+
+-   [x] System Architecture
+:::
+
+::: {.column width="50%"}
+-   [x] Information & Data Visualization
+
+-   [x] Allied Services
+
+-   [x] Ranking of Documents
+
+-   [x] Semantic Linking
+
+-   [x] Filtering
+
+-   [x] Others
+:::
+:::::
+
+-   [Search engines]{style="color: blue;"} have been developed based on
+    the concepts, principles, and techniques developed by IR
+
+::: notes
+Now, what does that actually involve? As you see on this slide, IR is
+not just about search in the narrow sense. It encompasses several key
+components:
+
+On the left side, we have the foundational activities —-- things like
+representation, which is how we describe documents; storage and
+organization, which ensure information can be managed at scale; and
+techniques such as document clustering and classification, which group
+or categorize information meaningfully. And of course, all of this
+requires careful consideration of system architecture, the technical
+backbone of IR.
+
+On the right side, we move into more advanced or applied aspects --—
+information and data visualization, which helps users interpret results;
+allied services, which extend retrieval into related tasks; ranking of
+documents, which determines which results appear most relevant; semantic
+linking, which connects related pieces of knowledge; and filtering,
+which helps reduce noise and personalize outputs. These ensure that IR
+is not just functional, but also efficient and user-centered.
+
+Finally, it’s worth emphasizing that search engines, which we all use
+daily, are the most visible application of these IR principles. The
+concepts and techniques you see here form the foundation of systems like
+Google, Bing, and countless specialized retrieval platforms.
+:::
+
+## Brief History of Information Retrieval
+
+![](images/clipboard-1579569194.png){fig-align="center"}
+
+::: footer
+[Lamba and Madhusudhan. (2022). Ch-1 The Computational
+Library](https://doi.org/10.1007/978-3-030-85085-2_1)
+:::
+
+::: notes
+*`{Zoom-in to see the figure or Right-click to save it!}`*
+
+Information retrieval systems today are based on techniques that were
+introduced in the 1960s and while the abilities of systems and the
+algorithms used have been refined, the process of retrieval remains the
+same.
+
+IR is primarily text-based, meaning that we retrieve documents, those
+documents may be textual, we use queries that are text, and we search
+representations that are text. There are definitely other forms of IR
+and other formats of documents that are retrieved but regardless the
+process remains the same.
+
+In database systems, whether a flat file system or relational database,
+each field that is indexed (meaning it is searchable by users) produces
+what is called an inverted index of index terms. It is this index that
+is searched.
+
+Even web search engines like Google use inverted indexes and when you
+search the engine, you are searching the index of terms. Of course there
+are other systems that provide full text searching or even full document
+searching, but there are also limits to what is searched in each.
+
+We will talk more about IR models and how they work in systems later in
+the course.
+
+IR is no longer just a problem for libraries. IR systems are used
+everywhere and by anyone who has an Internet connection via their
+computer, smart phone, tablet or other mobile device.
+:::
+
+## Brief History of Information Retrieval
+
+::::: columns
+::: {.column width="50%"}
+-   System for the Mechanical Analysis and Retrieval of Text (SMART) was
+    developed by Gerard Salton in Cornell University in 1960s. This
+    system incorporated many important concepts like [vector space
+    model]{style="color: blue;"}, relevance feedback, and Rocchio
+    Classification
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-1563999917.png){fig-align="center"}
+:::
+:::::
+
+::: notes
+The SMART system, or System for the Mechanical Analysis and Retrieval of
+Text, was one of the earliest and most influential projects in
+Information Retrieval. It was developed in the 1960s at Cornell
+University by Gerard Salton, who is often considered the father of IR.
+
+What made SMART so important is that it wasn’t just a system, it was a
+research platform. It introduced and tested many of the core ideas that
+modern search engines still rely on. For example, SMART gave us the
+**vector space model**, representing documents and queries
+mathematically so that we could measure similarity. It also introduced
+**term weighting methods** like TF-IDF, which balance how frequent a
+word is within a document against how rare it is across the collection.
+
+Another innovation was **relevance feedback**, the idea that the system
+can improve results by learning from what the user marks as relevant or
+irrelevant. And just as importantly, it also developed **evaluation
+methods**, such as precision and recall, to measure retrieval
+effectiveness in a systematic way.
+
+While the SMART system itself no longer exists, its principles form the
+foundation of everything from academic IR research to commercial search
+engines like Google today.
+:::
+
+## Brief History of Information Retrieval
+
+::::: columns
+::: {.column width="50%"}
+-   J.W. Sammon (1969) gave the idea of [visualization interface
+    integrated to an IR system]{style="color: blue;"} in his famous
+    paper "A nonlinear mapping for data structure analysis"
+
+-   [First online systems]{style="color: blue;"}--NLM's AIM-TWX,
+    MEDLINE; Lockheed's Dialog; SDC's ORBIT
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-1874551088.png){fig-align="center"}
+
+-   During 1966-67, F.W. Lancaster evaluated the [MEDLARS (Medical
+    Literature Analysis and Retrieval System)]{style="color: blue;"}
+:::
+:::::
+
+::: notes
+In the late 1960s, researchers began thinking about how information
+retrieval systems could move beyond simple text search. One key idea
+came from J.W. Sammon in 1969, who proposed a visualization interface
+integrated into IR systems. In his influential paper, A Nonlinear
+Mapping for Data Structure Analysis, he laid the groundwork for
+techniques that help us see patterns in data, something that’s become
+critical in modern IR with clustering and visualization tools.
+
+Around the same time, the first online IR systems were emerging.
+Examples include the National Library of Medicine’s AIM-TWX and MEDLINE,
+Lockheed’s Dialog, and SDC’s ORBIT. These systems were groundbreaking
+because they provided searchable access to specialized literature,
+especially in science and medicine, long before the web existed.
+
+And during 1966–67, F.W. Lancaster conducted a major evaluation of
+MEDLARS, the Medical Literature Analysis and Retrieval System. His
+studies were among the first systematic evaluations of an IR system,
+focusing on how effective it was in retrieving relevant documents. This
+was crucial, because it marked the beginning of formal evaluation
+practices in IR, something that still defines the field today.
+:::
+
+## Brief History of Information Retrieval
+
+-   [AM SIGIR Conference]{style="color: blue;"} started in 1978 which
+    subsequently emerged as the apex conference in IR systems
+
+-   Belkin, Oddy, and Brooks gave the concept of [*Anomalous State of
+    Knowledge (ASK)*](https://doi.org/10.1108/eb026722) for information
+    retrieval in 1982
+
+-   [OKAPI model]{style="color: blue;"} was formulated in 1982-88 which
+    is a set-oriented ranked output design for probabilistic type
+    retrieval of textual material using inverted index
+
+-   Major breakthrough was in 1989 when Tim Berners-Lee proposed [World
+    Wide Web]{style="color: blue;"} in CERN Laboratory
+
+-   [TREC conference]{style="color: blue;"} started as part of TIPSTER
+    text program in 1992 and it was sponsored by US Defense and National
+    Institute of Standards and Technology (NIST)
+
+::: notes
+Next in 1978, the ACM SIGIR Conference began. Over time, it became the
+leading international conference on IR systems, what we often call the
+‘apex’ conference in the IR field.
+
+Then, in 1982, Belkin, Oddy, and Brooks introduced the concept of the
+Anomalous State of Knowledge, or ASK. This was a very important
+theoretical model because it framed retrieval as a process of resolving
+a gap in the user’s knowledge, not just matching keywords.
+
+Around the same period, from 1982 to 1988, the OKAPI model was
+developed. This was a probabilistic retrieval model that produced ranked
+outputs based on an inverted index. It laid the groundwork for what
+later became BM25, still one of the most widely used ranking functions
+today.
+
+A major turning point came in 1989, when Tim Berners-Lee, working at
+CERN, proposed the World Wide Web. This changed the context of IR
+completely, shifting from specialized databases to a global, open
+information space.
+
+In 1992, the TREC conference was launched as part of the TIPSTER text
+program, sponsored by the U.S. Department of Defense and NIST. TREC
+provided standardized test collections and evaluation frameworks, which
+accelerated research and allowed fair comparisons between different
+retrieval methods.
+:::
+
+## Brief History of Information Retrieval {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+-   [PageRank algorithm]{style="color: blue;"} was developed at Stanford
+    University by Larry Page and Sergey Brin in 1996
+
+-   In 1997, [Google Inc.]{style="color: blue;"} was born which has now
+    ruling dominantly in searching engine domain
+
+-   Google personalized search started in 2005
+
+-   Multimedia IR (Smeulders, Lew, Sebe) integrates into search in 2010
+
+-   Semantic models came first in 2013-2014 such as Word2Vec, GloVe
+
+-   Google introduces BERT in 2018
+
+-   Conversational IR in assistants were introduced in 2020-2021 such as
+    Alexa, Siri
+
+-   Retrieval Augmented Genreration in 2022-2023
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-2203373772.png){fig-align="center"}
+
+-   LSI gained huge popularity in WWW and was hugely used in Search
+    Engine Optimization (SEO)
+
+-   [Latent Dirichlet allocation (LDA)]{style="color: blue;"}, a
+    generative/topic model in NLP was developed by David Blei, Andrew
+    NG, and Michael Jordan in 2003
+:::
+:::::
+
+::: notes
+Several key developments mark the evolution of modern information
+retrieval systems. Some of the selected ones are as follows:
+
+In 1996, at Stanford University, Larry Page and Sergey Brin developed
+the PageRank algorithm, a seminal contribution that ranked web pages
+based on link structure rather than just keyword frequency. This
+innovation became the foundation of Google’s search engine and
+transformed large-scale web retrieval.
+
+Latent Semantic Indexing, or LSI, gained significant popularity with the
+growth of the World Wide Web. The method, originally introduced in the
+late 1980s, was designed to capture hidden semantic structures in text
+by reducing dimensionality through singular value decomposition. In the
+context of the web, LSI was quickly adopted in Search Engine
+Optimization (SEO) practices. The reasoning was that by modeling the
+semantic relationships among terms, web pages could be optimized not
+only for exact keywords, but also for related concepts and variations.
+This marked an early move from simple keyword matching toward a more
+semantically aware retrieval process.
+
+Although later models like probabilistic topic models and neural
+embeddings surpassed LSI in accuracy and scalability, its role was
+historically important -- it bridged the gap between traditional
+keyword-based retrieval and more advanced semantic methods.
+
+In 2003, David Blei, Andrew Ng, and Michael Jordan introduced Latent
+Dirichlet Allocation (LDA), a probabilistic generative model that
+enabled documents to be represented as mixtures of latent topics. LDA
+marked an important theoretical and practical advance in modeling text
+corpora and topic-driven retrieval.
+
+By 2005, Google introduced personalized search, adapting retrieval
+results to individual user histories and profiles. This was a shift from
+universal rankings toward user-centered retrieval models.
+
+In 2010, the field saw the integration of multimedia information
+retrieval, with researchers such as Smeulders, Lew, and Sebe working on
+retrieval methods for images, video, and audio. This expanded the scope
+of IR beyond text into multimodal domains.
+
+The years 2013–2014 introduced the first widely adopted semantic models,
+particularly Word2Vec (Mikolov et al.) and GloVe (Pennington, Socher,
+Manning). These embedding models captured semantic relationships in
+continuous vector spaces and significantly improved retrieval quality.
+
+In 2018, Google introduced BERT (Devlin, Chang, Lee, Toutanova), a deep
+contextual language model that revolutionized semantic search and
+natural language understanding within IR systems.
+
+By 2020–2021, conversational IR emerged in mainstream use, integrated
+into voice assistants such as Alexa, Siri, and Google Assistant,
+enabling multi-turn, interactive retrieval.
+
+Most recently, in 2022–2023, the rise of Retrieval-Augmented Generation
+(RAG) has combined neural retrieval with large language models, enabling
+systems not only to retrieve relevant documents but also to generate
+coherent, contextually enriched answers. This represents the convergence
+of IR with generative AI, defining the current frontier of the field.
+:::
+
+## Who are the Users?
+
+> A user is a person who uses information and/or information systems in
+> some meaningful way
+
+A user can be:
+
+-   End-user: seeks, evaluates, uses information for personal question
+    or problem
+-   System-user: end user who exploits information systems at some level
+-   Information professional: facilitates end-user information seeking
+    and use
+-   Computerized system, software program
+
+::: notes
+Everyone is an information user and exploits information systems at some
+level. The literature uses many terms to describe users, such as end
+users, system users, and information professionals. They are all users
+of IR systems, right? End users and system users are basically the same.
+The term end user comes from a time in libraries when users could not
+access the library catalog and the librarian conducted the searching for
+them in a closed stack environment. When libraries became automated in
+the 1970s and 80s the term system users began being used to describe
+both the end users but also the information professionals who now had
+access to online resources using dumb terminals (not connected to an
+external server) and to a small set of subject specific databases. Your
+readings provide you will more of this history.
+
+Computerized systems like bots on the web are also users of our systems,
+right? The bots access our OPACs to index our collections and make them
+accessible through search engines.
+:::
+
+## User's Information Needs
+
+Users are motivated to seek information in a given situation to:
+
+-   answer a question
+-   solve a problem
+-   complete a task
+-   learn about a subject
+-   verify a fact
+-   just for fun
+
+::: notes
+Whether you are a system designer, reference librarian, or just want to
+become a better searcher, it is important to understand more about WHY
+and HOW people search for information. Information scientists have long
+studied what is called Information Behavior (how people find and use
+information to various purposes) and a subset of information behavior
+called information seeking, which focuses on the process, tools, and
+decisions associated with seeking for information.
+
+Generally we know that users are motivated to seek information as part
+of a situational context to answer a question, solve a problem, complete
+a task, to learn more or verify a fact. What we know less about is how
+they seek information for fun or entertainment. There are some very
+interesting studies about information seeking for hobbyists, within
+social media, or just to surf for fun. But we need to learn more.
+:::
+
+## User's Information Needs
+
+Typical user questions:
+
+-   What
+-   When
+-   Where
+-   Why
+-   How
+
+::: notes
+When helping users search or use different IR systems we can expect
+specific kinds of questions, such as WHAT, WHEN, WHERE, WHY and HOW.
+Drawing out a user’s actual information need, however, is often
+challenging as they may not know how to ask the question, how to enter a
+query into the system, or to use the functions of the system to find
+what they are looking for. In libraries, we conduct “reference
+interviews” but in other contexts the conversation you have with users,
+or that users have with a computer, is designed to extract more
+information about their information need, right?
+
+Later in the course, we will talk more about how to refine an
+information need to conform with system parameters.
+:::
+
+## Information Needs
+
+Two broad categories of searches:
+
+-   Known item search
+-   Subject or topic search
+
+::: notes
+Research has also shown that there are two broad categories of searches
+that users conduct:
+
+1.  Known item searches – where the user knows something about the item
+    they are seeking such as title or author
+
+2.  Subject or topic searches – the user knows some aspect of the
+    subject or topic that they need to learn more about or that they
+    need to find specific information about.
+
+This is not quite as simple as it sounds. Very often a user will not
+know how to express their precise information need or how to implement
+it within a given system. They also may not remember correctly the
+author or title they think they know. In modern systems depending on the
+IR technique of the system or its capabilities to match partial search
+information, the user can still find useful information. We will talk
+more about this topic throughout the semester.
+:::
+
+## Information Retrieval Systems {.smaller}
+
+> A specialized system for the description, storage, and retrieval of
+> information representations: primarily information objects (text,
+> images) and their surrogates (metadata, records). Operates by matching
+> queries (representations of information need) with data
+> (representations of information objects)
+
+![](images/clipboard-1371401673.png){fig-align="center"}
+
+::: notes
+In this class, we will also learn more specifics about the IR process
+and IR systems. As this slide notes, IR systems are specialized systems
+that are used for the description, storage and retrieval of information
+representations (or the information objects). These objects can take
+many forms.
+
+Users access the records of the objects or the objects by matching
+search terms or queries to data or representations about the objects
+within the system. IR systems are set up to use algorithms that provide
+the “matching” function. Older systems primarily were exact match
+systems, meaning that the query terms and terms in the representation
+and/or inverted index had to match exactly.
+
+The most significant change in IR systems is that MOST are no longer
+exact match systems but will match on part of the query terms.
+Artificial intelligence (AI) and machine learning are also changing
+expectations of users and how they think search engines and databases to
+work.
+:::
+
+## Components of IR systems
+
+::::: columns
+::: {.column width="50%"}
+Knowledge system into which an IR system is implanted generally consists
+of three main components:
+
+a)  [people in their role as
+    information-processors]{style="color: blue;"}
+
+b)  [documents in their role as carriers of
+    information]{style="color: blue;"}
+
+c)  [topics as representations]{style="color: blue;"}
+:::
+
+::: {.column width="50%"}
+![](images/2.png){fig-align="center" width="500"}
+:::
+:::::
+
+::: notes
+Let us now consider the basic conceptual framework of information
+retrieval systems.
+
+An IR system is not an isolated tool, but rather one that is implanted
+within a broader knowledge system.
+
+This system can be thought of as consisting of three interrelated
+components:
+
+1.  People, in their role as information processors and seekers of
+    knowledge.
+
+2.  Documents, in their role as carriers and representations of
+    information.
+
+3.  Topics, which function as abstract representations of knowledge
+    domains and link users to the documents they seek.
+
+This slide illustrates a “basic” model of how IR works. On the left side
+are the documents and representations that are stored by the system. On
+the right side are the user interactions with the system. The center
+section shows the matching function and the output or results of the
+search. Of course in a computer there is much more to it, but this gives
+us the basic idea of how IR works.
+
+As Lancaster observed, the purpose of an IR system is not to directly
+inform the user on the subject of their inquiry. Instead, its role is
+more precise: to inform the user of the existence, non-existence, and
+whereabouts of documents relevant to their request. In its early
+conception, therefore, IR was fundamentally about retrieval of
+documents, not retrieval of information.
+
+This notion shifted significantly with the advent of full-text
+availability in bibliographic databases. No longer constrained to
+indexes and metadata, IR systems could now operate directly on the
+content of documents. Originally, IR meant text retrieval systems,
+reflecting the textual nature of the collections.
+
+However, modern IR systems increasingly handle multimedia information —
+not only text, but also images, audio, and video. This transition has
+required the development of new tools, methods, and techniques capable
+of supporting retrieval across multiple modalities. It represents one of
+the major conceptual and technological expansions in the field.
+:::
+
+## Model of IR System
+
+![](images/3.png){fig-align="center"}
+
+::: notes
+The Chowdhury reading, Chapter 1, provides a much more complete picture,
+expanding each of the functions of the Blair model on the last slide.
+The actors of each side are also included, such as on the left side,
+they include content creators, producers of the documents but also the
+catalogers who provide the descriptions or the metadata associated with
+each object.
+
+This slide also shows a range of types of documents that might be
+accessible in a system. Chowdhury’s model also shows the outcomes of the
+representation process, by the human indexer as well as the computer
+processing the representations or documents, as well as the standards
+and tools that are used in the representation process.
+
+In the middle is the search interface and IR technique that provide the
+matching function. On the right are the users within a societal context,
+which affects what they know and what types of knowledge they bring when
+they use an IR system.
+
+At the bottom of this model are other factors, such as national,
+technological, etc. that affect the context in which an IR system
+exists. This is one of my favorite models for understanding the
+complexity of an IR system because it incorporates contextual factors
+into the model which have direct influence on the IR system and how it
+is used.
+
+We will learn more about IR systems, models and how to evaluate IR
+systems in the later modules.
+:::
+
+## Types of IR Systems {.smaller}
+
+Based on the different types of services, IR can be categorized as:
+
+::::: columns
+::: {.column width="50%"}
+-   [x] Pre-Coordinate Systems
+
+    -   Printed indexes and catalogs
+    -   OPACs
+
+-   [x] Post-Coordinate Systems
+
+-   [x] Web Search
+
+-   [x] Personalized IR
+
+-   [x] Enterprise/Institutional IR
+
+-   [x] Domain-Specific IR
+:::
+
+::: {.column width="50%"}
+-   [x] Web Based IR System
+
+-   [x] Digital Libraries
+
+-   [x] Multimedia IR System
+
+-   [x] Distributed IR System
+
+-   [x] Conversational IR System
+
+    -   ChatGPT
+:::
+:::::
+
+::: notes
+Now that we’ve looked at the definition and scope of Information
+Retrieval, let’s consider the different categories of services that IR
+supports.
+
+On the left, we see types that focus on **context and users**:
+
+**Web Search**, the most familiar to all of us, where IR powers
+large-scale search engines across the open internet.
+
+**Personalized IR**, which adapts results to individual user preferences
+and past behaviors.
+
+**Enterprise or Institutional IR**, which focuses on retrieving
+information within organizations — for example, searching across company
+documents or academic repositories.
+
+And **Domain-Specific IR**, which is specialized for a particular field
+such as medicine, law, or engineering, where terminology and relevance
+criteria are unique.
+
+On the right, we have **system-based services**:
+
+**Web-Based IR Systems**, which deliver retrieval through online
+interfaces.
+
+**Digital Libraries**, which apply IR to structured, curated collections
+of academic and cultural material.
+
+**Multimedia IR Systems**, which extend beyond text to include images,
+audio, and video retrieval.
+
+And finally, **Distributed IR Systems**, which work across multiple,
+separate data sources — for example, federated search across libraries,
+or even across multiple company systems.
+
+The important takeaway here is that IR isn’t one-size-fits-all.
+Different contexts whether public web search, personalized
+recommendation, or specialized domains, demand different architectures
+and retrieval strategies.
+:::
+
+## What Information Can You Find Online?
+
+-   Bibliographic citations
+-   Full-text documents
+-   Directory of reference sources
+-   Numeric data
+-   Images
+-   Multimedia files
+
+::: notes
+Not to be flippant, but did you laugh the first time you heard someone
+say that you can find everything online?
+
+It is very common misconception of users that they can access everything
+online. While the availability of content and what you can find online
+has definitely improved, not everything can be found online.
+
+What is also key to remember is that you need to know which systems hold
+specific types of information, so you choose an appropriate system.
+
+For example, if you are looking for a book to purchase you might use the
+Web and Amazon or Barnes and Noble. If you just want to borrow a book
+you would search for it in the library catalog and may find it easily
+accessible or the library may have to order it for you. (As I type this
+I realize this has also changed. With Amazon services you can now rent
+books and return them.)
+
+To locate scholarly articles, like those usually required for research
+papers in your classes, you would use OU Libraries subject/discipline
+specific databases.
+
+You can, in some instances, use Google Scholar, but often you end up
+with a citation that requires payment to access the actual article. AND
+Google Scholar is not as heavily indexed so you may miss relevant
+articles if you use different terms than what is in the Google Scholar
+index.
+
+The point here is that choosing the correct system is critical in
+finding the useful information you need. We will talk about this more
+later in the course.
+:::
+
+## Issues to Consider
+
+How is access to the Internet changing our user's ................?
+
+-   Expectations
+
+-   Ways of engaging with information
+
+-   Brains
+
+-   Information needs/seeking activities and behaviors
+
+-   Other thoughts?
+
+::: notes
+Other issues to consider that we will explore together are, for example,
+
+1.  How have users expectations changed now that almost ubiquitous
+    access to the Web is possible?
+2.  Has our way of engaging with information also changed?
+3.  Is there any effect on our brains due to the way we interact with
+    online systems today?
+4.  Are there new sets of information behaviors that information
+    professionals need to take into account? For example, how have using
+    smart phones affected IR?
+5.  Other thoughts?
+
+We will explore these issues and others together.
+:::
+
+# Putting It All Together
+
+::: notes
+This class focuses on all aspects of IR from understanding more about
+users and their information needs, to system structures and IR
+techniques, to how to capitalize on these understandings to improve your
+own search abilities. It is also important to understand your own search
+process and where you might need to improve. This semester provides you
+will the opportunity to play with many different systems and to test out
+their features as you become a more proficient searcher and as you learn
+more about how IR works. My hope is that you enjoy the entire process!!
+:::
+
+# Natural Language Processing (NLP)
+
+-   Free text searching = flexiblity + complexity
+-   NLP is essential for modern IR
+-   Conversational interfaces are shaping the future in library search
+
+::: notes
+Now, we are going to discuss natural language search and its role in
+modern information retrieval.
+
+First, we will discuss how free text searching represents both an
+opportunity and a challenge. Its flexibility allows users to articulate
+queries in their own words, fostering inclusivity and accessibility. Yet
+this same flexibility introduces complexity, requiring sophisticated
+processing to manage linguistic ambiguity, synonymy, and varying query
+structures. The effectiveness of free text search therefore depends on
+the strength of the underlying linguistic and computational models.
+
+Second, we will see how Natural Language Processing or NLP has become
+indispensable for contemporary information retrieval. From tokenization
+and indexing to intent detection and semantic modeling, NLP techniques
+enable systems to move beyond surface-level keyword matching toward
+genuine understanding of user queries and document meaning. NLP thus
+serves as the foundation upon which intelligent, adaptive, and
+context-aware retrieval systems are built.
+
+Finally, we will discuss how conversational interfaces—including
+voice-based assistants and chatbots—are reshaping the landscape of
+library search and discovery. By facilitating dialogue-like
+interactions, these systems make information retrieval more natural,
+accessible, and responsive. They extend the mission of libraries by
+offering scalable, human-centered engagement, and they signal the
+ongoing convergence of librarianship, computational linguistics, and
+artificial intelligence.
+:::
+
+## Document Indexing and Retrieval
+
+-   Methods include
+    -   Boolean
+    -   Vector Space
+    -   Probabilistic
+-   Rely on *index terms*
+    -   *"bag of words"*
+    -   stoplist + stemming
+-   But text is "unstructured"
+    -   information may be "hidden"
+
+::: notes
+In earlier modules, we covered the three core **document retrieval
+strategies**: (i) **Boolean**, (ii) **Vector Space**, and (iii)
+**Probabilistic** models.
+
+All of these models depend on **index terms**, which are the keywords or
+tokens that represent the main ideas in a document. This is often
+referred to as the **“bag of words”** approach where the information
+system treats each document as an unordered collection of words,
+ignoring sentence structure or grammar. To make this more efficient, we
+use **stoplists** to filter out common, low-value words (like “the,”
+“is,” or “and”) and **stemming** to reduce words to their root forms,
+such as turning “learning,” “learns,” and “learned” into “learn.”
+
+However, the limitation here is that **text is unstructured**. It
+doesn’t follow a fixed schema like a database, that is, meaning,
+context, and relationships between words are often **hidden**. A keyword
+match might miss the nuance of how terms are actually used.
+
+This challenge led to the evolution toward **free-text** and **natural
+language searching**. Instead of relying only on index terms or Boolean
+logic, these approaches allow users to search using **everyday
+language**, such as typing “What are the best ways to learn machine
+learning?” rather than just “machine learning AND tutorial.”
+
+Here’s where Natural Language Processing comes in —- it builds on these
+traditional retrieval models by helping computers interpret meaning,
+context, and intent behind a query. NLP-enhanced search systems can
+understand synonyms, recognize entities, and analyze sentiment — turning
+unstructured text into structured, meaningful data that can be retrieved
+intelligently.
+
+So, in essence, Boolean, vector, and probabilistic models gave us the
+foundation for **structured retrieval**, while NLP and semantic
+understanding expanded that foundation into **natural, conversational
+searching** — the kind of search experience we now expect on platforms
+like Google, YouTube, and social media.
+:::
+
+## Problems with Text {.smaller}
+
+-   `Polysemy`: one word maps to many concept such as bat
+-   `Synonymy`: one concept maps to many words such as happy or joyful,
+    car or automobile
+-   `Word order`
+-   `Language is generative`
+    -   *Starbucks coffee is the best*
+
+    -   *The place I like most when I need to feed my caffeine addiction
+        is the company from Seattle with branches everywhere*
+-   `Many different ways to express given idea`
+    -   synonymy, paraphrase, metaphor, etc
+-   `Frege's principle`: *The meaning of a sentence is completely
+    determined by the meaning of its symbols and the syntax used to
+    combine them*
+
+::: notes
+When we work with text data, one of the biggest challenges is that
+**human language isn’t straightforward**. There are many ways to say the
+same thing, and words often mean different things depending on context —
+which makes text processing far more complex than working with
+structured data like numbers or categories.
+
+Let’s look at a few of the main **problems with text**.
+
+First, there’s **polysemy**, which means a single word can have
+**multiple meanings**. For example, the word *“bat”* can refer to an
+animal or a piece of sports equipment. Humans can easily infer which
+meaning is intended from context, but a computer can’t do that without
+additional processing or training.
+
+Next, we have **synonymy**, which is the opposite issue -— one concept
+can be expressed using **many different words**. For example, *“happy”*
+and *“joyful”*, or *“car”* and *“automobile”*, all convey the same idea.
+For a computer that relies on exact word matching, these differences can
+cause it to miss relevant information.
+
+Then there’s **word order**. In English and many other languages, the
+order of words changes meaning. For example, *“The cat chased the dog”*
+versus *“The dog chased the cat”* -— same words, completely different
+meaning. So, computers need to understand syntax and structure, not just
+individual words.
+
+Another key feature of language is that it’s **generative** —- we can
+express the same thought in countless ways. For instance, consider the
+simple statement: *“Starbucks coffee is the best.”* You could also say,
+*“The place I like most when I need to feed my caffeine addiction is the
+company from Seattle with branches everywhere.”* Both sentences
+communicate the same core idea, but with very different wording, tone,
+and structure.
+
+This flexibility through **synonymy, paraphrase, metaphor, and other
+linguistic devices** is what makes human communication rich and
+creative, but also what makes text so challenging for machines to
+process.
+
+Finally, **Frege’s Principle** helps explain why meaning in language can
+be complex. It states that *the meaning of a sentence is completely
+determined by the meaning of its symbols and the syntax used to combine
+them.* In theory, this means if we understand each word and how they fit
+together, we should understand the sentence. In practice, though, human
+language often violates this principle through context, idioms, and
+implied meaning which is exactly why Natural Language Processing is so
+essential for text understanding and information retrieval.
+:::
+
+## Problems with Text (Cont.) {.smaller}
+
+-   `Language is a form of communication`
+    -   All communication has a \*context\*
+        -   ***time*** and ***place*** of utterance, the writer, the
+            reader, their **background knowledge**, **intentions**,
+            **assumptions** and the reader's knowledge/intentions, etc.
+-   `Language is changing`
+-   `Ill-formed input`
+-   `Co-ordination, negation, etc`
+-   `Multi-linguity`
+-   `Sarcasm, irony, slang, jargon, etc`
+
+::: notes
+Continuing our discussion on the **problems with text**, we now move
+beyond just word meaning and structure to look at some deeper challenges
+that come from the nature of **language as communication**.
+
+First and foremost, **language is a form of communication**, and all
+communication happens within a **context**. This means that
+understanding language requires knowing the **time and place** of the
+utterance, who the **writer or speaker** is, who the **reader or
+listener** is, and what **background knowledge**, **intentions**, and
+**assumptions** each person brings. For example, a tweet made during a
+political event or a comment on a breaking news story may carry meaning
+that’s only clear when you know when and where it was posted. Without
+context, computers can easily misinterpret meaning.
+
+Second, **language is constantly changing**. New words, slang, and
+expressions emerge all the time, especially online. Think about how
+quickly terms like “ghosting,” “FOMO,” or “AI” entered common use. NLP
+systems must continually adapt to stay current with these shifts in
+language and culture.
+
+Next, we have **ill-formed input**, which refers to the fact that people
+often type or speak in ways that are incomplete, ungrammatical, or
+filled with typos, abbreviations, and emojis. On social media
+especially, posts rarely follow perfect grammar rules, so NLP models
+need to handle noisy, messy data.
+
+Another issue is **coordination and negation**, things like *“Mary got
+home late, and she missed her dinner”* or *“I don’t dislike this
+movie.”* These constructions can be tricky because meaning changes
+depending on how clauses are linked or negated. Understanding such
+nuances requires more than simple word-level analysis.
+
+Then there’s **multilinguality**, or the use of multiple languages. Many
+users mix languages, for example, switching between English and Spanish
+in the same sentence. This poses a major challenge for NLP systems that
+rely on monolingual training data.
+
+Finally, **sarcasm, irony, slang, and jargon** are particularly
+difficult for computers to interpret. When someone says, *“Oh great,
+another meeting,”* they might mean the opposite of what the words
+literally say. Humans detect tone and social cues naturally, but for
+machines, this kind of subtlety often leads to misunderstanding.
+
+So, these challenges highlight why **language understanding is far more
+than pattern matching** -- it requires grasping context, culture, tone,
+and evolution. And that’s exactly why NLP research continues to evolve
+-— to make computers better at interpreting human communication in all
+its complexity.
+:::
+
+## Enter NLP/Text Analytics
+
+-   `Text Analytics`: a set of **linguistic, analytical**, and
+    **predictive** technique to extract **structure** and **meaning**
+    from unstructured documents
+
+-   `NLP`: academic term for Text Analytics
+
+    -   analogous to "search" vs. "IR"
+    -   Text Analytics ≈ NLP ≈ Text Mining
+
+![](images/2.1.png){fig-align="center"}
+
+::: notes
+As you can see from the previous slides, language is incredibly complex.
+Words can have multiple meanings. All of these make text data messy and
+hard for machines to interpret. So, how do we deal with this complexity?
+That’s where Text Analytics or Natural Language Processing (NLP) come
+in. These techniques give us tools to extract structure and meaning from
+unstructured text, helping us turn language into something computers can
+analyze and learn from.
+
+When we talk about Text Analytics, we’re referring to a set of
+techniques -- linguistic, analytical, and predictive --- that allow us
+to extract structure and meaning from unstructured text data. You’ll
+often hear the term Natural Language Processing, or NLP, in academic
+contexts. Essentially, NLP is the scholarly term for what industry often
+calls Text Analytics. It’s similar to the distinction between “search”
+in everyday language and “information retrieval” in research.
+:::
+
+# Role of Natural Language Processing in Information Retrieval
+
+# Natural Language Searching
+
+::: notes
+In recent years, there has been an unprecedented growth in unstructured
+text data across digital environments. Scholarly publications,
+institutional reports, social media content, and various forms of grey
+literature now constitute an immense corpus of textual information that
+is not easily represented within structured databases. This
+proliferation of unstructured text has created a pressing need for
+search systems that can effectively interpret and retrieve relevant
+information from natural language sources.
+
+Historically, information retrieval systems have relied on Boolean
+search models, which require users to construct queries using logical
+operators such as AND, OR, and NOT. While Boolean searching offers
+precision and control, it also imposes a steep learning curve and often
+results in inefficiencies for non-expert users. In contrast,
+contemporary search interfaces increasingly emphasize natural language
+querying, allowing users to articulate information needs in the same way
+they would express them conversationally — for example, by typing or
+speaking full questions rather than isolated keywords.
+
+This preference for natural queries reflects a broader transformation in
+user expectations, influenced by advances in natural language processing
+(NLP) and the ubiquity of intelligent search assistants. Users now
+anticipate that systems will interpret intent, context, and semantics,
+rather than rely solely on keyword matching.
+
+Within libraries and digital repositories, these developments have
+significant implications. As curators of extensive collections of
+unstructured text — including research papers, theses, and archival
+documents — such institutions are increasingly integrating natural
+language search capabilities to enhance information accessibility and
+discovery. These systems not only support more intuitive interaction but
+also align with broader efforts to democratize access to scholarly
+knowledge.
+
+The shift toward natural language searching represents a critical
+evolution in information retrieval, one that bridges the gap between
+human linguistic expression and computational understanding.
+:::
+
+## Natural Langauge Indexing
+
+-   Based on existing vocabulary of documents
+
+-   Terms are extracted or derived from titles, abstracts, full text
+
+-   Terms are in title, abstract, descriptor, full-text fields
+
+-   Searcher inputs any term likely to occur in free text
+
+::: notes
+Natural Language Indexing is the form of indexing language which is used
+to represent subjects of object in a database. It does not use a
+controlled vocabulary as the source for indexing terms. Instead it is
+based on the existing vocabulary of the object being represented. Terms
+are extracted from the body of the object text or derived from titles or
+abstracts of the object.
+
+Any term or concept that is present in the object may be deemed
+important and therefore can be represented in the record describing the
+object.
+:::
+
+## NLP Applications in Searching {.smaller}
+
+1.  Word Prediction
+    -   Assistive technologies (TextHelp)
+    -   Google, Bing, Yahoo query suggestions
+
+![](images/7.png){fig-align="center" width="402"}
+
+::: notes
+NLP plays a central role in enhancing how users interact with search
+systems, particularly by improving query formulation, interpretation,
+and completion. One prominent area of application is word prediction,
+which assists users in constructing queries more efficiently and
+accurately. By analyzing large corpora of search behavior and linguistic
+patterns, NLP models can anticipate what a user is likely to type next,
+reducing effort and improving precision in information retrieval.
+
+This functionality is integral to assistive technologies, such as
+TextHelp and similar tools, which support individuals with language,
+literacy, or motor challenges. Through predictive text and contextual
+suggestions, these systems enable smoother communication and more
+accessible search experiences. In the context of libraries and digital
+repositories, such tools can be particularly valuable for users with
+diverse accessibility needs, helping to ensure equitable participation
+in digital information environments.
+
+In mainstream search engines such as Google, Bing, and Yahoo, NLP powers
+query suggestion and auto-completion features that guide users toward
+refined or alternative queries. For example, as a user begins typing
+“library digital,” the system may suggest completions such as “library
+digital archives” or “library digital collections,” reflecting both
+linguistic context and aggregated search trends. These predictive
+systems rely on sophisticated language models that analyze syntax,
+semantics, and user intent at scale.
+:::
+
+## NLP Applications in Searching {.smaller}
+
+2.  Spelling Correction
+    -   Autocorrect ![](images/3.1.png)
+
+    -   Did you Mean ![](images/4.png)
+
+::: notes
+Another key application of NLP in search systems is **spelling
+correction**, which directly improves the accuracy and usability of
+information retrieval. Users frequently make typographical errors, omit
+letters, or misremember proper names, and without automated correction,
+such errors would significantly degrade retrieval performance.
+
+The first and most familiar implementation of this is **autocorrect**.
+Autocorrect mechanisms use NLP models trained on extensive language
+corpora and user query logs to identify likely misspellings and replace
+them with the intended terms in real time. For instance, when a user
+types “envrionmental policy,” the system automatically recognizes the
+anomaly and corrects it to “environmental policy.” These systems
+typically rely on probabilistic models, such as edit distance
+algorithms, phonetic similarity measures, and contextual embeddings, to
+determine the most plausible correction.
+
+A related and widely recognized feature is the **“Did you mean”**
+suggestion, popularized by search engines such as Google and Bing.
+Instead of automatically replacing the query, the system proposes an
+alternative based on linguistic probability and query frequency. This
+approach maintains user agency by offering correction as a suggestion
+rather than enforcing substitution.
+
+Both autocorrect and “Did you mean” functionalities exemplify how NLP
+enhances the robustness and inclusivity of search systems. They mitigate
+the effects of human error, non-native language use, and spelling
+variation, thereby improving retrieval quality and user satisfaction.
+:::
+
+## NLP Applications in Searching {.smaller}
+
+3.  Text Categorization
+
+    -   News agencies: classifying incoming news stories
+    -   Search engines: classifying queries
+    -   Identifying spam emails
+    -   Routing email or documents to appropriate people
+
+4.  Terminology Extraction
+
+    -   Differentiate between useful index terms and 'noise'
+    -   Help lexicographers identify new terminology
+    -   Term extraction systems process scientific papers to identify
+        terminology, possibly comparing it with a known list
+
+5.  Speech Recognition
+
+    -   Spoken Dialogue System
+    -   iPhone Voice Search
+
+::: notes
+Beyond word prediction and spelling correction, NLP supports several
+additional applications that are foundational to modern information
+retrieval and search system design. These include **text categorization,
+terminology extraction, and speech recognition** -- each addressing a
+distinct aspect of how systems interpret, organize, and interact with
+human language.
+
+Text categorization refers to the automatic classification of documents
+or queries into predefined categories based on their content. In news
+agencies, for example, NLP-driven classifiers are used to automatically
+sort incoming stories into topical domains such as politics, economics,
+or sports, enabling faster editorial workflows and real-time content
+organization. Similarly, search engines employ query classification to
+interpret the intent behind a user’s input—distinguishing, for instance,
+whether a query is informational (“What is climate change?”),
+navigational (“UN Climate Report 2024”), or transactional (“buy solar
+panels”). Accurate classification supports more relevant ranking and
+personalized retrieval. In communication systems, text categorization is
+applied to spam detection, filtering unwanted or malicious emails by
+recognizing linguistic and structural patterns associated with spam
+content. It is also used for document routing, where NLP systems
+automatically direct incoming emails or reports to the appropriate
+department or individual, streamlining information flow within
+organizations.
+
+Another important application is terminology extraction, which focuses
+on identifying and isolating domain-specific terms within large text
+corpora. In information retrieval, this process helps differentiate
+between useful index terms—those that carry semantic weight—and
+background “noise” such as common or generic words. For lexicographers
+and subject specialists, terminology extraction supports the
+identification of emerging concepts and new vocabulary. For instance, in
+scientific publishing, NLP-driven term extraction systems can analyze
+research articles to identify newly introduced technical terms and
+compare them against established term lists or ontologies. This
+capability is particularly valuable in building and updating controlled
+vocabularies, thesauri, and ontologies that underpin advanced search
+systems, ensuring that indexing and retrieval remain aligned with
+evolving disciplinary language.
+
+Finally, speech recognition represents a critical bridge between spoken
+language and searchable text. Modern spoken dialogue systems and
+voice-activated assistants rely on NLP to transcribe and interpret
+speech, enabling users to conduct searches or issue commands using
+natural spoken queries. A familiar example is iPhone Voice Search
+(Siri), which allows users to speak queries such as “Find articles on
+information retrieval models” or “Where is the nearest library?” The
+system processes the audio input, converts it into text, applies
+NLP-based intent detection, and retrieves relevant results. Speech
+recognition not only enhances user convenience but also expands
+accessibility—benefiting individuals with mobility impairments, visual
+disabilities, or those operating in hands-free environments.
+:::
+
+## NLP Applications in Searching {.smaller}
+
+6.  Named Entity Recognition
+
+    -   Identification of key concepts (eg. people, places,
+        organizations)
+    -   Increase precision of IR (New companies in New York vs.
+        Companies in New York)
+    -   Support navigation
+    -   Improve machine translation
+    -   Speech synthesis, auto-summarization, etc.
+
+![](images/10.png){fig-align="center"}
+
+::: notes
+Named Entity Recognition, or NER, is one of the most important
+applications of NLP in searching. It identifies key concepts in
+text—things like people, places, organizations, dates, and more. It
+helps improve the precision of information retrieval.For example,
+consider the query ‘New companies in New York’. Without NER, the system
+might return results about any companies in New York, old or new. With
+NER, the system understands that ‘New’ refers to the adjective
+describing companies, not part of the location, and retrieves more
+accurate results.
+
+NER also supports navigation by allowing systems to organize and filter
+results based on entities. Beyond search, it plays a role in machine
+translation, speech synthesis, and even auto-summarization because
+understanding entities is key to understanding meaning. NER helps search
+systems move beyond simple keyword matching to understanding the actual
+concepts users care about.
+:::
+
+## NLP Applications in Searching {.smaller}
+
+7.  Information Extraction
+    -   Identification of entities + relationships
+    -   Based on pre-defined structures
+    -   Can be used for metadata retrieval or store in database and
+        query against it
+
+![](images/13.png){fig-align="center"}
+
+::: notes
+Information Extraction goes a step beyond Named Entity Recognition.
+While NER identifies entities like people, places, and organizations,
+Information extraction looks at the relationships between those
+entities. For example, not just recognizing ‘John Smith’ and ‘Harvard
+University,’ but also understanding that John Smith is affiliated with
+Harvard.
+
+Information Extraction typically works based on pre-defined structures
+or templates. These structures help the system know what kinds of
+relationships to look for, such as ‘author of,’ ‘located in,’ or ‘works
+at.’ This structured approach makes Information Extraction very useful
+for organizing data.
+
+In the context of search, Information Extraction can be used to generate
+metadata automatically. For instance, extracting author names,
+publication dates, and affiliations from research papers and storing
+them in a database. Once this metadata is structured, we can query
+against it efficiently, improving both precision and recall.
+
+Beyond search, Information Extraction supports advanced applications
+like building knowledge graphs, improving recommendation systems, and
+enabling semantic navigation in digital libraries.
+:::
+
+## Free Text Searching
+
+![](images/15.png){fig-align="center" width="565"}
+
+::: footer
+Source: Markey Ch-7
+:::
+
+::: notes
+Free text searching refers to a retrieval approach in which users enter
+search terms directly, without relying on a predefined indexing
+structure or controlled vocabulary. In this model, the search engine
+scans the text of documents—such as titles, abstracts, and full
+content—for matches to the words or phrases supplied by the user. This
+method leverages the actual language used within the corpus, allowing
+for flexible and dynamic searching.
+
+In contrast, a controlled vocabulary system, such as the Library of
+Congress Subject Headings or MeSH (Medical Subject Headings), employs a
+standardized set of terms that describe concepts consistently across
+documents. Controlled vocabularies promote precision and
+interoperability by ensuring that related materials are indexed under
+the same authorized terms. However, they also require users to
+understand the specific terminology of the indexing schema, which can be
+restrictive or unintuitive for those unfamiliar with it.
+
+Free text searching, by comparison, enables users to express their
+queries in their own words. For example, a user interested in research
+on renewable energy might use a keyword query such as “solar energy
+policy”. A natural language query, on the other hand, might take the
+form of “How are governments supporting the adoption of solar energy?”
+
+While both approaches rely on textual input, natural language queries
+introduce linguistic variation, context, and intent, which can be better
+interpreted through natural language processing techniques. Controlled
+vocabularies offer precision and consistency, whereas free text
+searching offers accessibility and expressiveness.
+
+Understanding this distinction provides the foundation for exploring how
+modern search systems combine these methods to achieve both semantic
+depth and user-centered flexibility in information retrieval.
+:::
+
+## Free Text Searching in Databases
+
+-   Terms added at the discretion of the cataloger
+-   Do not come from a controlled vocabulary or from the words of the
+    document
+-   Cataloger tries to match user’s terms (user warrant)
+-   Not a frequent practice
+-   Can be used in combination with controlled vocabulary or natural
+    language indexing
+
+::: notes
+If a cataloger is providing free text terms, the terms are not coming
+from either a controlled vocabulary or from the object’s text. The
+cataloger decides to add terms that they believe match the user’s own
+search terms or that are closer to the everyday use of the term.
+
+This is not a frequent practice in cataloging but if a term is very new
+to a language, it may not be represented in a controlled vocabulary yet,
+or the controlled vocabulary may use an alternate term than the one used
+by users or within the literature of the discipline. The cataloger would
+then decide to use a more commonly used term instead of one from the
+controlled vocabulary or the object.
+
+Free text can also be used in combination with controlled vocabulary
+and/or natural language indexing.
+:::
+
+## User-Defined Tagging {.smaller}
+
+-   Has many labels such as
+    `user-supplied, folksonomy, tagging, social classification`
+-   It is really not a new practice but one that has recently become the
+    buzz on the Web with the emergence of blogs and media sharing sites
+    like Blogger, Flickr, YouTube, etc.
+    -   researchers in image retrieval have explored this idea
+    -   researchers in organization of information, thesauri
+        development, indexing, subject representation have also explored
+        this idea
+-   To date is being used to tag images, web pages, blogs, library
+    catalogs, etc.
+
+::: notes
+Currently we have seen a large amount of professional and research
+literature discussing an emerging form of indexing language,
+User-defined or User-Supplied terms. While I say it is emerging, this
+concept is really not a new idea to LIS. Many LIS researchers have been
+conducting research into this area since the 1990s. It has recently more
+popular on the Web with the emergence of blogs and media sharing sites
+like Blogger, Flickr, YouTube, etc.
+
+This concept has many labels (user-supplied, folksonomy, tagging, social
+classification). It has yet to be decided which term will prevail, or
+whether or not LIS and cataloging will use these terms as a source for
+additional subject cataloging or not.
+
+Researchers in image retrieval have explored this idea since the 1990s,
+and even earlier in specific image-related contexts, such as journalism
+or newspaper archives. Researchers in organization of information,
+thesauri development, indexing, subject representation have also
+explored this idea as a source of more user-centered subject terms or to
+learn more about how users naturally organize and describe subjects of
+objects.
+
+To date it is being used to “tag” images, web pages, blogs, library
+catalogs, etc.
+
+More research needs to be conducted into whether or not we can use these
+terms as a source for subject representation, or even as a means to
+develop more user-centered controlled vocabularies.
+:::
+
+## Coversational Search
+
+-   Voice-based queries
+-   Chatbots in Libraries
+
+![](images/14.png){fig-align="center" width="401"}
+
+::: notes
+Conversational search represents an important evolution in information
+retrieval, moving beyond traditional keyword or Boolean querying toward
+interactive, dialogue-based engagement bfetween users and search
+systems. This mode of search is often characterized by the use of
+voice-based queries, where users articulate information needs verbally
+rather than through typed input.
+
+Prominent examples include Google Assistant and Amazon Alexa, which
+employ advanced natural language understanding to interpret queries such
+as “What are the latest articles on renewable energy policy?” or “Find
+me books on digital archiving.” Increasingly, similar conversational
+interfaces are being explored within library and digital repository
+systems, enabling users to locate materials, check availability, or
+receive research guidance through spoken or text-based interaction.
+
+The benefits of conversational search are especially significant in
+terms of accessibility and inclusivity. Voice and natural language
+interfaces lower barriers for users who may have limited technical
+expertise, motor impairments, or visual disabilities. They also align
+with evolving expectations shaped by ubiquitous consumer
+technologies—where interacting with systems through natural language
+feels intuitive and human-like.
+
+From an information science perspective, conversational search
+highlights the convergence of speech recognition, natural language
+processing, and contextual understanding, marking a shift from static
+query-response models to dynamic, user-centered dialogue systems.
+
+Building upon the concept of conversational search, chatbots have
+emerged as practical implementations of natural language processing
+within the library context. These systems function as virtual reference
+services, designed to assist users in navigating library resources,
+answering common questions, and providing real-time guidance without
+direct human intervention.
+:::
+
+## Applications in LIS
+
+-   Digital libraries and institutional repositories
+-   Discovery systems and OPACs
+-   Personalized recommendations
+
+::: notes
+The principles of natural language search have numerous and growing
+applications within Library and Information Science field, fundamentally
+transforming how users interact with information systems.
+
+First, within digital libraries and institutional repositories, natural
+language search enables more intuitive exploration of scholarly content.
+Instead of requiring users to navigate complex metadata schemas or
+controlled vocabularies, systems can now interpret queries expressed in
+everyday language—facilitating discovery across articles, theses,
+datasets, and multimedia resources. For librarians, this enhances
+accessibility and aligns with open access and knowledge dissemination
+goals.
+
+Second, discovery systems and OPACs increasingly incorporate natural
+language interfaces. Modern discovery layers, such as Primo, Summon, and
+EBSCO Discovery Service, are integrating NLP-driven ranking and query
+expansion capabilities. These allow users to formulate broad or
+conversational queries and still retrieve relevant materials without
+exact keyword matching. This evolution transforms the OPAC from a static
+catalog into a dynamic, user-centered search environment.
+
+Finally, natural language understanding also supports personalized
+recommendation systems within LIS platforms. By analyzing user queries,
+search behavior, and reading patterns, these systems can suggest related
+materials or anticipate research needs. Such personalization extends
+beyond convenience, it supports scholarly serendipity, enhances learning
+outcomes, and fosters engagement with institutional collections.
+
+Therefore, the application of natural language search in LIS reflects a
+shift from system-driven retrieval toward user-centered discovery,
+integrating linguistic intelligence into the core functions of
+information organization and access.
+:::
+
+## Future Directions
+
+-   Multimodal Searching
+-   Intelligent Research Assistants
+-   Knowledge Graphs Integration
+-   Multilingual and Cross-Lingual Search
+-   More!!
+
+::: notes
+Looking ahead, there are several emerging directions shaping the future
+of natural language search in scholarly and library contexts.
+
+One key area is multimodal search, which integrates text, image, and
+voice inputs within a unified retrieval framework. This approach enables
+users to express information needs through multiple channels—for
+example, submitting an image of a manuscript page, describing it
+verbally, or typing a related phrase. Such multimodal systems hold
+promise for archives, museums, and digital humanities projects where
+non-textual artifacts are central.
+
+A second direction involves the development of intelligent research
+assistants for scholarly environments. Building upon chatbot and
+dialogue technologies, these systems aim to support complex, iterative
+research interactions. Rather than retrieving a single result set,
+conversational AIs could guide users through literature review
+processes, suggest relevant methodologies, or identify citation networks
+-- all within a sustained, context-aware dialogue. This represents a
+paradigm shift from search as a one-time transaction to search as an
+ongoing, collaborative process.
+
+Finally, the integration of knowledge graphs offers a powerful means of
+connecting disparate data sources and enhancing semantic understanding.
+By representing entities—such as authors, institutions, topics, and
+publications—and their relationships, knowledge graphs allow search
+systems to infer deeper connections and provide richer, more explainable
+results. When combined with neural retrieval models, these structures
+enable contextualized, reasoning-based discovery across large scholarly
+ecosystems.
+
+Collectively, these directions signal a future in which search systems
+evolve from passive retrieval tools into intelligent research partners,
+capable of understanding, reasoning, and assisting within complex
+academic and informational contexts.
+:::
+
+## Text Mining {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+`Text mining is a process of automatically extracting information from the text with the aim of generating new knowledge`
+
+-   It is a specialized interdisciplinary field combining techniques
+    from linguistics, computer science, and statistics to build tools
+    that can efficiently retrieve and extract information from digital
+    text
+
+-   It assists in the automatic classification of documents
+
+-   In text mining, “words are attributes or predictors and documents
+    are cases or records, together these form a sample of data that can
+    feed in well-known learning methods” (Weiss et al., 2005)
+:::
+
+::: {.column width="50%"}
+![](images/1.png){fig-align="center"}
+:::
+:::::
+
+::: footnote
+Weiss et al. (2005). Overview of text mining. In: Weiss et al. (eds)
+Text mining:Predictive methods for analyzing unstructured information.
+Springer, New York, NY, pp 1–13
+:::
