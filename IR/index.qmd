@@ -1,0 +1,885 @@
+---
+title: "Basic Concepts of Information Retrieval"
+subtitle: "LIS 4/5523: Online Information Retrieval"
+author: 
+  - Dr. Manika Lamba
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      theme: whiteboard
+      buttons: true
+    preview-links: false
+    controls: true
+    progress: true
+    show-notes: separate-page
+    logo: images/ou.png
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Introduction {.smaller}
+
+-   Data and information generation in every discipline in the universe
+    of knowledge has seen staggering growth
+
+-   Storing, managing, querying, & retrieval of huge amount of data &
+    information needs sophisticated procedures & advanced technologies
+
+-   Nowadays, information collection is web-based and online which is
+    vast and growing at an exponential rate
+
+::::: columns
+::: {.column width="50%"}
+![](images/data.png){fig-align="center" width="700"}
+:::
+
+::: {.column width="50%"}
+![](images/data.jpg){fig-align="center" width="700"}
+:::
+:::::
+
+::: notes
+Hello everyone! This week's lecture provides you with a brief overview
+of information retrieval (IR) systems, users of IR systems, and the
+topics we will cover in this course.
+
+In this class we will learn about online information retrieval. The
+first part of class will focus on the **HOW** of information retrieval
+systems: how they work, how they are structured, different IR models and
+technologies, and the role that users play when designing an information
+retrieval system.
+
+The second part of class will introduce you to searching strategies that
+will make you a better searcher in many different systems.
+
+Lastly, in the third part of class you will use your new search skills
+in various databases and on the Web.
+
+Knowing how systems work, the decisions made while developing them, and
+how they are structured will make you a better searcher. Understanding
+yourself as a searcher will also help you identify areas you need to
+strengthen as you use online systems for your own work but also to help
+others conduct searches.
+
+So, let's get started!
+
+The idea of doing information retrieval is driven by one fundamental
+fact, and that is the digital revolution.The digital revolution happened
+extremely quickly and profoundly. For example, the figures shown on the
+slide is taken from [Hilbert and Lopez
+(2011)](https://www.science.org/doi/10.1126/science.1200970) paper which
+showed that the in the late '80s, 99% of the information in the world
+was stored in analogue form, for example on papers. Then, the digital
+part of information grew but then after the year 2000, it just exploded.
+They estimated that in the year 2002, for the first time, the world was
+able to store more digital than analog information. We still have papers
+around but by now, digital information counts for more than 99% of all
+the information.
+
+So in the year 2014, when they last updated the data, they found that
+the world was able to store five zettabytes. How far is five zettabytes?
+If you would take all this information that you have on your hard disk
+and your cell phones and microchips on the back of your credit card, and
+you would put this in books, and you would make a pile, how high do you
+think the pile would reach? Would reach to the moon? Or to the sun?
+
+It will reach 4,500 times to the sun!! So there will be 4,500 piles from
+the Earth to the sun with books. So, in 2014, we had 4,500 piles of
+books. That's all we were able to accumulate during human history, and
+now we're doubling it ever since.
+
+So, we restore as much new information as all the information we were
+ever able to, there's a lot of information to dig into and all the time
+you're producing a lot more and it's in digital format. That means then
+we need a system to compute it and use some system in order to retrieve
+it.
+
+We live in a time where we’re constantly generating new information and
+not just a little, but as much as we’ve ever been able to capture. Every
+day, more knowledge is being produced, and now it’s all in digital form.
+That’s powerful, because digital information can be stored and preserved
+almost endlessly.
+
+But here’s the challenge: with so much of it out there, we can’t rely on
+memory or manual systems anymore. We need computational systems to make
+sense of it --- to process, organize, and connect it. And just as
+important, we need retrieval systems so that when we ask a question, we
+can actually pull the right piece of knowledge out of that vast ocean of
+data.
+
+So, it’s not just about storing information, it’s about creating the
+ability to use it --- instantly, effectively, and intelligently.
+:::
+
+## Information Retrieval {.smaller}
+
+`Definition`
+
+> A process in which sets of records or documents are searched to find
+> items which may help to satisfy an information need
+
+![](images/1.png){fig-align="center" width="344"}
+
+::: footer
+[Lamba and Madhusudhan. (2022). Ch-1 The Computational
+Library](https://doi.org/10.1007/978-3-030-85085-2_1)
+:::
+
+::: notes
+Now, let's define Information Retrieval (IR). It is a process of
+matching a particular document with a set of other relevant documents.
+Suppose you have an extensive collection of documents and you want to
+find a relevant document. This text mining task retrieves the relevant
+documents based on the best matches of input document with the
+collection of documents based on a similarity measure.
+
+In other words, IR is about bridging the gap between the user’s question
+and the vast universe of available information.
+:::
+
+## Information Retrieval {.smaller}
+
+Information Retrieval includes:
+
+::::: columns
+::: {.column width="50%"}
+-   [x] Representation
+
+-   [x] Storage
+
+-   [x] Organization
+
+-   [x] Document Clustering
+
+-   [x] Classification of Documents
+
+-   [x] System Architecture
+:::
+
+::: {.column width="50%"}
+-   [x] Information & Data Visualization
+
+-   [x] Allied Services
+
+-   [x] Ranking of Documents
+
+-   [x] Semantic Linking
+
+-   [x] Filtering
+
+-   [x] Others
+:::
+:::::
+
+-   [Search engines]{style="color: blue;"} have been developed based on
+    the concepts, principles, and techniques developed by IR
+
+::: notes
+Now, what does that actually involve? As you see on this slide, IR is
+not just about search in the narrow sense. It encompasses several key
+components:
+
+On the left side, we have the foundational activities —-- things like
+representation, which is how we describe documents; storage and
+organization, which ensure information can be managed at scale; and
+techniques such as document clustering and classification, which group
+or categorize information meaningfully. And of course, all of this
+requires careful consideration of system architecture, the technical
+backbone of IR.
+
+On the right side, we move into more advanced or applied aspects --—
+information and data visualization, which helps users interpret results;
+allied services, which extend retrieval into related tasks; ranking of
+documents, which determines which results appear most relevant; semantic
+linking, which connects related pieces of knowledge; and filtering,
+which helps reduce noise and personalize outputs. These ensure that IR
+is not just functional, but also efficient and user-centered.
+
+Finally, it’s worth emphasizing that search engines, which we all use
+daily, are the most visible application of these IR principles. The
+concepts and techniques you see here form the foundation of systems like
+Google, Bing, and countless specialized retrieval platforms.
+:::
+
+## Brief History of Information Retrieval
+
+![](images/clipboard-1579569194.png){fig-align="center"}
+
+::: footer
+[Lamba and Madhusudhan. (2022). Ch-1 The Computational
+Library](https://doi.org/10.1007/978-3-030-85085-2_1)
+:::
+
+::: notes
+*`{Zoom-in to see the figure or Right-click to save it!}`*
+
+Information retrieval systems today are based on techniques that were
+introduced in the 1960s and while the abilities of systems and the
+algorithms used have been refined, the process of retrieval remains the
+same.
+
+IR is primarily text-based, meaning that we retrieve documents, those
+documents may be textual, we use queries that are text, and we search
+representations that are text. There are definitely other forms of IR
+and other formats of documents that are retrieved but regardless the
+process remains the same.
+
+In database systems, whether a flat file system or relational database,
+each field that is indexed (meaning it is searchable by users) produces
+what is called an inverted index of index terms. It is this index that
+is searched.
+
+Even web search engines like Google use inverted indexes and when you
+search the engine, you are searching the index of terms. Of course there
+are other systems that provide full text searching or even full document
+searching, but there are also limits to what is searched in each.
+
+We will talk more about IR models and how they work in systems later in
+the course.
+
+IR is no longer just a problem for libraries. IR systems are used
+everywhere and by anyone who has an Internet connection via their
+computer, smart phone, tablet or other mobile device.
+:::
+
+## Brief History of Information Retrieval
+
+::::: columns
+::: {.column width="50%"}
+-   System for the Mechanical Analysis and Retrieval of Text (SMART) was
+    developed by Gerard Salton in Cornell University in 1960s. This
+    system incorporated many important concepts like [vector space
+    model]{style="color: blue;"}, relevance feedback, and Rocchio
+    Classification
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-1563999917.png){fig-align="center"}
+:::
+:::::
+
+::: notes
+The SMART system, or System for the Mechanical Analysis and Retrieval of
+Text, was one of the earliest and most influential projects in
+Information Retrieval. It was developed in the 1960s at Cornell
+University by Gerard Salton, who is often considered the father of IR.
+
+What made SMART so important is that it wasn’t just a system, it was a
+research platform. It introduced and tested many of the core ideas that
+modern search engines still rely on. For example, SMART gave us the
+**vector space model**, representing documents and queries
+mathematically so that we could measure similarity. It also introduced
+**term weighting methods** like TF-IDF, which balance how frequent a
+word is within a document against how rare it is across the collection.
+
+Another innovation was **relevance feedback**, the idea that the system
+can improve results by learning from what the user marks as relevant or
+irrelevant. And just as importantly, it also developed **evaluation
+methods**, such as precision and recall, to measure retrieval
+effectiveness in a systematic way.
+
+While the SMART system itself no longer exists, its principles form the
+foundation of everything from academic IR research to commercial search
+engines like Google today.
+:::
+
+## Brief History of Information Retrieval
+
+::::: columns
+::: {.column width="50%"}
+-   J.W. Sammon (1969) gave the idea of [visualization interface
+    integrated to an IR system]{style="color: blue;"} in his famous
+    paper "A nonlinear mapping for data structure analysis"
+
+-   [First online systems]{style="color: blue;"}--NLM's AIM-TWX,
+    MEDLINE; Lockheed's Dialog; SDC's ORBIT
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-1874551088.png){fig-align="center"}
+
+-   During 1966-67, F.W. Lancaster evaluated the [MEDLARS (Medical
+    Literature Analysis and Retrieval System)]{style="color: blue;"}
+:::
+:::::
+
+::: notes
+In the late 1960s, researchers began thinking about how information
+retrieval systems could move beyond simple text search. One key idea
+came from J.W. Sammon in 1969, who proposed a visualization interface
+integrated into IR systems. In his influential paper, A Nonlinear
+Mapping for Data Structure Analysis, he laid the groundwork for
+techniques that help us see patterns in data, something that’s become
+critical in modern IR with clustering and visualization tools.
+
+Around the same time, the first online IR systems were emerging.
+Examples include the National Library of Medicine’s AIM-TWX and MEDLINE,
+Lockheed’s Dialog, and SDC’s ORBIT. These systems were groundbreaking
+because they provided searchable access to specialized literature,
+especially in science and medicine, long before the web existed.
+
+And during 1966–67, F.W. Lancaster conducted a major evaluation of
+MEDLARS, the Medical Literature Analysis and Retrieval System. His
+studies were among the first systematic evaluations of an IR system,
+focusing on how effective it was in retrieving relevant documents. This
+was crucial, because it marked the beginning of formal evaluation
+practices in IR, something that still defines the field today.
+:::
+
+## Brief History of Information Retrieval
+
+-   [AM SIGIR Conference]{style="color: blue;"} started in 1978 which
+    subsequently emerged as the apex conference in IR systems
+
+-   Belkin, Oddy, and Brooks gave the concept of [*Anomalous State of
+    Knowledge (ASK)*](https://doi.org/10.1108/eb026722) for information
+    retrieval in 1982
+
+-   [OKAPI model]{style="color: blue;"} was formulated in 1982-88 which
+    is a set-oriented ranked output design for probabilistic type
+    retrieval of textual material using inverted index
+
+-   Major breakthrough was in 1989 when Tim Berners-Lee proposed [World
+    Wide Web]{style="color: blue;"} in CERN Laboratory
+
+-   [TREC conference]{style="color: blue;"} started as part of TIPSTER
+    text program in 1992 and it was sponsored by US Defense and National
+    Institute of Standards and Technology (NIST)
+
+::: notes
+Next in 1978, the ACM SIGIR Conference began. Over time, it became the
+leading international conference on IR systems, what we often call the
+‘apex’ conference in the IR field.
+
+Then, in 1982, Belkin, Oddy, and Brooks introduced the concept of the
+Anomalous State of Knowledge, or ASK. This was a very important
+theoretical model because it framed retrieval as a process of resolving
+a gap in the user’s knowledge, not just matching keywords.
+
+Around the same period, from 1982 to 1988, the OKAPI model was
+developed. This was a probabilistic retrieval model that produced ranked
+outputs based on an inverted index. It laid the groundwork for what
+later became BM25, still one of the most widely used ranking functions
+today.
+
+A major turning point came in 1989, when Tim Berners-Lee, working at
+CERN, proposed the World Wide Web. This changed the context of IR
+completely, shifting from specialized databases to a global, open
+information space.
+
+In 1992, the TREC conference was launched as part of the TIPSTER text
+program, sponsored by the U.S. Department of Defense and NIST. TREC
+provided standardized test collections and evaluation frameworks, which
+accelerated research and allowed fair comparisons between different
+retrieval methods.
+:::
+
+## Brief History of Information Retrieval {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+-   [PageRank algorithm]{style="color: blue;"} was developed at Stanford
+    University by Larry Page and Sergey Brin in 1996
+
+-   In 1997, [Google Inc.]{style="color: blue;"} was born which has now
+    ruling dominantly in searching engine domain
+
+-   Google personalized search started in 2005
+
+-   Multimedia IR (Smeulders, Lew, Sebe) integrates into search in 2010
+
+-   Semantic models came first in 2013-2014 such as Word2Vec, GloVe
+
+-   Google introduces BERT in 2018
+
+-   Conversational IR in assistants were introduced in 2020-2021 such as
+    Alexa, Siri
+
+-   Retrieval Augmented Genreration in 2022-2023
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-2203373772.png){fig-align="center"}
+
+-   LSI gained huge popularity in WWW and was hugely used in Search
+    Engine Optimization (SEO)
+
+-   [Latent Dirichlet allocation (LDA)]{style="color: blue;"}, a
+    generative/topic model in NLP was developed by David Blei, Andrew
+    NG, and Michael Jordan in 2003
+:::
+:::::
+
+::: notes
+Several key developments mark the evolution of modern information
+retrieval systems. Some of the selected ones are as follows:
+
+In 1996, at Stanford University, Larry Page and Sergey Brin developed
+the PageRank algorithm, a seminal contribution that ranked web pages
+based on link structure rather than just keyword frequency. This
+innovation became the foundation of Google’s search engine and
+transformed large-scale web retrieval.
+
+Latent Semantic Indexing, or LSI, gained significant popularity with the
+growth of the World Wide Web. The method, originally introduced in the
+late 1980s, was designed to capture hidden semantic structures in text
+by reducing dimensionality through singular value decomposition. In the
+context of the web, LSI was quickly adopted in Search Engine
+Optimization (SEO) practices. The reasoning was that by modeling the
+semantic relationships among terms, web pages could be optimized not
+only for exact keywords, but also for related concepts and variations.
+This marked an early move from simple keyword matching toward a more
+semantically aware retrieval process.
+
+Although later models like probabilistic topic models and neural
+embeddings surpassed LSI in accuracy and scalability, its role was
+historically important -- it bridged the gap between traditional
+keyword-based retrieval and more advanced semantic methods.
+
+In 2003, David Blei, Andrew Ng, and Michael Jordan introduced Latent
+Dirichlet Allocation (LDA), a probabilistic generative model that
+enabled documents to be represented as mixtures of latent topics. LDA
+marked an important theoretical and practical advance in modeling text
+corpora and topic-driven retrieval.
+
+By 2005, Google introduced personalized search, adapting retrieval
+results to individual user histories and profiles. This was a shift from
+universal rankings toward user-centered retrieval models.
+
+In 2010, the field saw the integration of multimedia information
+retrieval, with researchers such as Smeulders, Lew, and Sebe working on
+retrieval methods for images, video, and audio. This expanded the scope
+of IR beyond text into multimodal domains.
+
+The years 2013–2014 introduced the first widely adopted semantic models,
+particularly Word2Vec (Mikolov et al.) and GloVe (Pennington, Socher,
+Manning). These embedding models captured semantic relationships in
+continuous vector spaces and significantly improved retrieval quality.
+
+In 2018, Google introduced BERT (Devlin, Chang, Lee, Toutanova), a deep
+contextual language model that revolutionized semantic search and
+natural language understanding within IR systems.
+
+By 2020–2021, conversational IR emerged in mainstream use, integrated
+into voice assistants such as Alexa, Siri, and Google Assistant,
+enabling multi-turn, interactive retrieval.
+
+Most recently, in 2022–2023, the rise of Retrieval-Augmented Generation
+(RAG) has combined neural retrieval with large language models, enabling
+systems not only to retrieve relevant documents but also to generate
+coherent, contextually enriched answers. This represents the convergence
+of IR with generative AI, defining the current frontier of the field.
+:::
+
+## Who are the Users?
+
+> A user is a person who uses information and/or information systems in
+> some meaningful way
+
+A user can be:
+
+-   End-user: seeks, evaluates, uses information for personal question
+    or problem
+-   System-user: end user who exploits information systems at some level
+-   Information professional: facilitates end-user information seeking
+    and use
+-   Computerized system, software program
+
+::: notes
+Everyone is an information user and exploits information systems at some
+level. The literature uses many terms to describe users, such as end
+users, system users, and information professionals. They are all users
+of IR systems, right? End users and system users are basically the same.
+The term end user comes from a time in libraries when users could not
+access the library catalog and the librarian conducted the searching for
+them in a closed stack environment. When libraries became automated in
+the 1970s and 80s the term system users began being used to describe
+both the end users but also the information professionals who now had
+access to online resources using dumb terminals (not connected to an
+external server) and to a small set of subject specific databases. Your
+readings provide you will more of this history.
+
+Computerized systems like bots on the web are also users of our systems,
+right? The bots access our OPACs to index our collections and make them
+accessible through search engines.
+:::
+
+## User's Information Needs
+
+Users are motivated to seek information in a given situation to:
+
+-   answer a question
+-   solve a problem
+-   complete a task
+-   learn about a subject
+-   verify a fact
+-   just for fun
+
+::: notes
+Whether you are a system designer, reference librarian, or just want to
+become a better searcher, it is important to understand more about WHY
+and HOW people search for information. Information scientists have long
+studied what is called Information Behavior (how people find and use
+information to various purposes) and a subset of information behavior
+called information seeking, which focuses on the process, tools, and
+decisions associated with seeking for information.
+
+Generally we know that users are motivated to seek information as part
+of a situational context to answer a question, solve a problem, complete
+a task, to learn more or verify a fact. What we know less about is how
+they seek information for fun or entertainment. There are some very
+interesting studies about information seeking for hobbyists, within
+social media, or just to surf for fun. But we need to learn more.
+:::
+
+## User's Information Needs
+
+Typical user questions:
+
+-   What
+-   When
+-   Where
+-   Why
+-   How
+
+::: notes
+When helping users search or use different IR systems we can expect
+specific kinds of questions, such as WHAT, WHEN, WHERE, WHY and HOW.
+Drawing out a user’s actual information need, however, is often
+challenging as they may not know how to ask the question, how to enter a
+query into the system, or to use the functions of the system to find
+what they are looking for. In libraries, we conduct “reference
+interviews” but in other contexts the conversation you have with users,
+or that users have with a computer, is designed to extract more
+information about their information need, right?
+
+Later in the course, we will talk more about how to refine an
+information need to conform with system parameters.
+:::
+
+## Information Needs
+
+Two broad categories of searches:
+
+-   Known item search
+-   Subject or topic search
+
+::: notes
+Research has also shown that there are two broad categories of searches
+that users conduct:
+
+1.  Known item searches – where the user knows something about the item
+    they are seeking such as title or author
+
+2.  Subject or topic searches – the user knows some aspect of the
+    subject or topic that they need to learn more about or that they
+    need to find specific information about.
+
+This is not quite as simple as it sounds. Very often a user will not
+know how to express their precise information need or how to implement
+it within a given system. They also may not remember correctly the
+author or title they think they know. In modern systems depending on the
+IR technique of the system or its capabilities to match partial search
+information, the user can still find useful information. We will talk
+more about this topic throughout the semester.
+:::
+
+## Information Retrieval Systems {.smaller}
+
+> A specialized system for the description, storage, and retrieval of
+> information representations: primarily information objects (text,
+> images) and their surrogates (metadata, records). Operates by matching
+> queries (representations of information need) with data
+> (representations of information objects)
+
+![](images/clipboard-1371401673.png){fig-align="center"}
+
+::: notes
+In this class, we will also learn more specifics about the IR process
+and IR systems. As this slide notes, IR systems are specialized systems
+that are used for the description, storage and retrieval of information
+representations (or the information objects). These objects can take
+many forms.
+
+Users access the records of the objects or the objects by matching
+search terms or queries to data or representations about the objects
+within the system. IR systems are set up to use algorithms that provide
+the “matching” function. Older systems primarily were exact match
+systems, meaning that the query terms and terms in the representation
+and/or inverted index had to match exactly.
+
+The most significant change in IR systems is that MOST are no longer
+exact match systems but will match on part of the query terms.
+Artificial intelligence (AI) and machine learning are also changing
+expectations of users and how they think search engines and databases to
+work.
+:::
+
+## Components of IR systems
+
+::::: columns
+::: {.column width="50%"}
+Knowledge system into which an IR system is implanted generally consists
+of three main components:
+
+a)  [people in their role as
+    information-processors]{style="color: blue;"}
+
+b)  [documents in their role as carriers of
+    information]{style="color: blue;"}
+
+c)  [topics as representations]{style="color: blue;"}
+:::
+
+::: {.column width="50%"}
+![](images/2.png){fig-align="center" width="500"}
+:::
+:::::
+
+::: notes
+Let us now consider the basic conceptual framework of information
+retrieval systems.
+
+An IR system is not an isolated tool, but rather one that is implanted
+within a broader knowledge system.
+
+This system can be thought of as consisting of three interrelated
+components:
+
+1.  People, in their role as information processors and seekers of
+    knowledge.
+
+2.  Documents, in their role as carriers and representations of
+    information.
+
+3.  Topics, which function as abstract representations of knowledge
+    domains and link users to the documents they seek.
+
+This slide illustrates a “basic” model of how IR works. On the left side
+are the documents and representations that are stored by the system. On
+the right side are the user interactions with the system. The center
+section shows the matching function and the output or results of the
+search. Of course in a computer there is much more to it, but this gives
+us the basic idea of how IR works.
+
+As Lancaster observed, the purpose of an IR system is not to directly
+inform the user on the subject of their inquiry. Instead, its role is
+more precise: to inform the user of the existence, non-existence, and
+whereabouts of documents relevant to their request. In its early
+conception, therefore, IR was fundamentally about retrieval of
+documents, not retrieval of information.
+
+This notion shifted significantly with the advent of full-text
+availability in bibliographic databases. No longer constrained to
+indexes and metadata, IR systems could now operate directly on the
+content of documents. Originally, IR meant text retrieval systems,
+reflecting the textual nature of the collections.
+
+However, modern IR systems increasingly handle multimedia information —
+not only text, but also images, audio, and video. This transition has
+required the development of new tools, methods, and techniques capable
+of supporting retrieval across multiple modalities. It represents one of
+the major conceptual and technological expansions in the field.
+:::
+
+## Model of IR System
+
+![](images/3.png){fig-align="center"}
+
+::: notes
+The Chowdhury reading, Chapter 1, provides a much more complete picture,
+expanding each of the functions of the Blair model on the last slide.
+The actors of each side are also included, such as on the left side,
+they include content creators, producers of the documents but also the
+catalogers who provide the descriptions or the metadata associated with
+each object.
+
+This slide also shows a range of types of documents that might be
+accessible in a system. Chowdhury’s model also shows the outcomes of the
+representation process, by the human indexer as well as the computer
+processing the representations or documents, as well as the standards
+and tools that are used in the representation process.
+
+In the middle is the search interface and IR technique that provide the
+matching function. On the right are the users within a societal context,
+which affects what they know and what types of knowledge they bring when
+they use an IR system.
+
+At the bottom of this model are other factors, such as national,
+technological, etc. that affect the context in which an IR system
+exists. This is one of my favorite models for understanding the
+complexity of an IR system because it incorporates contextual factors
+into the model which have direct influence on the IR system and how it
+is used.
+
+We will learn more about IR systems, models and how to evaluate IR
+systems in the later modules.
+:::
+
+
+## Types of IR Systems {.smaller}
+
+Based on the different types of services, IR can be categorized as:
+
+::::: columns
+::: {.column width="50%"}
+-   [x] Pre-Coordinate Systems
+
+    -   Printed indexes and catalogs
+    -   OPACs
+
+-   [x] Post-Coordinate Systems
+
+-   [x] Web Search
+
+-   [x] Personalized IR
+
+-   [x] Enterprise/Institutional IR
+
+-   [x] Domain-Specific IR
+:::
+
+::: {.column width="50%"}
+-   [x] Web Based IR System
+
+-   [x] Digital Libraries
+
+-   [x] Multimedia IR System
+
+-   [x] Distributed IR System
+
+-   [x] Conversational IR System
+
+    -   ChatGPT
+:::
+:::::
+
+::: notes
+Now that we’ve looked at the definition and scope of Information
+Retrieval, let’s consider the different categories of services that IR
+supports.
+
+On the left, we see types that focus on **context and users**:
+
+**Web Search**, the most familiar to all of us, where IR powers
+large-scale search engines across the open internet.
+
+**Personalized IR**, which adapts results to individual user preferences
+and past behaviors.
+
+**Enterprise or Institutional IR**, which focuses on retrieving
+information within organizations — for example, searching across company
+documents or academic repositories.
+
+And **Domain-Specific IR**, which is specialized for a particular field
+such as medicine, law, or engineering, where terminology and relevance
+criteria are unique.
+
+On the right, we have **system-based services**:
+
+**Web-Based IR Systems**, which deliver retrieval through online
+interfaces.
+
+**Digital Libraries**, which apply IR to structured, curated collections
+of academic and cultural material.
+
+**Multimedia IR Systems**, which extend beyond text to include images,
+audio, and video retrieval.
+
+And finally, **Distributed IR Systems**, which work across multiple,
+separate data sources — for example, federated search across libraries,
+or even across multiple company systems.
+
+The important takeaway here is that IR isn’t one-size-fits-all.
+Different contexts whether public web search, personalized
+recommendation, or specialized domains, demand different architectures
+and retrieval strategies.
+:::
+
+## What Information Can You Find Online?
+
+-   Bibliographic citations
+-   Full-text documents
+-   Directory of reference sources
+-   Numeric data
+-   Images
+-   Multimedia files
+
+::: notes
+Not to be flippant, but did you laugh the first time you heard someone
+say that you can find everything online?
+
+It is very common misconception of users that they can access everything
+online. While the availability of content and what you can find online
+has definitely improved, not everything can be found online.
+
+What is also key to remember is that you need to know which systems hold
+specific types of information, so you choose an appropriate system.
+
+For example, if you are looking for a book to purchase you might use the
+Web and Amazon or Barnes and Noble. If you just want to borrow a book
+you would search for it in the library catalog and may find it easily
+accessible or the library may have to order it for you. (As I type this
+I realize this has also changed. With Amazon services you can now rent
+books and return them.)
+
+To locate scholarly articles, like those usually required for research
+papers in your classes, you would use OU Libraries subject/discipline
+specific databases.
+
+You can, in some instances, use Google Scholar, but often you end up
+with a citation that requires payment to access the actual article. AND
+Google Scholar is not as heavily indexed so you may miss relevant
+articles if you use different terms than what is in the Google Scholar
+index.
+
+The point here is that choosing the correct system is critical in
+finding the useful information you need. We will talk about this more
+later in the course.
+:::
+
+## Issues to Consider
+
+How is access to the Internet changing our user's ................?
+
+-   Expectations
+
+-   Ways of engaging with information
+
+-   Brains
+
+-   Information needs/seeking activities and behaviors
+
+-   Other thoughts?
+
+::: notes
+Other issues to consider that we will explore together are, for example,
+
+1.  How have users expectations changed now that almost ubiquitous
+    access to the Web is possible?
+2.  Has our way of engaging with information also changed?
+3.  Is there any effect on our brains due to the way we interact with
+    online systems today?
+4.  Are there new sets of information behaviors that information
+    professionals need to take into account? For example, how have using
+    smart phones affected IR?
+5.  Other thoughts?
+
+We will explore these issues and others together.
+:::
+
+# Putting It All Together
+
+::: notes
+This class focuses on all aspects of IR from understanding more about
+users and their information needs, to system structures and IR
+techniques, to how to capitalize on these understandings to improve your
+own search abilities. It is also important to understand your own search
+process and where you might need to improve. This semester provides you
+will the opportunity to play with many different systems and to test out
+their features as you become a more proficient searcher and as you learn
+more about how IR works. My hope is that you enjoy the entire process!!
+:::
