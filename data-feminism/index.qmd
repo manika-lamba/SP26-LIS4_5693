@@ -418,8 +418,7 @@ For example, many Indigenous communities, such as those involved in the
 Responsibility, and Ethics)](https://www.gida-global.org/care), push for
 data governance models that respect their cultural and emotional
 relationship with land, heritage, and identity, rather than treating
-data as purely objective and extractive. We will discuss more on CARE
-principles in future modules.
+data as purely objective and extractive.
 :::
 
 ## Data Feminism for AI (Cont.)
