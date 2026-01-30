@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57" />
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Dr. Manika Lamba">
+  <meta name="author" content="Dr.&nbsp;Manika Lamba">
   <title>Text in Context: Data Feminism and AI</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -25,7 +31,7 @@
     }
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -318,24 +324,24 @@
     }
   </style>
 </head>
-<body>
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block">
+<section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Text in Context: Data Feminism and AI</h1>
   <p class="subtitle">LIS 4/5693: Information Retrieval and Text Mining</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr. Manika Lamba 
+Dr.&nbsp;Manika Lamba 
 </div>
 </div>
 </div>
 
 </section>
-<section id="introduction" class="title-slide slide level1">
+<section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
 <aside class="notes">
 <p>This is the second part of this week’s lecture, and here we shift our focus to <strong>the data itself</strong>, specifically examining text data through a <strong>Data Feminism lens</strong>.</p>
@@ -349,27 +355,43 @@ Dr. Manika Lamba
 <p>Finally, we must consider <strong>data leakage and harm</strong>. When working with textual data, what sensitive information might be unintentionally exposed? What privacy, consent, or misinterpretation risks arise once data is processed, shared, or repurposed? These issues are not separate from technical work – they directly shape the reliability, ethics, and impact of IR, NLP, and text mining systems.</p>
 <p>By foregrounding these questions, this lecture sets the foundation for responsible and critically informed text mining, reminding us that <strong>data is never neutral, and neither are the systems built on top of it</strong>.</p>
 <p>Please note that throughout this lecture, when I use the term “data,” I am using it as a broad, umbrella term. In this context, it explicitly includes textual data (such as documents, social media posts, articles, transcripts, and any other forms of text) that we analyze using IR, NLP, or text mining techniques.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section>
-<section id="in-todays-world-data-is-power" class="title-slide slide level1">
+<section id="in-todays-world-data-is-power" class="title-slide slide level1 center">
 <h1>In Today’s World <span style="color: blue;"><em>Data is Power</em></span></h1>
 <aside class="notes">
 <p>Data is becoming an incredible form of power in today’s world. BUT that power remains incredibly uneven and more specifically the power of data is being wielded by a small and homogeneous group of institutions, corporations, and well-resourced governments usually for their own benefits as these people have the resources to design and deploy these data systems and usually it comes at the expenses of everyone else.</p>
 <p>This is where the role of feminism, intersectionality, and data feminism comes in!</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="what-is-feminism" class="slide level2">
 <h2>What is Feminism?</h2>
 <p><code>Feminism entails a belief in the equality of all genders</code></p>
 <p><code>Feminism is also about Power</code></p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-1379187561.png" class="quarto-figure quarto-figure-center" /></p>
-</figure>
-</div>
-<div class="footer">
+
+<img data-src="images/clipboard-1379187561.png" class="quarto-figure quarto-figure-center r-stretch"><div class="footer">
 <p>Klein L and D’Ignazio C. (2024). <a href="https://dl.acm.org/doi/pdf/10.1145/3630106.3658543">Data Feminism for AI.</a> FAccT ’24</p>
 </div>
 <aside class="notes">
@@ -379,18 +401,27 @@ Dr. Manika Lamba
 <p>The brittleness of AI systems which is defined as this idea that AI systems are optimized for certain scenarios or certain groups and break in other instances.</p>
 <p>People when talk about this brittleness they are often sort of surprised that why that is happening? The basic idea that systems — be it social systems, governmental systems, or institutional systems are optimized for certain groups and not others. That is not a surprise to feminists. Also, the basic idea of bias in training data where people wonders how these effect of this biases can occur with such surprise but the idea of biases are pretty much baked into the cultural record. And this is really the ground truth of much feminist work.</p>
 <p>Feminism is an essential tool in our toolbox as a data steward if we want to manage, curate, and create such sort of liberatory data science or AI infused projects.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="intersectionality" class="slide level2 smaller">
-<h2 class="smaller">Intersectionality</h2>
+<h2>Intersectionality</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><code>Intersectionality is a metaphor for understanding the ways that multiple forms of inequality or disadvantage sometimes compound themselves and create obstacles that often are not understood among conventional ways of thinking</code> (Crenshaw, K.W., 1989)</p>
 <p><code>Intersectional feminism is not only about women or even only about gender. It is about power who Has it and who Does Not</code></p>
 </div><div class="column" style="width:50%;">
 <p><video data-src="AI%20biasness%20example.mp4" controls=""><a href="AI%20biasness%20example.mp4">Video</a></video></p>
-</div>
-</div>
+</div></div>
 <div class="footer">
 <p>Sources</p>
 <ul>
@@ -408,16 +439,22 @@ Dr. Manika Lamba
 <p>Up until 1970, dark skin looked muddy on film because Kodak used pictures called “Shirley cards” to tune the film- processing machines in photo labs. Kodak did not tune for darker skin, because institutional racism ran deep.</p>
 <p>So, Kodak made change in response to customers in furniture industry as they complained walnut &amp; mahogany furniture looked muddy in catalog photographs!</p>
 <p>As you start to recognise the role that unconscious bias plays in technology world. Technology is often built by small, homogeneous group of people; eg. soap dispenser might be developed by all light skinned group of people who tested it on themselves and it worked and assumed that it would work for everyone else!</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="algorithmic-confoundingbiasness" class="slide level2 smaller">
-<h2 class="smaller">Algorithmic Confounding/Biasness</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/biasness.png" class="quarto-figure quarto-figure-center" /></p>
-</figure>
-</div>
-<div class="footer">
+<h2>Algorithmic Confounding/Biasness</h2>
+
+<img data-src="images/biasness.png" class="quarto-figure quarto-figure-center r-stretch"><div class="footer">
 <p>Lamba, M., Madhusudhan, M. (2022). <a href="https://link.springer.com/chapter/10.1007/978-3-030-85085-2_11">Text Data and Mining Ethics</a></p>
 </div>
 <aside class="notes">
@@ -438,19 +475,39 @@ Dr. Manika Lamba
 <li><p><strong>Omitted Variable Bias:</strong> It occurs when the vital attributes that influence the outcome are missing and happens when data generation relies on human input, or the process that records the data does not have access to the attributes due to privacy concerns.</p></li>
 <li><p><strong>Societal Bias:</strong> It occurs when humans produce content on the web and social media, such as gender or race stereotypes.</p></li>
 </ol>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="fighting-bias-in-algorithms" class="slide level2">
 <h2>Fighting Bias in Algorithms</h2>
-<iframe data-external="1" src="https://www.youtube.com/embed/eRUEVYndh9c?si=1R6UXXKZ5vcTrAt4" width="800" height="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe data-external="1" src="https://www.youtube.com/embed/eRUEVYndh9c?si=1R6UXXKZ5vcTrAt4" width="800" height="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 <aside class="notes">
 <p>In this video by Joy Buolamwini shared her experience while working with facial analysis software, and noticed a problem: the software didn’t detect her face – because the <em>people who coded the algorithm hadn’t taught it to identify a broad range of skin tones and facial structures.</em></p>
 <p>This is a very popular video where the biases in facial analysis software came in front and demanded for accountability in coding.</p>
 <p>From her lab from MIT, they also made a movie called “Coded Bias” which was released in 2020 and is one of the task for you to watch this week! In that movie, Joy Buolamwini and others from MIT shares more in depth about the biases that can be embedded into technology like facial recognition and highlights how such technology systems can cause problems for vulnerable groups as due to bias within the code.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="what-is-data-feminism" class="slide level2 smaller">
-<h2 class="smaller">What is Data Feminism?</h2>
+<h2>What is Data Feminism?</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -458,9 +515,8 @@ Dr. Manika Lamba
 <li><p>It critiques traditional data practices that often <em>reinforce existing power structures, inequalities, and biases</em>, and instead <strong><code>advocates for more equitable, inclusive, and socially just ways of working with data</code></strong></p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/clipboard-3709308036.png" /></p>
-</div>
-</div>
+<p><img data-src="images/clipboard-3709308036.png"></p>
+</div></div>
 <aside class="notes">
 <p>Data Feminism is a framework and approach to data science that applies feminist principles to the analysis and interpretation of data. It critiques traditional data practices that often reinforce existing power structures, inequalities, and biases, and instead advocates for more equitable, inclusive, and socially just ways of working with data. The concept was popularized by Catherine D’Ignazio and Lauren F. Klein in their book Data Feminism (2020).</p>
 <p>Thus, data feminism is an approach to data science that seeks to make data more fair, ethical, and inclusive. It challenges the idea that data is neutral and instead asks:</p>
@@ -475,13 +531,23 @@ Dr. Manika Lamba
 <li><strong>Uncover hidden biases in datasets</strong>: Many AI systems perform poorly for people from marginalized communities because they were trained on data that didn’t include them.</li>
 <li><strong>Ensure more just and ethical decision-making</strong>: From hiring algorithms to healthcare predictions, considering intersectionality prevents data from reinforcing existing inequalities.</li>
 </ul>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="data-feminism-for-ai" class="slide level2">
 <h2>Data Feminism for AI</h2>
 <p><code>7 Principles of Data Feminism</code> (Klein &amp; D’Ignazio, 2024)</p>
 <div>
-<hr />
+<hr>
 </div>
 <p><code>Principle 1: Examine Power</code>: Analyzing how power operates in the world</p>
 <p><span style="color: orange;">Example: Facial Recognition Bias</span></p>
@@ -496,7 +562,17 @@ Dr. Manika Lamba
 <p><code>The second principle is to</code> –</p>
 <p><strong>Challenge Power:</strong> Building upon the examination of power structures, this principle advocates for actively challenging and dismantling unjust systems. It calls for using data to expose and address inequalities, striving toward social justice.</p>
 <p>For instance, medical research has historically used male bodies as the default, leading to misdiagnoses and ineffective treatments for women. Initiatives like the <a href="https://whamnow.org/">WHAM (Women’s Health Access Matters) project</a>challenge this imbalance by advocating for more sex-disaggregated data in health research to improve outcomes for women.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="data-feminism-for-ai-cont." class="slide level2">
 <h2>Data Feminism for AI (Cont.)</h2>
@@ -511,7 +587,17 @@ Dr. Manika Lamba
 <p><code>The fourth principle is to</code> –</p>
 <p><strong>Elevate Emotion and Embodiment:</strong> Data feminism recognizes the value of emotions and embodied experiences as legitimate sources of knowledge. This principle urges the inclusion of diverse perspectives and the acknowledgment of subjective experiences in data work.</p>
 <p>For example, many Indigenous communities, such as those involved in the <a href="https://www.gida-global.org/care">CARE Principles (Collective Benefit, Authority to Control, Responsibility, and Ethics)</a>, push for data governance models that respect their cultural and emotional relationship with land, heritage, and identity, rather than treating data as purely objective and extractive.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="data-feminism-for-ai-cont.-1" class="slide level2">
 <h2>Data Feminism for AI (Cont.)</h2>
@@ -526,7 +612,17 @@ Dr. Manika Lamba
 <p><code>The sixth principle is to</code> –</p>
 <p><strong>Consider Context:</strong> Data does not exist in a vacuum; this principle highlights the necessity of situating data within its specific social, cultural, and historical contexts. Understanding these contexts is crucial for accurate interpretation and ethical application.</p>
 <p>For instance, predictive policing algorithms trained on historical crime data often reinforce systemic biases, leading to over-policing of marginalized communities. Studies from organizations like <a href="https://ainowinstitute.org/publication/dirty-data-bad-predictions-how-civil-rights-violations-impact-police-data">AI Now Institute highlight how removing context (e.g., historical racial bias in policing) results in unfair AI outcomes</a>.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="data-feminism-for-ai-cont.-2" class="slide level2">
 <h2>Data Feminism for AI (Cont.)</h2>
@@ -540,7 +636,17 @@ Dr. Manika Lamba
 <p><strong>Make Labor Visible:</strong> Often, the labor involved in data work is hidden or undervalued. This principle calls for acknowledging and valuing the contributions of all individuals involved in data processes, from data collectors to analysts.</p>
 <p>For instance, large language models (LLMs) like ChatGPT require massive datasets that must be cleaned, labeled, and moderated by human workers. These workers, often located in the Global South, are paid low wages to review harmful content, annotate images, or fine-tune models—tasks that are critical but rarely acknowledged in discussions about AI advancements as covered in <a href="https://time.com/6247678/openai-chatgpt-kenya-workers/">this report</a>.</p>
 <p>This principle calls for recognizing and fairly compensating this labor. The report aligns with this principle by exposing the hidden workforce behind AI and advocating for more ethical labor practices, such as fair wages, labor protections, and transparency in AI development.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="case-study-missing-data" class="slide level2">
 <h2>Case Study: Missing Data</h2>
@@ -548,17 +654,16 @@ Dr. Manika Lamba
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/missing-data.png" class="quarto-figure quarto-figure-center" /></p>
+<p><img data-src="images/missing-data.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/missing-data2.png" class="quarto-figure quarto-figure-center" /></p>
+<p><img data-src="images/missing-data2.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 <div class="footer">
 <ul>
 <li><p><a href="https://mimionuoha.com/the-library-of-missing-datasets">The Library of Missing Datasets (2016)</a></p>
@@ -592,10 +697,20 @@ Dr. Manika Lamba
 <p>Who has this Power? Generally speaking, its governments, moneyed institutions, cooperation – the <strong><em>people with resources to design and deploy</em></strong> these data systems. Whereas, minoritized groups do not have the ability to collect data at scale on the problems that matter to them or to us.</p>
 <p>This is why the feminist approach to data and to AI always needs to begin with this analysis of power. Because far too often the datasets that we can access and in turn the models that they are used to train; and then ask research questions using these models that have been developed – all of these things are already overdetermined by the imbalance of power that we face in the world.</p>
 <p>These examples show what happens when unequal power surrounding data creation, curation, and preservation is allowed to compound and accrue and accumulate.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
-<section id="section" class="title-slide slide level1">
-<h1><img data-src="images/future.png" /></h1>
+<section id="section" class="title-slide slide level1 center">
+<h1><img data-src="images/future.png"></h1>
 <aside class="notes">
 <p>We in academia are only experiencing the corporate capture of AI research – its design, development, regulation, or the lack thereof.</p>
 <p>The recent development in AI research and AI systems along with all of their compute requirements have brought more considerations to the floor.</p>
@@ -611,10 +726,20 @@ Dr. Manika Lamba
 </ul>
 <p>If we are going to imagine alternative conditions for their development and alternative contexts for their use then I think feminism has a very strong &amp; real role to play. These are contexts that empower rather than dis-empower.</p>
 <p>These are one that rebalance the existing structures of power that affect our world today. It is an interventionist &amp; political one — technology is not NEUTRAL. None of the choices that we make are. In this particular case, it is not neutral because it challenges these default settings of models, datasets, and systems – it does so with a goal towards – Designing technology that works towards liberation and not just resource extraction.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
-<section id="again-what-all-this-has-to-do-with-text-mining" class="title-slide slide level1">
+<section id="again-what-all-this-has-to-do-with-text-mining" class="title-slide slide level1 center">
 <h1>Again, what all this has to do with Text Mining?</h1>
 <aside class="notes">
 <p>Text mining often gives the impression that we are working with neutral objects: <em>documents, tokens, corpora, variables</em>. But from a computational social science perspective, texts are not just data points. They are traces of human lives, institutions, power relations, and social inequalities. Every tweet, interview transcript, forum post, or policy document was produced in a particular context, by someone positioned within social structures that shape what can be said, how it is said, and how visible it becomes.</p>
@@ -631,9 +756,19 @@ Dr. Manika Lamba
 <li><code>how we communicate results</code></li>
 </ul>
 <p>This lecture sets the tone for the course that is <code>text mining is a technical practice that is always embedded in context, and ethical reasoning as a core component</code>.</p>
-</aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="quarto-auto-generated-content">
-<p><img src="images/ou.png" class="slide-logo" /></p>
+<p><img src="images/ou.png" class="slide-logo"></p>
 <div class="footer footer-default">
 
 </div>
@@ -663,7 +798,17 @@ Dr. Manika Lamba
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
-      Reveal.initialize({ 
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"theme":"whiteboard"},
+'smaller': false,
+ 
         // Display controls in the bottom right corner
         controls: true,
 
@@ -682,7 +827,7 @@ Dr. Manika Lamba
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: c/t,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -832,7 +977,8 @@ Dr. Manika Lamba
         },
 
         // reveal.js plugins
-        plugins: [
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
           RevealMath,
           RevealNotes,
           RevealSearch,
@@ -840,7 +986,7 @@ Dr. Manika Lamba
         ]
       });
     </script>
-    <script id = "quarto-html-after-body" type="application/javascript">
+    <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1027,5 +1173,6 @@ Dr. Manika Lamba
       }
     });
     </script>
-    </body>
-</html>
+    
+
+</body></html>
