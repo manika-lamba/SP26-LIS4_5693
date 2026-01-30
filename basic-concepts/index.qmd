@@ -888,8 +888,8 @@ next lecture on "Acquiring Text".
 -   Conversational interfaces are shaping the future in library search
 
 ::: notes
-Now, let's discuss natural language search and its role in
-modern information retrieval.
+Now, let's discuss natural language search and its role in modern
+information retrieval.
 
 First, we will discuss how free text searching represents both an
 opportunity and a challenge. Its flexibility allows users to articulate
@@ -930,9 +930,8 @@ artificial intelligence.
     -   information may be "hidden"
 
 ::: notes
-We have three core **document retrieval
-strategies**: (i) **Boolean**, (ii) **Vector Space**, and (iii)
-**Probabilistic** models.
+We have three core **document retrieval strategies**: (i) **Boolean**,
+(ii) **Vector Space**, and (iii) **Probabilistic** models.
 
 All of these models depend on **index terms**, which are the keywords or
 tokens that represent the main ideas in a document. This is often
@@ -1159,15 +1158,6 @@ user expectations, influenced by advances in natural language processing
 (NLP) and the ubiquity of intelligent search assistants. Users now
 anticipate that systems will interpret intent, context, and semantics,
 rather than rely solely on keyword matching.
-
-Within libraries and digital repositories, these developments have
-significant implications. As curators of extensive collections of
-unstructured text — including research papers, theses, and archival
-documents — such institutions are increasingly integrating natural
-language search capabilities to enhance information accessibility and
-discovery. These systems not only support more intuitive interaction but
-also align with broader efforts to democratize access to scholarly
-knowledge.
 
 The shift toward natural language searching represents a critical
 evolution in information retrieval, one that bridges the gap between
@@ -1502,15 +1492,14 @@ and/or natural language indexing.
 Currently we have seen a large amount of professional and research
 literature discussing an emerging form of indexing language,
 User-defined or User-Supplied terms. While I say it is emerging, this
-concept is really not a new idea to LIS. Many LIS researchers have been
-conducting research into this area since the 1990s. It has recently more
-popular on the Web with the emergence of blogs and media sharing sites
-like Blogger, Flickr, YouTube, etc.
+concept is really not a new idea to library and information science
+(LIS). Many LIS researchers have been conducting research into this area
+since the 1990s. It has recently more popular on the Web with the
+emergence of blogs and media sharing sites like Blogger, Flickr,
+YouTube, etc.
 
 This concept has many labels (user-supplied, folksonomy, tagging, social
-classification). It has yet to be decided which term will prevail, or
-whether or not LIS and cataloging will use these terms as a source for
-additional subject cataloging or not.
+classification). It has yet to be decided which term will prevail.
 
 Researchers in image retrieval have explored this idea since the 1990s,
 and even earlier in specific image-related contexts, such as journalism
@@ -1522,10 +1511,6 @@ objects.
 
 To date it is being used to “tag” images, web pages, blogs, library
 catalogs, etc.
-
-More research needs to be conducted into whether or not we can use these
-terms as a source for subject representation, or even as a means to
-develop more user-centered controlled vocabularies.
 :::
 
 ## Coversational Search
@@ -1677,19 +1662,73 @@ academic and informational contexts.
 :::
 
 ::: {.column width="50%"}
-![](images/.png){fig-align="center"}
+![](images/20.png){fig-align="center"}
 :::
 :::::
 
-::: footnote
+::: footer
 Weiss et al. (2005). Overview of text mining. In: Weiss et al. (eds)
 Text mining:Predictive methods for analyzing unstructured information.
 Springer, New York, NY, pp 1–13
 :::
 
-## Brief History of Text Mining
+::: notes
+With the foundation of IR and NLP in place, let’s explore what text
+mining is really about.
 
-![](images/clipboard-1579569194.png){fig-align="center"}
+Text mining as both a `concept` and a `process`. At a high level, text
+mining refers to the automatic extraction of information from text with
+the goal of generating new knowledge -- not just retrieving documents,
+but uncovering patterns, relationships, and insights that are not
+immediately visible through manual reading.
+
+The figure on this slide shows that text mining is not a single step,
+but a pipeline. Also, notice that the arrows in the figure flow back to
+the database which emphasizes that text mining is a iterative process,
+and not linear.
+
+We begin with text sources, which can include articles, social media
+posts, reports, logs, or any form of unstructured or semi-structured
+text. These texts are then `transformed into a corpus` format, where
+decisions are made about what counts as a document, how text is
+segmented, and what metadata is retained—already a point where human
+judgment and data stewardship matter.
+
+Next comes `text pre-processing`, where raw text is cleaned and
+normalized. This often includes tokenization, stopword removal,
+normalization, and sometimes stemming or lemmatization. These steps are
+essential because computational models cannot work directly with raw
+language—they require structured representations.
+
+`Exploratory Text Analysis` (ETA) follows, allowing us to understand the
+data before modeling. This step helps identify dominant terms,
+distributions, anomalies, or biases in the corpus, and often informs
+whether earlier preprocessing steps need to be revisited.
+
+The `NLP annotation` stage adds linguistic structure to text, such as
+part-of-speech tags, named entities, syntactic dependencies, or semantic
+labels. These annotations enrich the data and enable more advanced
+analysis.
+
+Once text is represented numerically and linguistically, we can apply
+models—including classification, clustering, topic modeling, or
+prediction. As Weiss et al. (2005) note, in text mining, words function
+as attributes or predictors, documents function as cases, and together
+they form structured data that can be used by standard machine learning
+methods.
+
+Finally, visualization helps us interpret results, communicate findings,
+and validate assumptions. Importantly, outputs at every stage are stored
+back into the database, reinforcing that text mining relies on strong
+data management and documentation practices.
+
+We will cover all the text mining process just mentioned in much more
+depth in the coming weeks with hands-on lab assignments.
+:::
+
+## Brief History of Text Mining {.smaller}
+
+![](images/clipboard-1579569194.png){fig-align="center" width="400"}
 
 ::: footer
 [Lamba and Madhusudhan. (2022). Ch-1 The Computational

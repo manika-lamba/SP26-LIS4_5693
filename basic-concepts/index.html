@@ -1082,7 +1082,6 @@ Dr.&nbsp;Manika Lamba
 <p>In recent years, there has been an unprecedented growth in unstructured text data across digital environments. Scholarly publications, institutional reports, social media content, and various forms of grey literature now constitute an immense corpus of textual information that is not easily represented within structured databases. This proliferation of unstructured text has created a pressing need for search systems that can effectively interpret and retrieve relevant information from natural language sources.</p>
 <p>Historically, information retrieval systems have relied on Boolean search models, which require users to construct queries using logical operators such as AND, OR, and NOT. While Boolean searching offers precision and control, it also imposes a steep learning curve and often results in inefficiencies for non-expert users. In contrast, contemporary search interfaces increasingly emphasize natural language querying, allowing users to articulate information needs in the same way they would express them conversationally — for example, by typing or speaking full questions rather than isolated keywords.</p>
 <p>This preference for natural queries reflects a broader transformation in user expectations, influenced by advances in natural language processing (NLP) and the ubiquity of intelligent search assistants. Users now anticipate that systems will interpret intent, context, and semantics, rather than rely solely on keyword matching.</p>
-<p>Within libraries and digital repositories, these developments have significant implications. As curators of extensive collections of unstructured text — including research papers, theses, and archival documents — such institutions are increasingly integrating natural language search capabilities to enhance information accessibility and discovery. These systems not only support more intuitive interaction but also align with broader efforts to democratize access to scholarly knowledge.</p>
 <p>The shift toward natural language searching represents a critical evolution in information retrieval, one that bridges the gap between human linguistic expression and computational understanding.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1327,11 +1326,10 @@ Dr.&nbsp;Manika Lamba
 <li>To date is being used to tag images, web pages, blogs, library catalogs, etc.</li>
 </ul>
 <aside class="notes">
-<p>Currently we have seen a large amount of professional and research literature discussing an emerging form of indexing language, User-defined or User-Supplied terms. While I say it is emerging, this concept is really not a new idea to LIS. Many LIS researchers have been conducting research into this area since the 1990s. It has recently more popular on the Web with the emergence of blogs and media sharing sites like Blogger, Flickr, YouTube, etc.</p>
-<p>This concept has many labels (user-supplied, folksonomy, tagging, social classification). It has yet to be decided which term will prevail, or whether or not LIS and cataloging will use these terms as a source for additional subject cataloging or not.</p>
+<p>Currently we have seen a large amount of professional and research literature discussing an emerging form of indexing language, User-defined or User-Supplied terms. While I say it is emerging, this concept is really not a new idea to library and information science (LIS). Many LIS researchers have been conducting research into this area since the 1990s. It has recently more popular on the Web with the emergence of blogs and media sharing sites like Blogger, Flickr, YouTube, etc.</p>
+<p>This concept has many labels (user-supplied, folksonomy, tagging, social classification). It has yet to be decided which term will prevail.</p>
 <p>Researchers in image retrieval have explored this idea since the 1990s, and even earlier in specific image-related contexts, such as journalism or newspaper archives. Researchers in organization of information, thesauri development, indexing, subject representation have also explored this idea as a source of more user-centered subject terms or to learn more about how users naturally organize and describe subjects of objects.</p>
 <p>To date it is being used to “tag” images, web pages, blogs, library catalogs, etc.</p>
-<p>More research needs to be conducted into whether or not we can use these terms as a source for subject representation, or even as a means to develop more user-centered controlled vocabularies.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1434,19 +1432,41 @@ Dr.&nbsp;Manika Lamba
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/20.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div></div>
-<div class="footnote">
+<div class="footer">
 <p>Weiss et al.&nbsp;(2005). Overview of text mining. In: Weiss et al.&nbsp;(eds) Text mining:Predictive methods for analyzing unstructured information. Springer, New York, NY, pp 1–13</p>
 </div>
+<aside class="notes">
+<p>With the foundation of IR and NLP in place, let’s explore what text mining is really about.</p>
+<p>Text mining as both a <code>concept</code> and a <code>process</code>. At a high level, text mining refers to the automatic extraction of information from text with the goal of generating new knowledge – not just retrieving documents, but uncovering patterns, relationships, and insights that are not immediately visible through manual reading.</p>
+<p>The figure on this slide shows that text mining is not a single step, but a pipeline. Also, notice that the arrows in the figure flow back to the database which emphasizes that text mining is a iterative process, and not linear.</p>
+<p>We begin with text sources, which can include articles, social media posts, reports, logs, or any form of unstructured or semi-structured text. These texts are then <code>transformed into a corpus</code> format, where decisions are made about what counts as a document, how text is segmented, and what metadata is retained—already a point where human judgment and data stewardship matter.</p>
+<p>Next comes <code>text pre-processing</code>, where raw text is cleaned and normalized. This often includes tokenization, stopword removal, normalization, and sometimes stemming or lemmatization. These steps are essential because computational models cannot work directly with raw language—they require structured representations.</p>
+<p><code>Exploratory Text Analysis</code> (ETA) follows, allowing us to understand the data before modeling. This step helps identify dominant terms, distributions, anomalies, or biases in the corpus, and often informs whether earlier preprocessing steps need to be revisited.</p>
+<p>The <code>NLP annotation</code> stage adds linguistic structure to text, such as part-of-speech tags, named entities, syntactic dependencies, or semantic labels. These annotations enrich the data and enable more advanced analysis.</p>
+<p>Once text is represented numerically and linguistically, we can apply models—including classification, clustering, topic modeling, or prediction. As Weiss et al.&nbsp;(2005) note, in text mining, words function as attributes or predictors, documents function as cases, and together they form structured data that can be used by standard machine learning methods.</p>
+<p>Finally, visualization helps us interpret results, communicate findings, and validate assumptions. Importantly, outputs at every stage are stored back into the database, reinforcing that text mining relies on strong data management and documentation practices.</p>
+<p>We will cover all the text mining process just mentioned in much more depth in the coming weeks with hands-on lab assignments.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="brief-history-of-text-mining" class="slide level2">
+<section id="brief-history-of-text-mining" class="slide level2 smaller">
 <h2>Brief History of Text Mining</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/clipboard-1579569194.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/clipboard-1579569194.png" class="quarto-figure quarto-figure-center" width="400"></p>
 </figure>
 </div>
 <div class="footer">
