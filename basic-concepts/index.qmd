@@ -1738,31 +1738,102 @@ Library](https://doi.org/10.1007/978-3-030-85085-2_1)
 ::: notes
 *`{Zoom-in to see the figure or Right-click to save it!}`*
 
-Text mining today is based on techniques that were
-introduced in the 1960s and while the abilities of systems and the
-algorithms used have been refined, the process remains the
-same.
+Text mining today is based on techniques that were introduced in the
+1960s and while the abilities of systems and the algorithms used have
+been refined, the process remains the same.
 
-IR is primarily text-based, meaning that we retrieve documents, those
-documents may be textual, we use queries that are text, and we search
-representations that are text. There are definitely other forms of IR
-and other formats of documents that are retrieved but regardless the
-process remains the same.
+The text mining phenomenon first began for ext document cataloging,
+followed by text summarization to generate abstracts. The earliest
+instance of text classification and summarization in libraries was the
+development of the first library catalog in 1674 by Thomas Hyde for the
+Bodleian Library, University of Oxford, and the first index card in 1876
+by Melvil Dewey.
 
-In database systems, whether a flat file system or relational database,
-each field that is indexed (meaning it is searchable by users) produces
-what is called an inverted index of index terms. It is this index that
-is searched.
+It was followed by the summarization of a large body of texts in 1898
+(from the collaboration between the Physical Society of London and the
+Institution of Electrical Engineers) and the generation of document
+abstracts by a computer at IBM in 1958 by Luhn.
 
-Even web search engines like Google use inverted indexes and when you
-search the engine, you are searching the index of terms. Of course there
-are other systems that provide full text searching or even full document
-searching, but there are also limits to what is searched in each.
+In 1948, Shannon developed a new area of information theory, which is
+among the most notable developments of the twentieth century.
+Information flow in the form of the Internet, modern data compression
+protocols, manipulating applications, document storage, various indexing
+systems, and search systems are some of the applications of the
+information theory.
 
-We will talk more about IR models and how they work in systems later in
-the course.
+In 1950, the science of bibliometrics came into existence. It gives a
+numerical measure to analyze texts. It is an application of text
+processing that results in a collection of essential articles that can
+track the development path of a given discipline and is analogous to the
+word frequency calculation in text mining. In 1961, Doyle extended on
+Luhn’s work. He suggested a new method to classify library information
+into word frequencies and associations, which is now the highly
+automated and systematic method for browsing information in libraries.
 
-IR is no longer just a problem for libraries. IR systems are used
-everywhere and by anyone who has an Internet connection via their
-computer, smart phone, tablet or other mobile device.
+In the 1960s, NLP was developed from information science and linguistics
+to comprehend how natural languages are learned and modeled. The initial
+efforts of using NLP to translate a language on a computer failed, and
+soon in 1995, the focus was changed to processing answers to questions.
+
+The computers’ availability in the 1960s gave rise to NLP applications
+on computers known as computational linguistics. Luhn’s abstract
+generation method is an example of NLP. Clustering is an NLP task that
+groups documents together based on their similarity or distance measure
+when no previous information is available.
+
+In 1992, Cutting et al. provided an early clustering analysis of
+browsing a document collection when a query could not be created.
+Subsequently, in 2002, Tombros et al. used query-based clustering to
+perform hierarchical clustering of a document corpus.
+
+The next phase of NLP was related to understanding the context and
+meaning of the information instead of emphasizing the words used in the
+documents. Such developments were observed in the field of
+bibliometrics, where the context of documents was considered.
+
+Modern text mining followed a similar path and arose from the above
+developments in NLP through the 1990s. In the 2000s, NLP practitioners
+can either use the domain-independent stemming and parsing strategies to
+build features or use the newer text categorization to tag documents.
+
+Thus, the early text mining tasks in information science, library
+science, and NLP were primarily related to different forms of
+information summarization and information retrieval, such as abstracts,
+indexes, and grouping of documents, but the later text mining tasks were
+focused on information extraction. The relationship and content
+information are extracted by tagging each document of the corpus. Modern
+text mining can be partly defined based on the information extraction
+methods that support information discovery of latent patterns in the
+text bodies.
+:::
+
+## Different Text Mining Tasks
+
+![](images/21.png)
+
+:::notes
+This slide gives you a high-level overview of some of the most common text mining tasks.
+
+On the left, we have document classification, also called text categorization. Here, a new document is passed through a series of classifiers and based on those decisions, the document gets assigned to one or more categories.
+
+In the middle, we have information retrieval. This is what’s happening when you search a database or Google. You start with an input document or query, and the system finds the most relevant documents from a larger collection.
+
+On the right, we have clustering. Unlike classification, clustering doesn’t use predefined labels. Instead, the system automatically groups documents based on similarity, so you might end up with Group 1, Group 2, and Group 3 without naming them in advance.
+
+And at the bottom, we have information extraction. This is about pulling structured information out of unstructured text—for example, identifying “25 million dollars” as revenue and “45 thousand dollars” as profit and placing them into a spreadsheet.
+
+So, all of these common text mining tasks solve different problems such as assigning labels, finding relevant documents, grouping similar texts, or extracting specific facts.
+:::
+
+## Advanced Text Mining Approaches
+
+![](images/22.png){fig-align="center"}
+
+:::notes
+This slide gives you a big-picture overview of the advanced text mining and AI techniques we will be covering throughout the course. You will see approaches like topic modeling, sentiment analysis, network text analysis, predictive modeling or machine learning, deep neural networks, and large language models, along with how results can be communicated through dashboards and visualizations.
+
+At this stage, you do not need to understand how each of these methods works technically. The goal here is simply to show you the landscape of approaches that are possible when working with text data.
+
+We will return to each of these methods in the upcoming modules and cover them in depth—step by step—focusing on what they do, how they work, and how they can be applied responsibly to real-world problems.
+
 :::
