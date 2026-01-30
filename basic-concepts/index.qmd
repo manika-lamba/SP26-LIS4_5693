@@ -211,7 +211,7 @@ KDD depends on choosing methods that match the nature of the data being
 analyzed.
 :::
 
-## Information Retrieval {.smaller}
+# Information Retrieval {.smaller}
 
 `Definition`
 
@@ -237,7 +237,7 @@ In other words, IR is about bridging the gap between the user’s question
 and the vast universe of available information.
 :::
 
-## Information Retrieval {.smaller}
+## Information Retrieval (Cont.) {.smaller}
 
 Information Retrieval includes:
 
@@ -1643,7 +1643,7 @@ capable of understanding, reasoning, and assisting within complex
 academic and informational contexts.
 :::
 
-## Text Mining {.smaller}
+# Text Mining {.smaller}
 
 ::::: columns
 ::: {.column width="50%"}
@@ -1667,9 +1667,7 @@ academic and informational contexts.
 :::::
 
 ::: footer
-Weiss et al. (2005). Overview of text mining. In: Weiss et al. (eds)
-Text mining:Predictive methods for analyzing unstructured information.
-Springer, New York, NY, pp 1–13
+Weiss et al. (2005). Overview of text mining. In: Text mining:Predictive methods for analyzing unstructured information
 :::
 
 ::: notes
@@ -1811,29 +1809,52 @@ text bodies.
 
 ![](images/21.png)
 
-:::notes
-This slide gives you a high-level overview of some of the most common text mining tasks.
+::: notes
+This slide gives you a high-level overview of some of the most common
+text mining tasks.
 
-On the left, we have document classification, also called text categorization. Here, a new document is passed through a series of classifiers and based on those decisions, the document gets assigned to one or more categories.
+On the left, we have document classification, also called text
+categorization. Here, a new document is passed through a series of
+classifiers and based on those decisions, the document gets assigned to
+one or more categories.
 
-In the middle, we have information retrieval. This is what’s happening when you search a database or Google. You start with an input document or query, and the system finds the most relevant documents from a larger collection.
+In the middle, we have information retrieval. This is what’s happening
+when you search a database or Google. You start with an input document
+or query, and the system finds the most relevant documents from a larger
+collection.
 
-On the right, we have clustering. Unlike classification, clustering doesn’t use predefined labels. Instead, the system automatically groups documents based on similarity, so you might end up with Group 1, Group 2, and Group 3 without naming them in advance.
+On the right, we have clustering. Unlike classification, clustering
+doesn’t use predefined labels. Instead, the system automatically groups
+documents based on similarity, so you might end up with Group 1, Group
+2, and Group 3 without naming them in advance.
 
-And at the bottom, we have information extraction. This is about pulling structured information out of unstructured text—for example, identifying “25 million dollars” as revenue and “45 thousand dollars” as profit and placing them into a spreadsheet.
+And at the bottom, we have information extraction. This is about pulling
+structured information out of unstructured text—for example, identifying
+“25 million dollars” as revenue and “45 thousand dollars” as profit and
+placing them into a spreadsheet.
 
-So, all of these common text mining tasks solve different problems such as assigning labels, finding relevant documents, grouping similar texts, or extracting specific facts.
+So, all of these common text mining tasks solve different problems such
+as assigning labels, finding relevant documents, grouping similar texts,
+or extracting specific facts.
 :::
 
 ## Advanced Text Mining Approaches
 
 ![](images/22.png){fig-align="center"}
 
-:::notes
-This slide gives you a big-picture overview of the advanced text mining and AI techniques we will be covering throughout the course. You will see approaches like topic modeling, sentiment analysis, network text analysis, predictive modeling or machine learning, deep neural networks, and large language models, along with how results can be communicated through dashboards and visualizations.
+::: notes
+This slide gives you a big-picture overview of the advanced text mining
+and AI techniques we will be covering throughout the course. You will
+see approaches like topic modeling, sentiment analysis, network text
+analysis, predictive modeling or machine learning, deep neural networks,
+and large language models, along with how results can be communicated
+through dashboards and visualizations.
 
-At this stage, you do not need to understand how each of these methods works technically. The goal here is simply to show you the landscape of approaches that are possible when working with text data.
+At this stage, you do not need to understand how each of these methods
+works technically. The goal here is simply to show you the landscape of
+approaches that are possible when working with text data.
 
-We will return to each of these methods in the upcoming modules and cover them in depth—step by step—focusing on what they do, how they work, and how they can be applied responsibly to real-world problems.
-
+We will return to each of these methods in the upcoming modules and
+cover them in depth—step by step—focusing on what they do, how they
+work, and how they can be applied responsibly to real-world problems.
 :::
