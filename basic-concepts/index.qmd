@@ -22,6 +22,80 @@ editor:
 
 ## Introduction {.smaller}
 
+**Information Retrieval (IR)** is about `finding the right documents`
+
+**Natural Language Processing (NLP)** is about `understanding language`
+
+**Text Mining** is about
+`discovering patterns and knowledge from large collections of text`
+
+![](images/clipboard-3994149887.png){fig-align="center" width="500"}
+
+::: notes
+Hello everyone! This week's lecture is divided into two parts. Part 1
+focuses on providing you with a brief overview of information retrieval
+(IR), natural language processing (NLP), and text mining. Part 2 is
+about how to see the text in context from data feminism lens.
+
+Before going ahead, I want you to understand how IR, NLP, and text
+mining are related to each other. Think of these three not as competing
+fields, but as **layers in a pipeline** and **overlapping research
+traditions** that work together to extract value from text.
+
+More specifically, **Text analysis/text mining** as an
+**interdisciplinary field** that sits at the intersection of several
+established domains. It is not a single technique—it is the
+**application of computational methods to large collections of text in
+order to discover patterns, structure, or knowledge** that is not
+explicitly encoded. To do this, text mining depends heavily on both
+Information Retrieval and Natural Language Processing.
+
+**Information Retrieval** is concerned with **finding relevant
+documents** in large collections. Classic examples are search engines
+and digital library systems. IR focuses on questions like: *Which
+documents are relevant to a query? How should documents be indexed? How
+should relevance be ranked?* Importantly, IR usually treats documents as
+**bags of words**, with limited concern for deep linguistic meaning. In
+a text mining workflow, IR often comes **first**—it selects the subset
+of text that will later be analyzed.
+
+On other hand, **Natural Language Processing**, is grounded in
+**computational linguistics**. NLP is concerned with **understanding and
+modeling language itself**. This includes tasks such as tokenization,
+part-of-speech tagging, parsing, named entity recognition, and semantic
+representation. NLP asks: *What does this text mean? What entities,
+concepts, and relationships are expressed?* In text mining, NLP provides
+the **representations and features** that make deeper analysis possible.
+
+Finally, **text mining** sits at the intersection of IR, NLP, **data
+mining**, and **machine learning**. While IR finds documents and NLP
+helps interpret language, text mining focuses on **discovering patterns
+across many documents**. This includes tasks like **document clustering,
+document classification, topic modeling, trend detection, and
+information extraction at scale**. We will cover all these aspects of
+text mining in detail in this course. Text mining is less about
+individual texts and more about **collections**, **structure**, and
+**emergent insights**.
+
+We will also cover machine learning and other recent AI methodologies
+(including deep learning, LLMs, and Agentic AI) developed in recent
+years in this course. Machine learning provide the **models and
+algorithms** that make these tasks scalable and adaptive. Data mining
+contributes techniques for pattern discovery, while databases and
+information science contribute methods for managing and organizing large
+text corpora.
+
+This course will live primarily in that **overlapping center**, showing
+how IR and NLP are used as tools within broader text mining workflows.
+Understanding how these fields connect is essential, because real-world
+text mining systems almost always rely on **all three working
+together**.
+:::
+
+## Exponential Growth of Data {.smaller}
+
+::::: columns
+::: {.column width="50%"}
 -   Data and information generation in every discipline in the universe
     of knowledge has seen staggering growth
 
@@ -30,43 +104,16 @@ editor:
 
 -   Nowadays, information collection is web-based and online which is
     vast and growing at an exponential rate
-
-::::: columns
-::: {.column width="50%"}
-![](images/data.png){fig-align="center" width="700"}
 :::
 
 ::: {.column width="50%"}
+![](images/data.png){fig-align="center" width="700"}
 ![](images/data.jpg){fig-align="center" width="700"}
 :::
 :::::
 
 ::: notes
-Hello everyone! This week's lecture provides you with a brief overview
-of information retrieval (IR) systems, users of IR systems, and the
-topics we will cover in this course.
-
-In this class we will learn about online information retrieval. The
-first part of class will focus on the **HOW** of information retrieval
-systems: how they work, how they are structured, different IR models and
-technologies, and the role that users play when designing an information
-retrieval system.
-
-The second part of class will introduce you to searching strategies that
-will make you a better searcher in many different systems.
-
-Lastly, in the third part of class you will use your new search skills
-in various databases and on the Web.
-
-Knowing how systems work, the decisions made while developing them, and
-how they are structured will make you a better searcher. Understanding
-yourself as a searcher will also help you identify areas you need to
-strengthen as you use online systems for your own work but also to help
-others conduct searches.
-
-So, let's get started!
-
-The idea of doing information retrieval is driven by one fundamental
+The idea of doing data mining or retrieval is driven by one fundamental
 fact, and that is the digital revolution.The digital revolution happened
 extremely quickly and profoundly. For example, the figures shown on the
 slide is taken from [Hilbert and Lopez
@@ -114,6 +161,55 @@ So, it’s not just about storing information, it’s about creating the
 ability to use it --- instantly, effectively, and intelligently.
 :::
 
+## From Data to Knowledge {.smaller}
+
+-   For several years advances in Knowledge Discovery in Databases (KDD)
+    have been undertaken to manage the information in an efficient
+    manner
+
+-   Data mining is a part of the KDD process which identifies the hidden
+    patterns in large information repositories
+
+-   It involves several information extraction techniques such as
+    regression models, association rules, Bayesian methods, decision
+    trees, neural networks, etc.
+
+-   Data can be textual or non-textual in nature
+
+-   Textual data are generated from various digital sources such as
+    journals, newspapers, archives, social networks, blogs, forums, etc.
+
+::: notes
+Knowledge Discovery in Databases, or KDD, which refers to a set of
+methods developed to manage and make sense of large amounts of
+information efficiently. As data volumes have grown over the years, KDD
+has become essential for identifying meaningful information that would
+be difficult or impossible to find manually.
+
+Data mining is a key step within the KDD process. While KDD describes
+the overall framework, data mining specifically focuses on discovering
+hidden patterns, relationships, or trends within large data
+repositories. In other words, data mining is where insight is actually
+extracted from data.
+
+To do this, data mining uses a range of information extraction
+techniques, including regression models, association rules, Bayesian
+methods, decision trees, and neural networks. Each of these techniques
+is suited to different types of questions, such as prediction,
+classification, or pattern detection.
+
+Data can take many forms. It can be textual—such as written language—or
+non-textual, including images, audio, video, or sensor data. Textual
+data, in particular, is generated in enormous quantities from digital
+sources like academic journals, newspapers, archives, social media
+platforms, blogs, and online forums.
+
+Understanding the variety of data types is important because different
+forms of data require different mining techniques, and the success of
+KDD depends on choosing methods that match the nature of the data being
+analyzed.
+:::
+
 ## Information Retrieval {.smaller}
 
 `Definition`
@@ -129,7 +225,7 @@ Library](https://doi.org/10.1007/978-3-030-85085-2_1)
 :::
 
 ::: notes
-Now, let's define Information Retrieval (IR). It is a process of
+Now, let's first define Information Retrieval (IR). It is a process of
 matching a particular document with a set of other relevant documents.
 Suppose you have an extensive collection of documents and you want to
 find a relevant document. This text mining task retrieves the relevant
@@ -202,47 +298,6 @@ Finally, it’s worth emphasizing that search engines, which we all use
 daily, are the most visible application of these IR principles. The
 concepts and techniques you see here form the foundation of systems like
 Google, Bing, and countless specialized retrieval platforms.
-:::
-
-## Brief History of Information Retrieval
-
-![](images/clipboard-1579569194.png){fig-align="center"}
-
-::: footer
-[Lamba and Madhusudhan. (2022). Ch-1 The Computational
-Library](https://doi.org/10.1007/978-3-030-85085-2_1)
-:::
-
-::: notes
-*`{Zoom-in to see the figure or Right-click to save it!}`*
-
-Information retrieval systems today are based on techniques that were
-introduced in the 1960s and while the abilities of systems and the
-algorithms used have been refined, the process of retrieval remains the
-same.
-
-IR is primarily text-based, meaning that we retrieve documents, those
-documents may be textual, we use queries that are text, and we search
-representations that are text. There are definitely other forms of IR
-and other formats of documents that are retrieved but regardless the
-process remains the same.
-
-In database systems, whether a flat file system or relational database,
-each field that is indexed (meaning it is searchable by users) produces
-what is called an inverted index of index terms. It is this index that
-is searched.
-
-Even web search engines like Google use inverted indexes and when you
-search the engine, you are searching the index of terms. Of course there
-are other systems that provide full text searching or even full document
-searching, but there are also limits to what is searched in each.
-
-We will talk more about IR models and how they work in systems later in
-the course.
-
-IR is no longer just a problem for libraries. IR systems are used
-everywhere and by anyone who has an Internet connection via their
-computer, smart phone, tablet or other mobile device.
 :::
 
 ## Brief History of Information Retrieval
@@ -1679,7 +1734,7 @@ academic and informational contexts.
 :::
 
 ::: {.column width="50%"}
-![](images/1.png){fig-align="center"}
+![](images/.png){fig-align="center"}
 :::
 :::::
 
@@ -1687,4 +1742,45 @@ academic and informational contexts.
 Weiss et al. (2005). Overview of text mining. In: Weiss et al. (eds)
 Text mining:Predictive methods for analyzing unstructured information.
 Springer, New York, NY, pp 1–13
+:::
+
+## Brief History of Text Mining
+
+![](images/clipboard-1579569194.png){fig-align="center"}
+
+::: footer
+[Lamba and Madhusudhan. (2022). Ch-1 The Computational
+Library](https://doi.org/10.1007/978-3-030-85085-2_1)
+:::
+
+::: notes
+*`{Zoom-in to see the figure or Right-click to save it!}`*
+
+Information retrieval systems today are based on techniques that were
+introduced in the 1960s and while the abilities of systems and the
+algorithms used have been refined, the process of retrieval remains the
+same.
+
+IR is primarily text-based, meaning that we retrieve documents, those
+documents may be textual, we use queries that are text, and we search
+representations that are text. There are definitely other forms of IR
+and other formats of documents that are retrieved but regardless the
+process remains the same.
+
+In database systems, whether a flat file system or relational database,
+each field that is indexed (meaning it is searchable by users) produces
+what is called an inverted index of index terms. It is this index that
+is searched.
+
+Even web search engines like Google use inverted indexes and when you
+search the engine, you are searching the index of terms. Of course there
+are other systems that provide full text searching or even full document
+searching, but there are also limits to what is searched in each.
+
+We will talk more about IR models and how they work in systems later in
+the course.
+
+IR is no longer just a problem for libraries. IR systems are used
+everywhere and by anyone who has an Internet connection via their
+computer, smart phone, tablet or other mobile device.
 :::

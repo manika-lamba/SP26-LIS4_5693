@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dr.&nbsp;Manika Lamba">
-  <title>Data Feminism and AI</title>
+  <title>Text in Context: Data Feminism and AI</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -329,7 +329,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Data Feminism and AI</h1>
+  <h1 class="title">Text in Context: Data Feminism and AI</h1>
   <p class="subtitle">LIS 4/5693: Information Retrieval and Text Mining</p>
 
 <div class="quarto-title-authors">
@@ -344,8 +344,17 @@ Dr.&nbsp;Manika Lamba
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
 <aside class="notes">
-<p>In this week’s module, we delve into a critical and increasingly relevant topic – Data Feminism and Algorithms! As we continue to navigate the complexities of data ethics, governance, and responsibility, it is essential to recognize how power, privilege, and inequality are embedded in the systems we design, the data we collect, and the algorithms we deploy.</p>
-<p>In this module, we will explore the principles of data feminism, examine case studies that highlight the gendered and intersectional impacts of algorithms, and discuss strategies for designing more equitable and accountable data systems.</p>
+<p>This is the second part of this week’s lecture, and here we shift our focus to <strong>the data itself</strong>, specifically examining text data through a <strong>Data Feminism lens</strong>.</p>
+<p>Rather than immediately asking <em>what model to use</em> or <em>what algorithm performs best</em>, we need to begin by asking more fundamental and ethical questions such as</p>
+<ul>
+<li><code>What does this data represent, and what realities does it claim to describe?</code></li>
+<li><code>What is the social, historical, or institutional context in which this data was produced?</code></li>
+<li><code>Who generated the data, and who was excluded from that process?</code></li>
+</ul>
+<p>From a data feminism perspective, it is especially important to think about <strong>bias and power</strong>. Textual data often carries the assumptions, values, and blind spots of the systems and people that created it. We need to ask what kinds of <strong>inherent biases</strong> may already be embedded in the data during its generation, collection, and curation and how those biases can be amplified downstream when we apply NLP, machine learning, or text generation models that learn from and reproduce these patterns.</p>
+<p>Finally, we must consider <strong>data leakage and harm</strong>. When working with textual data, what sensitive information might be unintentionally exposed? What privacy, consent, or misinterpretation risks arise once data is processed, shared, or repurposed? These issues are not separate from technical work – they directly shape the reliability, ethics, and impact of IR, NLP, and text mining systems.</p>
+<p>By foregrounding these questions, this lecture sets the foundation for responsible and critically informed text mining, reminding us that <strong>data is never neutral, and neither are the systems built on top of it</strong>.</p>
+<p>Please note that throughout this lecture, when I use the term “data,” I am using it as a broad, umbrella term. In this context, it explicitly includes textual data (such as documents, social media posts, articles, transcripts, and any other forms of text) that we analyze using IR, NLP, or text mining techniques.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -709,7 +718,7 @@ Dr.&nbsp;Manika Lamba
 <p>Then there is human cost. We have known for several years how Amazon played role in cloud storage for Immigration and Customs Enforcement (ICE). How Google developed technology to make drones Stripes more accurate – which they then sold it to the US government. This was Project Maven which you might recall was a source of Google led worker protest to end terminate that contract.</p>
 <p>But now we are seeing this nearly identical object detection software being put to use right now both in Ukraine and in Gaza – which people are describing as the first AI Wars.</p>
 <p>It is really worth pausing for a moment and reflect on how the ultimate use case is for the set of technologies that are truly intended to benefit humanity. As it turns out causing the literal destruction of humanity instead.</p>
-<p>I would like to end this lecture on a hopeful note that these <strong>AI systems are incredibly powerful but they are only as powerful as the</strong></p>
+<p>These <strong>AI systems are incredibly powerful but they are only as powerful as the</strong></p>
 <ul>
 <li>data on which they are trained;</li>
 <li>the conditions under which they are put to use; and</li>
@@ -717,6 +726,36 @@ Dr.&nbsp;Manika Lamba
 </ul>
 <p>If we are going to imagine alternative conditions for their development and alternative contexts for their use then I think feminism has a very strong &amp; real role to play. These are contexts that empower rather than dis-empower.</p>
 <p>These are one that rebalance the existing structures of power that affect our world today. It is an interventionist &amp; political one — technology is not NEUTRAL. None of the choices that we make are. In this particular case, it is not neutral because it challenges these default settings of models, datasets, and systems – it does so with a goal towards – Designing technology that works towards liberation and not just resource extraction.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="again-what-all-this-has-to-do-with-text-mining" class="title-slide slide level1 center">
+<h1>Again, what all this has to do with Text Mining?</h1>
+<aside class="notes">
+<p>Text mining often gives the impression that we are working with neutral objects: <em>documents, tokens, corpora, variables</em>. But from a computational social science perspective, texts are not just data points. They are traces of human lives, institutions, power relations, and social inequalities. Every tweet, interview transcript, forum post, or policy document was produced in a particular context, by someone positioned within social structures that shape what can be said, how it is said, and how visible it becomes.</p>
+<p>Putting the <code>text in context</code> recognizes that language is not neutral, and neither are the systems we use to analyze it. When we remove text from its social, political, and historical settings, we risk misunderstanding what it represents or worse, reproducing the very inequalities we might be trying to study.</p>
+<p>This is why I am introducing questions of from data ethics and specifically data feminism at the very beginning of the course, rather than treating ethics as something to address only at the end.</p>
+<p>Data feminism encourages us to ask how power operates in data work: <code>who is represented, who is missing, how categories are defined, and how analytic choices can amplify or silence particular voices</code>. These are not abstract ethical concerns; they are methodological ones.</p>
+<p>As we move through the course, you will learn techniques for collecting and analyzing large volumes of text—from social media, news, policy documents, and other sources. Starting with <strong>text in context</strong> means that from the very beginning, you are trained to ask not only what a method can do, but what assumptions it makes about language, identity, and social structure.</p>
+<p>We will return to data management and ethics in much more depth in the final week of the course, where we will address text data management, data citation, ethical and legal rules related to text data including FAIR data principles, copyright, licensing, creative commons, digital rights, social media ethics &amp; frameworks, and algorithmic confounding/biasness in depth.</p>
+<p>But if ethics only appears at the end, it risks becoming a retrospective checklist something we think about after the analytical decisions have already been made. By foregrounding data feminism now, <strong>I want it to function as a lens that stays with us throughout the course</strong>. It will inform</p>
+<ul>
+<li><code>how we evaluate datasets</code></li>
+<li><code>how we choose methods</code></li>
+<li><code>how we interpret findings</code></li>
+<li><code>how we communicate results</code></li>
+</ul>
+<p>This lecture sets the tone for the course that is <code>text mining is a technical practice that is always embedded in context, and ethical reasoning as a core component</code>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

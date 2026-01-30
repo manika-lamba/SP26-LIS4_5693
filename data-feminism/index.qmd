@@ -1,5 +1,5 @@
 ---
-title: "Data Feminism and AI"
+title: "Text in Context: Data Feminism and AI"
 subtitle: "LIS 4/5693: Information Retrieval and Text Mining"
 author: 
   - Dr. Manika Lamba
@@ -23,17 +23,43 @@ editor:
 # Introduction
 
 ::: notes
-In this week's module, we delve into a critical and increasingly
-relevant topic -- Data Feminism and Algorithms! As we continue to
-navigate the complexities of data ethics, governance, and
-responsibility, it is essential to recognize how power, privilege, and
-inequality are embedded in the systems we design, the data we collect,
-and the algorithms we deploy.
+This is the second part of this week’s lecture, and here we shift our
+focus to **the data itself**, specifically examining text data through a
+**Data Feminism lens**.
 
-In this module, we will explore the principles of data feminism, examine
-case studies that highlight the gendered and intersectional impacts of
-algorithms, and discuss strategies for designing more equitable and
-accountable data systems.
+Rather than immediately asking *what model to use* or *what algorithm
+performs best*, we need to begin by asking more fundamental and ethical
+questions such as
+
+-   `What does this data represent, and what realities does it claim to describe?`
+-   `What is the social, historical, or institutional context in which this data was produced?`
+-   `Who generated the data, and who was excluded from that process?`
+
+From a data feminism perspective, it is especially important to think
+about **bias and power**. Textual data often carries the assumptions,
+values, and blind spots of the systems and people that created it. We
+need to ask what kinds of **inherent biases** may already be embedded in
+the data during its generation, collection, and curation and how those
+biases can be amplified downstream when we apply NLP, machine learning,
+or text generation models that learn from and reproduce these patterns.
+
+Finally, we must consider **data leakage and harm**. When working with
+textual data, what sensitive information might be unintentionally
+exposed? What privacy, consent, or misinterpretation risks arise once
+data is processed, shared, or repurposed? These issues are not separate
+from technical work -- they directly shape the reliability, ethics, and
+impact of IR, NLP, and text mining systems.
+
+By foregrounding these questions, this lecture sets the foundation for
+responsible and critically informed text mining, reminding us that
+**data is never neutral, and neither are the systems built on top of
+it**.
+
+Please note that throughout this lecture, when I use the term “data,” I
+am using it as a broad, umbrella term. In this context, it explicitly
+includes textual data (such as documents, social media posts, articles,
+transcripts, and any other forms of text) that we analyze using IR, NLP,
+or text mining techniques.
 :::
 
 # In Today's World [*Data is Power*]{style="color: blue;"}
@@ -614,8 +640,7 @@ use case is for the set of technologies that are truly intended to
 benefit humanity. As it turns out causing the literal destruction of
 humanity instead.
 
-I would like to end this lecture on a hopeful note that these **AI
-systems are incredibly powerful but they are only as powerful as the**
+These **AI systems are incredibly powerful but they are only as powerful as the**
 
 -   data on which they are trained;
 -   the conditions under which they are put to use; and
@@ -633,4 +658,29 @@ particular case, it is not neutral because it challenges these default
 settings of models, datasets, and systems -- it does so with a goal
 towards -- Designing technology that works towards liberation and not
 just resource extraction.
+:::
+
+# Again, what all this has to do with Text Mining?
+
+:::notes
+Text mining often gives the impression that we are working with neutral objects: *documents, tokens, corpora, variables*. But from a computational social science perspective, texts are not just data points. They are traces of human lives, institutions, power relations, and social inequalities. Every tweet, interview transcript, forum post, or policy document was produced in a particular context, by someone positioned within social structures that shape what can be said, how it is said, and how visible it becomes. 
+
+Putting the `text in context` recognizes that language is not neutral, and neither are the systems we use to analyze it. When we remove text from its social, political, and historical settings, we risk misunderstanding what it represents or worse, reproducing the very inequalities we might be trying to study.
+
+This is why I am introducing questions of from data ethics and specifically data feminism at the very beginning of the course, rather than treating ethics as something to address only at the end.
+
+Data feminism encourages us to ask how power operates in data work: `who is represented, who is missing, how categories are defined, and how analytic choices can amplify or silence particular voices`. These are not abstract ethical concerns; they are methodological ones.
+
+As we move through the course, you will learn techniques for collecting and analyzing large volumes of text—from social media, news, policy documents, and other sources. Starting with **text in context** means that from the very beginning, you are trained to ask not only what a method can do, but what assumptions it makes about language, identity, and social structure.
+
+We will return to data management and ethics in much more depth in the final week of the course, where we will address text data management, data citation, ethical and legal rules related to text data including FAIR data principles, copyright, licensing, creative commons, digital rights, social media ethics & frameworks, and algorithmic confounding/biasness in depth. 
+
+But if ethics only appears at the end, it risks becoming a retrospective checklist something we think about after the analytical decisions have already been made. By foregrounding data feminism now, **I want it to function as a lens that stays with us throughout the course**. It will inform 
+
+- `how we evaluate datasets` 
+- `how we choose methods` 
+- `how we interpret findings` 
+- `how we communicate results`
+
+This lecture sets the tone for the course that is `text mining is a technical practice that is always embedded in context, and ethical reasoning as a core component`.
 :::

@@ -343,39 +343,78 @@ Dr.&nbsp;Manika Lamba
 </section>
 <section id="introduction" class="slide level2 smaller">
 <h2>Introduction</h2>
+<p><strong>Information Retrieval (IR)</strong> is about <code>finding the right documents</code></p>
+<p><strong>Natural Language Processing (NLP)</strong> is about <code>understanding language</code></p>
+<p><strong>Text Mining</strong> is about <code>discovering patterns and knowledge from large collections of text</code></p>
+
+<img data-src="images/clipboard-3994149887.png" class="quarto-figure quarto-figure-center r-stretch" width="500"><aside class="notes">
+<p>Hello everyone! This week’s lecture is divided into two parts. Part 1 focuses on providing you with a brief overview of information retrieval (IR), natural language processing (NLP), and text mining. Part 2 is about how to see the text in context from data feminism lens.</p>
+<p>Before going ahead, I want you to understand how IR, NLP, and text mining are related to each other. Think of these three not as competing fields, but as <strong>layers in a pipeline</strong> and <strong>overlapping research traditions</strong> that work together to extract value from text.</p>
+<p>More specifically, <strong>Text analysis/text mining</strong> as an <strong>interdisciplinary field</strong> that sits at the intersection of several established domains. It is not a single technique—it is the <strong>application of computational methods to large collections of text in order to discover patterns, structure, or knowledge</strong> that is not explicitly encoded. To do this, text mining depends heavily on both Information Retrieval and Natural Language Processing.</p>
+<p><strong>Information Retrieval</strong> is concerned with <strong>finding relevant documents</strong> in large collections. Classic examples are search engines and digital library systems. IR focuses on questions like: <em>Which documents are relevant to a query? How should documents be indexed? How should relevance be ranked?</em> Importantly, IR usually treats documents as <strong>bags of words</strong>, with limited concern for deep linguistic meaning. In a text mining workflow, IR often comes <strong>first</strong>—it selects the subset of text that will later be analyzed.</p>
+<p>On other hand, <strong>Natural Language Processing</strong>, is grounded in <strong>computational linguistics</strong>. NLP is concerned with <strong>understanding and modeling language itself</strong>. This includes tasks such as tokenization, part-of-speech tagging, parsing, named entity recognition, and semantic representation. NLP asks: <em>What does this text mean? What entities, concepts, and relationships are expressed?</em> In text mining, NLP provides the <strong>representations and features</strong> that make deeper analysis possible.</p>
+<p>Finally, <strong>text mining</strong> sits at the intersection of IR, NLP, <strong>data mining</strong>, and <strong>machine learning</strong>. While IR finds documents and NLP helps interpret language, text mining focuses on <strong>discovering patterns across many documents</strong>. This includes tasks like <strong>document clustering, document classification, topic modeling, trend detection, and information extraction at scale</strong>. We will cover all these aspects of text mining in detail in this course. Text mining is less about individual texts and more about <strong>collections</strong>, <strong>structure</strong>, and <strong>emergent insights</strong>.</p>
+<p>We will also cover machine learning and other recent AI methodologies (including deep learning, LLMs, and Agentic AI) developed in recent years in this course. Machine learning provide the <strong>models and algorithms</strong> that make these tasks scalable and adaptive. Data mining contributes techniques for pattern discovery, while databases and information science contribute methods for managing and organizing large text corpora.</p>
+<p>This course will live primarily in that <strong>overlapping center</strong>, showing how IR and NLP are used as tools within broader text mining workflows. Understanding how these fields connect is essential, because real-world text mining systems almost always rely on <strong>all three working together</strong>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exponential-growth-of-data" class="slide level2 smaller">
+<h2>Exponential Growth of Data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li><p>Data and information generation in every discipline in the universe of knowledge has seen staggering growth</p></li>
 <li><p>Storing, managing, querying, &amp; retrieval of huge amount of data &amp; information needs sophisticated procedures &amp; advanced technologies</p></li>
 <li><p>Nowadays, information collection is web-based and online which is vast and growing at an exponential rate</p></li>
 </ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/data.png" class="quarto-figure quarto-figure-center" width="700"></p>
-</figure>
-</div>
 </div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/data.jpg" class="quarto-figure quarto-figure-center" width="700"></p>
-</figure>
-</div>
+<p><img data-src="images/data.png" class="quarto-figure quarto-figure-center" width="700"> <img data-src="images/data.jpg" class="quarto-figure quarto-figure-center" width="700"></p>
 </div></div>
 <aside class="notes">
-<p>Hello everyone! This week’s lecture provides you with a brief overview of information retrieval (IR) systems, users of IR systems, and the topics we will cover in this course.</p>
-<p>In this class we will learn about online information retrieval. The first part of class will focus on the <strong>HOW</strong> of information retrieval systems: how they work, how they are structured, different IR models and technologies, and the role that users play when designing an information retrieval system.</p>
-<p>The second part of class will introduce you to searching strategies that will make you a better searcher in many different systems.</p>
-<p>Lastly, in the third part of class you will use your new search skills in various databases and on the Web.</p>
-<p>Knowing how systems work, the decisions made while developing them, and how they are structured will make you a better searcher. Understanding yourself as a searcher will also help you identify areas you need to strengthen as you use online systems for your own work but also to help others conduct searches.</p>
-<p>So, let’s get started!</p>
-<p>The idea of doing information retrieval is driven by one fundamental fact, and that is the digital revolution.The digital revolution happened extremely quickly and profoundly. For example, the figures shown on the slide is taken from <a href="https://www.science.org/doi/10.1126/science.1200970">Hilbert and Lopez (2011)</a> paper which showed that the in the late ’80s, 99% of the information in the world was stored in analogue form, for example on papers. Then, the digital part of information grew but then after the year 2000, it just exploded. They estimated that in the year 2002, for the first time, the world was able to store more digital than analog information. We still have papers around but by now, digital information counts for more than 99% of all the information.</p>
+<p>The idea of doing data mining or retrieval is driven by one fundamental fact, and that is the digital revolution.The digital revolution happened extremely quickly and profoundly. For example, the figures shown on the slide is taken from <a href="https://www.science.org/doi/10.1126/science.1200970">Hilbert and Lopez (2011)</a> paper which showed that the in the late ’80s, 99% of the information in the world was stored in analogue form, for example on papers. Then, the digital part of information grew but then after the year 2000, it just exploded. They estimated that in the year 2002, for the first time, the world was able to store more digital than analog information. We still have papers around but by now, digital information counts for more than 99% of all the information.</p>
 <p>So in the year 2014, when they last updated the data, they found that the world was able to store five zettabytes. How far is five zettabytes? If you would take all this information that you have on your hard disk and your cell phones and microchips on the back of your credit card, and you would put this in books, and you would make a pile, how high do you think the pile would reach? Would reach to the moon? Or to the sun?</p>
 <p>It will reach 4,500 times to the sun!! So there will be 4,500 piles from the Earth to the sun with books. So, in 2014, we had 4,500 piles of books. That’s all we were able to accumulate during human history, and now we’re doubling it ever since.</p>
 <p>So, we restore as much new information as all the information we were ever able to, there’s a lot of information to dig into and all the time you’re producing a lot more and it’s in digital format. That means then we need a system to compute it and use some system in order to retrieve it.</p>
 <p>We live in a time where we’re constantly generating new information and not just a little, but as much as we’ve ever been able to capture. Every day, more knowledge is being produced, and now it’s all in digital form. That’s powerful, because digital information can be stored and preserved almost endlessly.</p>
 <p>But here’s the challenge: with so much of it out there, we can’t rely on memory or manual systems anymore. We need computational systems to make sense of it — to process, organize, and connect it. And just as important, we need retrieval systems so that when we ask a question, we can actually pull the right piece of knowledge out of that vast ocean of data.</p>
 <p>So, it’s not just about storing information, it’s about creating the ability to use it — instantly, effectively, and intelligently.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="from-data-to-knowledge" class="slide level2 smaller">
+<h2>From Data to Knowledge</h2>
+<ul>
+<li><p>For several years advances in Knowledge Discovery in Databases (KDD) have been undertaken to manage the information in an efficient manner</p></li>
+<li><p>Data mining is a part of the KDD process which identifies the hidden patterns in large information repositories</p></li>
+<li><p>It involves several information extraction techniques such as regression models, association rules, Bayesian methods, decision trees, neural networks, etc.</p></li>
+<li><p>Data can be textual or non-textual in nature</p></li>
+<li><p>Textual data are generated from various digital sources such as journals, newspapers, archives, social networks, blogs, forums, etc.</p></li>
+</ul>
+<aside class="notes">
+<p>Knowledge Discovery in Databases, or KDD, which refers to a set of methods developed to manage and make sense of large amounts of information efficiently. As data volumes have grown over the years, KDD has become essential for identifying meaningful information that would be difficult or impossible to find manually.</p>
+<p>Data mining is a key step within the KDD process. While KDD describes the overall framework, data mining specifically focuses on discovering hidden patterns, relationships, or trends within large data repositories. In other words, data mining is where insight is actually extracted from data.</p>
+<p>To do this, data mining uses a range of information extraction techniques, including regression models, association rules, Bayesian methods, decision trees, and neural networks. Each of these techniques is suited to different types of questions, such as prediction, classification, or pattern detection.</p>
+<p>Data can take many forms. It can be textual—such as written language—or non-textual, including images, audio, video, or sensor data. Textual data, in particular, is generated in enormous quantities from digital sources like academic journals, newspapers, archives, social media platforms, blogs, and online forums.</p>
+<p>Understanding the variety of data types is important because different forms of data require different mining techniques, and the success of KDD depends on choosing methods that match the nature of the data being analyzed.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -399,7 +438,7 @@ Dr.&nbsp;Manika Lamba
 <p><a href="https://doi.org/10.1007/978-3-030-85085-2_1">Lamba and Madhusudhan. (2022). Ch-1 The Computational Library</a></p>
 </div>
 <aside class="notes">
-<p>Now, let’s define Information Retrieval (IR). It is a process of matching a particular document with a set of other relevant documents. Suppose you have an extensive collection of documents and you want to find a relevant document. This text mining task retrieves the relevant documents based on the best matches of input document with the collection of documents based on a similarity measure.</p>
+<p>Now, let’s first define Information Retrieval (IR). It is a process of matching a particular document with a set of other relevant documents. Suppose you have an extensive collection of documents and you want to find a relevant document. This text mining task retrieves the relevant documents based on the best matches of input document with the collection of documents based on a similarity measure.</p>
 <p>In other words, IR is about bridging the gap between the user’s question and the vast universe of available information.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -458,32 +497,6 @@ Dr.&nbsp;Manika Lamba
 </section>
 <section id="brief-history-of-information-retrieval" class="slide level2">
 <h2>Brief History of Information Retrieval</h2>
-
-<img data-src="images/clipboard-1579569194.png" class="quarto-figure quarto-figure-center r-stretch"><div class="footer">
-<p><a href="https://doi.org/10.1007/978-3-030-85085-2_1">Lamba and Madhusudhan. (2022). Ch-1 The Computational Library</a></p>
-</div>
-<aside class="notes">
-<p><em><code>{Zoom-in to see the figure or Right-click to save it!}</code></em></p>
-<p>Information retrieval systems today are based on techniques that were introduced in the 1960s and while the abilities of systems and the algorithms used have been refined, the process of retrieval remains the same.</p>
-<p>IR is primarily text-based, meaning that we retrieve documents, those documents may be textual, we use queries that are text, and we search representations that are text. There are definitely other forms of IR and other formats of documents that are retrieved but regardless the process remains the same.</p>
-<p>In database systems, whether a flat file system or relational database, each field that is indexed (meaning it is searchable by users) produces what is called an inverted index of index terms. It is this index that is searched.</p>
-<p>Even web search engines like Google use inverted indexes and when you search the engine, you are searching the index of terms. Of course there are other systems that provide full text searching or even full document searching, but there are also limits to what is searched in each.</p>
-<p>We will talk more about IR models and how they work in systems later in the course.</p>
-<p>IR is no longer just a problem for libraries. IR systems are used everywhere and by anyone who has an Internet connection via their computer, smart phone, tablet or other mobile device.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="brief-history-of-information-retrieval-1" class="slide level2">
-<h2>Brief History of Information Retrieval</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -513,7 +526,7 @@ Dr.&nbsp;Manika Lamba
           display:block!important;
       }</style></aside>
 </section>
-<section id="brief-history-of-information-retrieval-2" class="slide level2">
+<section id="brief-history-of-information-retrieval-1" class="slide level2">
 <h2>Brief History of Information Retrieval</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -547,7 +560,7 @@ Dr.&nbsp;Manika Lamba
           display:block!important;
       }</style></aside>
 </section>
-<section id="brief-history-of-information-retrieval-3" class="slide level2">
+<section id="brief-history-of-information-retrieval-2" class="slide level2">
 <h2>Brief History of Information Retrieval</h2>
 <ul>
 <li><p><span style="color: blue;">AM SIGIR Conference</span> started in 1978 which subsequently emerged as the apex conference in IR systems</p></li>
@@ -574,7 +587,7 @@ Dr.&nbsp;Manika Lamba
           display:block!important;
       }</style></aside>
 </section>
-<section id="brief-history-of-information-retrieval-4" class="slide level2 smaller">
+<section id="brief-history-of-information-retrieval-3" class="slide level2 smaller">
 <h2>Brief History of Information Retrieval</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1473,13 +1486,43 @@ Dr.&nbsp;Manika Lamba
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/1.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div></div>
 <div class="footnote">
 <p>Weiss et al.&nbsp;(2005). Overview of text mining. In: Weiss et al.&nbsp;(eds) Text mining:Predictive methods for analyzing unstructured information. Springer, New York, NY, pp 1–13</p>
 </div>
+</section>
+<section id="brief-history-of-text-mining" class="slide level2">
+<h2>Brief History of Text Mining</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/clipboard-1579569194.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1007/978-3-030-85085-2_1">Lamba and Madhusudhan. (2022). Ch-1 The Computational Library</a></p>
+</div>
+<aside class="notes">
+<p><em><code>{Zoom-in to see the figure or Right-click to save it!}</code></em></p>
+<p>Information retrieval systems today are based on techniques that were introduced in the 1960s and while the abilities of systems and the algorithms used have been refined, the process of retrieval remains the same.</p>
+<p>IR is primarily text-based, meaning that we retrieve documents, those documents may be textual, we use queries that are text, and we search representations that are text. There are definitely other forms of IR and other formats of documents that are retrieved but regardless the process remains the same.</p>
+<p>In database systems, whether a flat file system or relational database, each field that is indexed (meaning it is searchable by users) produces what is called an inverted index of index terms. It is this index that is searched.</p>
+<p>Even web search engines like Google use inverted indexes and when you search the engine, you are searching the index of terms. Of course there are other systems that provide full text searching or even full document searching, but there are also limits to what is searched in each.</p>
+<p>We will talk more about IR models and how they work in systems later in the course.</p>
+<p>IR is no longer just a problem for libraries. IR systems are used everywhere and by anyone who has an Internet connection via their computer, smart phone, tablet or other mobile device.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="quarto-auto-generated-content">
 <p><img src="images/ou.png" class="slide-logo"></p>
 <div class="footer footer-default">
