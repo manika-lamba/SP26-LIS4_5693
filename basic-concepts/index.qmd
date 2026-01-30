@@ -1,5 +1,5 @@
 ---
-title: "Basic Concepts: IR, Text Mining, NLP"
+title: "Text in Context: Basic Concepts"
 subtitle: "LIS 4/5693: Information Retrieval and Text Mining"
 author: 
   - Dr. Manika Lamba
@@ -35,7 +35,8 @@ editor:
 Hello everyone! This week's lecture is divided into two parts. Part 1
 focuses on providing you with a brief overview of information retrieval
 (IR), natural language processing (NLP), and text mining. Part 2 is
-about how to see the text in context from data feminism lens.
+about how to see the text in context from data ethics specifically data
+feminism lens.
 
 Before going ahead, I want you to understand how IR, NLP, and text
 mining are related to each other. Think of these three not as competing
@@ -225,12 +226,12 @@ Library](https://doi.org/10.1007/978-3-030-85085-2_1)
 :::
 
 ::: notes
-Now, let's first define Information Retrieval (IR). It is a process of
-matching a particular document with a set of other relevant documents.
-Suppose you have an extensive collection of documents and you want to
-find a relevant document. This text mining task retrieves the relevant
-documents based on the best matches of input document with the
-collection of documents based on a similarity measure.
+Now, let's first begin with understanding Information Retrieval (IR). It
+is a process of matching a particular document with a set of other
+relevant documents. Suppose you have an extensive collection of
+documents and you want to find a relevant document. This text mining
+task retrieves the relevant documents based on the best matches of input
+document with the collection of documents based on a similarity measure.
 
 In other words, IR is about bridging the gap between the user’s question
 and the vast universe of available information.
@@ -554,8 +555,7 @@ them in a closed stack environment. When libraries became automated in
 the 1970s and 80s the term system users began being used to describe
 both the end users but also the information professionals who now had
 access to online resources using dumb terminals (not connected to an
-external server) and to a small set of subject specific databases. Your
-readings provide you will more of this history.
+external server) and to a small set of subject specific databases.
 
 Computerized systems like bots on the web are also users of our systems,
 right? The bots access our OPACs to index our collections and make them
@@ -606,13 +606,7 @@ specific kinds of questions, such as WHAT, WHEN, WHERE, WHY and HOW.
 Drawing out a user’s actual information need, however, is often
 challenging as they may not know how to ask the question, how to enter a
 query into the system, or to use the functions of the system to find
-what they are looking for. In libraries, we conduct “reference
-interviews” but in other contexts the conversation you have with users,
-or that users have with a computer, is designed to extract more
-information about their information need, right?
-
-Later in the course, we will talk more about how to refine an
-information need to conform with system parameters.
+what they are looking for.
 :::
 
 ## Information Needs
@@ -635,11 +629,9 @@ that users conduct:
 
 This is not quite as simple as it sounds. Very often a user will not
 know how to express their precise information need or how to implement
-it within a given system. They also may not remember correctly the
-author or title they think they know. In modern systems depending on the
-IR technique of the system or its capabilities to match partial search
-information, the user can still find useful information. We will talk
-more about this topic throughout the semester.
+it within a given system. In modern systems depending on the IR
+technique of the system or its capabilities to match partial search
+information, the user can still find useful information.
 :::
 
 ## Information Retrieval Systems {.smaller}
@@ -653,11 +645,10 @@ more about this topic throughout the semester.
 ![](images/clipboard-1371401673.png){fig-align="center"}
 
 ::: notes
-In this class, we will also learn more specifics about the IR process
-and IR systems. As this slide notes, IR systems are specialized systems
-that are used for the description, storage and retrieval of information
-representations (or the information objects). These objects can take
-many forms.
+This slide briefly explains the IR process and systems. IR systems are
+specialized systems that are used for the description, storage and
+retrieval of information representations (or the information objects).
+These objects can take many forms.
 
 Users access the records of the objects or the objects by matching
 search terms or queries to data or representations about the objects
@@ -745,7 +736,7 @@ the major conceptual and technological expansions in the field.
 ![](images/3.png){fig-align="center"}
 
 ::: notes
-The Chowdhury reading, Chapter 1, provides a much more complete picture,
+The figure on this slide provides a much more complete picture,
 expanding each of the functions of the Blair model on the last slide.
 The actors of each side are also included, such as on the left side,
 they include content creators, producers of the documents but also the
@@ -753,7 +744,7 @@ catalogers who provide the descriptions or the metadata associated with
 each object.
 
 This slide also shows a range of types of documents that might be
-accessible in a system. Chowdhury’s model also shows the outcomes of the
+accessible in a system. This figure also shows the outcomes of the
 representation process, by the human indexer as well as the computer
 processing the representations or documents, as well as the standards
 and tools that are used in the representation process.
@@ -769,9 +760,6 @@ exists. This is one of my favorite models for understanding the
 complexity of an IR system because it incorporates contextual factors
 into the model which have direct influence on the IR system and how it
 is used.
-
-We will learn more about IR systems, models and how to evaluate IR
-systems in the later modules.
 :::
 
 ## Types of IR Systems {.smaller}
@@ -876,9 +864,7 @@ specific types of information, so you choose an appropriate system.
 For example, if you are looking for a book to purchase you might use the
 Web and Amazon or Barnes and Noble. If you just want to borrow a book
 you would search for it in the library catalog and may find it easily
-accessible or the library may have to order it for you. (As I type this
-I realize this has also changed. With Amazon services you can now rent
-books and return them.)
+accessible or the library may have to order it for you.
 
 To locate scholarly articles, like those usually required for research
 papers in your classes, you would use OU Libraries subject/discipline
@@ -891,61 +877,18 @@ articles if you use different terms than what is in the Google Scholar
 index.
 
 The point here is that choosing the correct system is critical in
-finding the useful information you need. We will talk about this more
-later in the course.
+finding the useful data you need. We will talk about this more in our
+next lecture on "Acquiring Text".
 :::
 
-## Issues to Consider
-
-How is access to the Internet changing our user's ................?
-
--   Expectations
-
--   Ways of engaging with information
-
--   Brains
-
--   Information needs/seeking activities and behaviors
-
--   Other thoughts?
-
-::: notes
-Other issues to consider that we will explore together are, for example,
-
-1.  How have users expectations changed now that almost ubiquitous
-    access to the Web is possible?
-2.  Has our way of engaging with information also changed?
-3.  Is there any effect on our brains due to the way we interact with
-    online systems today?
-4.  Are there new sets of information behaviors that information
-    professionals need to take into account? For example, how have using
-    smart phones affected IR?
-5.  Other thoughts?
-
-We will explore these issues and others together.
-:::
-
-# Putting It All Together
-
-::: notes
-This class focuses on all aspects of IR from understanding more about
-users and their information needs, to system structures and IR
-techniques, to how to capitalize on these understandings to improve your
-own search abilities. It is also important to understand your own search
-process and where you might need to improve. This semester provides you
-will the opportunity to play with many different systems and to test out
-their features as you become a more proficient searcher and as you learn
-more about how IR works. My hope is that you enjoy the entire process!!
-:::
-
-# Natural Language Processing (NLP)
+## Natural Language Processing (NLP)
 
 -   Free text searching = flexiblity + complexity
 -   NLP is essential for modern IR
 -   Conversational interfaces are shaping the future in library search
 
 ::: notes
-Now, we are going to discuss natural language search and its role in
+Now, let's discuss natural language search and its role in
 modern information retrieval.
 
 First, we will discuss how free text searching represents both an
@@ -987,7 +930,7 @@ artificial intelligence.
     -   information may be "hidden"
 
 ::: notes
-In earlier modules, we covered the three core **document retrieval
+We have three core **document retrieval
 strategies**: (i) **Boolean**, (ii) **Vector Space**, and (iii)
 **Probabilistic** models.
 

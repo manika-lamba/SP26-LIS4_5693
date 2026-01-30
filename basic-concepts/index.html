@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dr.&nbsp;Manika Lamba">
-  <title>Basic Concepts: IR, Text Mining, NLP</title>
+  <title>Text in Context: Basic Concepts</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -329,7 +329,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Basic Concepts: IR, Text Mining, NLP</h1>
+  <h1 class="title">Text in Context: Basic Concepts</h1>
   <p class="subtitle">LIS 4/5693: Information Retrieval and Text Mining</p>
 
 <div class="quarto-title-authors">
@@ -348,7 +348,7 @@ Dr.&nbsp;Manika Lamba
 <p><strong>Text Mining</strong> is about <code>discovering patterns and knowledge from large collections of text</code></p>
 
 <img data-src="images/clipboard-3994149887.png" class="quarto-figure quarto-figure-center r-stretch" width="500"><aside class="notes">
-<p>Hello everyone! This week’s lecture is divided into two parts. Part 1 focuses on providing you with a brief overview of information retrieval (IR), natural language processing (NLP), and text mining. Part 2 is about how to see the text in context from data feminism lens.</p>
+<p>Hello everyone! This week’s lecture is divided into two parts. Part 1 focuses on providing you with a brief overview of information retrieval (IR), natural language processing (NLP), and text mining. Part 2 is about how to see the text in context from data ethics specifically data feminism lens.</p>
 <p>Before going ahead, I want you to understand how IR, NLP, and text mining are related to each other. Think of these three not as competing fields, but as <strong>layers in a pipeline</strong> and <strong>overlapping research traditions</strong> that work together to extract value from text.</p>
 <p>More specifically, <strong>Text analysis/text mining</strong> as an <strong>interdisciplinary field</strong> that sits at the intersection of several established domains. It is not a single technique—it is the <strong>application of computational methods to large collections of text in order to discover patterns, structure, or knowledge</strong> that is not explicitly encoded. To do this, text mining depends heavily on both Information Retrieval and Natural Language Processing.</p>
 <p><strong>Information Retrieval</strong> is concerned with <strong>finding relevant documents</strong> in large collections. Classic examples are search engines and digital library systems. IR focuses on questions like: <em>Which documents are relevant to a query? How should documents be indexed? How should relevance be ranked?</em> Importantly, IR usually treats documents as <strong>bags of words</strong>, with limited concern for deep linguistic meaning. In a text mining workflow, IR often comes <strong>first</strong>—it selects the subset of text that will later be analyzed.</p>
@@ -438,7 +438,7 @@ Dr.&nbsp;Manika Lamba
 <p><a href="https://doi.org/10.1007/978-3-030-85085-2_1">Lamba and Madhusudhan. (2022). Ch-1 The Computational Library</a></p>
 </div>
 <aside class="notes">
-<p>Now, let’s first define Information Retrieval (IR). It is a process of matching a particular document with a set of other relevant documents. Suppose you have an extensive collection of documents and you want to find a relevant document. This text mining task retrieves the relevant documents based on the best matches of input document with the collection of documents based on a similarity measure.</p>
+<p>Now, let’s first begin with understanding Information Retrieval (IR). It is a process of matching a particular document with a set of other relevant documents. Suppose you have an extensive collection of documents and you want to find a relevant document. This text mining task retrieves the relevant documents based on the best matches of input document with the collection of documents based on a similarity measure.</p>
 <p>In other words, IR is about bridging the gap between the user’s question and the vast universe of available information.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -649,7 +649,7 @@ Dr.&nbsp;Manika Lamba
 <li>Computerized system, software program</li>
 </ul>
 <aside class="notes">
-<p>Everyone is an information user and exploits information systems at some level. The literature uses many terms to describe users, such as end users, system users, and information professionals. They are all users of IR systems, right? End users and system users are basically the same. The term end user comes from a time in libraries when users could not access the library catalog and the librarian conducted the searching for them in a closed stack environment. When libraries became automated in the 1970s and 80s the term system users began being used to describe both the end users but also the information professionals who now had access to online resources using dumb terminals (not connected to an external server) and to a small set of subject specific databases. Your readings provide you will more of this history.</p>
+<p>Everyone is an information user and exploits information systems at some level. The literature uses many terms to describe users, such as end users, system users, and information professionals. They are all users of IR systems, right? End users and system users are basically the same. The term end user comes from a time in libraries when users could not access the library catalog and the librarian conducted the searching for them in a closed stack environment. When libraries became automated in the 1970s and 80s the term system users began being used to describe both the end users but also the information professionals who now had access to online resources using dumb terminals (not connected to an external server) and to a small set of subject specific databases.</p>
 <p>Computerized systems like bots on the web are also users of our systems, right? The bots access our OPACs to index our collections and make them accessible through search engines.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -700,8 +700,7 @@ Dr.&nbsp;Manika Lamba
 <li>How</li>
 </ul>
 <aside class="notes">
-<p>When helping users search or use different IR systems we can expect specific kinds of questions, such as WHAT, WHEN, WHERE, WHY and HOW. Drawing out a user’s actual information need, however, is often challenging as they may not know how to ask the question, how to enter a query into the system, or to use the functions of the system to find what they are looking for. In libraries, we conduct “reference interviews” but in other contexts the conversation you have with users, or that users have with a computer, is designed to extract more information about their information need, right?</p>
-<p>Later in the course, we will talk more about how to refine an information need to conform with system parameters.</p>
+<p>When helping users search or use different IR systems we can expect specific kinds of questions, such as WHAT, WHEN, WHERE, WHY and HOW. Drawing out a user’s actual information need, however, is often challenging as they may not know how to ask the question, how to enter a query into the system, or to use the functions of the system to find what they are looking for.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -727,7 +726,7 @@ Dr.&nbsp;Manika Lamba
 <li><p>Known item searches – where the user knows something about the item they are seeking such as title or author</p></li>
 <li><p>Subject or topic searches – the user knows some aspect of the subject or topic that they need to learn more about or that they need to find specific information about.</p></li>
 </ol>
-<p>This is not quite as simple as it sounds. Very often a user will not know how to express their precise information need or how to implement it within a given system. They also may not remember correctly the author or title they think they know. In modern systems depending on the IR technique of the system or its capabilities to match partial search information, the user can still find useful information. We will talk more about this topic throughout the semester.</p>
+<p>This is not quite as simple as it sounds. Very often a user will not know how to express their precise information need or how to implement it within a given system. In modern systems depending on the IR technique of the system or its capabilities to match partial search information, the user can still find useful information.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -747,7 +746,7 @@ Dr.&nbsp;Manika Lamba
 </blockquote>
 
 <img data-src="images/clipboard-1371401673.png" class="quarto-figure quarto-figure-center r-stretch"><aside class="notes">
-<p>In this class, we will also learn more specifics about the IR process and IR systems. As this slide notes, IR systems are specialized systems that are used for the description, storage and retrieval of information representations (or the information objects). These objects can take many forms.</p>
+<p>This slide briefly explains the IR process and systems. IR systems are specialized systems that are used for the description, storage and retrieval of information representations (or the information objects). These objects can take many forms.</p>
 <p>Users access the records of the objects or the objects by matching search terms or queries to data or representations about the objects within the system. IR systems are set up to use algorithms that provide the “matching” function. Older systems primarily were exact match systems, meaning that the query terms and terms in the representation and/or inverted index had to match exactly.</p>
 <p>The most significant change in IR systems is that MOST are no longer exact match systems but will match on part of the query terms. Artificial intelligence (AI) and machine learning are also changing expectations of users and how they think search engines and databases to work.</p>
 <style type="text/css">
@@ -808,11 +807,10 @@ Dr.&nbsp;Manika Lamba
 <h2>Model of IR System</h2>
 
 <img data-src="images/3.png" class="quarto-figure quarto-figure-center r-stretch"><aside class="notes">
-<p>The Chowdhury reading, Chapter 1, provides a much more complete picture, expanding each of the functions of the Blair model on the last slide. The actors of each side are also included, such as on the left side, they include content creators, producers of the documents but also the catalogers who provide the descriptions or the metadata associated with each object.</p>
-<p>This slide also shows a range of types of documents that might be accessible in a system. Chowdhury’s model also shows the outcomes of the representation process, by the human indexer as well as the computer processing the representations or documents, as well as the standards and tools that are used in the representation process.</p>
+<p>The figure on this slide provides a much more complete picture, expanding each of the functions of the Blair model on the last slide. The actors of each side are also included, such as on the left side, they include content creators, producers of the documents but also the catalogers who provide the descriptions or the metadata associated with each object.</p>
+<p>This slide also shows a range of types of documents that might be accessible in a system. This figure also shows the outcomes of the representation process, by the human indexer as well as the computer processing the representations or documents, as well as the standards and tools that are used in the representation process.</p>
 <p>In the middle is the search interface and IR technique that provide the matching function. On the right are the users within a societal context, which affects what they know and what types of knowledge they bring when they use an IR system.</p>
 <p>At the bottom of this model are other factors, such as national, technological, etc. that affect the context in which an IR system exists. This is one of my favorite models for understanding the complexity of an IR system because it incorporates contextual factors into the model which have direct influence on the IR system and how it is used.</p>
-<p>We will learn more about IR systems, models and how to evaluate IR systems in the later modules.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -893,10 +891,10 @@ Dr.&nbsp;Manika Lamba
 <p>Not to be flippant, but did you laugh the first time you heard someone say that you can find everything online?</p>
 <p>It is very common misconception of users that they can access everything online. While the availability of content and what you can find online has definitely improved, not everything can be found online.</p>
 <p>What is also key to remember is that you need to know which systems hold specific types of information, so you choose an appropriate system.</p>
-<p>For example, if you are looking for a book to purchase you might use the Web and Amazon or Barnes and Noble. If you just want to borrow a book you would search for it in the library catalog and may find it easily accessible or the library may have to order it for you. (As I type this I realize this has also changed. With Amazon services you can now rent books and return them.)</p>
+<p>For example, if you are looking for a book to purchase you might use the Web and Amazon or Barnes and Noble. If you just want to borrow a book you would search for it in the library catalog and may find it easily accessible or the library may have to order it for you.</p>
 <p>To locate scholarly articles, like those usually required for research papers in your classes, you would use OU Libraries subject/discipline specific databases.</p>
 <p>You can, in some instances, use Google Scholar, but often you end up with a citation that requires payment to access the actual article. AND Google Scholar is not as heavily indexed so you may miss relevant articles if you use different terms than what is in the Google Scholar index.</p>
-<p>The point here is that choosing the correct system is critical in finding the useful information you need. We will talk about this more later in the course.</p>
+<p>The point here is that choosing the correct system is critical in finding the useful data you need. We will talk about this more in our next lecture on “Acquiring Text”.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -909,65 +907,15 @@ Dr.&nbsp;Manika Lamba
           display:block!important;
       }</style></aside>
 </section>
-<section id="issues-to-consider" class="slide level2">
-<h2>Issues to Consider</h2>
-<p>How is access to the Internet changing our user’s …………….?</p>
-<ul>
-<li><p>Expectations</p></li>
-<li><p>Ways of engaging with information</p></li>
-<li><p>Brains</p></li>
-<li><p>Information needs/seeking activities and behaviors</p></li>
-<li><p>Other thoughts?</p></li>
-</ul>
-<aside class="notes">
-<p>Other issues to consider that we will explore together are, for example,</p>
-<ol type="1">
-<li>How have users expectations changed now that almost ubiquitous access to the Web is possible?</li>
-<li>Has our way of engaging with information also changed?</li>
-<li>Is there any effect on our brains due to the way we interact with online systems today?</li>
-<li>Are there new sets of information behaviors that information professionals need to take into account? For example, how have using smart phones affected IR?</li>
-<li>Other thoughts?</li>
-</ol>
-<p>We will explore these issues and others together.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="putting-it-all-together" class="title-slide slide level1 center">
-<h1>Putting It All Together</h1>
-<aside class="notes">
-<p>This class focuses on all aspects of IR from understanding more about users and their information needs, to system structures and IR techniques, to how to capitalize on these understandings to improve your own search abilities. It is also important to understand your own search process and where you might need to improve. This semester provides you will the opportunity to play with many different systems and to test out their features as you become a more proficient searcher and as you learn more about how IR works. My hope is that you enjoy the entire process!!</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-
-<section>
-<section id="natural-language-processing-nlp" class="title-slide slide level1 center">
-<h1>Natural Language Processing (NLP)</h1>
+<section id="natural-language-processing-nlp" class="slide level2">
+<h2>Natural Language Processing (NLP)</h2>
 <ul>
 <li>Free text searching = flexiblity + complexity</li>
 <li>NLP is essential for modern IR</li>
 <li>Conversational interfaces are shaping the future in library search</li>
 </ul>
 <aside class="notes">
-<p>Now, we are going to discuss natural language search and its role in modern information retrieval.</p>
+<p>Now, let’s discuss natural language search and its role in modern information retrieval.</p>
 <p>First, we will discuss how free text searching represents both an opportunity and a challenge. Its flexibility allows users to articulate queries in their own words, fostering inclusivity and accessibility. Yet this same flexibility introduces complexity, requiring sophisticated processing to manage linguistic ambiguity, synonymy, and varying query structures. The effectiveness of free text search therefore depends on the strength of the underlying linguistic and computational models.</p>
 <p>Second, we will see how Natural Language Processing or NLP has become indispensable for contemporary information retrieval. From tokenization and indexing to intent detection and semantic modeling, NLP techniques enable systems to move beyond surface-level keyword matching toward genuine understanding of user queries and document meaning. NLP thus serves as the foundation upon which intelligent, adaptive, and context-aware retrieval systems are built.</p>
 <p>Finally, we will discuss how conversational interfaces—including voice-based assistants and chatbots—are reshaping the landscape of library search and discovery. By facilitating dialogue-like interactions, these systems make information retrieval more natural, accessible, and responsive. They extend the mission of libraries by offering scalable, human-centered engagement, and they signal the ongoing convergence of librarianship, computational linguistics, and artificial intelligence.</p>
@@ -1003,7 +951,7 @@ Dr.&nbsp;Manika Lamba
 </ul></li>
 </ul>
 <aside class="notes">
-<p>In earlier modules, we covered the three core <strong>document retrieval strategies</strong>: (i) <strong>Boolean</strong>, (ii) <strong>Vector Space</strong>, and (iii) <strong>Probabilistic</strong> models.</p>
+<p>We have three core <strong>document retrieval strategies</strong>: (i) <strong>Boolean</strong>, (ii) <strong>Vector Space</strong>, and (iii) <strong>Probabilistic</strong> models.</p>
 <p>All of these models depend on <strong>index terms</strong>, which are the keywords or tokens that represent the main ideas in a document. This is often referred to as the <strong>“bag of words”</strong> approach where the information system treats each document as an unordered collection of words, ignoring sentence structure or grammar. To make this more efficient, we use <strong>stoplists</strong> to filter out common, low-value words (like “the,” “is,” or “and”) and <strong>stemming</strong> to reduce words to their root forms, such as turning “learning,” “learns,” and “learned” into “learn.”</p>
 <p>However, the limitation here is that <strong>text is unstructured</strong>. It doesn’t follow a fixed schema like a database, that is, meaning, context, and relationships between words are often <strong>hidden</strong>. A keyword match might miss the nuance of how terms are actually used.</p>
 <p>This challenge led to the evolution toward <strong>free-text</strong> and <strong>natural language searching</strong>. Instead of relying only on index terms or Boolean logic, these approaches allow users to search using <strong>everyday language</strong>, such as typing “What are the best ways to learn machine learning?” rather than just “machine learning AND tutorial.”</p>
@@ -1121,7 +1069,7 @@ Dr.&nbsp;Manika Lamba
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section></section>
+</section>
 <section id="role-of-natural-language-processing-in-information-retrieval" class="title-slide slide level1 center">
 <h1>Role of Natural Language Processing in Information Retrieval</h1>
 
