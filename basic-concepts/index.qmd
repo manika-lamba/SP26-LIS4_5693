@@ -1738,9 +1738,9 @@ Library](https://doi.org/10.1007/978-3-030-85085-2_1)
 ::: notes
 *`{Zoom-in to see the figure or Right-click to save it!}`*
 
-Information retrieval systems today are based on techniques that were
+Text mining today is based on techniques that were
 introduced in the 1960s and while the abilities of systems and the
-algorithms used have been refined, the process of retrieval remains the
+algorithms used have been refined, the process remains the
 same.
 
 IR is primarily text-based, meaning that we retrieve documents, those
