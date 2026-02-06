@@ -1,5 +1,5 @@
 ---
-title: "Acquiring Text: Data in Everyday Life"
+title: "Acquiring Text"
 subtitle: "LIS 4/5693: Information Retrieval and Text Mining"
 author: 
   - Dr. Manika Lamba
