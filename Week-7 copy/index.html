@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.555">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Dr.&nbsp;Manika Lamba">
   <title>Supporting Data Analysis</title>
@@ -455,8 +455,7 @@ Dr.&nbsp;Manika Lamba
 <li><p>Larger in Scope</p></li>
 <li><p>Making Decisions</p></li>
 </ul>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>It would be easy to confuse data analysis and data analytics as the same. But while they’re definitely related, there are some key distinguishing characteristics.</p>
 <p>We’re going to explore what makes them different. Let’s start with a definition of each.</p>
@@ -506,8 +505,7 @@ Dr.&nbsp;Manika Lamba
 <li>Can be misleading or incomplete</li>
 <li>Can be difficult to communicate or reproduce</li>
 </ul>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>Exploratory data analysis, or EDA, is a crucial step in the data analysis process, allowing analysts to understand the structure, patterns, and relationships within datasets.</p>
 <p>Exploratory data analysis involves the initial exploration and examination of data to gain insights and formulate hypotheses. It includes techniques such as summary statistics, data visualization, and correlation analysis.</p>
@@ -622,8 +620,7 @@ Dr.&nbsp;Manika Lamba
 <li><p>“Tidy” is relative</p></li>
 <li><p>Shall keep a copy whenever possible with version tags</p></li>
 </ul>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p><strong>Raw data</strong>, also known as primary data, is the unprocessed information collected directly from a source. It remains in its original form and may contain missing data points, errors, or inconsistencies due to factors like faulty sensors or manual entry mistakes. The term “raw” is relative, as what one researcher considers raw may already be slightly processed for another. Since raw data serves as the foundation for analysis, it is crucial to keep a copy whenever possible to ensure that the original data is always accessible.</p>
 <p>On the other hand, <strong>tidy data</strong>, also referred to as clean data, has undergone processing to fit a predefined structure, making it more suitable for analysis. In this form, missing data is identified, and errors are removed to improve accuracy and reliability. Like raw data, “tidy” is also a relative term, as different analyses may require further refinements. A best practice in data management is to maintain copies of tidy data with version tags to track modifications and ensure reproducibility.</p>
@@ -704,8 +701,7 @@ Bad data can take many forms, such as missing values, inconsistencies, incorrect
 <p><img data-src="images/6.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>A <strong>tidy dataset</strong> is structured in a way that makes it easier to analyze, process, and reproduce results. One key component of a tidy dataset is <strong>metadata</strong>, which provides essential background information about the data. Metadata includes descriptions of variables, their units, summary choices, and details of the experimental study design. This ensures that anyone using the dataset understands its context and can replicate the study if needed.</p>
 <p>Another important component is a <strong>processing script</strong> or documentation about the software used to clean and manipulate the data. Keeping track of these details allows others to follow the same steps to obtain consistent results, making the research more transparent and reliable.</p>
@@ -740,8 +736,7 @@ Bad data can take many forms, such as missing values, inconsistencies, incorrect
 <p><img data-src="images/7.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>In data science, different types of analyses serve specific purposes, helping us derive insights and make informed decisions.</p>
 <p><strong>Descriptive analysis</strong> focuses on summarizing data through averages, percentages, and other statistical measures, presenting findings without interpretation or prediction. For instance, reporting the average test scores of students in a school falls under this category.</p>
@@ -818,8 +813,7 @@ Bad data can take many forms, such as missing values, inconsistencies, incorrect
 </ul>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/9.png"></p>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>The saying <em>“A picture is worth a thousand words”</em> holds true in data analysis because our brains are naturally wired to process visual information quickly and efficiently.</p>
 <p>Instead of sifting through raw numbers, visual representations such as graphs, charts, and plots help us absorb information at a glance.</p>
@@ -885,8 +879,7 @@ Bad data can take many forms, such as missing values, inconsistencies, incorrect
 <p><img data-src="images/11.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>One-variable visualization, also known as <strong>univariate visualization</strong>, focuses on analyzing a single variable to understand its distribution, central tendency, and spread. A common method for visualizing one-variable data is a <strong>histogram</strong>, which groups numerical data into bins and displays the frequency of values within each bin. This helps us see patterns such as whether the data is normally distributed, skewed, or contains outliers.</p>
 <p><strong>Bar charts</strong> are another option when dealing with categorical data, showing the frequency of different categories using bars of varying heights.</p>
@@ -919,8 +912,7 @@ Bad data can take many forms, such as missing values, inconsistencies, incorrect
 <li><p><strong>2D Histogram</strong> shows distribution of two variables related to each other</p></li>
 <li><p><strong>Box or Whisker Plot</strong> shows spread of data and statistical information</p></li>
 </ul>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>Two-variable visualization, also known as <strong>bivariate visualization</strong>, is used to explore the relationship between two different variables. The choice of visualization depends on the type of data—whether both variables are numerical, categorical, or a mix of both.</p>
 <p>One of the most common ways to visualize two numerical variables is a <strong>scatter plot</strong>, which displays individual data points on a graph with one variable on the x-axis and the other on the y-axis. This helps identify correlations, trends, or clusters in the data. For example, a scatter plot can show whether an increase in one variable leads to an increase or decrease in another.</p>
@@ -950,8 +942,7 @@ Bad data can take many forms, such as missing values, inconsistencies, incorrect
 <p>For high-dimensional datasets, applying the t-Distributed Stochastic Neighbor Embedding (t-SNE) algorithm and alike to reduce the dimension.</p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/13.png"></p>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>When we analyze data, sometimes we need to explore the relationship between three different variables simultaneously. This is called <strong>multivariate visualization</strong>, and it helps us uncover more complex patterns and interactions that might not be visible with just one or two variables.</p>
 <p>One common method for visualizing three variables is a <strong>bubble chart</strong>. A bubble chart is similar to a scatter plot, where two numerical variables are plotted on the x and y axes, but a third variable is represented by the size of the bubbles. For example, if we were analyzing cities, the x-axis could represent population, the y-axis could represent average income, and the bubble size could represent the crime rate.</p>
@@ -1258,18 +1249,7 @@ Bad data can take many forms, such as missing values, inconsistencies, incorrect
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1301,7 +1281,29 @@ Bad data can take many forms, such as missing values, inconsistencies, incorrect
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1309,7 +1311,7 @@ Bad data can take many forms, such as missing values, inconsistencies, incorrect
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

@@ -1,6 +1,6 @@
 ---
-title: "Data in Everyday Life and the Research Process"
-subtitle: "LIS 4/5493: Data Stewardship"
+title: "Acquiring Text: Data in Everyday Life"
+subtitle: "LIS 4/5693: Information Retrieval and Text Mining"
 author: 
   - Dr. Manika Lamba
 format:
@@ -35,13 +35,9 @@ In this week’s module we will discuss:
 
 -   The issues associated with managing and using the data.
 
-As you review the readings for this week, keep in mind these topics but
-also the role you as the data steward will play. Also, think about real
-world examples of how data are gathered and used AS WELL AS the purposes
-for, and CONTEXTS in which the data are gathered AND USED. Throughout
-the semester we will think about and discuss the ethical issues a data
-steward must consider when working with data or assisting others who are
-gathering the data.
+As you review this lecture, think about real world examples of how data
+is gathered and used AS WELL AS the purposes for, and CONTEXTS in which
+the data is gathered AND USED.
 :::
 
 ## Digital Trace Data
@@ -56,6 +52,20 @@ recent decades have not only witnessed an increase in the amount of text
 based data, but also increased computing power which is increasingly
 necessary to analyze it. Together, these two shifts hold the potential
 to significantly expand the scope of research in many different fields.
+
+We define `Digital trace data`, also referred to as digital footprint or
+digital breadcrumbs, as the unprecedented amount of data generated from
+blogs, web search data, social media sites, other Internet forums,
+administrative data on sites, Internet archive, digitized text data
+archive, audiovisual data, telecommunication, or geospatial data.
+
+This voluminous amount of digital data generated on the Internet helps
+map human behavior and how we interact in different groups of
+communities and societies. It also opens the gates to perform various
+analytics that can then be used to do some social good.
+
+In the next few slides we will discuss some of the important strength
+and weaknesses of digital trace data.
 :::
 
 ## Strengths of Digital Trace Data
@@ -163,7 +173,7 @@ become of the U.S. public in recent years.
 
 `3. Drifting`
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 [![](images/clipboard-1366382165.png){width="560"}](https://www.washingtonpost.com/technology/2025/01/22/tiktok-ban-app-online-users-quit/)
 :::
@@ -171,7 +181,7 @@ become of the U.S. public in recent years.
 ::: {.column width="50%"}
 [![](images/clipboard-1892732326.png){width="559"}](https://www.scientificamerican.com/article/u-s-tiktok-users-flock-to-rednote-as-ban-looms/)
 :::
-:::
+:::::
 
 ::: notes
 [![](images/clipboard-1748678266.png)](https://www.bbc.com/news/articles/c897pg2nengo)
@@ -315,7 +325,7 @@ trace data collection with survey research.
 
 ## We are Data {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 #### [***We are filled with data in today's networked society***]{style="color: blue;"}
 
@@ -334,7 +344,7 @@ trace data collection with survey research.
 ::: {.column width="50%"}
 ![](images/clipboard-1302120039.png){fig-align="center" width="300"}
 :::
-:::
+:::::
 
 ::: footer
 John Cheney-Lippold. (2017). We are Data: algorithms and the making of
@@ -494,10 +504,8 @@ https://doi.org/10.1007/978-3-030-85085-2_11
 
 ::: notes
 Once we mitigate the biases from our data using the methods shown on the
-slide. We can move to the data management step.
+slide. We can move to the data analysis step.
 :::
-
-# Research Data
 
 ## What Constitutes Research Data? {.smaller}
 
@@ -561,11 +569,15 @@ digital objects acquired and generated during research!
 **For a list of file formats, consider checking out the Library of
 Congress' list of [Sustainability of Digital
 Formats](https://www.loc.gov/preservation/digital/formats/fdd/browse_list.shtml#).**
+
+Also, the Ch-2 of the textbook covers some of the main data file types
+in depth with their typical uses, examples, advantages, and
+disadvantages. Please go through them.
 :::
 
 ## Importance of Using Open Data Formats {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![](images/clipboard-3191207816.png){fig-align="center" width="525"}
 
@@ -579,7 +591,7 @@ open standard
 A screenshot of the same dataset in an `Excel file (.xlsx)`. Unlike the
 previous image, this is a proprietary format
 :::
-:::
+:::::
 
 ::: notes
 Open data formats are usually available to anyone free-of-charge and
@@ -604,7 +616,7 @@ questions:
 -   `What are some forms of data outputted by the project?`
 -   `Where was the data retrieved from to complete the project?`
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![](images/clipboard-921239384.png)
 
@@ -623,7 +635,7 @@ NYC!](https://www.arcgis.com/apps/Cascade/index.html?appid=caace3a2d1624aecac275
 is an audio community mapping project that seeks to locate the Iraqi
 population in NYC using their own voices.
 :::
-:::
+:::::
 
 ::: notes
 This slides show two front matter pages of two distinct digital
@@ -768,7 +780,7 @@ considerations, beyond the institution, and impacts we must evaluate in
 the process.
 :::
 
-## Issues for Data Stewards: During the Research Cycle
+## Issues: During the Research Cycle
 
 -   `Ensuring` good, useful data
 -   `Organizing` and `Structuring` data for the user
@@ -779,13 +791,11 @@ the process.
 -   `Sharing` the data and results
 
 ::: notes
-Data stewards play a specific role both DURING THE RESEARCH CYCLE and
-AFTER. This slide identifies the issues data stewards encounter DURING
-the research cycle such as working with the researcher to ensure good,
-useful data during the planning stage.
+We as data science researchers/analysts play a specific role both DURING
+THE RESEARCH CYCLE and AFTER. This slide identifies the issues we
+encounter DURING the research cycle such as to ensure good, useful data
+is during the planning stage.
 
-The data steward may advise the researcher about good data collection
-based on the outcomes and uses the researcher has for the data.
 Understanding the goals of the research project and how the data will be
 analyzed and used are essential for helping the researcher organize and
 structure the data, as well as for choosing the appropriate storage
@@ -802,7 +812,7 @@ process is helping the researcher publish the data set and sharing the
 data and results.
 :::
 
-## Issues for Data Stewards: After the Research Cycle
+## Issues: After the Research Cycle
 
 -   `Curating` and `Preserving` good, useful data
 -   `Preparing` the data for the user
@@ -811,23 +821,267 @@ data and results.
 -   `Re-using` the data
 
 ::: notes
-AFTER the research process the data steward is still involved in making
-sure the data are curated and preserved for future use. The steward also
-prepares the data for long term storage in a permanent data store. The
-researcher may be required by the funder, if applicable, to store the
-data online in an open source environment, such as an institutional
-repository or discipline-specific repository. The steward now is tasked
-with preparing the data for ingest and storage. They also take steps to
-ensure privacy and security of the data.
-
-We will focus the remainder of course learning about the role of the
-steward both DURING and AFTER the research process and how the steward
-participates in each stage of the research/data life cycle.
+AFTER the research process is completed, we need to make sure the data
+is curated and preserved for future use. We also prepares the data for
+long term storage in a permanent data store. The researcher may be
+required by the funder, if applicable, to store the data online in an
+open source environment, such as an institutional repository or
+discipline-specific repository. We should prepare the data for ingest
+and storage. We should also take steps to ensure privacy and security of
+the data.
 :::
 
-# Going Forward
+## Different Ways to Get Data
+
+![](images/1.png)
 
 ::: notes
-In the next module, we will take a deep dive into data feminism and
-algorithmic confounding.
+Ch-2 of the textbook introduces you to some of the major platforms,
+out-of-box tools, and Python & R packages to get data from various
+different platforms. As this book was published in 2022, some of the
+tools/packages might not be working anymore specially the once that
+retrieve data from Twitter.
+:::
+
+## Text Mining Platforms
+
+![](images/17.png)
+
+::: notes
+This slide introduce you to some of the major **text mining platforms**,
+which are environments designed to support large-scale text analysis by
+combining **data access, computational tools, and infrastructure** in
+one place. These platforms are especially important when working with
+**licensed, copyrighted, or very large text collections** that cannot
+simply be downloaded and processed locally.
+
+Platforms like **HathiTrust Research Center** (will discontinue in end
+of 2026), **ProQuest TDM Studio**, and **Gale Digital Scholar Lab**
+provide access to massive corpora ranging from books and journals to
+newspapers and archival materials while enforcing legal and ethical
+constraints around use. In most cases, the primary data never leaves the
+platform; instead, researchers bring the code to the data and can
+download the secondary processed version of the data and visualizations.
+
+Each platform offers a slightly different balance of features. Some
+emphasize **built-in analytical tools**, such as topic modeling,
+sentiment analysis, or word frequency visualizations, which allow users
+to explore texts without extensive programming. Others provide
+**computational workbenches**, often using Python or R notebooks, that
+support more advanced and customizable workflows.
+
+It’s important to recognize that these platforms **shape the kinds of
+questions you can ask**. Limits on dataset size, available algorithms,
+metadata quality, and preprocessing choices all influence the research
+outcomes.
+:::
+
+## What is an Application Programming Interface?
+
+::::: columns
+::: {.column width="50%"}
+![](images/clipboard-2185516729.png)
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-2931589475.png)
+:::
+:::::
+
+::: notes
+The last two slides introduced you to some of the ways where you can get
+text data from particular databases or social media platforms through
+different platforms or Python/R packages.
+
+Now, lets focus on two of the popular ways to retrieve data from digital
+trace data.
+
+First one is API or Application Programming Interface. APIs have become
+one of the most important ways to access and transfer data online and
+increasingly APIs can even analyze your data as well. Compared to
+screen-scraping data, which is often illegal, logistically difficult (or
+both), APIs are a useful tool to make custom requests for data in manner
+that is well structured and considerably easier to work with than the
+HTML or XML data.
+
+APIs are tools for building apps or other forms of software that help
+people access certain parts of large databases. Software developers can
+combine these tools in various ways or combine them with tools from
+other APIs in order to generate even more useful tools.
+
+Most of us use such apps each day. For example, if you install the
+Spotify app within your Facebook page to share music with your friends,
+this app is extracting data from Spotify’s API and then posting it to
+your Facebook page by communicating with Facebook’s API. There are
+countless examples of this on the internet at present thanks in large
+part to the advent of Web 2.0, or the historical moment where the
+internet websites became became much more intertwined and dependent.
+
+The number of APIs that are publicly available has expanded dramatically
+over the past decade, as the figure shows on the screen. The website
+[Programmable Web](https://www.programmableweb.com/apis/directory) lists
+more than 20,000 APIs from sites as diverse as Google, Amazon, YouTube,
+the New York Times, LinkedIn, and many others. Though the core function
+of most APIs is to provide software developers with access to data, many
+APIs now analyze data as well. This might include facial recognition
+APIs, voice to text APIs, APIs that produce data visualizations, and so
+on.
+:::
+
+## How Does an API Work?
+
+![](images/clipboard-4097915497.png)
+
+::: notes
+Now broadly, what we are doing every time when we make an API call is
+that we as people who use an API is to make custom requests for data
+from that API. We do so by stitching together a long URL that has
+information in it about what we want to request and who we are. We then
+put that effectively into a web browser, and then scrape the information
+that's delivered into the web browser by the API itself.
+
+The figure on the slide shows the anatomy of a relatively simple API for
+google maps. We have the `base API URL` that we are going to put at the
+beginning of any API request.
+
+Next, there's a section where we are requesting certain information from
+a part of the API -- which types of variables you want to collect.
+Sometimes, these are called endpoints in API. Some of the challenging
+parts of learning to work with API's is learning not only to learn about
+jargon specific to software development but different types of jargon
+for different types of APIs.
+
+Next, we are going to specify the type of data format we want. For
+instance, in this case, we are going to ask for JSON data.
+
+Next, we are going to make a query, here what we are using is Google's
+geocode tool and what that does is read in a piece of text and return
+everything that Google knows about it in terms of its geography.
+
+Finally, the most important thing about API call is that it ends with
+something called an API Key. Now a Key is sometimes called a credential
+or a token. Basically, what it means is a secret code. Sometimes, there
+is more that one code that you have to stitch together into one long
+URL. It identifies you as an individual to the API that you are trying
+to work with this long code that has information about what data you are
+allowed to access and how often you are allowed to access it.
+
+Getting API credentials, involves some type of application process.
+Learning how to identify the part of the API that you want to access can
+be challenging as for that you need to read through something called API
+documentation which is like an API instructional manual to know how API
+works.
+
+Just like any instructional manual, some are better than other. Some of
+them contain detailed information about everything you could possible
+want to know, and sometimes too much information. Other might contain
+worked examples or vignettes that show you how to do it step-by-step.
+:::
+
+## Output of API Call
+
+![](images/clipboard-2399853133.png)
+
+::: notes
+So, when we put this all together, and if you had your own API. The one
+shown on the slide will not work as it is a fake API credential that I
+have put to show as an example. But if we used a real one and plug it
+into our web browser, we would see something like this.
+
+What you see on this slide is the JSON data that contains everything
+Google knows about the search query. Do not get intimidate with JSON
+data as it is the efficient way of delivering large amounts of data that
+may have different lengths. In this case, we searched for Duke
+University, and when you zoom in on this JSON data, we get latitude for
+the Duke University, the state it is in, and various other kinds of
+geographic information.
+:::
+
+## Rate Limiting
+
+![](images/clipboard-2996977255.png)
+
+::: notes
+Before you make any more calls to APIs, you need to become familiar with
+an important concept called “Rate Limiting.”
+
+The API credentials not only define what type of information we are
+allowed to access, but also how often we are allowed to make requests
+for such data. These are known as “rate limits”.
+
+If we make too many requests for data within too short a period of time,
+an API will temporarily block us from collected data for a period of
+time that can range from 15 minutes to 24 hours or more, depending upon
+the API.
+
+Rate limiting is necessary so that APIs are not overwhelmed by too many
+requests that occur at the same time, which would slow down access to
+data for everyone. Rate limiting also enables large companies such as
+Google or Facebook, to prevent developers from collecting large amounts
+of data that could either compromise their user’s confidentiality or
+threaten their business model (since data has such immense value in
+today’s economy!).
+
+The exact timing of rate limiting is not always public, since knowing
+such time increments could enable developers to “game” the system and
+make rapid requests as soon as rate limiting has ended. Some APIs,
+however, allow you to make an API call or query in order to learn how
+many more requests you can make within a given time period before you
+are rate limited. Even if you do not violate rate limits, you can also
+be “throttled” for making too many requests overall, as the image below
+shows:
+:::
+
+# Challenges of Working with APIs
+
+::: notes
+By now it is hopefully clear that APIs are an invaluable resource for
+collecting data from the internet. At the same time, it may also be
+clear that the process of obtaining credentials, avoiding rate limiting,
+and understanding the unique jargon employed by those who create each
+API can mean a lot of hours sifting through the documentation of an
+API—particularly where there are not well functioning Python or R
+packages for interfacing with the API in question.
+:::
+
+## Screen-Scraping or Web Scraping
+
+![](images/clipboard-1848882107.png)
+
+:::notes
+Screenscraping refers to the process of automatically extracting data from web pages, and often a long list of websites that cannot be mined by hand. 
+
+As the figure shown on the slide, a typical screenscraping program 
+
+a) loads the name of a web-page to be scraped from a list of webpages; 
+
+b) downloads the website in a format such as HTML or XML; 
+
+c) finds some piece of information desired by the author of the code; and 
+
+d) places that information in a convenient format such as a “data frame” (which is R speak for a dataset). 
+
+Screenscraping can also be used to download other types of content as well, however, such as audio-visual content. 
+
+:::
+
+
+# Is Screen-Scraping Legal?
+
+:::notes
+In the early years of the internet, screen-scraping was a very common practice because there were not yet widespread legal norms surrounding the protection of data on the internet. This has changed drastically in recent decades as the value of data on websites has become obvious, and bots or automated computer programs can easily wreak havoc by collecting data from websites and repurposing it for nefarious purposes. 
+
+The very first thing you should consider before screen-scraping a website is whether you are allowed to do so. The easiest way to do this is to visit the “Terms of Service” (sometimes abbreviated as “Terms”) which often appears at the bottom of a web page. 
+
+These days, most websites have a “robots.txt” policy that specifies rules about automated data collection on the site, and an increasing number of sites do not allow such practices (especially larger websites such as Facebook, the New York Times, or Instagram). You should consult professional legal advice to determine whether you have permission to scrape a website.
+:::
+
+# So… When Should I Use Screen-Scraping?
+
+:::notes
+Screenscraping can often be more trouble than its worth particularly in the age of Application Programming Interfaces. Still, there are some cases where screenscraping remains useful. One ideal use case is where you are scraping different pages within one web site again and again. 
+
+An example might include a local government website that posts information on events. Such a website may have the same “root” URL, but different suffixes that describe different days, months, etc. Assuming the structure of the pages are identical, one can then write a loop which switches out the end of the URL for different dates (using whatever naming convention is used by the site).
+
+Another common reason to scrape a web page is if it is prohibitively difficult to copy and paste the information you seek from a website. Examples are extremely long pieces of text, or those that are embedded within complex tables (though again, parsing the HTML to identify the precise text you require could take a very long time as well). 
 :::

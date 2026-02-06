@@ -187,7 +187,7 @@ data scientist.
 
 ## Data Analysis vs. Data Analytics
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 `Data Analysis`
 
@@ -209,7 +209,7 @@ about the future
 
 -   Making Decisions
 :::
-:::
+:::::
 
 ::: notes
 It would be easy to confuse data analysis and data analytics as the
@@ -263,7 +263,7 @@ understanding these concepts in using data.
 
 `EDA involves the initial exploration and examination of data to gain insights and formulate hypotheses`
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 **Benefits of EDA**
 
@@ -285,7 +285,7 @@ understanding these concepts in using data.
 -   Can be misleading or incomplete
 -   Can be difficult to communicate or reproduce
 :::
-:::
+:::::
 
 ::: notes
 Exploratory data analysis, or EDA, is a crucial step in the data
@@ -499,7 +499,7 @@ Read the Slides
 
 ## Raw vs. Tidy Data
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 `Raw (or Primary) Data`
 
@@ -523,7 +523,7 @@ Read the Slides
 
 -   Shall keep a copy whenever possible with version tags
 :::
-:::
+:::::
 
 ::: notes
 **Raw data**, also known as primary data, is the unprocessed information
@@ -618,7 +618,7 @@ issue, different people or teams should handle the problem.
 
 ## Key Components of Tidy Dataset {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   `Metadata` that include the description about the variables, units,
     summary choices, and experimental study design to make the work
@@ -633,7 +633,7 @@ issue, different people or teams should handle the problem.
 ::: {.column width="50%"}
 ![](images/6.png){fig-align="center"}
 :::
-:::
+:::::
 
 ::: notes
 A **tidy dataset** is structured in a way that makes it easier to
@@ -659,7 +659,7 @@ meaningful insights.
 
 ## Types of Data Science Problems {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   **Descriptive** (summaries)
 
@@ -677,7 +677,7 @@ meaningful insights.
 ::: {.column width="50%"}
 ![](images/7.png){fig-align="center"}
 :::
-:::
+:::::
 
 ::: notes
 In data science, different types of analyses serve specific purposes,
@@ -768,7 +768,7 @@ impactful storytelling with data.
 
 ## A Picture Is Worth a Thousand Words
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 Our brains have been evolved to be very efficient in visual analysis
 
@@ -788,7 +788,7 @@ Visualization helps us to:
 ::: {.column width="50%"}
 ![](images/9.png)
 :::
-:::
+:::::
 
 ::: notes
 The saying *"A picture is worth a thousand words"* holds true in data
@@ -859,7 +859,7 @@ and make informed decisions.
 
 ## One-Variable Graph {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   **Histogram** shows distribution and concentration of data
 
@@ -874,7 +874,7 @@ and make informed decisions.
 ::: {.column width="50%"}
 ![](images/11.png){fig-align="center"}
 :::
-:::
+:::::
 
 ::: notes
 One-variable visualization, also known as **univariate visualization**,
@@ -896,7 +896,7 @@ essential tools for exploratory data analysis.
 
 ## Two-Variable Graph {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![](images/12.png){fig-align="center"}
 :::
@@ -915,7 +915,7 @@ essential tools for exploratory data analysis.
 -   **Box or Whisker Plot** shows spread of data and statistical
     information
 :::
-:::
+:::::
 
 ::: notes
 Two-variable visualization, also known as **bivariate visualization**,
@@ -941,7 +941,7 @@ interact, uncover trends, and gain deeper insights from the data.
 
 ## Three Variable Graph {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   **Heatmap** shows two variables and other quantity (amount,
     intensity, height) with a colormap
@@ -958,7 +958,7 @@ Neighbor Embedding (t-SNE) algorithm and alike to reduce the dimension.
 ::: {.column width="50%"}
 ![](images/13.png)
 :::
-:::
+:::::
 
 ::: notes
 When we analyze data, sometimes we need to explore the relationship
