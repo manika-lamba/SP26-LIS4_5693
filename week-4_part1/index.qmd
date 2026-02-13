@@ -24,7 +24,7 @@ editor:
 
 
 :::notes
-In this week, we are going to cover the most foundational but often underestimated components of text mining and NLP that is corpus building and representativeness.
+In this week, we are going to cover the most foundational but often underestimated components of text mining and NLP, which are corpus building and representativeness.
 
 Before we can apply algorithms, models, or sophisticated analytical techniques, we have to confront a more basic question: `What exactly are we analyzing, and how well does it represent the language or phenomenon we care about?`
 
