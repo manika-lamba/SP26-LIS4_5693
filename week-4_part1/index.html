@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
+
+  <meta name="author" content="Dr.&nbsp;Manika Lamba">
+  <title>Corpus Building and Representation</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Corpus Building and Representation</h1>
+  <p class="subtitle">LIS 4/5693: Information Retrieval and Text Mining</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Manika Lamba 
+</div>
+</div>
+</div>
+
+</section>
+<section>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
+<aside class="notes">
+<p>In this week, we are going to cover the most foundational but often underestimated components of text mining and NLP that is corpus building and representativeness.</p>
+<p>Before we can apply algorithms, models, or sophisticated analytical techniques, we have to confront a more basic question: <code>What exactly are we analyzing, and how well does it represent the language or phenomenon we care about?</code></p>
+<p>In practice, many downstream problems in text mining that create bias, unreliable results, or poor generalization can be traced back not to the model, but to choices made during corpus design. So, let’s get started with understanding the term ‘corpus’ itself.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-a-corpus" class="slide level2">
+<h2>What is a Corpus?</h2>
+<ul>
+<li>Corpus (pl. corpora) = ‘body’</li>
+<li>Collection of written text or transcribed speech</li>
+<li>Usually but not necessarily purposefully collected</li>
+<li>Usually but not necessarily structured</li>
+<li>Usually but not necessarily annotated</li>
+<li>Usually stored on and accessible via computer</li>
+<li>Corpus ~ text archive</li>
+</ul>
+<aside class="notes">
+<p>The word ‘corpus’ comes from Latin, meaning ‘body’, and in our field it refers to a body of texts. At its most basic level, a corpus is a collection of written texts or transcribed speech. This can include books, news articles, social media posts, emails, interviews, or any other form of language data that has been captured in text form.</p>
+<p>Importantly, a corpus is usually but not necessarily purposefully collected. In an ideal research setting, we design a corpus with a clear goal in mind. However, in many real-world text mining projects, corpora are assembled from existing data sources, such as web crawls or platform APIs, without an original linguistic research design.</p>
+<p>Similarly, a corpus is usually but not necessarily—structured. Some corpora have carefully defined metadata, categories, and document boundaries. Others are far messier, consisting of raw text dumps that require extensive preprocessing before analysis.</p>
+<p>Corpora are also often annotated, but annotation is not a defining requirement. Annotations might include part-of-speech tags, named entities, syntactic parses, or discourse labels. Many text mining workflows begin with unannotated corpora and add annotation later as part of the analysis.</p>
+<p>Another key characteristic is that corpora are typically stored on and accessed via computers. This distinguishes corpora from traditional print archives and enables large-scale, computational analysis — what makes text mining possible in the first place.</p>
+<p>Finally, it’s useful to think of a corpus as being similar to a text archive, but not identical to one. A text archive is often a passive collection, while a corpus, especially in research contexts, implies some level of selection, organization, and analytical intent, even if that intent is minimal. So, not every text archive is a corpus but every corpus is a kind of text archive, shaped by design choices!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="representativeness" class="slide level2 smaller">
+<h2>Representativeness</h2>
+<blockquote>
+<p>A corpus can be a collection of (1) <code>machine-readable</code> (2) <code>authentic</code> texts (including transcripts of spoken data) which is (3) <code>sampled</code> to be (4) <code>representative</code> of a particular language or task</p>
+</blockquote>
+<ul>
+<li>A corpus is different from a random collection of texts or an archive</li>
+<li><code>Representativeness</code> is a defining feature of a corpus</li>
+<li>As language is infinite but a corpus has to be finite in size, we sample and proportionally include a wide range of text types to ensure maximum balance and representativeness</li>
+</ul>
+<aside class="notes">
+<p>This slide brings together several key ideas into a single definition of what makes something a corpus, rather than just a pile of texts.</p>
+<p><code>A corpus is a collection of machine-readable and authentic texts—including transcripts of spoken language—that has been sampled with the goal of being representative of a particular language variety, domain, or analytical task</code></p>
+<p>Let’s briefly unpack these components:</p>
+<ul>
+<li>First, machine-readable means the texts can be processed computationally. Scanned PDFs or images of text are not corpora until they are converted into usable text data.</li>
+<li>Second, here authentic means the texts were produced for real communicative purposes not invented examples or artificially generated sentences. This is important because natural language use includes messiness, variation, and ambiguity that models need to encounter.</li>
+<li>The key step here is sampling. Because language is effectively infinite, we cannot collect everything. Any corpus must be finite, which means we make deliberate choices about what to include and in what proportions.</li>
+</ul>
+<p>This is where representativeness becomes crucial. Representativeness is what distinguishes a corpus from a random collection of texts or a simple archive. An archive may aim for completeness or preservation, but a corpus aims for analytical validity to reflect the linguistic patterns relevant to a specific research question or task.</p>
+<p>Importantly, representativeness is not absolute. A corpus is not representative of ‘language in general’ in some universal sense. It is representative of something: a language variety, a time period, a genre, a community, or a task such as sentiment analysis or topic modeling. Because of this, corpus design typically involves sampling across a wide range of text types and including them in carefully considered proportions. This helps maximize balance, reducing overrepresentation of any single source, genre, or register.</p>
+<p>Thus, representativeness is not about size, it’s about whether the corpus supports the claims you want to make.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="some-definitions-corpus" class="slide level2 smaller">
+<h2>Some Definitions: Corpus</h2>
+<ul>
+<li>“generally <code>assembled with particular purposes in mind, and are often assembled to be (informally speaking) *representative*</code> of some language or text type” (Leech 1992: 116)</li>
+<li>“…selected and ordered according to <code>explicit linguistic criteria</code> in order to be used as a sample of the language” (Sinclair 1996)</li>
+<li>“A <code>well-organized</code> collection of data” (McEnery 2003)</li>
+<li>“gathered according to <code>explicit design criteria</code>” (Tognini-Bonelili 2001: 2)</li>
+<li>“built according to <code>explicit design criteria for a specific purpose</code>” (Atkins et al 1992) texts selected and put together <code>“in a principled way”</code> (Johansson 1998: 3)</li>
+</ul>
+<aside class="notes">
+<p>This slide brings together well-known definitions of a corpus from different scholars. I want you to notice the patterns that emerge across them. Take a moment to scan the definitions first, and then we’ll walk through what they have in common.</p>
+<p>Starting with Geoffrey Leech, the emphasis is on purpose and representativeness. Leech highlights that corpora are assembled with particular goals in mind and are expected at least informally to represent a language or a text type. This reinforces the idea that corpora are designed, not accidental.</p>
+<p>John Sinclair sharpens this idea further by stressing explicit linguistic criteria. Here, the key point is that selection is systematic. Texts are not just chosen because they are available, but because they meet clearly defined linguistic conditions.</p>
+<p>When Tony McEnery refers to a corpus as a well-organized collection of data, organization becomes central. This reminds us that structure — metadata, consistency, documentation – is essential for meaningful analysis.</p>
+<p>Both Elena Tognini-Bonelli and Sue Atkins emphasize explicit design criteria. The repeated use of the word explicit is important: good corpus design makes assumptions visible rather than implicit.</p>
+<p>Finally, Stig Johansson describes corpora as being constructed in a principled way. This captures the overall spirit of all the definitions: corpus construction is methodological, reasoned, and defensible.</p>
+<p>Across all these definitions, the recurring ideas are <code>purpose, explicit criteria, principled selection, and representativeness</code>. A corpus is not just text, it is designed data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-representativeness" class="slide level2 smaller">
+<h2>What is Representativeness?</h2>
+<blockquote>
+<p>A corpus is thought to be representative of the language variety it is supposed to represent (Leech 1991)</p>
+</blockquote>
+<blockquote>
+<p>Representativeness refers to the extent to which a <code>sample</code> includes the full range of <code>variability</code> in a <code>population</code> (Biber 1993)</p>
+</blockquote>
+<ul>
+<li>Representativeness is a fluid concept closely related to your research questions</li>
+</ul>
+<aside class="notes">
+<p>Now lets discuss: what does it mean for a corpus to be representative? At first glance, representativeness may sound straightforward, but it’s actually one of the most nuanced and debated ideas in corpus linguistics and text mining.</p>
+<p>According to Geoffrey Leech, a corpus is representative of a language variety if findings based on that corpus can be generalized to the language variety it is intended to represent. In other words, representativeness is about valid inference—whether conclusions drawn from the data extend beyond the corpus itself.</p>
+<p>Douglas Biber reframes this idea in statistical terms. He defines representativeness as the extent to which a sample captures the full range of variability in a population. This framing is especially useful for text mining, because it reminds us that language variation—across genres, registers, speakers, and contexts—is the core challenge.</p>
+<p>An important takeaway here is that representativeness is not fixed. It is a fluid concept, and it only makes sense in relation to specific research questions. There is no such thing as a corpus that is simply ‘representative of language’ in general. For example, if your research goal is to model general English, then a corpus made up entirely of newspapers is insufficient. Likewise, if your goal is to study newspaper language, a corpus drawn from a single newspaper, such as The Times, will not capture the diversity of newspaper discourse.</p>
+<p>So whenever you work with a corpus, especially in text mining and NLP, you should always ask yourself: - Representative of what? - For which purpose? - And for which population of texts?</p>
+<p>Good corpus design doesn’t eliminate bias but it makes your assumptions explicit and your conclusions defensible.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="two-types-of-representativeness" class="slide level2 smaller">
+<h2>Two Types of Representativeness</h2>
+<p>The representativeness of general corpora and specialized corpora (domain/genre specific) are achieved and measured in different ways</p>
+<ul>
+<li>General corpora
+<ul>
+<li>Balance: Range of genres included in a corpus and their proportion</li>
+<li>Sampling: How the text chunks for each genre are selected</li>
+</ul></li>
+<li>Specialized corpora
+<ul>
+<li>Degree of closure/saturation: Closure/saturation for a particular linguistic feature of a variety of language</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Now, we’re going to look at two different types of representativeness and why they are handled differently depending on the kind of corpus you are building. The key idea here is that the general corpora and specialized corpora—such as domain- or genre-specific corpora—do not achieve representativeness in the same way, and they should not be evaluated using the same criteria.</p>
+<p>Let’s start with general corpora. General corpora aim to represent a broad language variety, such as general English. Because of this broad scope, representativeness is primarily achieved through balance and sampling. Balance refers to the range of genres included in the corpus and the proportions in which they appear. For example, a general corpus might include fiction, newspapers, academic writing, spoken conversation, and online texts, each in carefully chosen proportions. Sampling, on the other hand, concerns how texts are selected within each genre. Rather than including entire books or full archives, corpora often sample smaller text chunks to avoid overrepresenting any single author, source, or topic.</p>
+<p>Now let’s contrast this with specialized corpora. Specialized corpora are designed to represent a specific domain or genre—such as legal documents, medical reports, or computer manuals. In these cases, representativeness is not about balance across genres, because the genre is already fixed. Instead, representativeness in specialized corpora is often evaluated in terms of closure or saturation. Closure or saturation, refers to the point at which adding more data produces very little new linguistic information. For example, in a corpus of computer manuals, once the technical vocabulary stabilizes, the rate of new word types decreases and the lexical growth curve begins to flatten. When this flattening occurs, it suggests that the corpus has captured the relevant linguistic features of that domain with sufficient coverage—even though the corpus may be much smaller than a general corpus.</p>
+<p>So, representativeness depends not just on how much data you have, but on what kind of corpus you are building and what you want it to represent.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-should-we-care-about-representativeness" class="slide level2 smaller">
+<h2>Why Should We Care about Representativeness?</h2>
+<ul>
+<li>Corpus-based studies
+<ul>
+<li>Interpret results of corpus research</li>
+</ul></li>
+<li>Corpus user
+<ul>
+<li>Important to “know your corpus”</li>
+<li>Decide whether a given corpus is appropriate for specific research question</li>
+<li>Make appropriate claims on the basis of such corpus</li>
+</ul></li>
+<li>Corpus creator
+<ul>
+<li>Make corpus as representative as possible of a language (variety) claimed to represent</li>
+<li>Document design criteria explicitly and make documentation available to corpus users</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>We’ll now step back and ask a practical question: Why does representativeness actually matter?</p>
+<p>Representativeness is not just a theoretical concept. It affects how we interpret results, how we use corpora, and how we design them in the first place.</p>
+<p>First, let’s think about corpus-based studies, particularly from an assessment perspective. When we conduct corpus-based research, representativeness helps us decide how much confidence we should place in our findings. If a corpus is poorly matched to the research question, even sophisticated methods can produce misleading results. This means that results from corpus studies should always be interpreted with caution, taking into account both the data used and the methods applied. A statistically significant result is not necessarily a meaningful one if the corpus itself is not appropriate.</p>
+<p>Now let’s consider the perspective of the corpus user. As a user of corpus data, it is essential to know your corpus. This means understanding what kinds of texts it includes, what it excludes, how it was sampled, and what it was designed to represent. This knowledge allows you to decide whether a given corpus is appropriate for your specific research question, and just as importantly it allows you to make responsible and defensible claims based on that corpus.</p>
+<p>Finally, let’s look at the role of the corpus creator. If you are building a corpus, representativeness becomes a design responsibility. The goal is to make the corpus as representative as possible of the language variety—or task—you claim it represents.</p>
+<p>Equally important is documentation. Corpus creators should document their design criteria explicitly and make that documentation available to users. Without transparency, users cannot properly assess representativeness, no matter how carefully the corpus was constructed.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="criteria-for-text-selection" class="slide level2 smaller">
+<h2>Criteria for Text Selection</h2>
+<ul>
+<li>The criteria used to select texts for a corpus are principally <code>external</code>
+<ul>
+<li>The external vs.&nbsp;internal criteria corresponds to Biber’s (1993:243) <code>situational vs. linguistic perspectives</code>
+<ul>
+<li><code>External criteria</code> are defined situationally irrespective of the distribution of linguistic features</li>
+<li><code>Internal criteria</code> are defined linguistically, taking into account the distribution of such features</li>
+</ul></li>
+</ul></li>
+<li>It is <code>circular</code> to use internal criteria like the distribution of words or grammatical features as the primary parameters for the selection of corpus data</li>
+</ul>
+<aside class="notes">
+<p>Now, lets see how texts are selected for inclusion in a corpus, and why the criteria used for selection matter so much for the validity of corpus-based research. The main criteria used to select texts for a corpus are primarily external. By external, we mean that texts are selected based on situational factors—such as genre, medium, domain, speaker or author type, time period, or communicative purpose—rather than on the linguistic features contained in the texts themselves.</p>
+<p>This distinction corresponds to Douglas Biber’s distinction between situational and linguistic perspectives. From a situational perspective, we define categories like ‘newspaper articles,’ ‘academic writing,’ or ‘online forums’ without first examining the distribution of words or grammatical structures within them.</p>
+<p>Internal criteria, in contrast, are defined linguistically. They involve selecting texts based on features such as vocabulary frequency, syntactic patterns, or grammatical constructions.The problem is that relying on internal criteria for corpus construction creates a circular logic. If we pre-select texts because they already exhibit certain linguistic features, then analyzing the corpus to discover those same features becomes meaningless—we’ve built the answer into the dataset.</p>
+<p>In other words, if the distribution of linguistic features is determined at the design stage, there is no genuine discovery to be made during analysis. The corpus becomes skewed by design, and any claims about ‘natural’ language use are no longer valid.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="criteria-for-text-selection-1" class="slide level2 smaller">
+<h2>Criteria for Text Selection</h2>
+<ul>
+<li><p>Time? If a corpus is not regularly updated, it rapidly becomes unrepresentative (Hunston, 2002)</p></li>
+<li><p>Relevance of permanence in corpus design actually depends on how we view a corpus - a static or dynamic language model</p>
+<ul>
+<li><code>Static model</code>: sample corpora (nearly all existing corpora)</li>
+<li><code>Dynamic model</code>: monitor corpora</li>
+</ul>
+<blockquote>
+<p>Criteria for determining the structure of a corpus should be small in number, clearly separate from each other, and efficient as a group in delineating a corpus that is representative of the language or variety under examination (Sinclair, 2005)</p>
+</blockquote></li>
+</ul>
+<aside class="notes">
+<p>As Susan Hunston points out, if a corpus is not regularly updated, it can very quickly become unrepresentative. Language changes continuously – new words emerge, meanings shift, genres evolve, and platforms rise and fall. A corpus that accurately reflected language use ten or even five years ago may no longer do so today. However, whether this is a problem depends on how we conceptualize a corpus. This brings us to an important distinction: static versus dynamic language models.</p>
+<p>In a static model, a corpus is treated as a fixed snapshot of language. Most existing corpora fall into this category. These are often called sample corpora, and they are perfectly appropriate when the research goal is historical analysis, comparison across time periods, or controlled linguistic description.</p>
+<p>In contrast, a dynamic model treats language as something that is constantly evolving. Here, we work with monitor corpora, which are continuously updated to track ongoing linguistic change. For example, the emergence of new vocabulary or shifting usage patterns.</p>
+<p>Neither approach is inherently better than the other. The key issue is alignment with your research question. A static corpus may be ideal for one study, while a dynamic corpus may be essential for another.</p>
+<p>This brings us to the guiding principle articulated by John Sinclair. Sinclair emphasizes that the criteria used to structure a corpus should be small in number, clearly distinct, and efficient as a group in producing a corpus that is representative of the language or variety under investigation.</p>
+<p>In other words, good corpus design is not about adding more criteria – it’s about choosing the right ones, applying them consistently, and documenting them clearly.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="corpus-balance" class="slide level2 smaller">
+<h2>Corpus Balance</h2>
+<ul>
+<li>A balanced corpus covers a wide range of text categories which are supposed to be representative of the language (variety) under consideration</li>
+<li>The proportions of different kinds of text it contains should correspond with informed and intuitive judgements</li>
+<li>There is no scientific measure for balance – just best estimation</li>
+<li><code>The acceptable balance is determined by the intended use – your research questions</code></li>
+</ul>
+<aside class="notes">
+<p>Now, let’s focus on corpus balance, which is one of the most practical and also one of the most debated aspects of corpus design. A balanced corpus is one that covers a wide range of text categories that are believed to be representative of the language variety under consideration. These categories might include genres such as fiction, newspapers, academic writing, spoken conversation, or online communication, depending on the scope of the corpus.</p>
+<p>An important point here is that balance is about proportions, not just inclusion. The relative amounts of different kinds of texts in the corpus should correspond to what we consider to be informed and intuitive judgments about how language is actually used.</p>
+<p>However, there is no purely scientific or objective measure for determining corpus balance. Unlike statistical sampling from a known population, language does not come with a clear baseline distribution. As a result, balance is always an estimate, not a precise calculation.</p>
+<p>This is why the acceptable balance is determined by the intended use of the corpus. In other words, balance is not an abstract idea, it is defined by your research questions. A corpus that is well balanced for studying general language use may be completely unbalanced for studying academic writing, social media discourse, or legal language.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pragmatics-in-corpus-design" class="slide level2 smaller">
+<h2>Pragmatics in Corpus Design</h2>
+<blockquote>
+<p>Most general corpora of today are badly balanced because they do not have nearly enough spoken language in them (Sinclair, 2005)</p>
+</blockquote>
+<ul>
+<li>Pragmatic considerations also mean that balance is a more important issue for a static sample corpus than for a dynamic monitor corpus
+<ul>
+<li>As a monitor corpus is frequently updated, it is usually “impossible to maintain a corpus that also includes text of many different types, as some of them are just too expensive or time consuming to collect on a regular basis” (Hunston, 2002: 30-31)</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>As John Sinclair points out on this slide, many general corpora today are poorly balanced, particularly because they contain far too little spoken language. Spoken data is difficult to collect, transcribe, anonymize, and distribute, which means it is often underrepresented—even though spoken language plays a central role in everyday communication. This highlights an important idea: corpus imbalance is often not theoretical, it is practical. Balance is shaped by cost, time, access, ethical constraints, and technical limitations, not just by linguistic ideals.</p>
+<p>Pragmatic considerations also affect how we think about balance differently for static sample corpora and dynamic monitor corpora. In a static corpus, balance is especially important because the dataset is fixed. Once it is built, any imbalance becomes permanent and directly affects all future analyses.</p>
+<p>In contrast, a monitor corpus is updated frequently. As Susan Hunston explains, it is often impossible to maintain balance across many text types in a monitor corpus. Some kinds of texts, such as spoken interactions or specialized genres, are simply too expensive or time-consuming to collect on a regular basis. As a result, monitor corpora often prioritize ongoing growth and change tracking over strict balance, accepting certain imbalances as a practical necessity.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="corpus-balance-some-tips" class="slide level2 smaller">
+<h2>Corpus Balance: Some Tips</h2>
+<blockquote>
+<p>The corpus builder should retain, as target notions, representativeness and balance. While these are not precisely definable and attainable goals, they must be used to guide the design of a corpus and the selection of its components (Sinclair, 2005)</p>
+</blockquote>
+<blockquote>
+<p>It would be short-sighted indeed to wait until one can scientifically balance a corpus before starting to use one, and hasty to dismiss the results of corpus analysis as ‘unreliable’ or ‘irrelevant’ because the corpus used cannot be proved to be ‘balanced’ (Atkins et al, 1992: 6)</p>
+</blockquote>
+<aside class="notes">
+<p>This slide offers some practical guidance on how to think about corpus balance without treating it as an impossible or purely theoretical ideal. As John Sinclair reminds us, corpus builders should keep representativeness and balance as target notions. These are not goals that can be precisely defined or fully achieved. Instead, they serve as guiding principles that shape decisions about corpus design and text selection. So, balance is something we aim for, not something we prove mathematically. The absence of a perfect definition does not make the concept useless—it makes it practical.</p>
+<p>The second quotation on the slide from Sue Atkins and colleagues reinforces this point. They caution against waiting for a scientifically perfect method of balancing a corpus before actually using one. If we did that, corpus research would never begin. At the same time, they warn against dismissing corpus-based findings simply because a corpus cannot be proven to be balanced. Imperfect balance does not automatically invalidate results—what matters is whether the limitations of the corpus are understood, acknowledged, and aligned with the research goals.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sampling-corpus-creation" class="slide level2 smaller">
+<h2>Sampling: Corpus Creation</h2>
+<ul>
+<li><p>Language is infinite, but a corpus is finite in size, so sampling is inescapable in corpus building</p></li>
+<li><p>Population ( language/variety) vs.&nbsp;sample (corpus)</p>
+<ul>
+<li>A sample is a scaled-down version of a larger population</li>
+<li>A sample is representative if what we find for the sample also holds for the general population</li>
+</ul></li>
+<li><p>Corpus representativeness and balance rely heavily on sampling</p>
+<ul>
+<li>A corpus is a sample of a given population (language or language variety)</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p><strong>Sampling</strong> is at the heart of corpus creation and, in many ways, unavoidable. Language is effectively infinite, there is no fixed boundary to how much language exists or can be produced. A corpus, by contrast, is always finite. Because of this mismatch, <strong>sampling is inescapable</strong> in corpus building. As <strong>Douglas Biber</strong> points out, some of the very first decisions we make when constructing a corpus are sampling decisions, whether we recognize them as such or not. These include decisions about which kinds of texts to include, how many texts to collect, which specific texts to select, whether to include entire texts or only portions of them, and how long those text samples should be. Even choices that seem technical or neutral are, in fact, choices about what language gets represented and what does not.</p>
+<p>To understand why sampling matters so much, it is useful to think in terms of <strong>population versus sample</strong>. The population refers to the language or language variety we are interested in. For example, general English, academic writing, or legal discourse. The corpus is the <strong>sample</strong> drawn from that population. The goal of sampling, as articulated by <strong>Frank Yates</strong>, is to obtain a sample that, within the limits of size, reproduces the key characteristics of the population as closely as possible, especially those characteristics that are most relevant to the research question.</p>
+<p>In this sense, a sample is a <strong>scaled-down version</strong> of a much larger population. A sample is considered representative if the patterns we observe in the corpus also hold for the broader language population we claim to be studying. This is why sampling is not just a technical step but a methodological one. Decisions about sampling directly shape what kinds of linguistic patterns can be observed and which ones may be missed.</p>
+<p>Ultimately, <strong>corpus representativeness and balance depend heavily on sampling</strong>. A corpus is never the language itself; it is always a sample of a language or language variety. Understanding this helps us interpret corpus findings more carefully, justify our design choices more clearly, and make claims that are appropriately cautious and well grounded.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sampling-corpus-creation-1" class="slide level2 smaller">
+<h2>Sampling: Corpus Creation</h2>
+<ul>
+<li>Sampling unit
+<ul>
+<li>For written text, it could be a book (chapter), periodical or newspaper (article)</li>
+</ul></li>
+<li>Sampling frame
+<ul>
+<li>A list of sampling units</li>
+</ul></li>
+<li>Populations
+<ul>
+<li>Assembly of all sampling units, which can be defined in terms of
+<ul>
+<li>Language production (demographic: speakers and writers)</li>
+<li>Language reception (demographic: audience and readers)</li>
+<li>Language as a product (registers and genres)</li>
+</ul></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>We are now breaking down some key concepts used in sampling for corpus creation, starting with sampling unit. A sampling unit is the basic element from which we sample. For written language, this could be an entire book, a chapter from a book, an article from a journal or magazine, or a single newspaper article. The choice of sampling unit matters because it determines the level at which texts enter the corpus and influences how evenly different sources and authors are represented.</p>
+<p>Closely related to this is the sampling frame. The sampling frame is essentially a list of all the sampling units that are available for selection. For example, it might be a catalog of newspapers published in a certain time period, a list of academic journals in a field, or a database of books from a particular genre. The quality and completeness of the sampling frame directly affect the representativeness of the corpus, because you can only sample from what is included in that list.</p>
+<p>Next is population. In corpus design, the population refers to the language, or language variety under consideration. More concretely, it is the full assembly of all possible sampling units that belong to that language or variety. This population can be defined in several different ways, depending on how we conceptualize language.</p>
+<p>One way is in terms of language production, focusing on who produces the language—such as speakers and writers—and their demographic characteristics. Another approach is language reception, which emphasizes the audience or readership and considers who the language is intended for or consumed by. A third approach treats language as a product, defining the population in terms of registers and genres, such as news writing, academic prose, or social media posts. Each of these perspectives leads to different sampling decisions and, ultimately, to different kinds of corpora.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="size-of-samples-corpus-creation" class="slide level2 smaller">
+<h2>Size of Samples: Corpus Creation</h2>
+<p>Full texts or text segments?</p>
+<blockquote>
+<p>Samples of language for a corpus should wherever possible consist of entire documents or transcriptions of complete speech events (Sinclair 2005)</p>
+</blockquote>
+<pre><code>|--&gt; Good for studying textual organization</code></pre>
+<p><code>A full-text corpus may be inappropriate or problematic</code></p>
+<ul>
+<li>Peculiarity of an individual style or topic may occasionally show through</li>
+<li>There are copyright issues in including full texts</li>
+<li>Frequent linguistic features are quite stable in their distributions and hence short text chunks (e.g.&nbsp;2,000 running words) are usually sufficient</li>
+</ul>
+<p><code>Text initial, middle or end chunks?</code></p>
+<ul>
+<li>Text initial, middle, and end samples must be taken in a balanced way</li>
+</ul>
+<aside class="notes">
+<p>Now, we are looking at the size of samples used in corpus creation, and in particular the trade-off between using full texts and text segments. One <strong>common question in corpus design is whether we should include entire documents or only portions of them</strong>.</p>
+<p>As John Sinclair argues, whenever possible, samples of language should consist of entire documents or complete speech events. Full texts are especially valuable when the research focus is on textual organization, discourse structure, or how meaning unfolds across a whole document. Having access to the complete text allows us to study introductions, conclusions, cohesion, and larger rhetorical patterns.</p>
+<p>At the same time, a full-text corpus can be inappropriate or problematic in certain situations. One issue is that the peculiarity of an individual author’s style or a specific topic may occassionally be seen as it gets diluted across the across. There are also practical and legal constraints, particularly copyright issues, which can make it difficult or impossible to include full texts in a corpus, especially for contemporary materials.</p>
+<p>From a linguistic perspective, it is also important to note that frequent linguistic features tend to be quite stable in their distributions. Because of this stability, relatively short text chunks are usually sufficient for studying common lexical and grammatical patterns. This is why many general corpora rely on sampled text segments rather than complete documents.</p>
+<p>Also, when text segments are used, the position of the samples within the text matters. Text-initial, middle, and end sections often differ linguistically and rhetorically. To avoid systematic bias, samples should be taken in a balanced way across these positions.</p>
+<p>Hence, decisions about sample size and structure should always be driven by the research goals, balancing theoretical ideals with practical constraints and the type of linguistic analysis being undertaken.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="proportion-of-samples-corpus-creation" class="slide level2 smaller">
+<h2>Proportion of Samples: Corpus Creation</h2>
+<ul>
+<li><p>In stratified random sampling, how many samples should be taken for each category?</p>
+<ul>
+<li>Numbers of samples across text categories should be proportional to their <code>frequencies</code> and/or <code>weights</code> in the target population in order for the resulting corpus to be considered as representative</li>
+<li>Difficult to determine objectively, just well-informed and intuitive guess</li>
+</ul></li>
+</ul>
+
+<img data-src="images/clipboard-2014145176.png" class="quarto-figure quarto-figure-center r-stretch"><div class="footer">
+<p><em>Constant sample size: ~ 2,000 words</em></p>
+</div>
+<aside class="notes">
+<p>Next is proportion of samples in corpus creation, particularly in the context of stratified random sampling. The central question here is: <strong>how many samples should be taken from each text category?</strong></p>
+<p>In stratified sampling, the general principle is that the number of samples drawn from each category should be proportional to that category’s frequency or weight in the target population. If a particular genre, register, or text type is more common in the language variety we are studying, it should generally be more heavily represented in the corpus. This proportionality is what allows the corpus, as a whole, to be considered representative of the population it is meant to model.</p>
+<p>However, in practice, these proportions are very difficult to determine objectively. We rarely have precise, empirical data about how frequently different text types occur in real-world language use. As a result, corpus designers typically rely on well-informed and intuitive judgments, drawing on prior research, expert knowledge, and practical constraints.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="corpus-size" class="slide level2 smaller">
+<h2>Corpus Size</h2>
+<ul>
+<li>How large should a corpus be?
+<ul>
+<li>There is no easy answer to this question.
+<ul>
+<li>Krishnamurthy (2001): “Size matters”</li>
+<li>Leech (1991): “Size is not all-important”</li>
+</ul></li>
+</ul></li>
+<li>Size of the corpus needed depends upon the <code>purpose</code> for which it is intended as well as a number of practical considerations
+<ul>
+<li>Kind of query that is anticipated from users
+<ul>
+<li><em>Are you studying common or rare linguistic features?</em></li>
+</ul></li>
+<li>Methodology they use to study the data
+<ul>
+<li><em>How much work can be done by the machine and how much has to be done by hand?</em></li>
+</ul></li>
+<li>For corpus creators, also the source of data
+<ul>
+<li><em>Are the data in electronic form readily available at a reasonable cost?</em></li>
+<li><em>Can copyright permissions be granted easily if at all?</em></li>
+</ul></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Next, we address a question that comes up very frequently in corpus design: <strong>how large should a corpus be?</strong> The short answer is that there is no single or simple answer. This is why the literature often presents seemingly contradictory views. On the one hand, Krishnamurthy argues the advantages of large datasets. On the other hand, Geoffrey Leech reminds us that size is not all-important. Both perspectives are correct, depending on context.</p>
+<p>The size of the corpus you need depends primarily on the purpose for which it is intended, along with a number of practical considerations. One key factor is the kind of linguistic features you are interested in studying. If your focus is on very common features, such as frequent function words or basic grammatical patterns, a relatively small corpus may be sufficient. However, if you are studying rare linguistic features, low-frequency constructions, or specialized vocabulary, a much larger corpus is usually required.</p>
+<p>Another important consideration is methodology. How much of the analysis can be automated, and how much requires human intervention? Large corpora are more manageable when most of the work can be done computationally. If significant manual annotation or close qualitative analysis is involved, corpus size may need to be smaller to remain feasible.</p>
+<p>Finally, from the perspective of corpus creators, following constraints play a major role. The availability of data in electronic form, the cost of acquiring and processing that data, and the ease—or difficulty—of obtaining copyright permissions all directly affect how large a corpus can realistically be.</p>
+<p>A corpus should be as large as necessary, but no larger than what is justified by the research questions, methods, and practical constraints involved.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="corpus-size-1" class="slide level2 smaller">
+<h2>Corpus Size</h2>
+<ul>
+<li>Corpus size increases with the development of technology
+<ul>
+<li>1960s-70s
+<ul>
+<li>Brown and LOB: one million words</li>
+</ul></li>
+<li>1980s
+<ul>
+<li>Birmingham/Cobuild corpora: 20 million words</li>
+</ul></li>
+<li>1990s
+<ul>
+<li>British National Corpus: 100 million words</li>
+</ul></li>
+<li>Early 21st Century
+<ul>
+<li>Bank of English: 645 millions words</li>
+</ul></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>This slide shows how the size of corpora has increased over the decades alongside advances in technology.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="different-types-of-corpora-their-uses" class="slide level2">
+<h2>Different Types of Corpora &amp; Their Uses</h2>
+<ul>
+<li><code>General/reference vs. specialized corpora</code></li>
+<li><code>Synchronic vs. diachronic corpora</code></li>
+<li>Monolingual vs.&nbsp;multilingual corpora</li>
+<li>Comparable vs.&nbsp;parallel corpora</li>
+<li>Native vs.&nbsp;learner corpora</li>
+<li>Developmental vs.&nbsp;learner/interlanguage corpora</li>
+<li>Raw vs.&nbsp;annotated corpora</li>
+<li><code>Static/sample vs. dynamic/monitor corpora</code></li>
+</ul>
+<aside class="notes">
+<p><code>General corpora</code> represents the universe of particular task and capture full range of varieties of use. It is generally very large and contains balance of texts from a wide variety of different domains of spoken and written language. They are also referred as reference corpora because they are often used as a baseline against which judgements about the language varieties held in more specialised corpora can be made.</p>
+<p>The early general corpora seem tiny by today’s standards, but they continue to be used by both applied and computational linguists, and research has shown that one million words is sufficient to obtain reliable, generalizable results research questions.</p>
+<p>A general corpus is designed is designed to be balanced and include language samples from a wide range of registers or genres in all their diversity. Most of the early general corpora were limited to written language, but because of the advances in technology and increasing interest in spoken language. Because written texts are vastly easier and cheaper to compile than transcript of speech, very few of the large corpora are balanced in terms of speech and writing.</p>
+<p><code>Specialized corpora</code> are designed with more specific research goals in mind, may be the most crucial growth area for corpus linguistics, as researchers increasingly recognize the importance of register-specific descriptions and investigations of language. They may include both spoken and written components.</p>
+<p>It focuses on a particular spoken or written variety of language. It includes historical corpora, corpora of newspaper writing, fiction or academic prose, etc.</p>
+<p>Registers of speech that have been the focus of specialized spoken corpora include academic speech (the Michigan Corpus of Academic Spoken English; MICASE), teenage language (COLT) and child language (the CHILDES database).</p>
+<p>The learner’s corpus which includes spoken or written language is becoming increasingly important for language teachers. The most well-known example is the International Corpus of Learner English (ICLE). Lets discuss two examples of specific corpora:</p>
+<ol type="a">
+<li><p>Academic corpora: Academic corpora deal exclusively with languageproduced in academic contexts. They may consist of transcripts ofacademic lectures and seminars, various types of writing produced in a university context, but also sometimes include other academic activities, such as meetings oradvisory/supervision sessions. They tend to reflect the speech of both experts and non-experts in the field of academia. The basic idea behind creating and exploiting academic corpora is to be able to extract samples of expert and non-expert language use in academic settings.</p></li>
+<li><p>Learner corpora: Learner corpora do not contain materials produced by experts in a field, but instead by students at different levels and stages of language acquisition, often restricted to non-native speakers, i.e.&nbsp;L2 learners, of a language. Occasionally, though, we can also find corpora of L1 learners, i.e.&nbsp;native speakers of a language. These are often created and used for comparison purposes to investigate differences between L1 and L2 learners, but may also be employedto explore different stages of development in the native language.</p></li>
+</ol>
+<table class="caption-top" style="width:12%;">
+<colgroup>
+<col style="width: 12%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>Synchronic vs. Diachronic Corpora</code></td>
+</tr>
+<tr class="even">
+<td>Corpora can be designed and used for <code>synchronic (i.e. ‘contemporary’)</code> and <code>diachronic (i.e. ‘historical’/comparative)</code> studies. Different issues may apply to the design of these two types of corpora. For instance, historical corpora maycontain old-fashioned or unfamiliar words and spellings or a large number of spelling variants (e.g.&nbsp;yeare, hee, generalitie, itselfe, etc.), as well as possible even characters (letters) that no longer exist in a modern alphabet.</td>
+</tr>
+<tr class="odd">
+<td>Historical corpora are also by nature restricted to written materials because there just are no recordings of native speakers of Old or Middle English in existence.Furthermore, the restriction does not only apply to the types of material availablebut also to the amount of data we can draw on because, in former times, theresimply wasn’t such a wealth of documents available, and from as many differentsources as we have them today.</td>
+</tr>
+</tbody>
+</table>
+<p><code>Static Vs Dynamic Corpora</code></p>
+<p>One further distinction we can make between different types of corpora is between those that are fixed in size and finalised in that they’re never intend to change (i.e.&nbsp;static) and more dynamic types of corpora, which are explicitly designed to change over time and to keep on reflecting the ever-changing nature of language.</p>
+<p>We can refer to the former type as snapshot corpora, latter as monitor corpora. By this definition, in fact, almost all the corpora discussed above are snapshot corpora. Even the diachronic ones are, because they’ve not been designed to be added to later.</p>
+<p>Monitor corpora are constantly updated and continuously growing in size. Unlike static corpora, they are not intended to be fixed snapshots of language. Instead, they are designed to evolve over time, which is why they are typically much larger and often include full texts rather than short samples.</p>
+<p>One of the major advantages of monitor corpora is that they are always up to date. New material is regularly added, which makes them particularly useful for studying language change. In many cases, monitor corpora prioritize the inclusion of texts that introduce new linguistic features—for example, new vocabulary, emerging constructions, or novel usage patterns that were not already present in the corpus.</p>
+<p>Because of this design, monitor corpora are especially valuable for tracking changes across different periods of time. Conceptually, a monitor corpus can even be thought of as a series of static corpora, each representing a different stage in the ongoing development of the dataset.</p>
+<p>However, these advantages come with important disadvantages. One key limitation is that monitor corpora generally make no serious attempt to balance the corpus across genres or text types. The focus is on growth and change rather than proportional representation.</p>
+<p>Another practical issue is text availability. Over time, access to certain types of texts may become restricted due to copyright constraints, licensing changes, or platform policies, which can affect what material can be added.</p>
+<p>There are also methodological challenges. Because monitor corpora are constantly changing, it can be confusing to specify a particular version of the corpus, especially in terms of token counts or size at the time of analysis. This makes replication and comparison more difficult.</p>
+<p>Finally, it is often hard to compare results obtained from corpora of different sizes, especially when the corpus grows substantially between analyses. Changes in results may reflect differences in corpus size rather than genuine linguistic change.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="quarto-auto-generated-content">
+<p><img src="images/ou.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"theme":"whiteboard"},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: "separate-page",
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

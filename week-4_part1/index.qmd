@@ -1,0 +1,563 @@
+---
+title: "Corpus Building and Representation"
+subtitle: "LIS 4/5693: Information Retrieval and Text Mining"
+author: 
+  - Dr. Manika Lamba
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      theme: whiteboard
+      buttons: true
+    preview-links: false
+    controls: true
+    progress: true
+    show-notes: separate-page
+    logo: images/ou.png
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Introduction
+
+
+:::notes
+In this week, we are going to cover the most foundational but often underestimated components of text mining and NLP that is corpus building and representativeness.
+
+Before we can apply algorithms, models, or sophisticated analytical techniques, we have to confront a more basic question: `What exactly are we analyzing, and how well does it represent the language or phenomenon we care about?`
+
+In practice, many downstream problems in text mining that create bias, unreliable results, or poor generalization can be traced back not to the model, but to choices made during corpus design. So, let's get started with understanding the term 'corpus' itself.
+
+:::
+
+## What is a Corpus?
+
+-   Corpus (pl. corpora) = ‘body’
+-   Collection of written text or transcribed speech
+-   Usually but not necessarily purposefully collected
+-   Usually but not necessarily structured
+-   Usually but not necessarily annotated
+-   Usually stored on and accessible via computer
+-   Corpus \~ text archive
+
+
+:::notes
+The word 'corpus' comes from Latin, meaning ‘body’, and in our field it refers to a body of texts. At its most basic level, a corpus is a collection of written texts or transcribed speech. This can include books, news articles, social media posts, emails, interviews, or any other form of language data that has been captured in text form.
+
+Importantly, a corpus is usually but not necessarily purposefully collected. In an ideal research setting, we design a corpus with a clear goal in mind. However, in many real-world text mining projects, corpora are assembled from existing data sources, such as web crawls or platform APIs, without an original linguistic research design.
+
+Similarly, a corpus is usually but not necessarily—structured. Some corpora have carefully defined metadata, categories, and document boundaries. Others are far messier, consisting of raw text dumps that require extensive preprocessing before analysis.
+
+Corpora are also often annotated, but annotation is not a defining requirement. Annotations might include part-of-speech tags, named entities, syntactic parses, or discourse labels. Many text mining workflows begin with unannotated corpora and add annotation later as part of the analysis.
+
+Another key characteristic is that corpora are typically stored on and accessed via computers. This distinguishes corpora from traditional print archives and enables large-scale, computational analysis --- what makes text mining possible in the first place.
+
+Finally, it’s useful to think of a corpus as being similar to a text archive, but not identical to one. A text archive is often a passive collection, while a corpus, especially in research contexts, implies some level of selection, organization, and analytical intent, even if that intent is minimal. So, not every text archive is a corpus but every corpus is a kind of text archive, shaped by design choices!
+:::
+
+## Representativeness {.smaller}
+
+> A corpus can be a collection of (1) `machine-readable` (2) `authentic`
+> texts (including transcripts of spoken data) which is (3) `sampled` to
+> be (4) `representative` of a particular language or task
+
+-   A corpus is different from a random collection of texts or an
+    archive
+-   `Representativeness` is a defining feature of a corpus
+-   As language is infinite but a corpus has to be finite in size, we
+    sample and proportionally include a wide range of text types to
+    ensure maximum balance and representativeness
+
+:::notes
+
+This slide brings together several key ideas into a single definition of what makes something a corpus, rather than just a pile of texts. 
+
+`A corpus is a collection of machine-readable and authentic texts—including transcripts of spoken language—that has been sampled with the goal of being representative of a particular language variety, domain, or analytical task`
+
+Let’s briefly unpack these components:
+
+- First, machine-readable means the texts can be processed computationally. Scanned PDFs or images of text are not corpora until they are converted into usable text data. 
+- Second, here authentic means the texts were produced for real communicative purposes not invented examples or artificially generated sentences. This is important because natural language use includes messiness, variation, and ambiguity that models need to encounter. 
+- The key step here is sampling. Because language is effectively infinite, we cannot collect everything. Any corpus must be finite, which means we make deliberate choices about what to include and in what proportions.
+
+This is where representativeness becomes crucial. Representativeness is what distinguishes a corpus from a random collection of texts or a simple archive. An archive may aim for completeness or preservation, but a corpus aims for analytical validity to reflect the linguistic patterns relevant to a specific research question or task.
+
+Importantly, representativeness is not absolute. A corpus is not representative of ‘language in general’ in some universal sense. It is representative of something:
+a language variety, a time period, a genre, a community, or a task such as sentiment analysis or topic modeling. Because of this, corpus design typically involves sampling across a wide range of text types and including them in carefully considered proportions. This helps maximize balance, reducing overrepresentation of any single source, genre, or register.
+
+Thus, representativeness is not about size, it’s about whether the corpus supports the claims you want to make.
+:::
+
+
+## Some Definitions: Corpus {.smaller}
+
+-   “generally
+    `assembled with particular purposes in mind, and are often assembled to be (informally speaking) *representative*`
+    of some language or text type” (Leech 1992: 116)
+-   “…selected and ordered according to `explicit linguistic criteria`
+    in order to be used as a sample of the language” (Sinclair 1996)
+-   “A `well-organized` collection of data” (McEnery 2003)
+-   “gathered according to `explicit design criteria`” (Tognini-Bonelili
+    2001: 2)
+-   “built according to
+    `explicit design criteria for a specific purpose`” (Atkins et
+    al 1992) texts selected and put together `“in a principled way”`
+    (Johansson 1998: 3)
+    
+:::notes
+This slide brings together well-known definitions of a corpus from different scholars. I want you to notice the patterns that emerge across them. Take a moment to scan the definitions first, and then we’ll walk through what they have in common.
+
+Starting with Geoffrey Leech, the emphasis is on purpose and representativeness.
+Leech highlights that corpora are assembled with particular goals in mind and are expected at least informally to represent a language or a text type. This reinforces the idea that corpora are designed, not accidental.
+
+John Sinclair sharpens this idea further by stressing explicit linguistic criteria.
+Here, the key point is that selection is systematic. Texts are not just chosen because they are available, but because they meet clearly defined linguistic conditions.
+
+When Tony McEnery refers to a corpus as a well-organized collection of data, organization becomes central. This reminds us that structure --- metadata, consistency, documentation -- is essential for meaningful analysis.
+
+Both Elena Tognini-Bonelli and Sue Atkins emphasize explicit design criteria. The repeated use of the word explicit is important: good corpus design makes assumptions visible rather than implicit.
+
+Finally, Stig Johansson describes corpora as being constructed in a principled way.
+This captures the overall spirit of all the definitions: corpus construction is methodological, reasoned, and defensible.
+
+Across all these definitions, the recurring ideas are `purpose, explicit criteria, principled selection, and representativeness`. A corpus is not just text, it is designed data.
+:::
+
+## What is Representativeness? {.smaller}
+
+> A corpus is thought to be representative of the language variety it is
+> supposed to represent
+> (Leech 1991)
+
+> Representativeness refers to the extent to which a `sample` includes
+> the full range of `variability` in a `population` (Biber 1993)
+
+-   Representativeness is a fluid concept closely related to your
+    research questions
+        
+:::notes
+
+Now lets discuss: what does it mean for a corpus to be representative? At first glance, representativeness may sound straightforward, but it’s actually one of the most nuanced and debated ideas in corpus linguistics and text mining.
+
+According to Geoffrey Leech, a corpus is representative of a language variety if findings based on that corpus can be generalized to the language variety it is intended to represent. In other words, representativeness is about valid inference—whether conclusions drawn from the data extend beyond the corpus itself.
+
+Douglas Biber reframes this idea in statistical terms. He defines representativeness as the extent to which a sample captures the full range of variability in a population. This framing is especially useful for text mining, because it reminds us that language variation—across genres, registers, speakers, and contexts—is the core challenge.
+
+An important takeaway here is that representativeness is not fixed. It is a fluid concept, and it only makes sense in relation to specific research questions. There is no such thing as a corpus that is simply ‘representative of language’ in general. For example, if your research goal is to model general English, then a corpus made up entirely of newspapers is insufficient. Likewise, if your goal is to study newspaper language, a corpus drawn from a single newspaper, such as The Times, will not capture the diversity of newspaper discourse.
+
+So whenever you work with a corpus, especially in text mining and NLP, you should always ask yourself:
+- Representative of what?
+- For which purpose?
+- And for which population of texts?
+
+Good corpus design doesn’t eliminate bias but it makes your assumptions explicit and your conclusions defensible.
+:::
+
+## Two Types of Representativeness {.smaller}
+
+The representativeness of general corpora and specialized corpora
+(domain/genre specific) are achieved and measured in different ways
+
+-   General corpora
+    -   Balance: Range of genres included in a corpus and their
+        proportion
+    -   Sampling: How the text chunks for each genre are selected
+-   Specialized corpora
+    -   Degree of closure/saturation: Closure/saturation for a
+        particular linguistic feature of a
+        variety of language 
+
+:::notes
+Now, we’re going to look at two different types of representativeness and why they are handled differently depending on the kind of corpus you are building. The key idea here is that the general corpora and specialized corpora—such as domain- or genre-specific corpora—do not achieve representativeness in the same way, and they should not be evaluated using the same criteria. 
+
+Let’s start with general corpora. General corpora aim to represent a broad language variety, such as general English. Because of this broad scope, representativeness is primarily achieved through balance and sampling. Balance refers to the range of genres included in the corpus and the proportions in which they appear.
+For example, a general corpus might include fiction, newspapers, academic writing, spoken conversation, and online texts, each in carefully chosen proportions. Sampling, on the other hand, concerns how texts are selected within each genre. Rather than including entire books or full archives, corpora often sample smaller text chunks to avoid overrepresenting any single author, source, or topic.
+
+Now let’s contrast this with specialized corpora. Specialized corpora are designed to represent a specific domain or genre—such as legal documents, medical reports, or computer manuals. In these cases, representativeness is not about balance across genres, because the genre is already fixed. Instead, representativeness in specialized corpora is often evaluated in terms of closure or saturation. Closure or saturation, refers to the point at which adding more data produces very little new linguistic information. For example, in a corpus of computer manuals, once the technical vocabulary stabilizes, the rate of new word types decreases and the lexical growth curve begins to flatten. When this flattening occurs, it suggests that the corpus has captured the relevant linguistic features of that domain with sufficient coverage—even though the corpus may be much smaller than a general corpus.
+
+So, representativeness depends not just on how much data you have, but on what kind of corpus you are building and what you want it to represent.
+
+:::
+
+## Why Should We Care about Representativeness? {.smaller}
+
+-   Corpus-based studies 
+    -   Interpret results of corpus research
+-   Corpus user 
+    -   Important to “know your corpus”
+    -   Decide whether a given corpus is appropriate for 
+        specific research question
+    -   Make appropriate claims on the basis of such corpus
+-   Corpus creator 
+    -   Make corpus as representative as possible of a language
+        (variety) claimed to represent
+    -   Document design criteria explicitly and make 
+        documentation available to corpus users
+        
+:::notes
+
+We’ll now step back and ask a practical question: Why does representativeness actually matter?
+
+Representativeness is not just a theoretical concept. It affects how we interpret results, how we use corpora, and how we design them in the first place.
+
+First, let’s think about corpus-based studies, particularly from an assessment perspective. When we conduct corpus-based research, representativeness helps us decide how much confidence we should place in our findings.
+If a corpus is poorly matched to the research question, even sophisticated methods can produce misleading results. This means that results from corpus studies should always be interpreted with caution, taking into account both the data used and the methods applied. A statistically significant result is not necessarily a meaningful one if the corpus itself is not appropriate.
+
+Now let’s consider the perspective of the corpus user. As a user of corpus data, it is essential to know your corpus. This means understanding what kinds of texts it includes, what it excludes, how it was sampled, and what it was designed to represent. This knowledge allows you to decide whether a given corpus is appropriate for your specific research question, and just as importantly it allows you to make responsible and defensible claims based on that corpus.
+
+Finally, let’s look at the role of the corpus creator. If you are building a corpus, representativeness becomes a design responsibility. The goal is to make the corpus as representative as possible of the language variety—or task—you claim it represents. 
+
+Equally important is documentation. Corpus creators should document their design criteria explicitly and make that documentation available to users. Without transparency, users cannot properly assess representativeness, no matter how carefully the corpus was constructed.
+:::
+
+## Criteria for Text Selection {.smaller}
+
+-   The criteria used to select texts for a corpus are principally
+    `external`
+    -   The external vs. internal criteria corresponds to Biber’s
+        (1993:243) `situational vs. linguistic perspectives`
+        -   `External criteria` are defined situationally irrespective
+            of the distribution of linguistic features
+        -   `Internal criteria` are defined linguistically, taking into
+            account the distribution of such features
+-   It is `circular` to use internal criteria like the distribution of
+    words or grammatical features as the primary parameters for the
+    selection of corpus data
+    
+:::notes
+Now, lets see how texts are selected for inclusion in a corpus, and why the criteria used for selection matter so much for the validity of corpus-based research. The main criteria used to select texts for a corpus are primarily external. By external, we mean that texts are selected based on situational factors—such as genre, medium, domain, speaker or author type, time period, or communicative purpose—rather than on the linguistic features contained in the texts themselves.
+
+This distinction corresponds to Douglas Biber’s distinction between situational and linguistic perspectives. From a situational perspective, we define categories like ‘newspaper articles,’ ‘academic writing,’ or ‘online forums’ without first examining the distribution of words or grammatical structures within them.
+
+Internal criteria, in contrast, are defined linguistically. They involve selecting texts based on features such as vocabulary frequency, syntactic patterns, or grammatical constructions.The problem is that relying on internal criteria for corpus construction creates a circular logic. If we pre-select texts because they already exhibit certain linguistic features, then analyzing the corpus to discover those same features becomes meaningless—we’ve built the answer into the dataset.
+
+In other words, if the distribution of linguistic features is determined at the design stage, there is no genuine discovery to be made during analysis. The corpus becomes skewed by design, and any claims about ‘natural’ language use are no longer valid.
+::::
+
+## Criteria for Text Selection {.smaller}
+
+-   Time? If a corpus is not regularly updated, it rapidly becomes
+    unrepresentative (Hunston, 2002)
+
+-   Relevance of permanence in corpus design actually depends on how we
+    view a corpus - a static or dynamic language model
+
+    -   `Static model`: sample corpora (nearly all existing corpora)
+    -   `Dynamic model`: monitor corpora
+
+    > Criteria for determining the structure of a corpus should be small
+    > in number, clearly separate from each other, and efficient as a
+    > group in delineating a corpus that is representative of the
+    > language or variety under examination (Sinclair, 2005)
+    
+:::notes
+As Susan Hunston points out, if a corpus is not regularly updated, it can very quickly become unrepresentative. Language changes continuously -- new words emerge, meanings shift, genres evolve, and platforms rise and fall. A corpus that accurately reflected language use ten or even five years ago may no longer do so today. However, whether this is a problem depends on how we conceptualize a corpus. This brings us to an important distinction: static versus dynamic language models.
+
+In a static model, a corpus is treated as a fixed snapshot of language. Most existing corpora fall into this category. These are often called sample corpora, and they are perfectly appropriate when the research goal is historical analysis, comparison across time periods, or controlled linguistic description.
+
+In contrast, a dynamic model treats language as something that is constantly evolving.
+Here, we work with monitor corpora, which are continuously updated to track ongoing linguistic change. For example, the emergence of new vocabulary or shifting usage patterns.
+
+Neither approach is inherently better than the other. The key issue is alignment with your research question.
+A static corpus may be ideal for one study, while a dynamic corpus may be essential for another.
+
+This brings us to the guiding principle articulated by John Sinclair. Sinclair emphasizes that the criteria used to structure a corpus should be small in number, clearly distinct, and efficient as a group in producing a corpus that is representative of the language or variety under investigation.
+
+In other words, good corpus design is not about adding more criteria -- it’s about choosing the right ones, applying them consistently, and documenting them clearly.
+:::
+
+## Corpus Balance {.smaller}
+
+-   A balanced corpus covers a wide range of text categories which are
+    supposed to be representative of the language (variety) under
+    consideration
+-   The proportions of different kinds of text it contains should
+    correspond with informed and intuitive judgements
+-   There is no scientific measure for balance – just best estimation
+-   `The acceptable balance is determined by the intended use – your research questions`
+
+:::notes
+
+Now, let's focus on corpus balance, which is one of the most practical and also one of the most debated aspects of corpus design. A balanced corpus is one that covers a wide range of text categories that are believed to be representative of the language variety under consideration. These categories might include genres such as fiction, newspapers, academic writing, spoken conversation, or online communication, depending on the scope of the corpus.
+
+An important point here is that balance is about proportions, not just inclusion. The relative amounts of different kinds of texts in the corpus should correspond to what we consider to be informed and intuitive judgments about how language is actually used.
+
+However, there is no purely scientific or objective measure for determining corpus balance. Unlike statistical sampling from a known population, language does not come with a clear baseline distribution. As a result, balance is always an estimate, not a precise calculation.
+
+This is why the acceptable balance is determined by the intended use of the corpus. In other words, balance is not an abstract idea, it is defined by your research questions. A corpus that is well balanced for studying general language use may be completely unbalanced for studying academic writing, social media discourse, or legal language.
+
+:::
+
+## Pragmatics in Corpus Design {.smaller}
+
+> Most general corpora of today are badly balanced because they do not
+> have nearly enough spoken language in them (Sinclair, 2005)
+
+-   Pragmatic considerations also mean that balance is a more important
+    issue for a static sample corpus than for a dynamic monitor corpus
+    -   As a monitor corpus is frequently updated, it is usually
+        “impossible to maintain a corpus that also includes text of many
+        different types, as some of them are just too expensive or time
+        consuming to collect on a regular basis” (Hunston, 2002: 30-31)
+        
+:::notes
+As John Sinclair points out on this slide, many general corpora today are poorly balanced, particularly because they contain far too little spoken language. Spoken data is difficult to collect, transcribe, anonymize, and distribute, which means it is often underrepresented—even though spoken language plays a central role in everyday communication. This highlights an important idea: corpus imbalance is often not theoretical, it is practical. Balance is shaped by cost, time, access, ethical constraints, and technical limitations, not just by linguistic ideals.
+
+Pragmatic considerations also affect how we think about balance differently for static sample corpora and dynamic monitor corpora. In a static corpus, balance is especially important because the dataset is fixed. Once it is built, any imbalance becomes permanent and directly affects all future analyses. 
+
+In contrast, a monitor corpus is updated frequently. As Susan Hunston explains, it is often impossible to maintain balance across many text types in a monitor corpus. Some kinds of texts, such as spoken interactions or specialized genres, are simply too expensive or time-consuming to collect on a regular basis. As a result, monitor corpora often prioritize ongoing growth and change tracking over strict balance, accepting certain imbalances as a practical necessity.
+
+:::
+
+## Corpus Balance: Some Tips {.smaller}
+
+> The corpus builder should retain, as target notions,
+> representativeness and balance. While these are not precisely
+> definable and attainable goals, they must be used to guide the design
+> of a corpus and the selection of its components (Sinclair, 2005)
+
+> It would be short-sighted indeed to wait until one can scientifically
+> balance a corpus before starting to use one, and hasty to dismiss the
+> results of corpus analysis as ‘unreliable’ or ‘irrelevant’ because the
+> corpus used cannot be proved to be ‘balanced’ (Atkins et al, 1992: 6)
+
+
+:::notes
+This slide offers some practical guidance on how to think about corpus balance without treating it as an impossible or purely theoretical ideal. As John Sinclair reminds us, corpus builders should keep representativeness and balance as target notions. These are not goals that can be precisely defined or fully achieved. Instead, they serve as guiding principles that shape decisions about corpus design and text selection. So, balance is something we aim for, not something we prove mathematically. The absence of a perfect definition does not make the concept useless—it makes it practical. 
+
+The second quotation on the slide from Sue Atkins and colleagues reinforces this point. They caution against waiting for a scientifically perfect method of balancing a corpus before actually using one. If we did that, corpus research would never begin. At the same time, they warn against dismissing corpus-based findings simply because a corpus cannot be proven to be balanced. Imperfect balance does not automatically invalidate results—what matters is whether the limitations of the corpus are understood, acknowledged, and aligned with the research goals.
+
+:::
+
+## Sampling: Corpus Creation {.smaller}
+
+-   Language is infinite, but a corpus is finite in size, so sampling is
+    inescapable in corpus building 
+
+-   Population ( language/variety) vs. sample (corpus) 
+    -   A sample is a scaled-down version of a larger population
+    -   A sample is representative if what we find for the sample also
+        holds for the general population
+
+-   Corpus representativeness and balance rely heavily on sampling
+    -   A corpus is a sample of a given population (language or language
+        variety)
+        
+:::notes
+
+**Sampling** is at the heart of corpus creation and, in many ways, unavoidable. Language is effectively infinite, there is no fixed boundary to how much language exists or can be produced. A corpus, by contrast, is always finite. Because of this mismatch, **sampling is inescapable** in corpus building. As **Douglas Biber** points out, some of the very first decisions we make when constructing a corpus are sampling decisions, whether we recognize them as such or not. These include decisions about which kinds of texts to include, how many texts to collect, which specific texts to select, whether to include entire texts or only portions of them, and how long those text samples should be. Even choices that seem technical or neutral are, in fact, choices about what language gets represented and what does not.
+
+To understand why sampling matters so much, it is useful to think in terms of **population versus sample**. The population refers to the language or language variety we are interested in. For example, general English, academic writing, or legal discourse. The corpus is the **sample** drawn from that population. The goal of sampling, as articulated by **Frank Yates**, is to obtain a sample that, within the limits of size, reproduces the key characteristics of the population as closely as possible, especially those characteristics that are most relevant to the research question.
+
+In this sense, a sample is a **scaled-down version** of a much larger population. A sample is considered representative if the patterns we observe in the corpus also hold for the broader language population we claim to be studying. This is why sampling is not just a technical step but a methodological one. Decisions about sampling directly shape what kinds of linguistic patterns can be observed and which ones may be missed.
+
+Ultimately, **corpus representativeness and balance depend heavily on sampling**. A corpus is never the language itself; it is always a sample of a language or language variety. Understanding this helps us interpret corpus findings more carefully, justify our design choices more clearly, and make claims that are appropriately cautious and well grounded.
+:::
+
+## Sampling: Corpus Creation {.smaller}
+
+-   Sampling unit
+    -   For written text, it could be a book (chapter), periodical or
+        newspaper (article)
+-   Sampling frame
+    -   A list of sampling units
+-   Populations
+    -   Assembly of all sampling units, which can be defined in terms of
+        -   Language production (demographic: speakers and writers)
+        -   Language reception (demographic: audience and readers)
+        -   Language as a product (registers and genres)
+        
+:::notes
+We are now breaking down some key concepts used in sampling for corpus creation, starting with sampling unit. A sampling unit is the basic element from which we sample. For written language, this could be an entire book, a chapter from a book, an article from a journal or magazine, or a single newspaper article. The choice of sampling unit matters because it determines the level at which texts enter the corpus and influences how evenly different sources and authors are represented.
+
+Closely related to this is the sampling frame. The sampling frame is essentially a list of all the sampling units that are available for selection. For example, it might be a catalog of newspapers published in a certain time period, a list of academic journals in a field, or a database of books from a particular genre. The quality and completeness of the sampling frame directly affect the representativeness of the corpus, because you can only sample from what is included in that list.
+
+Next is population. In corpus design, the population refers to the language, or language variety under consideration. More concretely, it is the full assembly of all possible sampling units that belong to that language or variety. This population can be defined in several different ways, depending on how we conceptualize language.
+
+One way is in terms of language production, focusing on who produces the language—such as speakers and writers—and their demographic characteristics. Another approach is language reception, which emphasizes the audience or readership and considers who the language is intended for or consumed by. A third approach treats language as a product, defining the population in terms of registers and genres, such as news writing, academic prose, or social media posts. Each of these perspectives leads to different sampling decisions and, ultimately, to different kinds of corpora.
+
+:::
+
+## Size of Samples: Corpus Creation {.smaller}
+
+Full texts or text segments?
+
+> Samples of language for a corpus should wherever possible consist of
+> entire documents or transcriptions of complete speech events (Sinclair
+> 2005)
+
+```         
+|--> Good for studying textual organization
+```
+
+`A full-text corpus may be inappropriate or problematic`
+
+-   Peculiarity of an individual style or topic may occasionally show
+    through
+-   There are copyright issues in including full texts
+-   Frequent linguistic features are quite stable in their distributions
+    and hence short text chunks (e.g. 2,000 running words) are usually
+    sufficient
+
+`Text initial, middle or end chunks?`
+
+-   Text initial, middle, and end samples must be taken in a balanced
+    way
+
+:::notes
+Now, we are looking at the size of samples used in corpus creation, and in particular the trade-off between using full texts and text segments. One **common question in corpus design is whether we should include entire documents or only portions of them**.
+
+As John Sinclair argues, whenever possible, samples of language should consist of entire documents or complete speech events. Full texts are especially valuable when the research focus is on textual organization, discourse structure, or how meaning unfolds across a whole document. Having access to the complete text allows us to study introductions, conclusions, cohesion, and larger rhetorical patterns.
+
+At the same time, a full-text corpus can be inappropriate or problematic in certain situations. One issue is that the peculiarity of an individual author’s style or a specific topic may occassionally be seen as it gets diluted across the across. There are also practical and legal constraints, particularly copyright issues, which can make it difficult or impossible to include full texts in a corpus, especially for contemporary materials.
+
+From a linguistic perspective, it is also important to note that frequent linguistic features tend to be quite stable in their distributions. Because of this stability, relatively short text chunks are usually sufficient for studying common lexical and grammatical patterns. This is why many general corpora rely on sampled text segments rather than complete documents.
+
+Also, when text segments are used, the position of the samples within the text matters. Text-initial, middle, and end sections often differ linguistically and rhetorically. To avoid systematic bias, samples should be taken in a balanced way across these positions.
+
+Hence, decisions about sample size and structure should always be driven by the research goals, balancing theoretical ideals with practical constraints and the type of linguistic analysis being undertaken.
+:::
+
+
+
+## Proportion of Samples: Corpus Creation {.smaller}
+
+-   In stratified random sampling, how many samples should be taken for
+    each category?
+
+    -   Numbers of samples across text categories should be
+        proportional to their `frequencies` and/or `weights` in the
+        target population in order for the resulting corpus to be
+        considered as representative
+    -   Difficult to determine objectively, just well-informed and
+        intuitive guess
+
+![](images/clipboard-2014145176.png){fig-align="center"}
+
+:::footer
+*Constant sample size: ~ 2,000 words*
+:::
+
+:::notes
+
+Next is proportion of samples in corpus creation, particularly in the context of stratified random sampling. The central question here is: **how many samples should be taken from each text category?**
+
+In stratified sampling, the general principle is that the number of samples drawn from each category should be proportional to that category’s frequency or weight in the target population. If a particular genre, register, or text type is more common in the language variety we are studying, it should generally be more heavily represented in the corpus. This proportionality is what allows the corpus, as a whole, to be considered representative of the population it is meant to model.
+
+However, in practice, these proportions are very difficult to determine objectively. We rarely have precise, empirical data about how frequently different text types occur in real-world language use. As a result, corpus designers typically rely on well-informed and intuitive judgments, drawing on prior research, expert knowledge, and practical constraints.
+:::
+
+
+## Corpus Size {.smaller}
+
+- How large should a corpus be?
+  - There is no easy answer to this question.
+    - Krishnamurthy (2001): “Size matters”
+    - Leech (1991): “Size is not all-important”
+
+- Size of the corpus needed depends upon the `purpose` for which it is intended as well as a number of practical considerations
+  - Kind of query that is anticipated from users
+    - *Are you studying common or rare linguistic features?*
+  - Methodology they use to study the data
+    - *How much work can be done by the machine and how much has to be done by hand?*
+  - For corpus creators, also the source of data
+    - *Are the data in electronic form readily available at a reasonable cost?*
+    - *Can copyright permissions be granted easily if at all?*
+
+:::notes
+Next, we address a question that comes up very frequently in corpus design: **how large should a corpus be?** The short answer is that there is no single or simple answer. This is why the literature often presents seemingly contradictory views. On the one hand, Krishnamurthy argues the advantages of large datasets. On the other hand, Geoffrey Leech reminds us that size is not all-important. Both perspectives are correct, depending on context.
+
+The size of the corpus you need depends primarily on the purpose for which it is intended, along with a number of practical considerations. One key factor is the kind of linguistic features you are interested in studying. If your focus is on very common features, such as frequent function words or basic grammatical patterns, a relatively small corpus may be sufficient. However, if you are studying rare linguistic features, low-frequency constructions, or specialized vocabulary, a much larger corpus is usually required.
+
+Another important consideration is methodology. How much of the analysis can be automated, and how much requires human intervention? Large corpora are more manageable when most of the work can be done computationally. If significant manual annotation or close qualitative analysis is involved, corpus size may need to be smaller to remain feasible.
+
+Finally, from the perspective of corpus creators, following constraints play a major role. The availability of data in electronic form, the cost of acquiring and processing that data, and the ease—or difficulty—of obtaining copyright permissions all directly affect how large a corpus can realistically be.
+
+A corpus should be as large as necessary, but no larger than what is justified by the research questions, methods, and practical constraints involved.
+
+:::
+
+
+## Corpus Size {.smaller}
+
+- Corpus size increases with the development of technology
+  - 1960s-70s
+    - Brown and LOB: one million words
+  - 1980s
+    - Birmingham/Cobuild corpora: 20 million words
+  - 1990s
+    - British National Corpus: 100 million words
+  - Early 21st Century
+    - Bank of English: 645 millions words
+    
+:::notes
+
+This slide shows how the size of corpora has increased over the decades alongside advances in technology.
+:::
+
+
+## Different Types of Corpora & Their Uses
+
+- `General/reference vs. specialized corpora`
+- `Synchronic vs. diachronic corpora`
+- Monolingual vs. multilingual corpora
+- Comparable vs. parallel corpora
+- Native vs. learner corpora
+- Developmental vs. learner/interlanguage corpora
+- Raw vs. annotated corpora
+- `Static/sample vs. dynamic/monitor corpora`
+
+:::notes
+
+`General corpora` represents the universe of particular task and capture full range of varieties of use. It is generally very large and contains balance of texts from a wide variety of different domains of spoken and written language. They are also referred as reference corpora because they are often used as a baseline against which judgements about the language varieties held in more specialised corpora can be made.
+
+The early general corpora seem tiny by today’s standards, but they continue to be used by both applied and computational linguists, and research has shown that one million words is sufficient to obtain reliable, generalizable results research questions.  
+
+A general corpus is designed is designed to be balanced and include language samples from a wide range of registers or genres in all their diversity. Most of the early general corpora were limited to written language, but because of the advances in technology and increasing interest in spoken language. Because written texts are vastly easier and cheaper to compile than transcript of speech, very few of the large corpora are balanced in terms of speech and writing. 
+
+
+`Specialized corpora` are designed with more specific research goals in mind, may be the most crucial growth area for corpus linguistics, as researchers increasingly recognize the importance of register-specific descriptions and investigations of language. They may include both spoken and written components.
+
+It focuses on a particular spoken or written variety of language. It includes historical corpora, corpora of newspaper writing, fiction or academic prose, etc. 
+
+Registers of speech that have been the focus of specialized spoken corpora include academic speech (the Michigan Corpus of Academic Spoken English; MICASE), teenage language (COLT) and child language (the CHILDES database).
+
+The learner’s corpus which includes spoken or written language is becoming increasingly important for language teachers. The most well-known example is the International Corpus of Learner English (ICLE). Lets discuss two examples of specific corpora:
+
+a. Academic corpora: Academic corpora deal exclusively with languageproduced in academic contexts. They may consist of transcripts ofacademic lectures and seminars, various types of writing produced in a university context, but also sometimes include other academic activities, such as meetings oradvisory/supervision sessions. They tend to reflect the speech of both experts and non-experts in the field of academia. The basic idea behind creating and exploiting academic corpora is to be able to extract samples of expert and non-expert language use in academic settings.
+
+b. Learner corpora: Learner corpora do not contain materials produced by experts in a field, but instead by students at different levels and stages of language acquisition, often restricted to non-native speakers, i.e. L2 learners, of a language. Occasionally, though, we can also find corpora of L1 learners, i.e. native speakers of a language. These are often created and used for comparison purposes to investigate differences between L1 and L2 learners, but may also be employedto explore different stages of development in the native language.
+
+--------
+`Synchronic vs. Diachronic Corpora`
+
+Corpora can be designed and used for `synchronic (i.e. ‘contemporary’)` and `diachronic (i.e. ‘historical’/comparative)` studies. Different issues may apply to the design of these two types of corpora. For instance, historical corpora maycontain old-fashioned or unfamiliar words and spellings or a large number of spelling variants (e.g. yeare, hee, generalitie, itselfe, etc.), as well as possible even characters (letters) that no longer exist in a modern alphabet.
+
+Historical corpora are also by nature restricted to written materials because there just are no recordings of native speakers of Old or Middle English in existence.Furthermore, the restriction does not only apply to the types of material availablebut also to the amount of data we can draw on because, in former times, theresimply wasn’t such a wealth of documents available, and from as many differentsources as we have them today. 
+
+--------
+
+`Static Vs Dynamic Corpora`
+
+One further distinction we can make between different types of corpora is between those that are fixed in size and finalised in that they’re never intend to change (i.e. static) and more dynamic types of corpora, which are explicitly designed to change over time and to keep on reflecting the ever-changing nature of language. 
+
+We can refer to the former type as snapshot corpora, latter as monitor corpora. By this definition, in fact, almost all the corpora discussed above are snapshot corpora. Even the diachronic ones are, because they’ve not been designed to be added to later. 
+
+Monitor corpora are constantly updated and continuously growing in size. Unlike static corpora, they are not intended to be fixed snapshots of language. Instead, they are designed to evolve over time, which is why they are typically much larger and often include full texts rather than short samples.
+
+One of the major advantages of monitor corpora is that they are always up to date. New material is regularly added, which makes them particularly useful for studying language change. In many cases, monitor corpora prioritize the inclusion of texts that introduce new linguistic features—for example, new vocabulary, emerging constructions, or novel usage patterns that were not already present in the corpus.
+
+Because of this design, monitor corpora are especially valuable for tracking changes across different periods of time. Conceptually, a monitor corpus can even be thought of as a series of static corpora, each representing a different stage in the ongoing development of the dataset.
+
+However, these advantages come with important disadvantages. One key limitation is that monitor corpora generally make no serious attempt to balance the corpus across genres or text types. The focus is on growth and change rather than proportional representation. 
+
+Another practical issue is text availability. Over time, access to certain types of texts may become restricted due to copyright constraints, licensing changes, or platform policies, which can affect what material can be added.
+
+There are also methodological challenges. Because monitor corpora are constantly changing, it can be confusing to specify a particular version of the corpus, especially in terms of token counts or size at the time of analysis. This makes replication and comparison more difficult.
+
+Finally, it is often hard to compare results obtained from corpora of different sizes, especially when the corpus grows substantially between analyses. Changes in results may reflect differences in corpus size rather than genuine linguistic change.
+:::
+
+
