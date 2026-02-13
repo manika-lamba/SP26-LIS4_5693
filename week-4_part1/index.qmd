@@ -510,6 +510,7 @@ This slide shows how the size of corpora has increased over the decades alongsid
 - `Static/sample vs. dynamic/monitor corpora`
 
 :::notes
+Let's discuss some of the main corpora types and their uses. I will only focus on the onces highlighted on the slide.
 
 `General corpora` represents the universe of particular task and capture full range of varieties of use. It is generally very large and contains balance of texts from a wide variety of different domains of spoken and written language. They are also referred as reference corpora because they are often used as a baseline against which judgements about the language varieties held in more specialised corpora can be made.
 
