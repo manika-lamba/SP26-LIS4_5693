@@ -7,3 +7,4 @@
 - Week 4
   - [Corpus Building and Representation](https://manika-lamba.github.io/SP26-LIS4_5693/week-4_part1/#/title-slide)
   - [7 Key Criteria for Corpus Design](https://manika-lamba.github.io/SP26-LIS4_5693/week-4_part2/#/title-slide)
+- [Week 5 Text Pre-Processing](https://manika-lamba.github.io/SP26-LIS4_5693/week-5/#/title-slide)
