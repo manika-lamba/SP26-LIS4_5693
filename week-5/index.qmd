@@ -1,5 +1,5 @@
 ---
-title: "Text Pre-processing"
+title: "Text Pre-Processing"
 subtitle: "LIS 4/5693: Information Retrieval and Text Mining"
 author: 
   - Dr. Manika Lamba
