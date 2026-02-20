@@ -1,0 +1,497 @@
+---
+title: "Text Pre-processing"
+subtitle: "LIS 4/5693: Information Retrieval and Text Mining"
+author: 
+  - Dr. Manika Lamba
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      theme: whiteboard
+      buttons: true
+    preview-links: false
+    controls: true
+    progress: true
+    show-notes: separate-page
+    logo: images/ou.png
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Text Pre-Processing {.smaller}
+
+-   Process of cleaning and transforming raw text into usable form
+-   Removes noise and prepares text for analysis
+-   Text normalization: transformation into a standard (canonic) form or
+    any useful form, e.g., from non-standard language to standard
+    -   upper/lower casing; notation of acronyms
+    -   standard form of dates, time, and numbers
+    -   stress marks, quotation marks, punctuation,
+    -   spelling correction; emoticons, emoji, hashtags, web links
+    -   tokenization
+    -   lemmatization and stemming
+    -   other forms of text preparation, e.g., extraction from PDFs,
+        structured files like XML, web crawl, etc.
+-   Text preprocessing ensures quality and meaningful analysis
+
+::: notes
+In this week’s module we will discuss the foundation of text mining and
+natural language processing that is text pre-processing. Text
+pre-processing helps us in transforms raw text into structured,
+machine-readable format so algorithms can analyze it effectively.
+
+Raw text, as it exists in documents, websites, or social media, is often
+messy. It contains noise, inconsistencies, and formatting variations
+that can confuse downstream text analysis algorithms. The main goal of
+text preprocessing is to remove noise and prepare the text for analysis,
+ensuring that the data is consistent, structured, and meaningful.
+
+Some of the common examples of text normalization are shown on this
+slide. We will examine each of these in more detail in the following
+slides. In addition to these examples, text preprocessing may include
+extracting text from different sources, such as PDF files, structured
+formats like XML, or web data obtained through crawling or scraping.
+These formats often require additional cleaning before analysis.
+
+Text preprocessing is essential because it directly affects the quality
+of your analysis. Poor preprocessing can lead to inaccurate results,
+while careful preprocessing ensures that your models can identify
+meaningful patterns and relationships in the text.
+:::
+
+## Text Pre-Processing {.smaller}
+
+-   Basic pipeline
+    -   `document → paragraphs → sentences → words`
+    -   `words and sentences → POS tagging`
+    -   `sentences → syntactical and grammatical analysis`
+
+![](images/5.png){fig-align="center"}
+
+::: notes
+The basic pipeline of text preprocessing is generally broken down into
+smaller more structured units so that computers can analyze them more
+efficiently and easily.
+
+We typically begin with a document, which could be anything such as a
+research article, a webpage, a transcript, or a social media post. This
+document is first divided into paragraphs, which helps organize the text
+into meaningful sections.
+
+Next, each paragraph is divided into sentences. This step is called
+sentence segmentation, and it allows us to analyze the structure and
+meaning of the text at the sentence level.
+
+Then, each sentence is further divided into words, through a process
+called tokenization. Words are the most basic units used in many text
+mining and NLP tasks. At this stage, the computer begins to work with
+individual tokens instead of large blocks of text.
+
+Once we have words and sentences, we can perform Part-of-Speech, or POS
+tagging. This process assigns a grammatical label to each word, such as
+noun, verb, adjective, or adverb. This helps the system understand the
+grammatical role each word plays in a sentence. For example, the word
+“run” could be a noun or a verb depending on context, and POS tagging
+helps distinguish that.
+
+After that, we can perform syntactical and grammatical analysis, also
+called parsing. This step examines the relationships between words in a
+sentence and helps determine the structure of the sentence. For example,
+it identifies subjects, verbs, and objects, and shows how words depend
+on one another.
+
+This pipeline illustrates how we move from unstructured text to
+structured linguistic information. Each step adds more information and
+structure, which allows machines to better understand and analyze
+language.
+
+This structured representation is essential for more advanced tasks such
+as named entity recognition, sentiment analysis, text classification,
+and machine learning.
+
+Thus, text preprocessing is a step-by-step process that transforms raw
+documents into structured, meaningful units that can be analyzed
+computationally.
+
+This slide also highlights some of the most popular Python libraries
+used for text preprocessing. We will explore spaCy in more depth in this
+week's lab assignment.
+:::
+
+## Important Terms
+
+-   Corpus: Collection of documents
+
+-   Token: Individual word unit
+
+-   Term: Unique vocabulary word
+
+-   Chunk: Text unit such as paragraph
+
+-   Dictionary: List of words associated with categories
+
+-   Bag of Words: Frequency-based representation
+
+
+::: notes
+Before we go further, it is important to review some key terminology. We
+have already encountered a few of these terms in previous modules, but
+lets revisit them.
+
+First, let’s talk about the term **corpus**. A corpus refers to a
+collection of documents that we want to analyze. These documents could
+be research articles, tweets, emails, books, or transcripts. For
+example, if you were analyzing all the discussion posts in this class,
+those posts together would form your corpus.
+
+Next is the term **token**. A token is an individual unit of text, most
+commonly a word. When we break a sentence into words during
+tokenization, each word becomes a token. For example, the sentence “Text
+mining is useful” contains four tokens: *text*, *mining*, *is*, and
+*useful*.
+
+Closely related is the term **term**. A term refers to a unique word in
+the corpus vocabulary. While tokens include every occurrence of words,
+terms represent the distinct words. For example, if the word “data”
+appears 100 times, it is one term but 100 tokens.
+
+The next term is **chunk**. A chunk refers to a larger unit of text,
+such as a paragraph, section, or sentence. Chunking helps organize text
+into meaningful segments for analysis.
+
+Another important concept is the **dictionary**, also called a lexicon.
+This is a list of words associated with categories or meanings. For
+example, a sentiment dictionary might contain words labeled as positive
+or negative. Dictionaries are often used in tasks like sentiment
+analysis or topic classification.
+
+Finally, we have the **bag of words**, which is one of the simplest and
+most widely used text representation methods. In this approach, we
+represent text by counting how often each word appears, without
+considering grammar or word order. This allows us to convert text into
+numerical form so it can be used in machine learning models.
+
+Understanding these terms is essential because they form the foundation
+for all text preprocessing and text mining tasks that we will cover
+throughout this course.
+:::
+
+## Levels of Text Representation {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+`Lexical Level`
+
+-   Characters
+
+-   Words
+
+-   Phrases
+
+`Syntactic Level`
+
+-   Grammar structure
+-   Examples
+    -   Language models
+    -   Vector-space models
+:::
+
+::: {.column width="50%"}
+`Semantic Level`
+
+-   Meaning
+-   Context and relationships
+-   Examples
+    -   collaborative tagging (Web 2.0)
+    -   ontologies
+:::
+:::::
+
+:::notes
+
+Now, let's look at the three main levels of text representation: **lexical, syntactic, and semantic levels**. These levels represent increasing depth in how computers understand and analyze text.
+
+Let’s begin with the lexical level, which is the most basic level of representation. At this level, text is treated as individual components such as characters, words, and phrases. For example, the word “mining” can be broken down into individual characters like m, i, n, i, n, g, or treated as a single word token. We can also analyze phrases, such as “text mining,” which consist of multiple words. Most basic text preprocessing steps, such as tokenization, stopword removal, stemming, and lemmatization, occur at this lexical level.
+
+The next level is the syntactic level, which focuses on the grammatical structure of sentences. Instead of just looking at individual words, this level examines how words relate to each other within a sentence. For example, it helps identify subjects, verbs, and objects, and how they are organized. Examples of syntactic-level representations include language models and vector-space models, which capture patterns in word usage and structure. This level allows machines to better understand sentence structure rather than just isolated words.
+
+Finally, we have the semantic level, which is the most advanced level and focuses on the meaning of the text, including context and relationships between concepts. At this level, the goal is to understand what the text actually means, not just how it is structured. Examples include ontologies, which represent relationships between concepts, and collaborative tagging, such as tags used in social media or web platforms. These approaches help capture deeper meaning, relationships, and context.
+
+In other words, lexical level focuses on basic text units, the syntactic level focuses on structure and grammar, and the semantic level focuses on meaning and context. As we move from lexical to semantic levels, the representation becomes more complex and more powerful, allowing more advanced text analysis and understanding.
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+1.  `Tokenization`
+
+![](images/clipboard-2616742373.png){fig-align="center" width="500"}
+
+:::notes
+Now, we will discuss some of the common text preprocessing tasks or process, starting with tokensization.
+
+Tokenization is the process of breaking down raw text into smaller units called tokens. These tokens are usually individual words, but they can also be sentences, phrases, or even characters, depending on the task.
+
+In the example shown on the slide, we begin with full sentences at the top. These sentences are natural language text, just as they would appear in a book or document. However, computers cannot directly analyze large blocks of text efficiently. So, the first step is to break the text into smaller, manageable pieces.
+
+After tokenization, each sentence is split into individual words, such as “grew,” “pretty,” “little,” “tree,” and so on. Each of these words becomes a separate token. This allows the computer to process and analyze each word independently.
+
+Tokenization is important because it serves as the foundation for almost all other text preprocessing steps. For example, before we can remove stopwords, count word frequencies, perform stemming or lemmatization, or apply machine learning models, we must first split the text into tokens.
+
+It is also important to note that tokenization may involve removing punctuation, converting text to lowercase, and handling special cases such as contractions or abbreviations, depending on the tokenizer being used.
+
+There are different types of tokenization. The most common are word tokenization, which splits text into words, and sentence tokenization, which splits text into sentences.
+
+Thus, tokenization transforms raw, continuous text into structured units that can be analyzed computationally. It is the essential first step that enables all downstream text mining and natural language processing tasks.
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+2.  `Lemmatization` and `Stemming`
+
+![](images/clipboard-3746816366.png){fig-align="center" width="500"}
+![](images/1.png){fig-align="center" width="500"}
+
+:::notes
+Next, we will look at two important text preprocessing techniques: stemming and lemmatization. Both methods are used to reduce words to their base or root form, which helps standardize the text and improve analysis.
+
+Let’s first understand why this is necessary. In natural language, words often appear in multiple forms. For example, words like “study,” “studies,” and “studying” all refer to the same core concept. If we treat them as separate words, it increases the size of our vocabulary unnecessarily and can reduce the effectiveness of our analysis. Stemming and lemmatization help solve this problem by reducing these variations to a common base form.
+
+Let’s start with stemming. Stemming is a simpler and faster method that removes prefixes or suffixes to produce a root form, called the stem. However, the stem is not always a real word. For example, as shown on the slide, the words “change,” “changing,” and “changed” may all be reduced to “chang,” which is not a proper English word. Similarly, “studies” may be reduced to “studi.” Stemming focuses on mechanical rules rather than understanding meaning or grammar.
+
+On the other hand, lemmatization is a more advanced approach. Lemmatization reduces words to their correct dictionary form, called the lemma. Unlike stemming, lemmatization considers the context and grammatical role of the word. For example, “was” becomes “be,” and “studies” and “studying” both become “study.” As shown on the slide, lemmatization produces meaningful, valid words.
+
+The key difference is that stemming is faster but less accurate, while lemmatization is slower but more accurate and linguistically correct.
+
+In practice, lemmatization is generally preferred when accuracy and interpretability are important, such as in research, sentiment analysis, or topic modeling. Stemming may be used when speed is critical, such as in large-scale search engines. Both stemming and lemmatization help reduce word variations, improve consistency, reduce vocabulary size, and enhance the performance of text mining and machine learning models.
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+3.  `Stopwords`
+
+    ::::: columns
+    ::: {.column width="50%"}
+    ![](images/clipboard-2907913521.png){width="500"}
+    :::
+
+    ::: {.column width="50%"}
+    ![](images/clipboard-2478166995.png){width="500"}
+    :::
+    :::::
+    
+:::notes
+
+Another important text preprocessing step is called stopword removal. Stopwords are very common words that appear frequently in a language but typically carry little meaningful information for text analysis. Examples of stopwords include words such as “the,” “is,” “and,” “of,” “to,” and “in.” You can see a list of many common stopwords displayed on the slide.
+
+These words are essential for human communication because they help form grammatically correct sentences. However, from a computational perspective, they often do not help distinguish between documents or provide meaningful insights into the content.
+
+For example, in the sentence shown on the slide, “The quick brown fox jumps over the lazy dog,” words like “the” and “over” are stopwords. When we remove these stopwords, we are left with “quick brown fox jumps lazy dog.” This version retains the key meaningful words while removing less informative ones.
+
+Removing stopwords has several benefits. First, it reduces the size of the vocabulary, which makes processing faster and more efficient. Second, it helps improve the performance of text analaysis tasks by focusing on the words that carry more meaningful information. Third, it reduces noise in the data and improves the quality of analysis.
+
+However, it is important to note that stopword removal is not always appropriate. In some cases, stopwords may carry important meaning. For example, in sentiment analysis, words like “not” can completely change the meaning of a sentence. For example, “good” and “not good” have very different meanings. Removing the word “not” would lead to incorrect interpretation.
+
+Most natural language processing libraries, such as spaCy and NLTK, provide predefined stopword lists, but these lists can also be customized depending on the specific application.
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+4.  `Named Entity Recognization (NER)`
+
+    ![](images/clipboard-2618144470.png)
+    
+:::notes
+Another common text preprocessing task is Named Entity Recognition or NER. NER is the process of automatically identifying and classifying important real-world entities in text. These entities typically include categories such as persons, organizations, locations, dates, times, and numerical values.
+
+In the example shown on the slide, you can see a news article where different words and phrases are highlighted in different colors. Each color represents a different type of entity. For example, names like “Elon Musk” or “Ravi Kant Kumar” are identified as persons, organizations like “Reuters” are labeled as organizations, and references such as “June 14” or “345 pm” are labeled as dates and times.
+
+This process helps convert unstructured text into structured information. Instead of just seeing a block of text, the computer can now recognize and categorize important elements within it.
+
+NER is extremely useful in many real-world applications. For example, it is used in search engines to identify important keywords, in news analysis to extract people and organizations, in chatbots to understand user input, and in information extraction systems to build structured databases from text.
+
+NER also improves other NLP tasks such as document classification, question answering, and knowledge graph construction, because it helps the system focus on meaningful entities rather than just individual words. 
+
+Most modern NLP libraries, such as spaCy, provide pre-trained models that can automatically identify these entities. In today’s lab, you will also see how spaCy can perform Named Entity Recognition on real text.
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+5.  `Part-of-Speech (POS) Tagging`
+
+POS tagging marks words in the corpus to a corresponding word based on
+its context and definition
+
+![](images/2.png){fig-align="center" width="500"}
+
+:::notes
+Now, lets discuss Part-of-Speech tagging, commonly called POS tagging, which is another important step in text preprocessing and linguistic analysis.
+
+POS tagging is the process of assigning a grammatical label to each word in a sentence based on its context and role. These labels help identify whether a word is a noun, verb, adjective, adverb, or another part of speech.
+
+For example, in the sentence shown on the slide, “Alice wrote a program,” each word has a specific grammatical role. “Alice” is labeled as a noun because it represents a person. “Wrote” is a verb because it describes an action. “A” is an article, and “program” is a noun representing an object.
+
+POS tagging is important because many words can have different meanings depending on how they are used. For example, the word “book” can be a noun, as in “I read a book,” or a verb, as in “I will book a ticket.” POS tagging helps determine the correct meaning based on the sentence context.
+
+You can also see examples of common POS tags used in the Python library NLTK shown on the slide. For example, “NNP” represents a proper noun, such as a person’s name. “NN” represents a singular noun. “VBD” represents a verb in past tense. “JJ” represents an adjective, and “RB” represents an adverb.
+
+POS tagging plays a critical role in many advanced NLP tasks as it helps improve syntactic parsing, named entity recognition, sentiment analysis, and machine translation. It also helps computers understand sentence structure more accurately.
+
+Most modern NLP libraries, including spaCy and NLTK, can automatically assign POS tags to text using pre-trained models.
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+6.  `Bag of Words`
+
+![](images/clipboard-4172642049.png){fig-align="center" width="500"}
+
+:::notes
+
+Bag of Words model, often abbreviated as BoW, is one of the simplest and most widely used methods for representing text in a numerical form.
+
+The key idea behind Bag of Words is to represent a document based on the frequency of words it contains, without considering grammar, sentence structure, or word order. In other words, the document is treated like a “bag” of individual words, where only the presence and count of words matter.
+
+As shown in the example on the slide, we start with a sentence: “Futures markets opened higher today on news of overseas markets.” The first step is to preprocess the text, which typically includes removing stopwords such as “today,” “on,” and “of,” because they do not carry significant meaning for analysis.
+
+After removing stopwords, we then group the remaining words and count how many times each word appears. This produces a frequency table. For example, the word “markets” appears twice, while words like “futures,” “opened,” “higher,” and “overseas” appear once.
+
+This process converts the text into a structured, numerical format, which is necessary because machine learning algorithms cannot directly work with raw text. They require numerical input.
+
+One important characteristic of the Bag of Words model is that it ignores word order and context. For example, the sentences “markets opened higher” and “higher opened markets” would produce the same Bag of Words representation. This makes the model simple and efficient, but it also means that it does not capture deeper meaning or relationships between words.
+
+Despite this limitation, Bag of Words is very useful and is commonly used in tasks such as document classification, spam detection, sentiment analysis, and topic modeling. 
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+7.  `Term-Document Matrix`
+
+-   It represents terms as a table or matrix of numbers for a given
+    corpus
+-   In TDM, terms are represented as rows and documents as columns for a
+    corpus where the number of occurrences of terms in the document is
+    entered in the boxes
+
+![](images/clipboard-2558688746.png){fig-align="center" width="500"}
+
+:::notes
+
+Term-Document Matrix or TDM is an important way to represent text in a structured, numerical format. A Term-Document Matrix is essentially a table that shows how frequently each term appears in each document within a corpus. This allows us to convert text into numbers, which is necessary for machine learning and text analysis.
+
+As shown in the example on the slide, we begin with a small corpus consisting of three documents. Each document contains some text, such as “text analysis is fun,” or “I like doing text analysis.”
+
+After preprocessing steps like tokenization and stopword removal, we identify the unique terms across all documents. These terms become the rows of the matrix, and the documents become the columns of the matrix.
+
+Each cell in the matrix contains a number that represents the frequency of a specific term in a specific document. For example, if the word “text” appears once in document 1 and once in document 2, but not in document 3, the matrix will show values of 1, 1, and 0 in the corresponding row.
+
+This matrix representation is extremely useful because it transforms unstructured text into a structured numerical form that can be used by machine learning algorithms.
+
+The Term-Document Matrix is closely related to the Bag of Words model, since it is essentially the structured implementation of word frequency counts across multiple documents.
+
+This representation is used in many applications, including document classification, topic modeling, clustering, and similarity analysis.
+
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+8.  `Document-Term Matrix`
+
+-   It represents terms as a table or matrix of numbers for a given
+    corpus
+-   It is a transposition of TDM
+-   In DTM, each document is a row, and each word is the column
+
+![](images/clipboard-750409737.png){fig-align="center" width="500"}
+
+:::notes
+
+Next is Document-Term Matrix or DTM, which is another important way to represent text in numerical form for analysis.
+
+A Document-Term Matrix is very similar to the Term-Document Matrix. The main difference is the orientation of the rows and columns. In a Document-Term Matrix, each document is represented as a row, and each term, or word, is represented as a column.
+
+As shown in the example on the slide, we begin with a small corpus of three documents. After preprocessing steps such as tokenization and removing stopwords, we identify the unique terms across all documents. These unique terms form the columns of the matrix.
+
+Each row represents one document, and each cell contains the frequency of a specific term in that document. For example, if the word “text” appears once in document 1 and once in document 2, but not in document 3, the matrix will show values of 1, 1, and 0 in the corresponding column.
+
+The Document-Term Matrix is essentially the transpose of the Term-Document Matrix, meaning the rows and columns are swapped. Both representations contain the same information, but the Document-Term Matrix is often more convenient for machine learning applications because many algorithms expect data in the form of rows as observations and columns as features.
+
+This representation allows us to convert unstructured text into structured numerical data that can be used for tasks such as classification, clustering, similarity analysis, and topic modeling.
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+9.  `Term Frequency-Inverse Document Frequency (TF-IDF)`
+
+-   It evaluates the relevancy of a term for a document in a corpus and
+    is the most popular weighting scheme in information retrieval (IR)
+-   The term weighting is popularly used in IR and supervised machine
+    learning tasks like text classification
+-   It makes a list of more discriminative terms than others and assigns
+    a weight to each highly occurring term
+
+![](images/clipboard-3413337943.png){fig-align="center" width="500"}
+
+:::notes
+
+Term Frequency–Inverse Document Frequency, commonly known as TF-IDF, is one of the most important and widely used techniques in text preprocessing and information retrieval.
+
+TF-IDF is a method used to measure how important or relevant a word is to a specific document within a corpus. Unlike simple word counts, TF-IDF does not treat all words equally. Instead, it assigns different weights to words based on their importance.
+
+TF-IDF consists of two main components: Term Frequency, or TF, and Inverse Document Frequency, or IDF.
+
+Term Frequency measures how often a word appears in a particular document. The idea is that words that appear more frequently in a document are likely to be more important for describing that document.
+
+However, some words may appear frequently across many documents, such as common terms like “data,” “system,” or “information.” These words may not be very useful for distinguishing one document from another. This is where Inverse Document Frequency comes in.
+
+Inverse Document Frequency reduces the weight of words that appear frequently across many documents and increases the weight of words that are rare across the corpus. This helps highlight words that are more unique and informative.
+
+By combining these two measures, TF-IDF assigns higher weights to words that appear frequently in a specific document but not frequently across all documents. These words are called discriminative terms, because they help distinguish one document from another.
+
+TF-IDF is extremely useful in many applications, including search engines, document ranking, text classification, and recommendation systems. For example, search engines use TF-IDF to determine which documents are most relevant to a user’s query.
+
+Compared to simple Bag-of-Words counts, TF-IDF provides a more meaningful representation because it emphasizes important words and reduces the influence of common words.
+
+TF-IDF is a powerful weighting technique that helps identify the most relevant and informative words in a document, improving the performance of text mining techniques.
+:::
+
+## Common Text Pre-processing Tasks {.smaller}
+
+10. `Word Embeddings`
+
+::::: columns
+::: {.column width="50%"}
+![](images/4.png){fig-align="center" width="500"}
+:::
+
+::: {.column width="50%"}
+![](images/3.png){fig-align="center" width="500"}
+:::
+:::::
+
+:::notes
+Finally, we have Word Embeddings, which represent one of the most advanced and powerful ways to represent text for computational analysis.
+
+So far in this lecture, we have discussed methods like Bag of Words and TF-IDF, which represent text based on word counts and frequencies. While these methods are useful, they have an important limitation: they do not capture the meaning or context of words.
+
+Word embeddings address this limitation by representing each word as a vector of numbers in a multi-dimensional space. These vectors capture the semantic meaning of words based on how they are used in context.
+
+As shown on the top image on the slide, words with similar meanings appear closer together in this vector space. For example, the word “working” is located near related words such as “work,” “worker,” and “research.” This shows that the model has learned that these words are semantically related.
+
+Unlike Bag of Words, which treats words independently, word embeddings capture relationships between words, allowing models to understand similarities, analogies, and context.
+
+The bottom image shows two common methods used to generate word embeddings: Continuous Bag of Words, or CBOW, and Skip-gram. These are neural network models that learn word relationships from large text corpora.
+
+CBOW predicts a target word based on its surrounding context words, while Skip-gram does the opposite — it predicts surrounding words based on a target word. Both methods help the model learn meaningful word representations.
+
+Word embeddings are widely used in modern NLP applications such as search engines, recommendation systems, chatbots, machine translation, and large language models like the ones powering modern AI systems.
+
+To conclude this presentation, text preprocessing plays a critical role in transforming raw text into structured, meaningful data. We began with basic steps such as tokenization, stopword removal, stemming, and lemmatization. We then explored methods for representing text numerically, including Bag of Words, Term-Document Matrix, TF-IDF, and finally word embeddings.
+
+Each of these techniques builds upon the previous ones, allowing machines to better understand and analyze human language.
+
+This week, you will apply many of these preprocessing techniques using the spaCy library, and gain hands-on experience transforming raw text into structured data for analysis.
+
+I look forward to seeing how you apply these concepts in your own text mining projects!
+:::
