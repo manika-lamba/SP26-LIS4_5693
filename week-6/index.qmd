@@ -117,6 +117,62 @@ transcripts, and any other forms of text) that we analyze using IR, NLP,
 or text mining techniques.
 :::
 
+## Why Create Visualizations Generally? {.smaller}
+
+`Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form (Johanna Drucker)`
+
+![](images/2.png)
+
+::: footer
+<https://lisacharlottemuth.com/2017/03/10/why-do-we-visualize-data/>
+:::
+
+::: notes
+We create visualizations to answer questions and sometimes even to discover new questions. Visualizations help us make decisions, see data in context, expand our memory, support graphical reasoning, identify patterns, present arguments, tell stories, and even inspire action.
+
+Visualizations are not just decorative. They are cognitive tools. They help us process complex information more efficiently than raw tables or text ever could.
+
+Some goals are about attention and beauty — getting people to read, attracting different types of learners, and making the work engaging. Other goals focus on understanding — helping people explain, interpret, and explore data. And finally, some goals move toward implication — proving a point, correcting misconceptions, evoking emotion, or encouraging action.
+
+This brings us to the quote on this slide by Johanna Drucker:
+
+“Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form.”
+
+This statement reminds us that visualizations are not neutral. They are not simply transparent windows into data. Every choice we make — what data to include, what scale to use, what colors to apply, what to highlight, what to omit — reflects interpretation.
+
+A visualization might appear objective, but it always carries assumptions, framing decisions, and design choices. In that sense, every visualization is an argument. It persuades the viewer to see the data in a certain way.
+
+As creators of visualizations, especially in academic and research settings, we must be mindful of this. We are not just presenting data — we are shaping how others understand it.
+
+So as we move forward in this course, I want you to think critically about both sides:
+How can visualizations help us understand and communicate complex information?
+And how might they also influence, frame, or even bias interpretation?
+:::
+
+## Why Create Visualizations Generally?
+
+![](images/22.png)
+
+:::footer
+<https://blog.duncangeere.com/defining-information-design/>
+:::
+
+:::notes
+Again data visualization is not isolated. It connects rigorous analysis with thoughtful communication, balancing discovery and storytelling depending on your purpose and audience. This slide illustrates the relationship between Data Analysis, Data Visualization, and Information Design, and how they exist along a spectrum from exploratory to explanatory work.
+
+On the left side, we have Data Analysis. This is primarily exploratory. Here, the goal is to investigate the data, test hypotheses, discover patterns, and identify insights. The audience is often the analyst themselves or a small research team. The focus is on depth, accuracy, and discovery rather than presentation polish.
+
+In the center, we see Data Visualization. This is the bridge between analysis and design. Visualization serves both exploratory and explanatory purposes. During exploration, visualizations help analysts see patterns, trends, and anomalies more clearly. During explanation, those same or refined visualizations are used to communicate findings to others.
+
+On the right side, we have Information Design, which leans more toward explanatory work. Here, the focus shifts to communication. The goal is not just to analyze data, but to present it in a clear, engaging, and accessible way for a broader audience. This is where storytelling, layout, typography, and aesthetics play a stronger role.
+
+The overlap between Data Visualization and Information Design is where we often see infographics. Infographics prioritize explanation and communication, sometimes simplifying or summarizing analysis to make it digestible and compelling for a general audience.
+
+The arrow at the top emphasizes that visualization exists on a continuum. Some visualizations are created for exploration — messy, iterative, and analytical. Others are carefully designed for explanation — polished, curated, and persuasive.
+
+Understanding where your work sits on this spectrum is important. Are you exploring data to discover insights? Or are you explaining insights to others? The answer affects your design choices, level of detail, and presentation style.
+:::
+
 ## We are Wired for Visualization
 
 ::::: columns
@@ -218,62 +274,37 @@ Good encoding reduces cognitive load and guides attention intentionally. Encodin
 :::
 :::::
 
-## Why Create Visualizations Generally? {.smaller}
-
-`Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form (Johanna Drucker)`
-
-![](images/2.png)
-
-::: footer
-<https://lisacharlottemuth.com/2017/03/10/why-do-we-visualize-data/>
-:::
-
-::: notes
-We create visualizations to answer questions and sometimes even to discover new questions. Visualizations help us make decisions, see data in context, expand our memory, support graphical reasoning, identify patterns, present arguments, tell stories, and even inspire action.
-
-Visualizations are not just decorative. They are cognitive tools. They help us process complex information more efficiently than raw tables or text ever could.
-
-Some goals are about attention and beauty — getting people to read, attracting different types of learners, and making the work engaging. Other goals focus on understanding — helping people explain, interpret, and explore data. And finally, some goals move toward implication — proving a point, correcting misconceptions, evoking emotion, or encouraging action.
-
-This brings us to the quote on this slide by Johanna Drucker:
-
-“Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form.”
-
-This is a powerful statement. It reminds us that visualizations are not neutral. They are not simply transparent windows into data. Every choice we make — what data to include, what scale to use, what colors to apply, what to highlight, what to omit — reflects interpretation.
-
-A visualization might appear objective, but it always carries assumptions, framing decisions, and design choices. In that sense, every visualization is an argument. It persuades the viewer to see the data in a certain way.
-
-As creators of visualizations, especially in academic and research settings, we must be mindful of this. We are not just presenting data — we are shaping how others understand it.
-
-So as we move forward in this course, I want you to think critically about both sides:
-How can visualizations help us understand and communicate complex information?
-And how might they also influence, frame, or even bias interpretation?
-:::
-
-## Why Create Visualizations Generally?
-
-![](images/22.png)
-
-:::footer
-<https://blog.duncangeere.com/defining-information-design/>
-:::
-
 :::notes
-Data visualization is not isolated. It connects rigorous analysis with thoughtful communication, balancing discovery and storytelling depending on your purpose and audience. This slide illustrates the relationship between Data Analysis, Data Visualization, and Information Design, and how they exist along a spectrum from exploratory to explanatory work.
+Now, effective visualizations leverage the most perceptually powerful attributes for the most important information, guiding attention naturally and efficiently. This slide builds on our discussion of pre-attentive processing and highlights an important idea: not all visual attributes are equally powerful.
 
-On the left side, we have Data Analysis. This is primarily exploratory. Here, the goal is to investigate the data, test hypotheses, discover patterns, and identify insights. The audience is often the analyst themselves or a small research team. The focus is on depth, accuracy, and discovery rather than presentation polish.
+On the right, you see a table of visual attributes — things like line length, 2D position, orientation, line width, size, shape, hue, and intensity. Some of these attributes are better suited for representing quantitative data, while others are more effective for representing qualitative or categorical differences. 
 
-In the center, we see Data Visualization. This is the bridge between analysis and design. Visualization serves both exploratory and explanatory purposes. During exploration, visualizations help analysts see patterns, trends, and anomalies more clearly. During explanation, those same or refined visualizations are used to communicate findings to others.
+For example, 2D position and line length are very strong for quantitative comparisons. Our visual system is very good at judging position along a common scale and comparing lengths. That’s why bar charts and scatterplots are so effective for numerical data. On the other hand, attributes like shape, hue, enclosure, or added marks are often better for distinguishing categories rather than precise quantities.
 
-On the right side, we have Information Design, which leans more toward explanatory work. Here, the focus shifts to communication. The goal is not just to analyze data, but to present it in a clear, engaging, and accessible way for a broader audience. This is where storytelling, layout, typography, and aesthetics play a stronger role.
+Now look at the left image and ask yourself: **What is easier to distinguish here, color differences or shape differences?**
 
-The overlap between Data Visualization and Information Design is where we often see infographics. Infographics prioritize explanation and communication, sometimes simplifying or summarizing analysis to make it digestible and compelling for a general audience.
+In most cases, color differences pop out faster than shape differences. Your brain can instantly detect a change in hue without conscious effort. Shape differences, while still noticeable, often require slightly more attention to process.
 
-The arrow at the top emphasizes that visualization exists on a continuum. Some visualizations are created for exploration — messy, iterative, and analytical. Others are carefully designed for explanation — polished, curated, and persuasive.
+This demonstrates an important design principle:
 
-Understanding where your work sits on this spectrum is important. Are you exploring data to discover insights? Or are you explaining insights to others? The answer affects your design choices, level of detail, and presentation style.
+- When something is important, use stronger visual attributes
+
+- When something is secondary, use subtler ones
+
+If we misuse attributes, for example using shape to encode subtle quantitative differences, we make interpretation harder than it needs to be.
+
+The key takeaway is that visual attributes have a hierarchy of perceptual strength. Some attributes grab attention immediately; others require more deliberate processing.
+
+As visualization designers, we should choose attributes intentionally based on:
+
+- The type of data (quantitative vs qualitative)
+
+- The importance of the information
+
+- And how quickly we want viewers to notice it
+
+
 :::
-
 
 
 
@@ -460,18 +491,29 @@ into data relationships, helping us make more informed decisions and
 detect more complex trends.
 :::
 
-## Python Visualization Landscape
-
-![](images/14.png){fig-align="center"}
-
-::: notes
-This slides shows the popular visualization libraries names in Python.
-:::
-
-## Some examples of Data Visualizations
+## Some Examples
 
 ![](images/1.png)
 
+:::notes
+Visualization is flexible and adaptable. The form should follow the data and the analytical question. Different types of data require different visual strategies. This slide shows a range of examples to highlight the diversity of data visualizations and the many ways data can be represented visually.
+
+Starting in the top left, we see a visualization of a large image collection arranged in a spatial layout. This type of visualization allows users to explore patterns within a collection, perhaps by similarity, metadata, or thematic clustering. It emphasizes exploration and interaction, helping users navigate complex datasets visually.
+
+In the top right, we see a more abstract network-style visualization. This type of visualization often represents relationships—between people, ideas, documents, or concepts. The flowing lines and clustered forms suggest connections and structure that might not be obvious in tabular data. These visualizations are particularly useful for understanding relational data and structural patterns.
+
+In the bottom left, we see a social network visualization of tweets. Nodes represent users, and connections represent interactions, such as mentions or retweets. The size and color of nodes may encode frequency or influence. This type of visualization helps reveal communities, central actors, and communication dynamics within social media networks.
+
+In the bottom right, we see a geographic network map. This visualization combines spatial mapping with relational data, showing connections across regions. It demonstrates how location can be encoded along with relationships and temporal trends. Geographic visualizations are especially powerful when analyzing movement, diffusion, or communication across space.
+
+Together, these examples show that data visualization is not limited to bar charts or line graphs. Depending on the type of data—images, networks, text, geography, time—we can use different visual forms to reveal patterns, relationships, clusters, and trends.
+
+Each visualization makes specific design choices about encoding: position, color, size, shape, density, and connectivity. These choices determine what stands out and how the viewer interprets the information.
+
+The readings for this week, the supplementary presentation, and the additional links included in this week's module provide many more examples of different types of visualizations particularly for text visualization. Please take some time to explore these resources at your own pace to broaden your understanding of the different types of visualizations and how they can be applied effectively.
+
+As you move forward in this course, think critically about which visualization type best fits your data and your analytical goals.
+:::
 
 ## Ecosystem of Data Visualization Tools
 
@@ -481,9 +523,57 @@ This slides shows the popular visualization libraries names in Python.
 <https://source.opennews.org/articles/what-i-learned-recreating-one-chart-using-24-tools/>
 :::
 
-## Resources for Getting into Data Visualization
+:::notes
+Visualization ecosystem is diverse. Understanding the trade-off between flexibility and ease of use will help you make informed decisions in your own projects. This slide gives us an overview of the ecosystem of data visualization tools and how they compare along two important dimensions: ease of learning and flexibility.
+
+On the horizontal axis, we move from easy to learn on the left to harder to learn on the right. On the vertical axis, we move from not flexible at the bottom to highly flexible at the top.
+
+The slide also distinguishes between two broad categories:
+
+- Apps (shown in red)
+
+- Charting libraries (shown in blue)
+
+Let’s start with apps. Tools like Google Sheets, Excel, Tableau, Plotly, and Illustrator are generally easier to learn. Many of them have graphical interfaces and require little or no coding. They are excellent for quick visualizations, dashboards, and business reporting. However, they may be less flexible when you need highly customized or complex visualizations.
+
+Now, looking at charting libraries. Libraries such as Matplotlib, Seaborn, Bokeh, ggplot2, Vega, and D3 require programming knowledge, so they tend to be harder to learn. However, they are much more flexible. With these tools, you can customize nearly every aspect of a visualization, build interactive systems, and integrate visualizations into larger applications. At the extreme end, tools like D3 are highly flexible but also require significant effort and technical expertise.
+
+Some tools fall in the middle. For example, Vega-Lite and Highcharts attempt to balance flexibility and usability. They provide more structure than low-level libraries but more control than simple apps.
+
+The key takeaway is that there is no single “best” visualization tool. The right tool depends on:
+
+- Your technical background,
+
+- The complexity of your project,
+
+- The level of customization required,
+
+- And the intended audience.
+
+If you need quick exploratory visuals, an app may be sufficient. If you are building interactive, research-grade, or web-based visualizations, a programming library may be more appropriate.
+:::
+
+
+## Python Visualization Landscape
+
+![](images/14.png){fig-align="center"}
+
+::: notes
+This slides shows the popular visualization libraries names in Python. We will use Pandas and Altair packages in this week's lab assignment. 
+
+Altair is a wrapper around a Javascript library. Vega-Lite, which itself is a wrapper around another library called Vega. If you have heard of D3.js, then Vega is an alternative library for making a visualization grammar. If you are curious about Vega, you can look at their simple bar chart tutorial here: https://vega.github.io/vega/tutorials/bar-chart/.
+
+The biggest benefit of Altair being a wrapper is that you can download the compiled vega and drop it into any html file to publish your graph to the web (more info on that is available here https://vega.github.io/vega-lite/tutorials/getting_started.html#embed). This is super exciting because D3 has a very steep learning curve, and other visualization libraries like ggplot2 are not great for embedding interactive versions.
+:::
+
+
+## Data Visualization Resources
 
 ![](images/5.png)
+
+:::notes
+This slide and the next highlight several important resources to help you get started with data visualization. I encourage you to explore them at your own pace.
+:::
 
 ## Data Visualization Resources
 
