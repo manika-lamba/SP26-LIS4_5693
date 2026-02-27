@@ -73,6 +73,8 @@ or text mining techniques.
 -   Time-consuming
 -   Can be misleading or incomplete
 -   Can be difficult to communicate or reproduce
+
+![](images/7.png)
 :::
 :::::
 
@@ -196,6 +198,52 @@ clear and well-designed visuals help communicate insights effectively
 and capture attention.
 :::
 
+
+## Why Create Visualizations Generally? {.smaller}
+
+`Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form (Johanna Drucker)`
+
+![](images/2.png)
+
+::: footer
+<https://lisacharlottemuth.com/2017/03/10/why-do-we-visualize-data/>
+:::
+
+::: notes
+Data visualization helps the user make sense of large (and often times
+small) amounts of data using computational and analytic tools. In
+academic and special libraries data visualization helps researchers and
+business users recognize and understand the “patterns” in the data to
+assist them in decision making, research, product development,
+marketing, and other uses not yet realized.
+
+Along with the emergence of “big data” came the need for more visual
+means to analyze and make sense of the data. Visualization also allows
+for re-purposing of datasets beyond their original use.
+
+Information professionals assist in data visualization but also in
+managing and preparing the data for use.
+
+An academic library may title these professionals as Data analysis
+librarian, Data manager, Digital Projects librarian/specialist, etc. The
+titles are emerging as fast as the visualization tools themselves.
+Special librarians have always conducted data analysis and competitive
+intelligence for their companies. Data visualization is an extension of
+this service to their user community.
+
+Information professionals also use data visualization themselves for
+innovative ways to present information to users, to market their
+services, and to synthesize data for stakeholders.
+:::
+
+## Why Create Visualizations Generally?
+
+![](images/22.png)
+
+:::footer
+<https://blog.duncangeere.com/defining-information-design/>
+:::
+
 ## How Encoding Works?
 
 Guess how many '7s' there are in this set
@@ -237,9 +285,6 @@ They are the same set of numbers but now the 7's pop out to us.
 ![](images/21.png)
 :::
 :::::
-
-
-
 
 ## Types of Visualizations
 
@@ -436,55 +481,6 @@ This slides shows the popular visualization libraries names in Python.
 
 ![](images/1.png)
 
-## Why Create Visualizations Generally?
-
-![](images/2.png)
-
-::: footer
-<https://lisacharlottemuth.com/2017/03/10/why-do-we-visualize-data/>
-:::
-
-::: notes
-Data visualization helps the user make sense of large (and often times
-small) amounts of data using computational and analytic tools. In
-academic and special libraries data visualization helps researchers and
-business users recognize and understand the “patterns” in the data to
-assist them in decision making, research, product development,
-marketing, and other uses not yet realized.
-
-Along with the emergence of “big data” came the need for more visual
-means to analyze and make sense of the data. Visualization also allows
-for re-purposing of datasets beyond their original use.
-
-Information professionals assist in data visualization but also in
-managing and preparing the data for use.
-
-An academic library may title these professionals as Data analysis
-librarian, Data manager, Digital Projects librarian/specialist, etc. The
-titles are emerging as fast as the visualization tools themselves.
-Special librarians have always conducted data analysis and competitive
-intelligence for their companies. Data visualization is an extension of
-this service to their user community.
-
-Information professionals also use data visualization themselves for
-innovative ways to present information to users, to market their
-services, and to synthesize data for stakeholders.
-:::
-
-## Why Create Visualizations Generally?
-
-![](images/Screenshot%202026-02-27%20at%203.35.19%20AM.png)
-
-::: footer
-<https://blog.duncangeere.com/defining-information-design/>
-:::
-
-## 
-
-`Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form`
-
-Johanna Drucker, [Graphesis: Visual Forms of Knowledge
-Production](http://www.hup.harvard.edu/catalog.php?isbn=9780674724938)
 
 ## Ecosystem of Data Visualization Tools
 
@@ -501,9 +497,3 @@ Production](http://www.hup.harvard.edu/catalog.php?isbn=9780674724938)
 ## Data Visualization Resources
 
 ![](images/6.png)
-
-## 
-
-![](images/7.png)
-
-## 
