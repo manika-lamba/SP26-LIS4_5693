@@ -20,137 +20,7 @@ editor:
     wrap: 72
 ---
 
-## 
-
-![](images/intro.png){fig-align="center"}
-
-::: notes
-In this module, we will learn more about data visualization and the
-basics behind it. Visualization is an essential part of exploratory data
-analysis, enabling faster comprehension, better decision-making, and
-more impactful storytelling with data.
-
-Text analysis is not just about collecting data, it's about transforming
-raw data into meaningful insights, knowledge, and ultimately, impact.
-However, misinterpretation or excessive manipulation can lead to
-misleading conclusions.
-
-In this lecture, we will explore:
-
--   The journey from raw data to actionable insights
--   How to structure and interpret data effectively
--   Turning insights into meaningful decisions
-
-Please note that throughout this lecture, when I use the term “data,” I
-am using it as a broad, umbrella term. In this context, it explicitly
-includes textual data (such as documents, social media posts, articles,
-transcripts, and any other forms of text) that we analyze using IR, NLP,
-or text mining techniques.
-:::
-
-## Exploratory Data Analysis (EDA) {.smaller}
-
-`EDA involves the initial exploration and examination of data to gain insights and formulate hypotheses`
-
-::::: columns
-::: {.column width="50%"}
-**Benefits of EDA**
-
--   Provides an understanding of data
--   Identifies outliers
--   Facilitates the generation of hypotheses
-
-**Benefits of Using Visualization in EDA**
-
--   Visualizations make complex datasets more accessible
--   Allows for the detection of patterns, rends, and outliers
--   Supports data-driven decision-making
-:::
-
-::: {.column width="50%"}
-**Limitations of EDA**
-
--   Time-consuming
--   Can be misleading or incomplete
--   Can be difficult to communicate or reproduce
-
-![](images/7.png)
-:::
-:::::
-
-::: notes
-Exploratory data analysis, or EDA, is a crucial step in the data
-analysis process, allowing analysts to understand the structure,
-patterns, and relationships within datasets.
-
-Exploratory data analysis involves the initial exploration and
-examination of data to gain insights and formulate hypotheses. It
-includes techniques such as summary statistics and data visualization.
-
-EDA has plenty of benefits as a form of data analysis. Let's examine
-some of them:
-
--   One benefit is that EDA provides a comprehensive understanding of
-    the characteristics and distributions of variables within the data
-    set.
--   It can also help identify outliers, which are missing values and
-    data inconsistencies that may affect some subsequent analysis.
--   Finally, EDA facilitates the generation of hypotheses and
-    formulation of research questions based on observed patterns and
-    trends.
-
-Visualizations are an important component of EDA, allowing analysts to
-explore the relationships between variables and uncover patterns
-visually.
-
-Techniques such as histograms, scatterplots, and boxplots are commonly
-used to visualize data distributions and relationships.
-
-Let's explore some key benefits of using visualizations in exploratory
-data analysis:
-
--   Visualizations make complex datasets more accessible and
-    understandable, enabling stakeholders to grasp valuable insights
-    quickly.
--   Visualizations also help when trying to detect patterns, trends, and
-    outliers that may not be apparent from numerical summaries alone.
--   Another benefit is that they support data driven decision making.
-    They do this by providing compelling visual evidence to support
-    hypotheses and conclusions.
-
-Exploratory data analysis is a starting point when working with a set of
-data and is less structured than more in depth analysis, as the intent
-is to just find initial ideas to explore further.
-
-With that in mind, there are some limitations to exploratory data
-analysis:
-
--   One is that it can be very time consuming when first examining data
-    with no idea where to start.
--   Digging through the pile of data and trying different combinations
-    of variables to evaluate can take a significant amount of time.
--   Another is that it can be misleading or incomplete.
-
-Initial impressions of the data being analyzed can indicate one
-conclusion or way of thinking that may be invalidated as more data is
-uncovered and evaluated and the findings and methods can be difficult to
-communicate or reproduce.
-
-Exploratory data analysis is less structured than a more in depth
-investigation into a specific finding, so depending on the methods taken
-and the amount of documentation generated about the way the data was
-analyzed, it can be very hard to explain or share what was found.
-
-In summary, exploratory data analysis is a critical phase in the data
-analysis process, providing valuable insights into the structure and
-characteristics of datasets.
-
-While EDA has its advantages and limitations, when conducted
-effectively, it serves as a foundational step for further analysis and
-hypothesis formulation.
-:::
-
-## A Picture Is Worth a Thousand Words
+## A Picture Is Worth a Thousand Words {.smaller}
 
 ::::: columns
 ::: {.column width="50%"}
@@ -167,6 +37,7 @@ Visualization helps us to:
 -   acquire & share insights
 
 -   attract audience
+![](images/intro.png){fig-align="center"}
 :::
 
 ::: {.column width="50%"}
@@ -176,40 +47,18 @@ Visualization helps us to:
 :::
 :::::
 
-::: notes
-The saying *"A picture is worth a thousand words"* holds true in data
-analysis because our brains are naturally wired to process visual
-information quickly and efficiently.
-
-Instead of sifting through raw numbers, visual representations such as
-graphs, charts, and plots help us absorb information at a glance.
-
-Through visualization, we can easily identify patterns, trends, and
-outliers through thoughtful visual **encoding** that might otherwise be
-overlooked in tabular data. It allows us to connect the dots between
-different variables, uncover hidden relationships, and gain meaningful
-insights.
-
-Additionally, visualization is a valuable tool for sharing findings, as
-it makes complex data more accessible and engaging for others.
-
-Whether presenting data to a technical audience or a general audience,
-clear and well-designed visuals help communicate insights effectively
-and capture attention.
-:::
-
-
-## Why Create Visualizations Generally? {.smaller}
-
-`Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form (Johanna Drucker)`
-
-![](images/2.png)
-
-::: footer
-<https://lisacharlottemuth.com/2017/03/10/why-do-we-visualize-data/>
-:::
 
 ::: notes
+In this module, we will learn more about data visualization and the
+basics behind it. Visualization is an essential part of exploratory data
+analysis, enabling faster comprehension, better decision-making, and
+more impactful storytelling with data.
+
+Text analysis is not just about collecting data, it's about transforming
+raw data into meaningful insights, knowledge, and ultimately, impact.
+However, misinterpretation or excessive manipulation can lead to
+misleading conclusions.
+
 Data visualization helps the user make sense of large (and often times
 small) amounts of data using computational and analytic tools. In
 academic and special libraries data visualization helps researchers and
@@ -234,33 +83,39 @@ this service to their user community.
 Information professionals also use data visualization themselves for
 innovative ways to present information to users, to market their
 services, and to synthesize data for stakeholders.
+
+The saying *"A picture is worth a thousand words"* holds true in data
+analysis because our brains are naturally wired to process visual
+information quickly and efficiently.
+
+Instead of sifting through raw numbers, visual representations such as
+graphs, charts, and plots help us absorb information at a glance.
+
+Through visualization, we can easily identify patterns, trends, and
+outliers through thoughtful visual **encoding** that might otherwise be
+overlooked in tabular data. It allows us to connect the dots between
+different variables, uncover hidden relationships, and gain meaningful
+insights.
+
+Additionally, visualization is a valuable tool for sharing findings, as
+it makes complex data more accessible and engaging for others.
+
+Whether presenting data to a technical audience or a general audience,
+clear and well-designed visuals help communicate insights effectively
+and capture attention.
+
+In this lecture, we will explore:
+
+-   The journey from raw data to actionable insights
+-   How to structure and interpret data effectively
+-   Turning insights into meaningful decisions
+
+Please note that throughout this lecture, when I use the term “data,” I
+am using it as a broad, umbrella term. In this context, it explicitly
+includes textual data (such as documents, social media posts, articles,
+transcripts, and any other forms of text) that we analyze using IR, NLP,
+or text mining techniques.
 :::
-
-## Why Create Visualizations Generally?
-
-![](images/22.png)
-
-:::footer
-<https://blog.duncangeere.com/defining-information-design/>
-:::
-
-## How Encoding Works?
-
-Guess how many '7s' there are in this set
-
-![](images/16.png){fig-align="center"}
-
-## How Encoding Works? {.smaller}
-
-`Effective visualizations require thoughtful encoding`
-
-`Design decisions have a big impact on what people will see in the data`
-
-Now, try guessing again.
-
-They are the same set of numbers but now the 7's pop out to us.
-
-![](images/17.png)
 
 ## We are Wired for Visualization
 
@@ -274,6 +129,83 @@ They are the same set of numbers but now the 7's pop out to us.
 :::
 :::::
 
+:::notes
+Humans are biologically wired for visual processing where good visualization design works with human perception — using pre-attentive features to guide attention, reveal patterns, and make complex information easier to understand.
+
+Research shows that a substantial portion of the human brain is devoted to processing visual information. Our visual system can process enormous amounts of data extremely quickly — estimates suggest up to 10 million bits per second. That means we are naturally optimized to detect patterns, differences, movement, and contrast almost instantly.
+
+This biological wiring explains why visualizations are so powerful. When we encode data visually, we are tapping into one of the brain’s strongest processing systems.
+
+The second image on the slide highlights something called pre-attentive processing. This refers to the brain’s ability to rapidly detect certain visual features before we consciously focus our attention.
+
+Notice the small grid examples. In each case, one element “pops out” immediately — perhaps because of a different color hue, brightness, orientation, texture, position, size, or shape. You do not have to scan carefully to find it. Your brain detects it almost instantly.
+
+These features — color, orientation, texture, alignment, brightness, saturation, size, and shape — are known as pre-attentive attributes. They are processed automatically and quickly by our visual system.
+
+This is why thoughtful encoding is so powerful. When we use visual attributes strategically, we reduce cognitive effort and guide attention intentionally. Instead of forcing someone to read through numbers or text, we allow the brain to recognize differences instantly.
+
+However, this also means that poor design can mislead attention. If everything is highlighted, nothing stands out. If color is used inconsistently, it creates confusion rather than clarity.
+
+So when we say “we are wired for visualization,” we mean that effective visualizations align with how the brain naturally processes information. They leverage perception instead of fighting against it.
+
+:::
+
+## How Encoding Works?
+
+Guess how many '7s' there are in this set
+
+![](images/16.png){fig-align="center"}
+
+:::notes
+Now, lets explore a very important concept in visualization: `encoding`.
+
+On this slide, you see a large grid of numbers, and I ask you: How many 7s are there?
+
+At first glance, this feels difficult. The numbers all look the same. They are the same color, same size, same weight. Nothing stands out visually. Your brain has to scan each character individually, which takes time and effort.
+:::
+
+## How Encoding Works? {.smaller}
+
+`Effective visualizations require thoughtful encoding`
+
+`Design decisions have a big impact on what people will see in the data`
+
+Now, try guessing again.
+
+They are the same set of numbers but now the 7's pop out to us.
+
+![](images/17.png)
+
+
+:::notes
+Now look at the this image.
+
+It is the exact same set of numbers. Nothing has changed in the data itself. But this time, the 7s are highlighted in a different color.
+
+Suddenly, the task becomes much easier. The 7s “pop out” to us. We can estimate or count them much more quickly.
+
+What changed? The **encoding** changed.
+
+Encoding refers to how data is visually represented — through color, size, position, shape, contrast, or other visual attributes. In the second image, color was used as a visual encoding to differentiate the 7s from the other numbers.
+
+This simple change demonstrates a powerful principle: Effective visualizations require thoughtful encoding.
+
+Design decisions — such as which colors to use, what to highlight, how to group elements, or what to make prominent — dramatically influence what people notice and how quickly they understand the information.
+
+The data did not change. Only the visual encoding changed. Yet our perception changed significantly.
+
+This example also reinforces an earlier idea: visualizations are not neutral. The way we encode data shapes what viewers see first, what stands out, and what might be overlooked.
+
+So when creating visualizations, we must carefully consider:
+- What do we want the viewer to notice?
+- What comparisons should be easy?
+- What patterns should stand out?
+
+Good encoding reduces cognitive load and guides attention intentionally. Encoding is the bridge between raw data and human perception. The choices we make in encoding determine how effectively our audience can interpret and understand the data.
+:::
+
+
+
 ## Some attributes pop out more than others
 
 ::::: columns
@@ -285,6 +217,65 @@ They are the same set of numbers but now the 7's pop out to us.
 ![](images/21.png)
 :::
 :::::
+
+## Why Create Visualizations Generally? {.smaller}
+
+`Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form (Johanna Drucker)`
+
+![](images/2.png)
+
+::: footer
+<https://lisacharlottemuth.com/2017/03/10/why-do-we-visualize-data/>
+:::
+
+::: notes
+We create visualizations to answer questions and sometimes even to discover new questions. Visualizations help us make decisions, see data in context, expand our memory, support graphical reasoning, identify patterns, present arguments, tell stories, and even inspire action.
+
+Visualizations are not just decorative. They are cognitive tools. They help us process complex information more efficiently than raw tables or text ever could.
+
+Some goals are about attention and beauty — getting people to read, attracting different types of learners, and making the work engaging. Other goals focus on understanding — helping people explain, interpret, and explore data. And finally, some goals move toward implication — proving a point, correcting misconceptions, evoking emotion, or encouraging action.
+
+This brings us to the quote on this slide by Johanna Drucker:
+
+“Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form.”
+
+This is a powerful statement. It reminds us that visualizations are not neutral. They are not simply transparent windows into data. Every choice we make — what data to include, what scale to use, what colors to apply, what to highlight, what to omit — reflects interpretation.
+
+A visualization might appear objective, but it always carries assumptions, framing decisions, and design choices. In that sense, every visualization is an argument. It persuades the viewer to see the data in a certain way.
+
+As creators of visualizations, especially in academic and research settings, we must be mindful of this. We are not just presenting data — we are shaping how others understand it.
+
+So as we move forward in this course, I want you to think critically about both sides:
+How can visualizations help us understand and communicate complex information?
+And how might they also influence, frame, or even bias interpretation?
+:::
+
+## Why Create Visualizations Generally?
+
+![](images/22.png)
+
+:::footer
+<https://blog.duncangeere.com/defining-information-design/>
+:::
+
+:::notes
+Data visualization is not isolated. It connects rigorous analysis with thoughtful communication, balancing discovery and storytelling depending on your purpose and audience. This slide illustrates the relationship between Data Analysis, Data Visualization, and Information Design, and how they exist along a spectrum from exploratory to explanatory work.
+
+On the left side, we have Data Analysis. This is primarily exploratory. Here, the goal is to investigate the data, test hypotheses, discover patterns, and identify insights. The audience is often the analyst themselves or a small research team. The focus is on depth, accuracy, and discovery rather than presentation polish.
+
+In the center, we see Data Visualization. This is the bridge between analysis and design. Visualization serves both exploratory and explanatory purposes. During exploration, visualizations help analysts see patterns, trends, and anomalies more clearly. During explanation, those same or refined visualizations are used to communicate findings to others.
+
+On the right side, we have Information Design, which leans more toward explanatory work. Here, the focus shifts to communication. The goal is not just to analyze data, but to present it in a clear, engaging, and accessible way for a broader audience. This is where storytelling, layout, typography, and aesthetics play a stronger role.
+
+The overlap between Data Visualization and Information Design is where we often see infographics. Infographics prioritize explanation and communication, sometimes simplifying or summarizing analysis to make it digestible and compelling for a general audience.
+
+The arrow at the top emphasizes that visualization exists on a continuum. Some visualizations are created for exploration — messy, iterative, and analytical. Others are carefully designed for explanation — polished, curated, and persuasive.
+
+Understanding where your work sits on this spectrum is important. Are you exploring data to discover insights? Or are you explaining insights to others? The answer affects your design choices, level of detail, and presentation style.
+:::
+
+
+
 
 ## Types of Visualizations
 
