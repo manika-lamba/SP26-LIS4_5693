@@ -1,0 +1,509 @@
+---
+title: "Text Visualization"
+subtitle: "LIS 4/5693: Information Retrieval and Text Mining"
+author: 
+  - Dr. Manika Lamba
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      theme: whiteboard
+      buttons: true
+    preview-links: false
+    controls: true
+    progress: true
+    show-notes: separate-page
+    logo: images/ou.png
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## 
+
+![](images/intro.png){fig-align="center"}
+
+::: notes
+In this module, we will learn more about data visualization and the
+basics behind it. Visualization is an essential part of exploratory data
+analysis, enabling faster comprehension, better decision-making, and
+more impactful storytelling with data.
+
+Text analysis is not just about collecting data, it's about transforming
+raw data into meaningful insights, knowledge, and ultimately, impact.
+However, misinterpretation or excessive manipulation can lead to
+misleading conclusions.
+
+In this lecture, we will explore:
+
+-   The journey from raw data to actionable insights
+-   How to structure and interpret data effectively
+-   Turning insights into meaningful decisions
+
+Please note that throughout this lecture, when I use the term “data,” I
+am using it as a broad, umbrella term. In this context, it explicitly
+includes textual data (such as documents, social media posts, articles,
+transcripts, and any other forms of text) that we analyze using IR, NLP,
+or text mining techniques.
+:::
+
+## Exploratory Data Analysis (EDA) {.smaller}
+
+`EDA involves the initial exploration and examination of data to gain insights and formulate hypotheses`
+
+::::: columns
+::: {.column width="50%"}
+**Benefits of EDA**
+
+-   Provides an understanding of data
+-   Identifies outliers
+-   Facilitates the generation of hypotheses
+
+**Benefits of Using Visualization in EDA**
+
+-   Visualizations make complex datasets more accessible
+-   Allows for the detection of patterns, rends, and outliers
+-   Supports data-driven decision-making
+:::
+
+::: {.column width="50%"}
+**Limitations of EDA**
+
+-   Time-consuming
+-   Can be misleading or incomplete
+-   Can be difficult to communicate or reproduce
+:::
+:::::
+
+::: notes
+Exploratory data analysis, or EDA, is a crucial step in the data
+analysis process, allowing analysts to understand the structure,
+patterns, and relationships within datasets.
+
+Exploratory data analysis involves the initial exploration and
+examination of data to gain insights and formulate hypotheses. It
+includes techniques such as summary statistics and data visualization.
+
+EDA has plenty of benefits as a form of data analysis. Let's examine
+some of them:
+
+-   One benefit is that EDA provides a comprehensive understanding of
+    the characteristics and distributions of variables within the data
+    set.
+-   It can also help identify outliers, which are missing values and
+    data inconsistencies that may affect some subsequent analysis.
+-   Finally, EDA facilitates the generation of hypotheses and
+    formulation of research questions based on observed patterns and
+    trends.
+
+Visualizations are an important component of EDA, allowing analysts to
+explore the relationships between variables and uncover patterns
+visually.
+
+Techniques such as histograms, scatterplots, and boxplots are commonly
+used to visualize data distributions and relationships.
+
+Let's explore some key benefits of using visualizations in exploratory
+data analysis:
+
+-   Visualizations make complex datasets more accessible and
+    understandable, enabling stakeholders to grasp valuable insights
+    quickly.
+-   Visualizations also help when trying to detect patterns, trends, and
+    outliers that may not be apparent from numerical summaries alone.
+-   Another benefit is that they support data driven decision making.
+    They do this by providing compelling visual evidence to support
+    hypotheses and conclusions.
+
+Exploratory data analysis is a starting point when working with a set of
+data and is less structured than more in depth analysis, as the intent
+is to just find initial ideas to explore further.
+
+With that in mind, there are some limitations to exploratory data
+analysis:
+
+-   One is that it can be very time consuming when first examining data
+    with no idea where to start.
+-   Digging through the pile of data and trying different combinations
+    of variables to evaluate can take a significant amount of time.
+-   Another is that it can be misleading or incomplete.
+
+Initial impressions of the data being analyzed can indicate one
+conclusion or way of thinking that may be invalidated as more data is
+uncovered and evaluated and the findings and methods can be difficult to
+communicate or reproduce.
+
+Exploratory data analysis is less structured than a more in depth
+investigation into a specific finding, so depending on the methods taken
+and the amount of documentation generated about the way the data was
+analyzed, it can be very hard to explain or share what was found.
+
+In summary, exploratory data analysis is a critical phase in the data
+analysis process, providing valuable insights into the structure and
+characteristics of datasets.
+
+While EDA has its advantages and limitations, when conducted
+effectively, it serves as a foundational step for further analysis and
+hypothesis formulation.
+:::
+
+## A Picture Is Worth a Thousand Words
+
+::::: columns
+::: {.column width="50%"}
+Our brains have been evolved to be very efficient in visual analysis
+
+Visualization helps us to:
+
+-   absorbs information quickly
+
+-   connect the dots
+
+-   find patterns and outliers
+
+-   acquire & share insights
+
+-   attract audience
+:::
+
+::: {.column width="50%"}
+![](images/9.png)
+
+![](images/8.png)
+:::
+:::::
+
+::: notes
+The saying *"A picture is worth a thousand words"* holds true in data
+analysis because our brains are naturally wired to process visual
+information quickly and efficiently.
+
+Instead of sifting through raw numbers, visual representations such as
+graphs, charts, and plots help us absorb information at a glance.
+
+Through visualization, we can easily identify patterns, trends, and
+outliers through thoughtful visual **encoding** that might otherwise be
+overlooked in tabular data. It allows us to connect the dots between
+different variables, uncover hidden relationships, and gain meaningful
+insights.
+
+Additionally, visualization is a valuable tool for sharing findings, as
+it makes complex data more accessible and engaging for others.
+
+Whether presenting data to a technical audience or a general audience,
+clear and well-designed visuals help communicate insights effectively
+and capture attention.
+:::
+
+## How Encoding Works?
+
+Guess how many '7s' there are in this set
+
+![](images/16.png){fig-align="center"}
+
+## How Encoding Works? {.smaller}
+
+`Effective visualizations require thoughtful encoding`
+
+`Design decisions have a big impact on what people will see in the data`
+
+Now, try guessing again.
+
+They are the same set of numbers but now the 7's pop out to us.
+
+![](images/17.png)
+
+## We are Wired for Visualization
+
+::::: columns
+::: {.column width="50%"}
+![](images/18.png)
+:::
+
+::: {.column width="50%"}
+![](images/19.png)
+:::
+:::::
+
+## Some attributes pop out more than others
+
+::::: columns
+::: {.column width="50%"}
+![](images/20.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+![](images/21.png)
+:::
+:::::
+
+
+
+
+## Types of Visualizations
+
+![](images/10.png){fig-align="center"}
+
+::: footer
+Credit: <https://datavizcatalogue.com/>
+
+Python Users: <https://python-graph-gallery.com/>
+:::
+
+::: notes
+Data visualization comes in various forms, each serving a specific
+purpose depending on the type of data being analyzed and the insights we
+seek. There are many types of visualization that you can choose from
+once you know more about your data after the EDA process.
+
+Some of the most common ones are:
+
+1.  **Histograms** display the distribution of numerical data, helping
+    us understand the frequency and spread of values.
+
+2.  **Bar charts** are useful for comparing categorical data, showing
+    differences between groups or trends over time.
+
+3.  **Pie charts** are commonly used for showing proportions, though
+    they are best for simple comparisons rather than detailed analysis.
+
+4.  **Line charts** are effective for tracking changes and trends,
+    especially in time-series data.
+
+5.  **Scatter plots** help visualize relationships between two numerical
+    variables, making it easier to identify correlations and patterns.
+
+6.  More advanced visualizations include **heatmaps**, which use color
+    intensity to represent data values and highlight patterns across a
+    matrix, and **box plots**, which summarize data distribution,
+    outliers, and variability.
+
+7.  **Tree maps** and **word clouds** are great for hierarchical and
+    text-based data, respectively.
+
+Choosing the right visualization depends on the data and the story we
+want to tell, as each type enhances our ability to interpret information
+and make informed decisions.
+:::
+
+## One-Variable Graph {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+-   **Histogram** shows distribution and concentration of data
+
+-   **Bar Plot** compares the same variable across different groups and
+    shows how the data distributed among the groups
+
+-   **Pie Chart** shows the groups of what your data is made, allows you
+    to see the most and least as well as everything in-between, and
+    shows the distribution of the data among groups
+:::
+
+::: {.column width="50%"}
+![](images/11.png){fig-align="center"}
+:::
+:::::
+
+::: notes
+One-variable visualization, also known as **univariate visualization**,
+focuses on analyzing a single variable to understand its distribution,
+central tendency, and spread. A common method for visualizing
+one-variable data is a **histogram**, which groups numerical data into
+bins and displays the frequency of values within each bin. This helps us
+see patterns such as whether the data is normally distributed, skewed,
+or contains outliers.
+
+**Bar charts** are another option when dealing with categorical data,
+showing the frequency of different categories using bars of varying
+heights.
+
+Using these visualizations, we can quickly interpret key characteristics
+of a dataset, such as its shape, spread, and any anomalies, making them
+essential tools for exploratory data analysis.
+:::
+
+## Two-Variable Graph {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+![](images/12.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+-   **Scatter Plot** shows all the data on the plot, you can see the
+    distribution, correlations, and the spread of the data between two
+    variables
+
+-   **Line Plot** similar to scatter plot but the points are connected,
+    make it easier to see the trends and evolution
+
+-   **2D Histogram** shows distribution of two variables related to each
+    other
+
+-   **Box or Whisker Plot** shows spread of data and statistical
+    information
+:::
+:::::
+
+::: notes
+Two-variable visualization, also known as **bivariate visualization**,
+is used to explore the relationship between two different variables. The
+choice of visualization depends on the type of data—whether both
+variables are numerical, categorical, or a mix of both.
+
+One of the most common ways to visualize two numerical variables is a
+**scatter plot**, which displays individual data points on a graph with
+one variable on the x-axis and the other on the y-axis. This helps
+identify correlations, trends, or clusters in the data. For example, a
+scatter plot can show whether an increase in one variable leads to an
+increase or decrease in another.
+
+Another effective visualization is a **box plot (or box-and-whisker
+plot)**, which provides a summary of the data's median, quartiles, and
+potential outliers. It is particularly useful for detecting variability
+and spotting extreme values.
+
+By using these techniques, we can better understand how two variables
+interact, uncover trends, and gain deeper insights from the data.
+:::
+
+## Three Variable Graph {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+-   **Heatmap** shows two variables and other quantity (amount,
+    intensity, height) with a colormap
+
+-   **Multiple-variable bar plot** shows multiple variables for multiple
+    groups
+
+-   **3D Plot** shows the 3rd variable on surface in 3D plot
+
+For high-dimensional datasets, applying the t-Distributed Stochastic
+Neighbor Embedding (t-SNE) algorithm and alike to reduce the dimension.
+:::
+
+::: {.column width="50%"}
+![](images/13.png)
+:::
+:::::
+
+::: notes
+When we analyze data, sometimes we need to explore the relationship
+between three different variables simultaneously. This is called
+**multivariate visualization**, and it helps us uncover more complex
+patterns and interactions that might not be visible with just one or two
+variables.
+
+One common method for visualizing three variables is a **bubble chart**.
+A bubble chart is similar to a scatter plot, where two numerical
+variables are plotted on the x and y axes, but a third variable is
+represented by the size of the bubbles. For example, if we were
+analyzing cities, the x-axis could represent population, the y-axis
+could represent average income, and the bubble size could represent the
+crime rate.
+
+Another useful visualization is the **3D scatter plot**, which extends a
+regular scatter plot by adding a third axis (z-axis). This is helpful
+when we want to see how three numerical variables interact, but it can
+sometimes be difficult to interpret without interactive tools.
+
+When both variables are categorical, a **stacked bar chart** or a
+**heatmap** is useful. These visualizations display how frequently
+different categories appear together, helping identify patterns and
+relationships in the data. For a combination of categorical and
+numerical variables, a **stacked bar chart** can be effective. Here, the
+x-axis might represent categories (e.g., different product types), the
+y-axis could show total sales, and the bars can be divided into segments
+representing a third categorical variable, such as different regions.
+
+Using three-variable visualizations allows us to gain deeper insights
+into data relationships, helping us make more informed decisions and
+detect more complex trends.
+:::
+
+## Python Visualization Landscape
+
+![](images/14.png){fig-align="center"}
+
+::: notes
+This slides shows the popular visualization libraries names in Python.
+:::
+
+## Some examples of Data Visualizations
+
+![](images/1.png)
+
+## Why Create Visualizations Generally?
+
+![](images/2.png)
+
+::: footer
+<https://lisacharlottemuth.com/2017/03/10/why-do-we-visualize-data/>
+:::
+
+::: notes
+Data visualization helps the user make sense of large (and often times
+small) amounts of data using computational and analytic tools. In
+academic and special libraries data visualization helps researchers and
+business users recognize and understand the “patterns” in the data to
+assist them in decision making, research, product development,
+marketing, and other uses not yet realized.
+
+Along with the emergence of “big data” came the need for more visual
+means to analyze and make sense of the data. Visualization also allows
+for re-purposing of datasets beyond their original use.
+
+Information professionals assist in data visualization but also in
+managing and preparing the data for use.
+
+An academic library may title these professionals as Data analysis
+librarian, Data manager, Digital Projects librarian/specialist, etc. The
+titles are emerging as fast as the visualization tools themselves.
+Special librarians have always conducted data analysis and competitive
+intelligence for their companies. Data visualization is an extension of
+this service to their user community.
+
+Information professionals also use data visualization themselves for
+innovative ways to present information to users, to market their
+services, and to synthesize data for stakeholders.
+:::
+
+## Why Create Visualizations Generally?
+
+![](images/Screenshot%202026-02-27%20at%203.35.19%20AM.png)
+
+::: footer
+<https://blog.duncangeere.com/defining-information-design/>
+:::
+
+## 
+
+`Most information visualizations are acts of interpretation masquerading as presentation. In other words, they are images that act as if they are just showing us what is, but in actuality, they are arguments made in graphical form`
+
+Johanna Drucker, [Graphesis: Visual Forms of Knowledge
+Production](http://www.hup.harvard.edu/catalog.php?isbn=9780674724938)
+
+## Ecosystem of Data Visualization Tools
+
+![](images/4.png)
+
+::: footer
+<https://source.opennews.org/articles/what-i-learned-recreating-one-chart-using-24-tools/>
+:::
+
+## Resources for Getting into Data Visualization
+
+![](images/5.png)
+
+## Data Visualization Resources
+
+![](images/6.png)
+
+## 
+
+![](images/7.png)
+
+## 
