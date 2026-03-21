@@ -36,7 +36,7 @@ editor:
 -   It is a text mining approach to understand, organize, process, extract, manage, and summarize knowledge
 
 :::notes
-From this module onwards, we are going to learn the different approaches to perform text mining. First one is topic modeling.  
+From this module onward, we’ll be exploring different approaches to text mining, and we’ll begin with topic modeling.
 
 Let’s start with the idea of a topic. According to Paul Brett, a topic can be understood as a recurring pattern of co-occurring words. In other words, when certain words frequently appear together across a collection of documents, they tend to signal an underlying theme or subject.
 
