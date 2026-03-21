@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index 2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index 2_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index 2_files/libs/quarto-html/popper.min.js"></script>
+<script src="index 2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index 2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index 2_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index 2_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="index 2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
+
+  <meta name="author" content="Dr.&nbsp;Manika Lamba">
+  <title>Topic Modeling</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index 2_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index 2_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="index 2_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="index 2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index 2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index 2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index 2_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="index 2_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="index 2_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Topic Modeling</h1>
+  <p class="subtitle">LIS 4/5693: Information Retrieval and Text Mining</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Manika Lamba 
+</div>
+</div>
+</div>
+
+</section>
+<section id="introduction" class="slide level2 smaller">
+<h2>Introduction</h2>
+<p><code>Definition</code></p>
+<p><strong><em>Topic</em></strong></p>
+<ul>
+<li>It is “a recurring pattern of co-occurring words” <a href="https://journalofdigitalhumanities.org/2-1/topic-modeling-a-basic-introduction-by-megan-r-brett/">(Brett, 2012)</a></li>
+<li>A topic can be defined as the main idea discussed in a text, i.e., the theme or subject of different granularity</li>
+<li>Topics are simply groups of words from the collection of documents that represents the information in the collection in the best way</li>
+</ul>
+<p><strong><em>Topic Modeling</em></strong></p>
+<ul>
+<li>It is “a method for finding and tracing clusters of words (called <em>topics</em>) in large bodies of texts” <a href="https://journalofdigitalhumanities.org/2-1/topic-modeling-a-basic-introduction-by-megan-r-brett/">(Brett, 2012)</a></li>
+<li>It is a text mining approach to understand, organize, process, extract, manage, and summarize knowledge</li>
+</ul>
+<aside class="notes">
+<p>From this module onwards, we are going to learn the different approaches to perform text mining. First one is topic modeling.</p>
+<p>Let’s start with the idea of a topic. According to Paul Brett, a topic can be understood as a recurring pattern of co-occurring words. In other words, when certain words frequently appear together across a collection of documents, they tend to signal an underlying theme or subject.</p>
+<p>More generally, a topic represents the main idea discussed in a text. This can exist at different levels of granularity. For example, a broad topic might be something like “health,” while a more specific topic could be “mental health during pandemics.” So, topics are flexible, they can be coarse or fine-grained depending on the context and the analysis.</p>
+<p>From a computational perspective, topics are often represented as groups of words that tend to appear together in a collection of documents. These groups are not labeled in advance but are inferred from the data, and they serve as a way to summarize and represent the information contained in large text collections.</p>
+<p>On contrast, topic modeling is defined as a method for discovering clusters of words, or topics, within large bodies of text. Instead of manually reading and categorizing documents, topic modeling allows us to automatically identify patterns and themes across thousands—or even millions—of documents.</p>
+<p>More broadly, topic modeling is a text mining approach that helps us understand, organize, and process large volumes of textual data. It enables us to extract meaningful structure, manage information more efficiently, and ultimately summarize knowledge in a way that would be difficult to achieve through manual analysis alone.</p>
+<p>Topic modeling does not “understand” text in a human sense, it identifies statistical patterns of word co-occurrence that we interpret as meaningful themes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="introduction-1" class="slide level2 smaller">
+<h2>Introduction</h2>
+<ul>
+<li>It performs <em>soft clustering</em>, where it presumes that every document is composed of a mixture of topics</li>
+<li>It makes an excellent tool for discovery and helps to uncover evidence already present in the text</li>
+<li>It has been called an act of reading tea leaves (Chang et al., 2009) or the process of highlighting words (Brett, 2012) based on their topics</li>
+<li>It is based on statistical and machine learning techniques to mine meaningful information from a vast corpus of unstructured data and is used to mine document’s content</li>
+<li>A subject expert (human-in-loop) is needed to label the topics</li>
+</ul>
+<aside class="notes">
+<p>One of the key characteristics of topic modeling is that it performs what is known as <code>soft clustering</code>. Unlike hard clustering, where each document is assigned to a single category, topic modeling assumes that every document is a mixture of multiple topics. For example, a single article might simultaneously relate to politics, economics, and public health, each to a different degree.</p>
+<p>Because of this, topic modeling is a powerful tool for exploration and discovery. It helps us uncover patterns and themes that are already present in the text but may not be immediately visible, especially when dealing with large collections of documents.</p>
+<p>At the same time, it’s important to approach topic modeling with the right expectations. Researchers like Jonathan Chang have described it as an act of “reading tea leaves,” emphasizing that interpretation is not always straightforward. Similarly, Paul Brett describes it as a process of highlighting words based on their association with topics. These metaphors remind us that topic modeling provides signals and patterns, not definitive meanings.</p>
+<p>Under the hood, topic modeling relies on statistical and machine learning techniques to analyze large amounts of unstructured text data. It identifies patterns of word co-occurrence and uses those patterns to infer latent topics, which can then be used to explore and summarize document collections.</p>
+<p>However, an important limitation is that topic models do not automatically assign meaningful labels to topics. This is where the human-in-the-loop becomes essential. A subject expert is needed to interpret and label the topics, making sense of the word clusters and connecting them to meaningful themes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="some-important-concepts-recap" class="slide level2 smaller">
+<h2>Some Important Concepts (Recap)</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Bags of Words</a></li><li><a href="#tabset-1-2">TDM</a></li><li><a href="#tabset-1-3">DTM</a></li><li><a href="#tabset-1-4">TF-IDF</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/11.jpg" class="quarto-figure quarto-figure-center" style="width:65.0%"></p>
+</figure>
+</div>
+<aside class="notes">
+<p>Let’s recap some of the important text-preprocessing concepts that we will be using before performing topic modeling.</p>
+<p>First is the Bag of Words model. It is one of the simplest and most widely used methods for representing text in a numerical form.</p>
+<p>The key idea behind Bag of Words is to represent a document based on the frequency of words it contains, without considering grammar, sentence structure, or word order. In other words, the document is treated like a “bag” of individual words, where only the presence and count of words matter.</p>
+<p>As shown in the example on the slide, we start with a sentence: “Futures markets opened higher today on news of overseas markets.” The first step is to preprocess the text, which typically includes removing stopwords such as “today,” “on,” and “of,” because they do not carry significant meaning for analysis.</p>
+<p>After removing stopwords, we then group the remaining words and count how many times each word appears. This produces a frequency table. For example, the word “markets” appears twice, while words like “futures,” “opened,” “higher,” and “overseas” appear once.</p>
+<p>This process converts the text into a structured, numerical format, which is necessary because machine learning algorithms cannot directly work with raw text. They require numerical input.</p>
+<p>One important characteristic of the Bag of Words model is that it ignores word order and context. For example, the sentences “markets opened higher” and “higher opened markets” would produce the same Bag of Words representation. This makes the model simple and efficient, but it also means that it does not capture deeper meaning or relationships between words.</p>
+<hr>
+<p>Second is the Term-Document Matrix or TDM. It is an important way to represent text in a structured, numerical format. A Term-Document Matrix is essentially a table that shows how frequently each term appears in each document within a corpus. This allows us to convert text into numbers, which is necessary for machine learning and text analysis.</p>
+<p>As shown in the example on the slide, we begin with a small corpus consisting of three documents. Each document contains some text, such as “text analysis is fun,” or “I like doing text analysis.”</p>
+<p>After preprocessing steps like tokenization and stopword removal, we identify the unique terms across all documents. These terms become the rows of the matrix, and the documents become the columns of the matrix.</p>
+<p>Each cell in the matrix contains a number that represents the frequency of a specific term in a specific document. For example, if the word “text” appears once in document 1 and once in document 2, but not in document 3, the matrix will show values of 1, 1, and 0 in the corresponding row.</p>
+<p>This matrix representation is extremely useful because it transforms unstructured text into a structured numerical form that can be used by machine learning algorithms.</p>
+<p>The Term-Document Matrix is closely related to the Bag of Words model, since it is essentially the structured implementation of word frequency counts across multiple documents.</p>
+<hr>
+<p>Third is the Document-Term Matrix or DTM. It is another important way to represent text in numerical form for analysis.</p>
+<p>A Document-Term Matrix is very similar to the Term-Document Matrix. The main difference is the orientation of the rows and columns. In a Document-Term Matrix, each document is represented as a row, and each term, or word, is represented as a column.</p>
+<p>As shown in the example on the slide, we begin with a small corpus of three documents. After preprocessing steps such as tokenization and removing stopwords, we identify the unique terms across all documents. These unique terms form the columns of the matrix.</p>
+<p>Each row represents one document, and each cell contains the frequency of a specific term in that document. For example, if the word “text” appears once in document 1 and once in document 2, but not in document 3, the matrix will show values of 1, 1, and 0 in the corresponding column.</p>
+<p>The Document-Term Matrix is essentially the transpose of the Term-Document Matrix, meaning the rows and columns are swapped. Both representations contain the same information, but the Document-Term Matrix is often more convenient for machine learning applications because many algorithms expect data in the form of rows as observations and columns as features.</p>
+<hr>
+<p>Finally we have Term Frequency–Inverse Document Frequency, commonly known as TF-IDF. It is one of the most important and widely used techniques in text preprocessing and information retrieval.</p>
+<p>TF-IDF is a method used to measure how important or relevant a word is to a specific document within a corpus. Unlike simple word counts, TF-IDF does not treat all words equally. Instead, it assigns different weights to words based on their importance.</p>
+<p>TF-IDF consists of two main components: Term Frequency, or TF, and Inverse Document Frequency, or IDF.</p>
+<p>Term Frequency measures how often a word appears in a particular document. The idea is that words that appear more frequently in a document are likely to be more important for describing that document.</p>
+<p>However, some words may appear frequently across many documents, such as common terms like “data,” “system,” or “information.” These words may not be very useful for distinguishing one document from another. This is where Inverse Document Frequency comes in.</p>
+<p>Inverse Document Frequency reduces the weight of words that appear frequently across many documents and increases the weight of words that are rare across the corpus. This helps highlight words that are more unique and informative.</p>
+<p>By combining these two measures, TF-IDF assigns higher weights to words that appear frequently in a specific document but not frequently across all documents. These words are called discriminative terms, because they help distinguish one document from another.</p>
+<p>TF-IDF is extremely useful in many applications, including search engines, document ranking, text classification, and recommendation systems. For example, search engines use TF-IDF to determine which documents are most relevant to a user’s query.</p>
+<p>Compared to simple Bag-of-Words counts, TF-IDF provides a more meaningful representation because it emphasizes important words and reduces the influence of common words.</p>
+<p>TF-IDF is a powerful weighting technique that helps identify the most relevant and informative words in a document, improving the performance of text mining techniques.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div id="tabset-1-2">
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/8.jpg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:35%;">
+<ul>
+<li>It represents terms as a table or matrix of numbers for a given corpus</li>
+<li>In TDM, terms are represented as rows and documents as columns for a corpus where the number of occurrences of terms in the document is entered in the boxes</li>
+</ul>
+</div></div>
+</div>
+<div id="tabset-1-3">
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/9.jpg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:35%;">
+<ul>
+<li>It represents terms as a table or matrix of numbers for a given corpus</li>
+<li>It is a transposition of TDM</li>
+<li>In DTM, each document is a row, and each word is the column</li>
+</ul>
+</div></div>
+</div>
+<div id="tabset-1-4">
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/10.jpg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<p>It evaluates the relevancy of a term for a document in a corpus and is the most popular weighting scheme in information retrieval (IR)</p>
+</div><div class="column" style="width:35%;">
+<ul>
+<li>The term <strong>weighting</strong> is popularly used in IR and supervised machine learning tasks like text classification</li>
+<li>It makes a list of more discriminative terms than others and assigns a weight to each highly occurring term</li>
+</ul>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-happens-in-topic-modeling" class="slide level2 smaller">
+<h2>What Happens in Topic Modeling?</h2>
+
+<img data-src="img/background.jpeg" class="quarto-figure quarto-figure-center r-stretch" style="width:65.0%"><ul>
+<li>It infers abstract topics based on “similar patterns of word usage in each document”</li>
+<li>These topics are simply groups of words from the collection of documents that represents the information in the collection in the best way</li>
+</ul>
+<aside class="notes">
+<p>Let’s visualize what actually happens during topic modeling using an example.</p>
+<p>On the left, you can see an examples of news headlines as a dataset which is unstructured and difficult to interpret at scale. If you were to read through all of these manually, it would take a significant amount of time, and identifying overall themes would not be straightforward.</p>
+<p>But after we apply topic modeling, the model analyze the patterns of word usage across all these documents and looks for words that frequently appear together and identifies recurring combinations across the dataset.</p>
+<p>On the right, you can see the result of the topic modeling that organizes the documents into <strong>clusters based on these shared patterns</strong>, where each color represents a different topic. These clusters are not labeled automatically—they are simply groupings of documents that share similar word usage patterns.</p>
+<p>This illustrates that topic modeling <strong>infers abstract topics</strong> by detecting similarities in how words are used across documents. It does not rely on predefined categories, but instead discovers structure directly from the data.</p>
+<p>The topics themselves are essentially <strong>groups of words</strong> that tend to co-occur. These word groups serve as a compact representation of the underlying themes in the collection. In other words, they summarize the information in the dataset in a way that is computationally efficient and analytically useful.</p>
+<p>So, what you’re seeing here is the transformation from <strong>raw, unstructured text</strong> to a more <strong>organized, interpretable structure</strong>, where patterns that were previously hidden become visible.</p>
+<p>Thus, topic modeling helps us move from <em>reading documents one by one</em> to <em>understanding large collections at a thematic level</em>, even though the interpretation of those themes still requires human judgment.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-topic-modeling-works" class="slide level2 smaller">
+<h2>How Topic Modeling Works?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/works2.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/works3.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
+<aside class="notes">
+<p>Now, let’s take a closer look at how topic modeling actually works.</p>
+<p>As you can see from the diagram on the left, we begin with a collection of documents. The model processes these documents and infers latent topics. Each topic is represented as a distribution of words—for example, one topic might include words related to import and export, another to international markets, and another to government spending.</p>
+<p>It’s important to understand that these topics are not predefined. They are discovered automatically by the algorithm based on patterns of word co-occurrence. The labels we see—like “international markets” or “stock market”—are actually assigned by humans after the fact to help interpret the results. The model itself only produces groups of words with associated probabilities.</p>
+<p>Once the topics are identified, the model then scores each document against each topic, as shown on the right. This means that every document is represented as a mixture of topics, rather than belonging to just one category.</p>
+<p>This idea is further illustrated on the diagram on the right side. Some documents may be almost entirely about a single topic. For example, 100% Topic A or 100% Topic B. But more commonly, documents are combinations of topics, such as 60% Topic A and 40% Topic B. This is what we mean by soft clustering.</p>
+<p>From the diagram, we see that each topic is itself a mixture of words. The bars represent the probability or importance of each word within the topic. Some words are more strongly associated with the topic, while others have lower weights.</p>
+<p>So, topic modeling works by learning two things simultaneously. First, it identifies topics as distributions of words. Second, it represents each document as a distribution over those topics.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="topic-analysis-time" class="slide level2 smaller">
+<h2>Topic Analysis + Time</h2>
+<ul>
+<li>It assists in identifying topics within a context and how they advance in time</li>
+<li>For instance, over time, few documents within a topic may initiate content that varies from the original content; if that initiated content is shared by a lot of later documents, the content is recognized as a new topic</li>
+<li>Hence, with the progression of time, topics advance, new themes emerge, and old ones become obsolete</li>
+<li>So, topic modeling not just helps the librarians to decide the trending topics or related fields to their field of intrigue but additionally encourages them to distinguish new concepts and fields over time</li>
+</ul>
+<aside class="notes">
+<p>So far, we’ve discussed how topic modeling helps us identify themes within a collection of documents at a given point. But one of its most important applications is in analyzing how topics evolve over time.</p>
+<p>Topic modeling allows us to track how the prominence and composition of topics change across different time periods. This means we can not only identify what topics exist, but also observe how they emerge, grow, shift, or decline.</p>
+<p>For example, within an existing topic, a small number of documents may begin to introduce new patterns of word usage — new terms, concepts, or perspectives that differ from the original theme. Initially, this variation may be minor or limited to a few documents.</p>
+<p>However, if these new patterns begin to appear more frequently in later documents, they can eventually form a distinct and coherent cluster. At that point, what started as a variation within a topic may be recognized as a new topic altogether.</p>
+<p>This process reflects how language and knowledge evolve. Over time, new themes emerge, existing topics transform, and some topics gradually become less relevant or even obsolete.</p>
+<p>From an applied perspective, this is particularly valuable in fields like library and information science, research analytics, and digital humanities. Topic modeling can help professionals identify trending topics, monitor shifts in discourse, and discover emerging areas of interest or research.</p>
+<p>Thus, topic modeling is not just a tool for static analysis, it is also helps in understanding temporal dynamics in large text collections.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-to-do-topic-modeling" class="slide level2 smaller">
+<h2>How to DO Topic Modeling?</h2>
+<ol type="1">
+<li>Extract/Retrieve dataset (e.g.&nbsp;webscraping, API, etc.)</li>
+<li>Preparing a corpus (such as converting files from PDF to plain text format)</li>
+<li>Conducting text pre-processing (removing stopwords, tokenization, stemming, n-grams)</li>
+<li>Exploratory analysis (Word clouds, clustering)<br>
+</li>
+<li>Determining the number of topics (using perplexity, coherence, entropy, or eye-ball method)</li>
+<li>Selecting the appropriate algorithm (such as LDA, STM, CTM)</li>
+<li>Seeding (so that one can reproduce the algorithm with the same selected parameters)</li>
+<li>Running the selected algorithm using proprietary or open-source tools (such as RapidMiner, TopicModelingTool) or programming languages (such as R or Python)</li>
+<li>Iterating the whole process till the algorithm fits the model</li>
+</ol>
+<aside class="notes">
+<p>Let’s walk through the workflow for performing topic modeling, from raw data to final results. It’s important to understand that topic modeling is not a single step, it’s an <strong>iterative process</strong> that involves multiple stages.</p>
+<p>We begin with <strong>data collection</strong>. This involves extracting or retrieving a dataset, which could come from sources such as web scraping, APIs, databases, or digital archives. The quality and relevance of your data at this stage will strongly influence everything that follows.</p>
+<p>Next, we move to <strong>corpus preparation</strong>. This often involves converting files into a consistent, machine-readable format—for example, converting PDFs into plain text. The goal here is to ensure that the data is clean, accessible, and ready for analysis.</p>
+<p>Once we have the corpus, we perform <strong>text preprocessing</strong>. This includes tasks such as removing stopwords, tokenization, stemming or lemmatization, and sometimes generating n-grams. These steps help standardize the text and reduce noise, making it easier for the model to detect meaningful patterns.</p>
+<p>Before jumping into modeling, it’s useful to conduct <strong>exploratory analysis</strong>. Techniques like word clouds or basic clustering can give you an initial sense of the data and help identify dominant terms or patterns.</p>
+<p>One of the most important decisions is <strong>determining the number of topics</strong>. This can be guided by quantitative measures such as perplexity, coherence, or entropy, but often also involves interpretability, what is sometimes referred to as the “eye-ball method.”</p>
+<p>Next, we select an appropriate <strong>topic modeling algorithm</strong>, such as Latent Dirichlet Allocation (LDA), Structural Topic Modeling (STM), or Correlated Topic Models (CTM). The choice depends on the research question, data characteristics, and desired outputs.</p>
+<p>We also often use <strong>seeding</strong>, which ensures that the model can be reproduced with the same parameters. This is especially important for transparency and consistency in research.</p>
+<p>After that, we <strong>run the model</strong> using either specialized tools or programming environments like R or Python. At this stage, the algorithm generates topics and assigns topic distributions to documents.</p>
+<p>Finally and this is critical we <strong>iterate</strong>. Topic modeling is not a one-shot process. We refine pre-processing steps, adjust parameters, reconsider the number of topics, and rerun the model until the results are both <strong>statistically sound and meaningfully interpretable</strong>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="when-to-use-topic-modeling" class="slide level2 smaller">
+<h2>When to Use Topic Modeling</h2>
+<ul>
+<li>When you have a vast collection of text documents</li>
+<li>When the collection belongs to a specific subject</li>
+<li>When the collection has a similar type of documents, such as when all files in the collection are newspaper articles</li>
+</ul>
+<aside class="notes">
+<p>Topic modeling works best when you have a large collection of text documents. The strength of these models lies in identifying patterns across many documents, so having sufficient data is important.</p>
+<p>It is also particularly effective when the collection belongs to a specific subject area or domain. For example, analyzing a large set of research articles in a single discipline or a corpus of news articles on a particular topic can yield meaningful and coherent themes.</p>
+<p>Finally, it also performs well when the documents are relatively homogeneous in type. For instance, if all documents are newspaper articles, research papers, or social media posts. This consistency helps the model detect patterns more reliably.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="when-not-to-use-topic-modeling" class="slide level2 smaller">
+<h2>When NOT to Use Topic Modeling</h2>
+<ul>
+<li>When you have a relatively small number of documents</li>
+<li>When you do not have any idea about your collection. In this case, clustering will be a better option than using topic modeling</li>
+<li>When the collection has a mixture of different types of documents, such as when the collection is composed of newspaper archives, journal articles, and ETDs</li>
+</ul>
+<aside class="notes">
+<p>If you have a small number of documents, topic modeling is unlikely to produce meaningful or stable topics, because there simply isn’t enough data for patterns to emerge.</p>
+<p>It is also not ideal when you have no understanding of your collection at all. In such cases, simpler techniques like clustering or exploratory analysis may be more appropriate as a starting point before applying topic modeling.</p>
+<p>Another limitation arises when the dataset contains a mixture of very different document types. For example, combining newspapers, journal articles, and theses in a single corpus. This kind of heterogeneity can confuse the model and lead to less interpretable topics.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="available-tools-and-packages" class="slide level2 smaller">
+<h2>Available Tools and Packages</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><strong>Out-of-Box Tools</strong></p>
+<ul>
+<li><a href="https://code.google.com/archive/p/topic-modeling-tool/">Topic Modeling Tool</a></li>
+<li><a href="https://rapidminer.com/">RapidMiner</a></li>
+<li><a href="https://voyant-tools.org/">VyontTools</a></li>
+<li><a href="https://dariah-de.github.io/TopicsExplorer/">DARIAH Topics Explorer</a></li>
+<li><a href="https://orangedatamining.com/">ORANGE</a></li>
+<li><a href="https://mimno.infosci.cornell.edu/jsLDA/jslda.html">jsLDA</a> ….. (more!)</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><strong>R Libraries</strong></p>
+<ul>
+<li><a href="https://quanteda.io/">quanteda</a></li>
+<li><a href="https://cran.r-project.org/web/packages/stm/vignettes/stmVignette.pdf">stm</a></li>
+<li><a href="https://cran.r-project.org/web/packages/tm/tm.pdf">tm</a></li>
+<li><a href="https://cran.r-project.org/web/packages/lda/lda.pdf">lda</a></li>
+<li><a href="https://cran.r-project.org/package=topicmodels">topicmodels</a></li>
+<li><a href="https://cran.r-project.org/web/packages/text2vec/index.html">text2vec</a></li>
+<li><a href="https://cran.r-project.org/web/packages/topicdoc/index.html">topicdoc</a></li>
+<li><a href="https://cran.r-project.org/web/packages/BTM/index.html">BTM</a></li>
+<li><a href="https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html">tidytext</a></li>
+<li><a href="https://cran.r-project.org/package=textmineR">textmineR</a> …..(more!)</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><strong>Python Libraries</strong></p>
+<ul>
+<li><a href="https://pypi.org/project/bertopic/">bertopic</a></li>
+<li><a href="https://pypi.org/project/corextopic/">corextopic</a></li>
+<li><a href="https://pypi.org/project/scikit-learn/">scikit-learn</a></li>
+<li><a href="https://pypi.org/project/corextopic/">corextopic</a></li>
+<li><a href="https://pypi.org/project/gensim/">genism</a></li>
+<li><a href="https://pypi.org/project/lda/">lda</a></li>
+<li><a href="https://pythonhosted.org/tethne/">tethne</a></li>
+<li><a href="https://pypi.org/project/dynamic-topic-modeling/">dynamic_topic_modeling</a> …..(more!)</li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>This slide lists a range of available tools and packages for topic modeling.</p>
+<p>There are several out-of-the-box tools, such as Topic Modeling Tool, RapidMiner, Orange, and DARIAH Topics Explorer, which are useful for users who prefer graphical interfaces and minimal coding.</p>
+<p>For those working in R, there are multiple libraries like quanteda, stm, topicmodels, tidytext, and text2vec, which provide flexibility and strong integration with data analysis workflows.</p>
+<p>Similarly, in Python, popular libraries include bertopic, scikit-learn, gensim, and others, offering a range of approaches from traditional probabilistic models to more recent embedding-based methods.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="algorithms" class="slide level2 smaller">
+<h2>Algorithms</h2>
+<ul>
+<li><p><a href="https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">Latent Dirchlet Allocation, 2003</a></p></li>
+<li><p><a href="https://proceedings.neurips.cc/paper/2003/file/7b41bfa5085806dfa24b8c9de0ce567f-Paper.pdf">Hierarchal Latent Dirichlet Allocation (hLDA), 2003</a></p></li>
+<li><p><a href="https://proceedings.neurips.cc/paper_files/paper/2005/file/9e82757e9a1c12cb710ad680db11f6f1-Paper.pdf">Correlated Topic Model (CTM), 2005</a></p></li>
+<li><p><a href="https://mimno.infosci.cornell.edu/info6150/readings/dynamic_topic_models.pdf">Dynamic Topic Model (DTM), 2006</a></p></li>
+<li><p><a href="https://arxiv.org/abs/1611.10277">Correlation Explanation (CorEx), 2016</a></p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/stm/vignettes/stmVignette.pdf">Structural Topic Model (STM), 2019</a></p></li>
+<li><p><a href="https://github.com/vi3k6i5/guidedlda">GuidedLDA, 2018</a></p></li>
+<li><p><a href="https://aclanthology.org/N19-1414.pdf">LDA2Vec, 2019</a></p></li>
+<li><p><a href="https://arxiv.org/abs/2203.05794">BERTopic, 2022</a> . . . more!</p></li>
+</ul>
+<aside class="notes">
+<p>Topic modeling has evolved from probabilistic models like LDA to more advanced approaches that incorporate hierarchies, correlations, time, metadata, and deep learning. The choice of algorithm depends on your data, research question, and the level of interpretability you need. Let’s look at some of the major algorithms used in topic modeling, along with a rough timeline of how the field has evolved.</p>
+<p>We begin with Latent Dirichlet Allocation, or LDA, introduced in 2003. This is the foundational and most widely used topic modeling algorithm. LDA assumes that documents are mixtures of topics and that topics are distributions over words. Many of the later models build on or extend this basic framework.</p>
+<p>Also introduced around the same time is Hierarchical LDA, or hLDA, which extends LDA by organizing topics into a hierarchical structure. Instead of flat topics, this model allows us to see relationships between broader and more specific themes.</p>
+<p>Next, the Correlated Topic Model, or CTM, developed in 2005, addresses a limitation of LDA by allowing topics to be correlated with each other. In real-world data, topics are rarely independent, and CTM captures those relationships.</p>
+<p>The Dynamic Topic Model, or DTM, introduced in 2006, incorporates time into topic modeling. It allows us to study how topics evolve over time, which is especially useful for longitudinal datasets like news archives or research publications.</p>
+<p>Moving forward, Correlation Explanation, or CorEx, introduced in 2016, takes a different approach. It focuses on maximizing information and interpretability, and it allows for guided or semi-supervised topic modeling, where domain knowledge can be incorporated.</p>
+<p>The Structural Topic Model, or STM, builds on LDA by incorporating metadata, such as document source, author, or time, directly into the model. This makes it particularly useful for social science and policy research.</p>
+<p>Guided LDA is another variation that allows users to seed topics with predefined words, helping guide the model toward more meaningful or domain-relevant topics.</p>
+<p>More recent approaches, such as LDA2Vec, combine traditional topic modeling with word embeddings, aiming to capture both global topic structure and local semantic relationships between words.</p>
+<p>Finally, models like BERTopic, introduced more recently, leverage transformer-based embeddings and clustering techniques. These approaches often produce more coherent topics, especially in modern NLP applications.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="topic-visualization" class="slide level2 smaller">
+<h2>Topic Visualization</h2>
+<ul>
+<li><code>Open questions</code>:</li>
+</ul>
+<p><strong>1. How we use the output of the algorithm?</strong></p>
+<p><strong>2. How should we visualize and navigate the topical structure?</strong></p>
+<p><strong>3. What do the topics and document representations tell us about the texts?</strong></p>
+<ul>
+<li>Output of topic modeling is not entirely human-readable, and one way to understand the results is through visualization</li>
+<li>“Topic models are meant to help interpret and understand texts, but it is still the researcher’s job to do the actual interpreting and understanding” (Blei, 2012)</li>
+<li>“Be sure that you can understand the visualization as topic modeling tools are fallible” (Blei, 2012)</li>
+</ul>
+<aside class="notes">
+<p>Now, let’s shift our focus to topic visualization, which is a crucial step in making sense of topic modeling results.</p>
+<p>After running a topic model, we are left with outputs such as word distributions for topics and topic distributions for documents. While these are mathematically meaningful, they are not immediately human-readable. This is why visualization plays such an important role as it helps us translate abstract model outputs into something we can interpret and analyze.</p>
+<p>This leads us to a few important open questions.</p>
+<p>First, <code>how do we actually use the output of the algorithm?</code></p>
+<p>Running a model is only the beginning. The real task is to interpret what the topics represent and how they relate to our research questions.</p>
+<p>Second, <code>how should we visualize and navigate the topical structure?</code></p>
+<p>There are many ways to do this, such as topic-term bar charts, intertopic distance maps, or document-topic distributions, but each visualization highlights different aspects of the model. Choosing the right visualization depends on what you are trying to explore or communicate.</p>
+<p>Third, <code>what do these topics and document representations actually tell us about the texts?</code></p>
+<p>Topics are not ground truth, they are statistical patterns. It is up to us to determine whether these patterns are meaningful, coherent, and relevant to our analysis.</p>
+<p>As David Blei reminds us, topic models are designed to help us interpret and understand texts, but the responsibility for interpretation still lies with the researcher. The model provides structure, but it does not provide meaning on its own.</p>
+<p>He also cautions that we should be careful with visualizations. Just because something is visually appealing or seems clear does not mean it is accurate. Topic modeling tools are not perfect, and visualizations can sometimes be misleading if not critically evaluated.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="case-studies" class="slide level2 smaller">
+<h2>Case Studies</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">iArxiv</a></li><li><a href="#tabset-2-2">CORD-19</a></li><li><a href="#tabset-2-3">COVID-19</a></li><li><a href="#tabset-2-4">Topic Hex-Maps</a></li><li><a href="#tabset-2-5">COVID-19 Research</a></li><li><a href="#tabset-2-6">ETD Dashboard</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://iarxiv.org/"><img data-src="img/18.png" class="quarto-figure quarto-figure-center" style="width:200.0%"></a></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/17.png" class="quarto-figure quarto-figure-center" style="width:200.0%"></p>
+</figure>
+</div>
+</div></div>
+<div class="footer">
+
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://strategicfutures.org/TopicMaps/COVID-19/cord19.html"><img data-src="img/19.png" class="quarto-figure quarto-figure-center" style="width:40.0%"></a></p>
+</figure>
+</div>
+<div class="footer">
+
+</div>
+</div>
+<div id="tabset-2-3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://engineering.tableau.com/visually-exploring-the-covid-19-research-literature-6ff2f70035cb"><img data-src="img/20.webp" class="quarto-figure quarto-figure-center" style="width:80.0%"></a></p>
+</figure>
+</div>
+<div class="footer">
+
+</div>
+</div>
+<div id="tabset-2-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://strategicfutures.org/hexmaps/ukeutopics/2017-01/app/"><img data-src="img/21.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></a></p>
+</figure>
+</div>
+<div class="footer">
+
+</div>
+</div>
+<div id="tabset-2-5">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://manika-lamba.github.io/stm/"><img data-src="img/12.png" class="quarto-figure quarto-figure-center" style="width:70.0%" alt="Manika Lamba. (2022). Visualizing the Pace of COVID-19 Research: An Experimental Study of All India Institute of Medical Sciences (AIIMS), New Delhi. In SIS Annual Convention 2022, New Delhi, India."></a></p>
+</figure>
+</div>
+<figcaption>Manika Lamba. (2022). Visualizing the Pace of COVID-19 Research: An Experimental Study of All India Institute of Medical Sciences (AIIMS), New Delhi. In SIS Annual Convention 2022, New Delhi, India.</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-2-6">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://manika-lamba.github.io/project/etds/"><img data-src="img/13.png" class="quarto-figure quarto-figure-center" style="width:55.0%" alt="Manika Lamba and Margam Madhusudhan. (2018). Metadata Tagging of Library and Information Science Theses:Shodhganga (2013-2017). In ETD2018 Taiwan Beyond the Boundaries of Rims and Oceans:Globalizing Knowledge with ETDs. Taipei,Taiwan."></a></p>
+</figure>
+</div>
+<figcaption>Manika Lamba and Margam Madhusudhan. (2018). Metadata Tagging of Library and Information Science Theses:Shodhganga (2013-2017). In ETD2018 Taiwan Beyond the Boundaries of Rims and Oceans:Globalizing Knowledge with ETDs. Taipei,Taiwan.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>I have compiled several examples of topic visualizations from projects that used topic modeling. <strong>Click on the images to explore each project in a new window</strong>.</p>
+<p><em>(Click on each tab to view the content)</em></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="topic-models-do-not-model-topics" class="slide level2 smaller">
+<h2>Topic models do not model topics</h2>
+<ul>
+<li><p>It operates from</p>
+<ul>
+<li><p>relevantly unrealistic assumptions and non-deterministic</p></li>
+<li><p>cannot effectively be validated against a reasonable number of competing models</p></li>
+<li><p>does not lock into a well-defined linguistic interface</p></li>
+<li><p>does not scholarly model topics in the sense of themes or content (<em>not true anymore - BERTopic + LLM</em>)</p></li>
+</ul></li>
+<li><p>Features are intrinsic make interpretation of its results prone to</p>
+<ul>
+<li><strong>apophenia</strong>: human tendency to perceive random state sets of elements as meaningful patterns</li>
+<li><strong>confirmation bias</strong>: human tendency to perceptually prefer patterns that are in alignment with pre-existing biases</li>
+</ul></li>
+<li><p>While partial validation of the statistical model is possible, a <strong>conceptual validation</strong> would require an extended triangulation with other methods and human ratings, and clarification of whether statistical distinctivity of lexical co-occurrence correlates with conceputal topics in any reliable way</p></li>
+</ul>
+<div class="footer">
+<p>Source: <a href="https://hal.science/hal-03261599v3" class="uri">https://hal.science/hal-03261599v3</a></p>
+</div>
+<aside class="notes">
+<p>Like any other method, topic modeling is not perfect. It should be used critically, with an awareness of its assumptions and limitations, and always in combination with human interpretation.</p>
+<p>Let’s take a critical perspective on topic modeling:</p>
+<ol type="1">
+<li><p>Topic models do not capture topics in the way humans understand them as coherent themes, ideas, or narratives. Instead, they model statistical patterns of word co-occurrence, which we then interpret as topics.</p></li>
+<li><p>Topic models rely on simplifying and sometimes unrealistic assumptions about how language works. For example, many models assume that words are generated independently given a topic, which does not fully reflect the complexity of natural language.</p></li>
+<li><p>Topic modeling is often non-deterministic. This means that running the same model multiple times can produce slightly different results, depending on initialization and parameter settings. This variability can make interpretation and reproducibility more challenging.</p></li>
+<li><p>There is also the issue of validation. Unlike many supervised machine learning tasks, there is no clear “ground truth” for topics. As a result, it is difficult to rigorously evaluate whether one model is objectively better than another, especially across a reasonable number of competing models.</p></li>
+<li><p>Topic models do not map neatly onto a well-defined linguistic framework. They operate at a statistical level, rather than aligning directly with established linguistic categories such as syntax, semantics, or discourse structures.</p></li>
+<li><p>Traditional topic models do not truly capture themes or content in a scholarly sense. The “topics” they produce are abstractions that require human interpretation and may not always align with meaningful conceptual categories.</p></li>
+</ol>
+<p>That said, it’s important to note that this critique is evolving. More recent approaches, such as embedding-based models like BERTopic and integrations with large language models, are beginning to produce more coherent and interpretable topics, narrowing the gap between statistical patterns and human-understandable themes.</p>
+<ol start="7" type="1">
+<li>Because topic models produce statistical groupings of words, the interpretation of these groupings is highly dependent on the researcher. This makes the process vulnerable to certain cognitive biases.
+<ul>
+<li>One such bias is apophenia, which is the human tendency to perceive meaningful patterns in random or unrelated data. When we look at a list of words generated by a topic model, we may be inclined to impose a coherent theme—even when the underlying pattern is weak or ambiguous.</li>
+<li>Another related issue is confirmation bias. This is the tendency to favor interpretations that align with our pre-existing expectations or hypotheses. For example, if we expect to find certain themes in our dataset, we may unconsciously interpret topics in ways that confirm those expectations, rather than critically evaluating alternative interpretations.</li>
+</ul></li>
+</ol>
+<p>These challenges highlight the difficulty of validating topic models. While we can partially validate the statistical performance of a model—using measures like coherence or perplexity—this does not guarantee that the topics correspond to meaningful conceptual categories.</p>
+<p>True validation at a conceptual level would require triangulation. This means combining topic modeling results with other methods—such as qualitative analysis, manual coding, or human evaluations—to assess whether the identified patterns genuinely reflect meaningful topics.</p>
+<p>It also raises a deeper question: does statistical distinctiveness in word co-occurrence reliably correspond to conceptual topics as understood by humans? The answer is not always clear, and this remains an open area of research.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="application-of-topic-modeling-in-libraries" class="slide level2 smaller">
+<h2>Application of Topic Modeling in Libraries</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Data</a></li><li><a href="#tabset-3-2">Use Cases</a></li><li><a href="#tabset-3-3">Use Cases (Cont.)</a></li><li><a href="#tabset-3-4">Use Cases (Cont.)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Topic modeling has been applied to numerous resources, such as</p>
+<ul>
+<li>annual meetings</li>
+<li>diary</li>
+<li>clinical notes</li>
+<li>case reports</li>
+<li>newspapers</li>
+<li>journals</li>
+<li>research articles</li>
+<li>preprints</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<pre><code>- patents
+- conferences
+- chats
+- online reviews
+- MOOCs
+- call for papers
+- social media platforms
+- RSS feed
+- blogs
+- open-ended survey responses
+- emails
+- digital libraries’ resources
+- smart card data
+- EZproxy daily log files
+- data from library mobile apps
+- virtual libraries’ resources
+- reference questions
+- library databases
+- in-house journals
+- institutional and digital repository resources
+- theses and dissertations
+- WebOPACs
+- MOOC feedback, chats, and suggestions
+- online library chats 
+- forums
+- emails
+- syllabuses
+- library’s social media platform accounts</code></pre>
+</div></div>
+<div class="footer">
+
+</div>
+</div>
+<div id="tabset-3-2">
+<p><strong>1. Making Ontologies</strong>: Mehler and Walitinger used topic modeling to build a Dewey Decimal Classification (DDC)-based topic classification model in digital libraries</p>
+<p><strong>2. Automatic Subject Classification</strong>: They can be used in libraries to index subject terms for documents</p>
+<p><strong>3. Bibliometrics</strong>: It can be used to study evolutionary pathways, citations, and trends to explore different hot and cold topics of research in a particular discipline</p>
+<p><strong>4. Altmetrics</strong>: It can be used to know what people are talking about your library on social media and what topics they care about</p>
+<div class="footer">
+
+</div>
+</div>
+<div id="tabset-3-3">
+<p><strong>5. Recommendation Service</strong>: It can be used to recommend electronic resources based on the reading or search habits of the users</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/6.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:70%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/7.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
+<div class="footer">
+
+</div>
+</div>
+<div id="tabset-3-4">
+<p><strong>6. Organization and Management of Resources</strong>: It can be used to do metadata tagging of the electronic resources, library’s database, website, and repository resources</p>
+<p><strong>7. Better Searching and Information Retrieval of Resources</strong>: In digital libraries, it can help in providing a fast searching experience to users and better information retrieval of electronic resources</p>
+<aside class="notes">
+<p>This slide highlights how topic modeling is applied in library contexts, showcasing various data-driven use cases such as organizing collections, discovering research trends, and enhancing information retrieval. It also emphasizes how these applications support decision-making and improve access to knowledge across different library services.</p>
+<p><em>(Click on each tab to view the content)</em></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="quarto-auto-generated-content">
+<p><img src="img/ou.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index 2_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index 2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index 2_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index 2_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index 2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index 2_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="index 2_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index 2_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index 2_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index 2_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index 2_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"theme":"whiteboard"},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: "separate-page",
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
