@@ -11,3 +11,5 @@
 - [Week 6 Text Visualization](https://manika-lamba.github.io/SP26-LIS4_5693/week-6/#/title-slide)
 - [Week 9 Topic Modeling](https://manika-lamba.github.io/SP26-LIS4_5693/week-9/#/title-slide)
 - [Week 11 Sentiment Analysis](https://manika-lamba.github.io/SP26-LIS4_5693/week-11/#/title-slide)
+
+## [Lab Assignments](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments) 
