@@ -13,3 +13,13 @@
 - [Week 11 Sentiment Analysis](https://manika-lamba.github.io/SP26-LIS4_5693/week-11/#/title-slide)
 
 ## [Lab Assignments](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments) 
+
+## Primers
+- [Introduction to spaCy](https://github.com/manika-lamba/SP26-LIS4_5693/blob/main/lab-assignments/lab-2/Introduction_to_spaCy.ipynb)
+- [Introduction to Machine Learning](https://github.com/manika-lamba/SP26-LIS4_5693/blob/main/lab-assignments/lab-4/Introduction_to_Machine_Learning.ipynb)
+- [Introduction to Topic Modeling](https://github.com/manika-lamba/SP26-LIS4_5693/blob/main/lab-assignments/lab-5/Introduction_to_Topic_Modeling.ipynb)
+- [Introduction to Text Network](https://github.com/manika-lamba/SP26-LIS4_5693/blob/main/lab-assignments/lab-6/Introduction_to_Text_Network.ipynb)
+- [Large Language Models](https://github.com/manika-lamba/SP26-LIS4_5693/blob/main/lab-assignments/lab-8/Large_Language_Models_(LLMs).ipynb)
+- [Word Embeddings](https://github.com/manika-lamba/SP26-LIS4_5693/blob/main/Word_Embeddings.ipynb)
+- [Deep Learning and Neural Networks](https://github.com/manika-lamba/SP26-LIS4_5693/blob/main/Deep_Learning_and_Neural_Networks.ipynb)
+- [Agentic AI](https://github.com/manika-lamba/SP26-LIS4_5693/blob/main/Agentic%20AI.ipynb)
