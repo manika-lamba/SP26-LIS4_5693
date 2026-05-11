@@ -13,6 +13,14 @@
 - [Week 11 Sentiment Analysis](https://manika-lamba.github.io/SP26-LIS4_5693/week-11/#/title-slide)
 
 ## [Lab Assignments](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments) 
+- [Lab 1](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments/lab-1)
+- [Lab 2](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments/lab-2)
+- [Lab 3](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments/lab-3)
+- [Lab 4](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments/lab-4)
+- [Lab 5](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments/lab-5)
+- [Lab 6](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments/lab-6)
+- [Lab 7](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments/lab-7)
+- [Lab 8](https://github.com/manika-lamba/SP26-LIS4_5693/tree/main/lab-assignments/lab-8)
 
 ## Primers
 - [Introduction to spaCy](https://github.com/manika-lamba/SP26-LIS4_5693/blob/main/lab-assignments/lab-2/Introduction_to_spaCy.ipynb)
